@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Volkhov:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Livvic:wght@400;700&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Livvic', sans-serif;
+}
+
+img{
+    width: 100%;
+}
+
+h1{
+    font-size: 52px !important;
+    font-family: 'Volkhov', serif !important;
+}
+
+h2{
+    font-size: 44px !important;
+    font-family: 'Volkhov', serif !important;
+}
+
+h3{
+    /* font-size: 52px !important; */
+    font-family: 'Volkhov', serif !important;
+}
+
+h4{
+    /* font-size: 44px !important; */
+    font-family: 'Volkhov', serif !important;
+}
+
+h5{
+    /* font-size: 52px !important; */
+    font-family: 'Volkhov', serif !important;
+}
+
+h6{
+    /* font-size: 44px !important; */
+    font-family: 'Volkhov', serif !important;
+}
+
+p{
+    font-size: 22px;
+}
+
+.navbar{
+
+    .logo img{
+        width: 240px;
+    }
+
+    .extra-nav-link{
+        font-size: 14px;
+        font-weight: normal !important;
+    }
+
+    .nav-link{
+        color: #5C606E;
+        font-weight: bold;
+
+    }
+
+    .nav-link:hover{
+        color: #0D659B !important;
+    }
+
+    .nav-link.active{
+        color: #0D659B !important;
+    }
+    
+}
+
+.banner{
+    background: url('../images/banner-img.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 2.5rem 0;
+    color: #0D659B;
+
+    h1{
+        font-family: 'Volkhov', serif !important;
+    }
+
+    p{
+        font-size: 24px;
+        font-weight: 250;
+    }
+
+    ul{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    li{
+        list-style-type: none;
+    }
+
+    .banner-item{
+        justify-content: end;
+        align-items: end;
+        height: 100%;
+    }
+
+    .round{
+        background: #0D659B;
+        color: #fff;
+        padding: 1rem;
+        width: 10rem;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 700;
+    }
+}
+
+.option-link{
+    font-family: 'Livvic', sans-serif !important;
+    color: #1B639C !important;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+}
+
+.option-link::before{
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: #1C99AA;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.heart-sec{
+    padding: 3rem 0;
+    color: #0D659B;
+
+    p{
+        font-weight: 250;
+    }
+
+    li{
+        list-style-type: none;
+    }
+
+    .heart-inner-content1 p{
+        font-size: 21px;
+    }
+
+    .heart-inner-content2 p{
+        font-size: 18px;
+    }
+
+    .heart-inner-content2{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+.products-sec{
+    background-color: #EEF1F4;
+    padding: 3rem 0;
+    color: #1C99AA;
+
+    h2{
+        color: #0D659B !important;
+    }
+
+    .product-item, .product-info, .about-product {
+        color: #000000 !important;
+    }
+
+    .product-item p, .product-info p {
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    .product-item small, .product-info small {
+        font-weight: 300;
+    }
+
+    .product-info h5, .product-info h2, .product-info h3{
+        color: #1C99AA !important;
+        font-weight: 700;
+    }
+
+    li{
+        list-style-type: none;
+    }
+    
+    li .option-link{
+        font-family: 'Livvic', sans-serif;
+        color: #1B639C !important;
+    }
+}
+
+.ad-sec{
+    background-color:#5C606E;
+    padding: 3rem 0;
+    color: #fff;
+}
+
+.footer-sec{
+    background-color: #E2E8EC;
+    padding: 4rem 0;
+
+    h4,h5,h6{
+        color: #18669C;
+        font-weight: 700;
+        font-family: 'Livvic', sans-serif !important;
+    }
+
+    li{
+        list-style-type: none;
+        color: #0D659B;
+        font-weight: 300;
+    }
+}
