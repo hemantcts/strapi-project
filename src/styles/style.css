@@ -7,6 +7,8 @@ body{
     font-family: 'Livvic', sans-serif;
 }
 
+
+
 img{
     width: 100%;
 }
@@ -22,44 +24,52 @@ h2{
 }
 
 h3{
-    /* font-size: 52px !important; */
+    font-size: 34px !important;
     font-family: 'Volkhov', serif !important;
 }
 
 h4{
-    /* font-size: 44px !important; */
-    font-family: 'Volkhov', serif !important;
+    font-size: 26px !important;
+    font-family: 'Livvic', sans-serif !important;
 }
 
 h5{
-    /* font-size: 52px !important; */
-    font-family: 'Volkhov', serif !important;
+    font-size: 22px !important;
+    font-family: 'Livvic', sans-serif;
 }
 
 h6{
-    /* font-size: 44px !important; */
-    font-family: 'Volkhov', serif !important;
+    font-size: 18px !important;
+    font-family: 'Livvic', sans-serif;
 }
 
 p{
     font-size: 22px;
+    font-family: 'Livvic', sans-serif;
 }
 
 .navbar{
+
+    position: fixed !important;
+    background-color: #fff;
+    width: 100%;
+    top: 0;
+    z-index: 100;
 
     .logo img{
         width: 240px;
     }
 
     .extra-nav-link{
-        font-size: 14px;
+        font-size: 14px !important;
         font-weight: normal !important;
     }
 
     .nav-link{
         color: #5C606E;
         font-weight: bold;
-
+        font-size: 16px;
+        font-family: 'Livvic', sans-serif !important;
     }
 
     .nav-link:hover{
@@ -72,17 +82,17 @@ p{
     
 }
 
+.banner-sec{
+    padding-top: 6rem;
+}
+
 .banner{
     background: url('../images/banner-img.png');
     background-size: cover;
-    background-position: center;
+    background-position: left;
     background-repeat: no-repeat;
     padding: 2.5rem 0;
     color: #0D659B;
-
-    h1{
-        font-family: 'Volkhov', serif !important;
-    }
 
     p{
         font-size: 24px;
@@ -99,13 +109,14 @@ p{
     }
 
     .banner-item{
-        justify-content: end;
-        align-items: end;
+        /* justify-content: end;
+        align-items: end; */
         height: 100%;
     }
 
     .round{
-        background: #0D659B;
+        font-family: 'Livvic', sans-serif;
+        background: linear-gradient(to bottom right, #0D659B, #1C99AA);
         color: #fff;
         padding: 1rem;
         width: 10rem;
@@ -117,15 +128,32 @@ p{
         text-align: center;
         font-size: 22px;
         font-weight: 700;
+        animation: pules 1s ease-in-out infinite alternate;
+    }
+
+    .round-1{
+        margin-right: 4rem;
+    }
+}
+
+@keyframes pules {
+    from{
+        box-shadow: 0px 0px 0px 0px #1c99aa59, 0px 0px 0px 0px #1c99aa59;
+    }
+    to{
+        box-shadow: 0px 0px 0px 10px #1c99aa59, 0px 0px 0px 20px #1c99aa59;
     }
 }
 
 .option-link{
     font-family: 'Livvic', sans-serif !important;
     color: #1B639C !important;
+    font-size: 20px !important;
     font-weight: 700;
     position: relative;
     z-index: 1;
+    display: inline-block;
+    padding: 0 0.5rem;
 }
 
 .option-link::before{
@@ -133,8 +161,8 @@ p{
     height: 100%;
     width: 100%;
     position: absolute;
-    background-color: #1C99AA;
-    top: 0;
+    background: linear-gradient(to bottom right, #1c99aa73, #0d659b6b);
+    top: 45%;
     left: 0;
     z-index: -1;
 }
@@ -149,6 +177,10 @@ p{
 
     li{
         list-style-type: none;
+    }
+
+    h5{
+        font-weight: 700;
     }
 
     .heart-inner-content1 p{
@@ -185,13 +217,25 @@ p{
         font-weight: 300;
     }
 
-    .product-item small, .product-info small {
+    .product-item small, .product-info small, .about-product small {
+        font-family: 'Livvic', sans-serif !important;
         font-weight: 300;
     }
 
     .product-info h5, .product-info h2, .product-info h3{
         color: #1C99AA !important;
         font-weight: 700;
+        position: relative;
+    }
+
+    .product-info h3:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        height: 2px;
+        background-color: #1C99AA;
+        width: 100%;
     }
 
     li{
@@ -201,6 +245,10 @@ p{
     li .option-link{
         font-family: 'Livvic', sans-serif;
         color: #1B639C !important;
+    }
+
+    h4,h6{
+        font-weight: 600;
     }
 }
 
@@ -224,5 +272,7 @@ p{
         list-style-type: none;
         color: #0D659B;
         font-weight: 300;
+        font-size: 16px;
+        font-family: 'Livvic', sans-serif !important;
     }
 }
