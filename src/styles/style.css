@@ -79,6 +79,18 @@ p{
     .nav-link.active{
         color: #0D659B !important;
     }
+
+    .nav-link:focus{
+        color: #5C606E !important;
+    }
+
+    .link1.active, .link1:hover{
+        color: #009E4B !important;
+    }
+
+    .link2.active, .link3.active, .link4.active{
+        color: #0D659B !important;
+    }
     
 }
 
@@ -91,7 +103,7 @@ p{
     background-size: cover;
     background-position: left;
     background-repeat: no-repeat;
-    padding: 2.5rem 0;
+    padding: 3rem 0;
     color: #0D659B;
 
     p{
@@ -154,11 +166,12 @@ p{
     z-index: 1;
     display: inline-block;
     padding: 0 0.5rem;
+    text-decoration: none;
 }
 
 .option-link::before{
     content: '';
-    height: 100%;
+    height: 90%;
     width: 100%;
     position: absolute;
     background: linear-gradient(to bottom right, #1c99aa73, #0d659b6b);
@@ -208,6 +221,14 @@ p{
         color: #0D659B !important;
     }
 
+    .product-items{
+        height: 100%;
+
+        .row{
+            height: 100%;
+        }
+    }
+
     .product-item, .product-info, .about-product {
         color: #000000 !important;
     }
@@ -222,10 +243,29 @@ p{
         font-weight: 300;
     }
 
+    .discount{
+        width: 4.2rem;
+        aspect-ratio: 1 / 1;
+        background: linear-gradient(to bottom right, #0D659B, #1C99AA);
+        position: absolute;
+        top: -12px;
+        right: 12px;
+        transform: rotateZ(10deg);
+        border-radius: 50%;
+        color: #fff;
+        text-align: center;
+        padding: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .product-info h5, .product-info h2, .product-info h3{
         color: #1C99AA !important;
         font-weight: 700;
         position: relative;
+        display: inline-block;
+        margin-bottom: 0;
     }
 
     .product-info h3:before {
@@ -274,5 +314,177 @@ p{
         font-weight: 300;
         font-size: 16px;
         font-family: 'Livvic', sans-serif !important;
+    }
+
+    .social-media-icons{
+        width: 3rem;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        background: linear-gradient(to right, #18669C, #2596A9);
+        color: #fff;
+        padding: 8px 12px;
+        margin-right: 0.5rem;
+    }
+
+    .copyright{
+        font-family: 'Livvic', sans-serif !important;
+        font-weight: 300;
+        font-size: 20px;
+
+        img{
+            width: 30px;
+        }
+    }
+}
+
+.menu_links{
+    height: 100%;
+}
+
+.list-out{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+li.list-items {
+    list-style-type: none;
+    border-top: 1px solid #E6E6E6;
+    padding-top: 1rem;
+    height: 16.66%;
+    margin-bottom: 1rem;
+}
+
+li.list-items a {
+    text-decoration: none;
+    color: #5C606E;
+}
+
+.home_menu_btn{
+    padding: 0.7rem 0;
+    display: inline-block;
+    font-size: 23px;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(to right, #1C99AA, #009E4B);
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+}
+
+.home_menu_image{
+    border-left: 2px solid #009E4B;
+
+    img{
+        height: 100%;
+    }
+}
+
+.menu{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 78%;
+    background-color: #F6F6F6;
+    padding: 1.5rem;
+}
+
+.menu_btn1{
+    padding: 0.7rem 0;
+    display: inline-block;
+    font-size: 23px;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(to right, #1C99AA, #0D659B);
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+}
+
+.menu_image1{
+    border-left: 2px solid #0D659B;
+
+    img{
+        height: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* pharmacy overview style */
+
+.pharmacy_banner_sec{
+    padding-top: 7rem;
+
+    .pharmacy_banner{
+        background-image: url(../images/pharmacy_banner_img.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 10rem 0;
+    }
+
+    h1{
+        color: #0D659B;
+    }
+}
+
+.services-sec{
+    padding: 4rem 0;
+
+    h2{
+        color: #0D659B;
+    }
+
+    p{
+        font-weight: 300;
+    }
+}
+
+.specials-sec{
+    background-color: #FAFAFA;
+    position: relative;
+    padding: 3rem 0 4rem;
+    margin-bottom: 9rem;
+
+    h2{
+        color: #0D659B;
+    }
+
+    .accordion-item{
+        border: 1px solid #E4E4E4 ;
+        border-radius: 0 !important;
+        border-right: 0 !important;
+        border-left: 0 !important;
+        background-color: transparent;
+
+        .accordion-button{
+            font-family: 'Livvic', sans-serif;
+            font-size: 22px;
+            font-weight: 400;
+            border-radius: 0 !important;
+            box-shadow: unset !important;
+            background-color: transparent;
+        }
+        .accordion-button::after{
+            background-image: url('../images/accordion-icon.svg');
+            background-position: center;
+        }
+    }
+
+    img{
+        position: absolute;
+        width: 50%;
+        left: 0;
+        max-height: 100%;
     }
 }
