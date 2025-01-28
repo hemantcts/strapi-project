@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/strapi-project/static/css/main.a839c221.css",
+    "main.js": "/strapi-project/static/js/main.0405e66b.js",
+    "static/js/488.a5ec55de.chunk.js": "/strapi-project/static/js/488.a5ec55de.chunk.js",
+    "static/media/banner-img.png": "/strapi-project/static/media/banner-img.31074a0b6db6f915f4c8.png",
+    "static/media/pharmacy_banner_img.png": "/strapi-project/static/media/pharmacy_banner_img.12e5c441956d364f963d.png",
+    "static/media/specials_img.png": "/strapi-project/static/media/specials_img.f08a026f20b33e092ea7.png",
+    "static/media/services_img.png": "/strapi-project/static/media/services_img.bfcb63fee65218c83503.png",
+    "static/media/home_menu_img.png": "/strapi-project/static/media/home_menu_img.03a51ee8298957107ca5.png",
+    "static/media/menu_img2.png": "/strapi-project/static/media/menu_img2.6dbaff75b88a6dce0686.png",
+    "static/media/HEART.png": "/strapi-project/static/media/HEART.8cb64aa46da4af191e97.png",
+    "static/media/product-img1.png": "/strapi-project/static/media/product-img1.14421658c9938fb7335a.png",
+    "static/media/logo.svg": "/strapi-project/static/media/logo.9ea5ea16cdd9137a8f6a22ae9172fb73.svg",
+    "static/media/ad-img.png": "/strapi-project/static/media/ad-img.b6ade26634613e646b40.png",
+    "index.html": "/strapi-project/index.html",
+    "static/media/accordion-icon.svg": "/strapi-project/static/media/accordion-icon.166c12e7256dfba58437.svg",
+    "main.a839c221.css.map": "/strapi-project/static/css/main.a839c221.css.map",
+    "main.0405e66b.js.map": "/strapi-project/static/js/main.0405e66b.js.map",
+    "488.a5ec55de.chunk.js.map": "/strapi-project/static/js/488.a5ec55de.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a839c221.css",
+    "static/js/main.0405e66b.js"
+  ]
+}
