@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/strapi-project/static/css/main.eea02221.css",
-    "main.js": "/strapi-project/static/js/main.8dc4acba.js",
+    "main.css": "/strapi-project/static/css/main.1490174b.css",
+    "main.js": "/strapi-project/static/js/main.cd2e6d69.js",
     "static/js/488.a5ec55de.chunk.js": "/strapi-project/static/js/488.a5ec55de.chunk.js",
     "static/media/banner-img.png": "/strapi-project/static/media/banner-img.31074a0b6db6f915f4c8.png",
     "static/media/pharmacy_banner_img.png": "/strapi-project/static/media/pharmacy_banner_img.12e5c441956d364f963d.png",
@@ -15,12 +15,12 @@
     "static/media/ad-img.png": "/strapi-project/static/media/ad-img.b6ade26634613e646b40.png",
     "index.html": "/strapi-project/index.html",
     "static/media/accordion-icon.svg": "/strapi-project/static/media/accordion-icon.166c12e7256dfba58437.svg",
-    "main.eea02221.css.map": "/strapi-project/static/css/main.eea02221.css.map",
-    "main.8dc4acba.js.map": "/strapi-project/static/js/main.8dc4acba.js.map",
+    "main.1490174b.css.map": "/strapi-project/static/css/main.1490174b.css.map",
+    "main.cd2e6d69.js.map": "/strapi-project/static/js/main.cd2e6d69.js.map",
     "488.a5ec55de.chunk.js.map": "/strapi-project/static/js/488.a5ec55de.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.eea02221.css",
-    "static/js/main.8dc4acba.js"
+    "static/css/main.1490174b.css",
+    "static/js/main.cd2e6d69.js"
   ]
 }
