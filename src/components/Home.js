@@ -3,16 +3,18 @@ import Navbar from './Navbar';
 import heartImg from '../images/HEART.png';
 // import productImg1 from '../images/product-img1.png';
 import adImg from '../images/ad-img.png';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // import discountImg from '../images/discount_img.png'
 import ProductsSection from './ProductsSection';
 import Footer from './Footer';
+import MyLink from './mini_components/MyLink';
 
 const Home = () => {
 
     const productsData = {
         heading: "Aktionen",
         paragraph: "",
+        buttonText: "ALLE AKTIONEN",
         products: [
             {
                 productDetails: {
@@ -69,10 +71,10 @@ const Home = () => {
                                 <p>Wir freuen uns auf Ihren Besuch!</p>
                                 <ul className='p-0'>
                                     <li>
-                                        <Link to='/' className='m-0 option-link'>ZUR APOTHEKE <i class="fa-solid fa-arrow-right "/></Link>
+                                        <MyLink link="/" text="ZUR APOTHEKE" />
                                     </li>
                                     <li>
-                                        <Link to='/' className='m-0 option-link'>ZUR PRAXIS <i class="fa-solid fa-arrow-right "/></Link>
+                                        <MyLink link="/" text="ZUR PRAXIS" />
                                     </li>
                                 </ul>
                             </div>
@@ -109,7 +111,7 @@ const Home = () => {
                                             </p>
                                             <ul className='p-0'>
                                                 <li>
-                                                    <Link to='/' className='m-0 option-link'>WEITERLESEN <i class="fa-solid fa-arrow-right "/></Link>
+                                                    <MyLink link="/" text="WEITERLESEN" />
                                                 </li>
                                             </ul>
                                         </div>
@@ -130,7 +132,7 @@ const Home = () => {
                                     </p>
                                     <ul className='p-0'>
                                         <li>
-                                            <Link to='/' className='m-0 option-link'>WEITERLESEN <i class="fa-solid fa-arrow-right "/></Link>
+                                            <MyLink link="/" text="WEITERLESEN" />
                                         </li>
                                     </ul>
                                 </div>
@@ -142,7 +144,8 @@ const Home = () => {
                                     chronische Wunden professionell versorgt.</p>
                                     <ul className='p-0'>
                                         <li>
-                                            <Link to='/' className='m-0 option-link'>WEITERLESEN <i class="fa-solid fa-arrow-right "/></Link>
+
+                                            <MyLink link="/" text="WEITERLESEN" />
                                         </li>
                                     </ul>
                                 </div>

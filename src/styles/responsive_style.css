@@ -4,11 +4,11 @@
     }
     
     h2{
-        font-size: 48px !important;
+        font-size: 58px !important;
     }
     
     h3{
-        font-size: 38px !important;
+        font-size: 40px !important;
     }
     
     h4{
@@ -16,8 +16,7 @@
     }
     
     h5{
-        font-size: 26px !important;
-        /* font-family: 'Volkhov', serif !important; */
+        font-size: 22px !important;
     }
     
     h6{
@@ -35,23 +34,24 @@
         }
 
         .extra-nav-link {
-            font-size: 16px !important;
+            font-size: 18px !important;
         }
 
         .nav-link{
-            font-size: 18px;
+            font-size: 20px;
         }
     }
 
     .banner{
-    
+        padding: 5rem 0;
+
         p{
-            font-size: 28px;
+            font-size: 30px;
         }
 
         .round {
-            padding: 2rem;
-            width: 13rem;
+            padding: 40px;
+            width: 14rem;
             font-size: 24px;
             box-shadow: 0px 0px 0px 12px #1c99aa59, 0px 0px 0px 24px #1c99aa59;
         }
@@ -59,30 +59,59 @@
 
     .heart-sec {
 
+        padding: 5rem 0;
+
         .heart-inner-content1 p {
             font-size: 24px;
         }
 
         .heart-inner-content2 p {
-            font-size: 19px;
+            font-size: 22px;
         }
     }
 
     .products-sec {
 
+        padding: 5rem 0;
+        
+        h6{
+            font-size: 20px !important;
+        }
+        
         .product-item p, .product-info p {
-            font-size: 18px;
+            font-size: 21px;
+        }
+
+        .product-info h4{
+            font-size: 26px !important;
         }
 
         .product-item small, .product-info small, .about-product small {
-            font-size: 16px;
+            font-size: 18px;
+        }
+
+        .products-main-btn{
+            padding: 0.8rem 1rem;
+            font-size: 24px;
         }
     }
 
     .footer-sec {
+        h4{
+            font-size: 26px !important;
+        }
+
         li {
+            font-size: 22px;
+        }
+
+        .copyright{
             font-size: 18px;
         }
+    }
+
+    .option-link{
+        font-size: 22px !important;
     }
 }
 
@@ -92,7 +121,7 @@
     }
     
     h2{
-        font-size: 36px !important;
+        font-size: 40px !important;
     }
     
     h3{
@@ -100,7 +129,7 @@
     }
     
     h4{
-        font-size: 24px !important;
+        font-size: 22px !important;
     }
     
     h5{
@@ -115,48 +144,59 @@
         /* font-size: 24px; */
     }
 
+    .option-link {
+        font-size: 20px !important;
+    }
+
     .banner{
     
         p{
-            font-size: 21px;
+            font-size: 22px;
         }
 
         .round {
-            padding: 19px;
-            width: 9rem;
+            padding: 26px;
+            width: 10rem;
             font-size: 18px;
         }
     }
 
     .heart-sec {
         .heart-inner-content1 p {
-            font-size: 19px;
+            font-size: 17px;
         }
 
         .heart-inner-content2 p {
             font-size: 16px;
         }
     }
+
+    .products-sec{
+        .products-main-btn{
+            padding: 0.7rem 1rem;
+            font-size: 18px;
+        }
+
+        .product-item p, .product-info p {
+            font-size: 16px;
+        }
+    }
+
+    .footer-sec{
+        h4 {
+            font-size: 20px !important;
+        }
+    }
 }
 
 @media (max-width:990px) {
 
-    h2{
+    /* h2{
         font-size: 34px !important;
-    }
+    } */
 
     h3{
         font-size: 28px !important;
-    }
-
-    .heart-sec {
-        .heart-inner-content1 p {
-            font-size: 21px;
-        }
-
-        .heart-inner-content2 p {
-            font-size: 18px;
-        }
     }
 
     .banner{
@@ -169,10 +209,33 @@
             margin-right: 0;
         }
     }
+    
+    .heart-sec {
+        .heart-inner-content1 p {
+            font-size: 21px;
+        }
 
-    .copyright {
-        font-size: 18px;
+        .heart-inner-content2 p {
+            font-size: 19px;
+        }
     }
+
+    .products-sec {
+
+        .product-item p, .product-info p {
+            font-size: 21px;
+        }
+
+        .product-item small, .product-info small, .about-product small {
+            font-size: 18px;
+        }
+
+        .discount {
+            width: 5.5rem;
+            padding: 12px;
+        }
+    }
+
 
 
 
@@ -189,15 +252,14 @@
     }
 
     .specials-sec {
+
+        margin-bottom: 3rem;
+
         img {
             position: static;
             width: 100%;
             margin-bottom: 2rem;
         }
-    }
-
-    .specials-sec {
-        margin-bottom: 3rem;
     }
 }
 
@@ -237,8 +299,8 @@
         }
 
         .round {
-            padding: 19px;
-            width: 8rem;
+            padding: 24px;
+            width: 9rem;
             font-size: 16px;
         }
     }
@@ -253,8 +315,24 @@
         }
     }
 
-    .copyright {
-        font-size: 16px;
+    .products-sec{
+        .products-main-btn{
+            padding: 0.7rem 1rem;
+            font-size: 18px;
+        }
+
+        .product-item p, .product-info p {
+            font-size: 17px;
+        }
+
+        .product-item small, .product-info small, .about-product small {
+            font-size: 15px;
+        }
+
+        .discount {
+            width: 4.5rem;
+            padding: 10px;
+        }
     }
 
 
@@ -313,11 +391,11 @@
         .round {
             padding: 19px;
             width: 8rem;
-            font-size: 16px;
+            font-size: 15px;
         }
 
         p {
-            font-size: 20px;
+            font-size: 19px;
             padding: 0 2rem;
         }
 
@@ -328,13 +406,26 @@
 
     .heart-sec {
         .heart-inner-content1 p {
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .heart-inner-content2 p {
+            font-size: 14px;
+        }
+    }
+
+    .products-sec{
+        .product-info h4{
+            font-size: 20px !important;
+        }
+
+        .product-item p, .product-info p {
             font-size: 15px;
         }
 
+        .product-item small, .product-info small, .about-product small {
+            font-size: 14px;
+        }
     }
 
     .option-link {
@@ -395,14 +486,23 @@
         }
     }
 
-    .option-link {
-        font-size: 17px !important;
-    }
-
     .products-sec{
+        .product-info h4{
+            font-size: 18px !important;
+        }
+
+        .products-main-btn{
+            padding: 0.7rem 1rem;
+            font-size: 16px;
+        }
+
         .discount{
             width: 3.2rem;
         }
+    }
+
+    .option-link {
+        font-size: 17px !important;
     }
 }
 

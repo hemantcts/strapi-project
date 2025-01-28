@@ -10,6 +10,7 @@ const PharmacyOverview = () => {
     const productsData = {
         heading: "Monatsaktionen der Rotpunkt Apotheken",
         paragraph: "Die Rotpunkt Apotheken zeichnen sich seit über zehn Jahren durch attraktive Sparangebote, viele Serviceleistungen, monatliche Überraschungen und eine persönliche und kompetente Beratung aus.",
+        buttonText: "weiter zur Praxis",
         products: [
             {
                 productDetails: {
