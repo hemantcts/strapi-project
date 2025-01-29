@@ -1,6 +1,6 @@
 import React from 'react';
 import copyrightImg from '../images/copyright_img.png';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -11,26 +11,26 @@ const Footer = () => {
                         <h4>MedZentrum Pfungen</h4>
                         <ul className='p-0'>
                             <li>
-                                <Link to='#'>Riedäckerstrasse 5</Link>
+                                Riedäckerstrasse 5
                             </li>
                             <li>
-                                <Link to='#'>8422 Pfungen</Link>
+                                8422 Pfungen
                             </li>
                         </ul>
 
                         <h4>Quick Links</h4>
                         <ul className='p-0'>
                             <li>
-                                <Link to='#'>APOTHEKE</Link>
+                                Apotheke
                             </li>
                             <li>
-                                <Link to='#'>PRAXIS</Link>
+                                Praxis
                             </li>
                             <li>
-                                <Link to='#'>ERNÄHRUNGSDIAGNOSTIK</Link>
+                                Ernahrungsdiagnostik
                             </li>
                             <li>
-                                <Link to='#'>GESUNDHEITSTHEMEN</Link>
+                                Gesundheitsthemen
                             </li>
                         </ul>
                     </div>
@@ -38,24 +38,25 @@ const Footer = () => {
                         <h4>Apotheke</h4>
                         <ul className='p-0'>
                             <li>
-                                <Link to='#'><i className="fa-solid fa-phone" /> | 052 305 03 55</Link>
+                                <a href="tel:052 305 03 55"><i className="fa-solid fa-phone" /> | 052 305 03 55</a>
+                                
                             </li>
                             <li>
-                                <Link to='#'><i className="fa-solid fa-envelope" /> | praxis@medzentrum.ch</Link>
+                                <a href="mailto:praxis@medzentrum.ch"><i className="fa-solid fa-envelope" /> | praxis@medzentrum.ch</a>
                             </li>
                         </ul>
                         <ul className='p-0'>
                             <li>
-                                <Link to='#'>Öffnungszeiten Apotheke</Link>
+                                Öffnungszeiten Apotheke
                             </li>
                             <li>
-                                <Link to='#'>Montag bis Freitag</Link>
+                                Montag bis Freitag
                             </li>
                             <li>
-                                <Link to='#'>8:00 – 12:15 | 13:00 – 18:30</Link>
+                                8:00 – 12:15 | 13:00 – 18:30
                             </li>
                             <li>
-                                <Link to='#'>Samstag 8:00 – 13:00</Link>
+                                Samstag 8:00 – 13:00
                             </li>
                         </ul>
                     </div>
@@ -63,51 +64,63 @@ const Footer = () => {
                         <h4>Praxis</h4>
                         <ul className='p-0'>
                             <li>
-                                <Link to='#'><i className="fa-solid fa-phone" /> | 052 305 03 55</Link>
+                                <a href="tel:052 305 03 55"><i className="fa-solid fa-phone" /> | 052 305 03 55</a>
                             </li>
                             <li>
-                                <Link to='#'><i className="fa-solid fa-envelope" /> | praxis@medzentrum.ch</Link>
-                            </li>
-                        </ul>
-                        <ul className='p-0'>
-                            <li>
-                                <Link to='#'>Telefonzeiten:</Link>
-                            </li>
-                            <li>
-                                <Link to='#'>Montag bis Freitag</Link>
-                            </li>
-                            <li>
-                                <Link to='#'>8:00 – 12:00 | 14:00 – 17:30</Link>
+                                <a href="mailto:praxis@medzentrum.ch"><i className="fa-solid fa-envelope" /> | praxis@medzentrum.ch</a>
                             </li>
                         </ul>
                         <ul className='p-0'>
                             <li>
-                                <Link to='#'>Öffnungszeiten Praxis:</Link>
+                                Telefonzeiten:
                             </li>
                             <li>
-                                <Link to='#'>Montag bis Freitag</Link>
+                                Montag bis Freitag
                             </li>
                             <li>
-                                <Link to='#'>8:00 – 12:00 | 13:00 – 18:00</Link>
+                                8:00 – 12:00 | 14:00 – 17:30
+                            </li>
+                        </ul>
+                        <ul className='p-0'>
+                            <li>
+                                Öffnungszeiten Praxis:
                             </li>
                             <li>
-                                <Link to='#'>Samstag nach Vereinbarung</Link>
+                                Montag bis Freitag
+                            </li>
+                            <li>
+                                8:00 – 12:00 | 13:00 – 18:00
+                            </li>
+                            <li>
+                                Samstag nach Vereinbarung
                             </li>
                         </ul>
                     </div>
                     <div className="col-lg-3 col-sm-6 mb-4 mb-lg-0">
                         <div className="icons mb-4">
-                            <span className="social-media-icons"><i className="fa-brands fa-facebook-f" /></span>
-                            <span className="social-media-icons"><i className="fa-brands fa-instagram" /></span>
-                            <span className="social-media-icons"><i className="fa-brands fa-linkedin-in" /></span>
+                            <span className="social-media-icons">
+                                <a href="http://facebook.com" target="_blank" rel="noopener noreferrer">
+                                    <i className="fa-brands fa-facebook-f" />
+                                </a>
+                            </span>
+                            <span className="social-media-icons">
+                                <a href="http://instagram.com" target="_blank" rel="noopener noreferrer">
+                                    <i className="fa-brands fa-instagram" />
+                                </a>
+                            </span>
+                            <span className="social-media-icons">
+                                <a href="http://linkedin.com" target="_blank" rel="noopener noreferrer">
+                                    <i className="fa-brands fa-linkedin-in" />
+                                </a>
+                            </span>
                         </div>
                         <h4>Rechtliches</h4>
                         <ul className='p-0'>
                             <li>
-                                <Link to='#'>Impressum</Link>
+                                Impressum
                             </li>
                             <li>
-                                <Link to='#'>Datenschutzerklärung</Link>
+                                Datenschutzerklärung
                             </li>
                         </ul>
                     </div>

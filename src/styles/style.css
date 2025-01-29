@@ -143,6 +143,11 @@ p{
         font-size: 22px;
         font-weight: 700;
         animation: pules 1s ease-in-out infinite alternate;
+
+        .round-link{
+            text-decoration: none;
+            color: #fff;
+        }
     }
 
     .round-1{
@@ -372,6 +377,10 @@ p{
         color: #fff;
         padding: 8px 12px;
         margin-right: 0.5rem;
+
+        i{
+            color: #fff;
+        }
     }
 
     .copyright{

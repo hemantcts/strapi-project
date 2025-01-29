@@ -2,12 +2,16 @@ import React from 'react'
 import Navbar from './Navbar';
 import heartImg from '../images/HEART.png';
 // import productImg1 from '../images/product-img1.png';
-import adImg from '../images/ad-img.png';
+// import adImg from '../images/ad-img.png';
+import adImg1 from '../images/ad-img-1.svg';
+import adImg2 from '../images/ad-img-2.svg';
+import adImg3 from '../images/ad-img-3.svg';
 // import { Link } from 'react-router-dom';
 // import discountImg from '../images/discount_img.png'
 import ProductsSection from './ProductsSection';
 import Footer from './Footer';
 import MyLink from './mini_components/MyLink';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
@@ -80,8 +84,16 @@ const Home = () => {
                             </div>
                             <div className="col-lg-6">
                                 <div className="d-flex banner-item justify-content-lg-end align-items-lg-end justify-content-around align-items-start">
-                                    <div className="round round-1">TERMIN FÜR DIE APOTHEKE BUCHEN</div>
-                                    <div className="round round-2">TERMIN FÜR DIE PRAXIS BUCHEN</div>
+                                    <div className="round round-1">
+                                        <Link to='#' className="round-link">
+                                            TERMIN FÜR DIE APOTHEKE BUCHEN
+                                        </Link>
+                                    </div>
+                                    <div className="round round-2">
+                                        <Link to='#' className="round-link">
+                                            TERMIN FÜR DIE PRAXIS BUCHEN
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>             
                         </div>
@@ -164,7 +176,17 @@ const Home = () => {
                 <div className="container">
                     <h2 className='text-center'> Unsere Partner </h2>
                     <div className="ad-inner-content mt-5 mb-3">
-                        <img src={adImg} alt="" />
+                        <div className="row align-items-center justify-content-around">
+                            <div className="col-lg-4 col-sm-5 col-8 px-lg-5 mb-lg-0 mb-5">
+                                <img src={adImg1} alt="" />
+                            </div>
+                            <div className="col-lg-4 col-sm-5 col-8 px-lg-5 mb-lg-0 mb-5">
+                                <img src={adImg2} alt="" />
+                            </div>
+                            <div className="col-lg-4 col-sm-5 col-8 px-lg-5 mb-lg-0 mb-5">
+                                <img src={adImg3} alt="" />
+                            </div>
+                        </div>
                     </div>
                 </div>
 

@@ -1,5 +1,5 @@
 {
-  "homepage": "https://hemantcts.github.io/strapi-project",
+  "homepage": "./build",
   "name": "my-react-frontend",
   "version": "0.1.0",
   "private": true,
