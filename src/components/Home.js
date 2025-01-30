@@ -12,6 +12,8 @@ import ProductsSection from './ProductsSection';
 import Footer from './Footer';
 import MyLink from './mini_components/MyLink';
 import { Link } from 'react-router-dom';
+import productImg1 from '../images/product-img1.png'
+import productImg2 from '../images/product-img2.png'
 
 const Home = () => {
 
@@ -22,6 +24,7 @@ const Home = () => {
         products: [
             {
                 productDetails: {
+                    image : productImg1,
                     name: 'Grippe',
                     description: 'Pretuval® eignet sich zur Behandlung einer Erkältung oder einer Grippe und lindert Kopf- und Gliederschmerzen, Schnupfen, Fieber sowie Reizhusten.',
                     expiry: 'Gültig bis 30.11.2024'
@@ -40,19 +43,19 @@ const Home = () => {
             },
             {
                 productDetails: {
-                    name: 'Grippe',
-                    description: 'Pretuval® eignet sich zur Behandlung einer Erkältung oder einer Grippe und lindert Kopf- und Gliederschmerzen, Schnupfen, Fieber sowie Reizhusten.',
-                    expiry: 'Gültig bis 30.11.2024'
+                    image: productImg2,
+                    name: 'Rauchentwöhnung?',
+                    description: 'Nicorette® lindert die Entzugserscheinungen und kann so dabei unterstützen, rauchfrei zu werden.',
+                    expiry: 'Gültig bis 31.01.2025'
                 },
                 about: {
-                    heading: 'Pretuval® Grippe & Erkältung',
+                    heading: 'Nicorette®',
                     prices: [
-                        { currentPrice: 'Filmtabletten, 20 Stk.', current: '15.85', lastPrice: 'statt', last: '19.80' },
-                        { currentPrice: 'Brausetabletten, 20 Stk.', current: '20.70', lastPrice: 'statt', last: '25.90' }
+                        { currentPrice: 'z.B. Mint Spray, 150 Dosierungen', current: '49.70', lastPrice: 'statt', last: '62.10' }
                     ]
                 },
                 extraDetails: {
-                    title: "Bayer (Schweiz) AG",
+                    title: "JNTL Consumer Health II (Switzerland) GmbH",
                     desc: "Dies ist ein zugelassenes Arzneimittel. Lesen Sie die Packungsbeilage."
                 }
             }

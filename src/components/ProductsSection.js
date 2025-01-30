@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import productImg1 from '../images/product-img1.png';
+// import productImg1 from '../images/product-img1.png';
 import discountImg from '../images/discount_img.png'
 import MyLink from './mini_components/MyLink';
 
@@ -12,10 +12,10 @@ const ProductsSection = ({ productsData }) => {
             <div className="row">
                 {productsData.products.map((product, index) => {
                     return (
-                        <div className="col-lg-6" key={index}>
+                        <div className="col-lg-6" key={index} >
                             <div className="product-items mb-5 mb-lg-0 px-lg-2">
                                 <div className="row" >
-                                    <div className="col-12 mb-lg-4 mb-0">
+                                    <div className="col-12 mb-lg-4 mb-0 all_products">
                                         <div className="row" >
                                             <div className="col-7">
                                                 <div className='product-item mb-4'>
@@ -25,7 +25,7 @@ const ProductsSection = ({ productsData }) => {
                                                 </div>
                                             </div>
                                             <div className="col-5" style={{ position: "relative" }}>
-                                                <img src={productImg1} alt="" />
+                                                <img src={product.productDetails.image} alt="" />
                                                 <div className="discount">
                                                     <img src={discountImg} alt="" />
                                                 </div>
@@ -35,29 +35,31 @@ const ProductsSection = ({ productsData }) => {
                                     <div className="col-12">
                                         <div className="product-info mb-4">
                                             <h4 className='mb-3' >{product.about.heading}</h4>
-                                            {product.about?.prices?.map((price, i) => {
-                                                return (
-                                                    <div className="row" key={i}>
-                                                        <div className="col-12">
-                                                            <div className="row align-items-center">
+                                            <div>
+                                                {product.about?.prices?.map((price, i) => {
+                                                    return (
+                                                        <div className="row" key={i}>
+                                                            <div className="col-12">
+                                                                <div className="row align-items-center">
 
-                                                                <div className='col-4'>
-                                                                    <p className='mb-0'>{price.currentPrice}</p>
-                                                                </div>
-                                                                <div className='col-3'>
-                                                                    <h3>{price.current}</h3>
-                                                                </div>
-                                                                <div className='col-2'>
-                                                                    <p className='mb-0'>{price.lastPrice}</p>
-                                                                </div>
-                                                                <div className='col-3'>
-                                                                    <h4 className='last_price'>{price.last}</h4>
+                                                                    <div className='col-4'>
+                                                                        <p className='mb-0'>{price.currentPrice}</p>
+                                                                    </div>
+                                                                    <div className='col-3'>
+                                                                        <h3>{price.current}</h3>
+                                                                    </div>
+                                                                    <div className='col-2'>
+                                                                        <p className='mb-0'>{price.lastPrice}</p>
+                                                                    </div>
+                                                                    <div className='col-3'>
+                                                                        <h4 className='last_price'>{price.last}</h4>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                )
-                                            })}
+                                                    )
+                                                })}
+                                            </div>
                                         </div>
                                     </div>
 

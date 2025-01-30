@@ -172,6 +172,14 @@
     }
 
     .products-sec{
+        .all_products {
+            min-height: 14rem;
+        }
+
+        .product-info {
+            min-height: 9rem;
+        }
+
         .products-main-btn{
             padding: 0.7rem 1rem;
             font-size: 18px;
@@ -221,6 +229,14 @@
     }
 
     .products-sec {
+
+        .all_products{
+            min-height: unset;
+        }
+    
+        .product-info{
+            min-height: unset;
+        }
 
         .product-item p, .product-info p {
             font-size: 21px;

@@ -260,6 +260,14 @@ p{
         color: #000000 !important;
     }
 
+    .all_products{
+        min-height: 10rem;
+    }
+
+    .product-info{
+        min-height: 9.5rem;
+    } 
+
     .product-item p, .product-info p {
         font-size: 18px;
         font-weight: 300;
