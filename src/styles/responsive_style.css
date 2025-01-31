@@ -66,7 +66,7 @@
         }
 
         .heart-inner-content2 p {
-            font-size: 22px;
+            font-size: 21px;
         }
     }
 
@@ -205,6 +205,15 @@
 
     h3{
         font-size: 28px !important;
+    }
+
+    .navbar {
+        .nav-link {
+            color: #5C606E;
+            font-weight: bold;
+            font-size: 18px;
+            font-family: 'Livvic', sans-serif !important;
+        }
     }
 
     .banner{
@@ -482,6 +491,14 @@
     
     h6{
         font-size: 16px !important;
+    }
+
+    .mobile-nav{
+        .home_menu_btn{
+            width: unset;
+            padding: 0.5rem;
+            font-size: 14px;
+        }
     }
 
     .banner {

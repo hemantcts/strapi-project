@@ -38,11 +38,11 @@ const Footer = () => {
                         <h4>Apotheke</h4>
                         <ul className='p-0'>
                             <li>
-                                <a href="tel:052 305 03 55"><i className="fa-solid fa-phone" /> | 052 305 03 55</a>
+                                <a href="tel:052 305 03 50"><i className="fa-solid fa-phone" /> | 052 305 03 55</a>
                                 
                             </li>
                             <li>
-                                <a href="mailto:praxis@medzentrum.ch"><i className="fa-solid fa-envelope" /> | praxis@medzentrum.ch</a>
+                                <a href="mailto:apotheke@medzentrum.ch"><i className="fa-solid fa-envelope" /> | apotheke@medzentrum.ch</a>
                             </li>
                         </ul>
                         <ul className='p-0'>
