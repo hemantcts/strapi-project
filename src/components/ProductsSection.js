@@ -89,6 +89,6 @@ const ProductsSection = ({ productsData }) => {
             </div>}
         </div>
     )
-}
+} 
 
 export default ProductsSection

@@ -38,7 +38,8 @@ const Home = () => {
                 },
                 extraDetails: {
                     title: "Bayer (Schweiz) AG",
-                    desc: "Dies ist ein zugelassenes Arzneimittel. Lesen Sie die Packungsbeilage."
+                    desc: "Dies ist ein zugelassenes Arzneimittel. Lesen Sie die Packungsbeilage.",
+                    link: {text: "BESTELLEN", to: "/"}
                 }
             },
             {
@@ -56,7 +57,8 @@ const Home = () => {
                 },
                 extraDetails: {
                     title: "JNTL Consumer Health II (Switzerland) GmbH",
-                    desc: "Dies ist ein zugelassenes Arzneimittel. Lesen Sie die Packungsbeilage."
+                    desc: "Dies ist ein zugelassenes Arzneimittel. Lesen Sie die Packungsbeilage.",
+                    link: {text: "BESTELLEN", to: "/"}
                 }
             }
         ]
