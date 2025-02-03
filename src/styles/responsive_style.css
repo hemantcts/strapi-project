@@ -148,6 +148,14 @@
         font-size: 20px !important;
     }
 
+    .menu{
+        width: 85%;
+    }
+
+    .home_menu_btn, .menu_btn1{
+        font-size: 20px;
+    }
+
     .banner{
     
         p{
@@ -494,7 +502,7 @@
     }
 
     .mobile-nav{
-        .home_menu_btn{
+        .home_menu_btn, .menu_btn1{
             width: unset;
             padding: 0.5rem;
             font-size: 14px;

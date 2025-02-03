@@ -62,6 +62,29 @@ p{
         width: 240px;
     }
 
+    .search_bar{
+        padding: 4px 1rem 4px 2.5rem;
+        border: 1px solid #E2E8EC;
+        border-radius: 30px;
+        color: #7B7B7B;
+        outline: none;
+    }
+
+    .search_icon{
+        background-image: url(../images/search-icon.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+        height: 78%;
+        aspect-ratio: 1 / 1;
+        background-color: #5C606E;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 4px;
+        transform: translateY(-50%);
+    }
+
     .extra-nav-link{
         font-size: 14px !important;
         font-weight: normal !important;
@@ -130,24 +153,33 @@ p{
         font-weight: 400;
     }
 
-    .home_menu_btn{
+    .home_menu_btn, .menu_btn1{
         width: unset;
         padding: 0.5rem;
         font-size: 16px;
     }
 
-    .home_menu_mobile_links{
-        transform: scaleY(0);
-        transform-origin: top;
-        height: 0;
-        transition: all 1s ease-in-out;
+    .home_menu_mobile_links {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+    }
+    
+    .home_menu_mobile_links.active {
+        max-height: 260px; 
+        transition: max-height 0.5s ease-in-out;
     }
 
-    .home_menu_mobile_links.active{
-        transform: scaleY(1);
-        transform-origin: top;
-        height: unset;
-        transition: all 1s ease-in-out;
+    .link1, .link2, .link3, .link4{
+        .arrow_icon img{
+            transition: all 0.2s ease-in-out;
+        }
+    }
+
+    .link1.active, .link2.active, .link3.active, .link4.active{
+        .arrow_icon img{
+            transform: rotate(-180deg);
+        }
     }
 
 }
@@ -455,6 +487,11 @@ p{
         img{
             width: 30px;
         }
+
+        a{
+            text-decoration: none;
+            color: #393939;
+        }
     }
 }
 
@@ -484,7 +521,7 @@ li.list-items a {
 }
 
 .home_menu_btn{
-    padding: 0.7rem 0;
+    padding: 0.7rem 1rem;
     display: inline-block;
     font-size: 23px;
     text-decoration: none;
@@ -508,12 +545,17 @@ li.list-items a {
     top: 100%;
     right: 0;
     width: 78%;
-    background-color: #F6F6F6;
+    background: linear-gradient(to right, #F7FEFF, #CAEBFF);
     padding: 1.5rem;
+    box-shadow: 0 4px 30px #00000014;
+}
+
+.home_menu{
+    background: linear-gradient(to right, #E0F3FF, #E9FFF3) !important;
 }
 
 .menu_btn1{
-    padding: 0.7rem 0;
+    padding: 0.7rem 1rem;
     display: inline-block;
     font-size: 23px;
     text-decoration: none;

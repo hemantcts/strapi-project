@@ -38,7 +38,7 @@ const Footer = () => {
                         <h4>Apotheke</h4>
                         <ul className='p-0'>
                             <li>
-                                <a href="tel:052 305 03 50"><i className="fa-solid fa-phone" /> | 052 305 03 55</a>
+                                <a href="tel:052 305 03 50"><i className="fa-solid fa-phone" /> | 052 305 03 50</a>
                                 
                             </li>
                             <li>
@@ -128,7 +128,7 @@ const Footer = () => {
             </div>
             <div className="copyright">
                 <div className="container text-center py-2">
-                    © Copyright 2025 | MedZentrum AG, Pfungen | Design by Loewenmut. <img src={copyrightImg} alt="" />
+                    © Copyright 2025 | MedZentrum AG, Pfungen | Design by <a href="loewenmut.ch" target='_blank'>Loewenmut.</a> <img src={copyrightImg} alt="" />
                 </div>
             </div>
         </div>

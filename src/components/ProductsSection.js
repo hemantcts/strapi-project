@@ -49,7 +49,7 @@ const ProductsSection = ({ productsData }) => {
                                                                         <h3>{price?.current}</h3>
                                                                     </div>
                                                                     <div className='col-2'>
-                                                                        <p className='mb-0'>{price?.lastPrice}</p>
+                                                                        <p className='mb-0'>statt</p>
                                                                     </div>
                                                                     <div className='col-3'>
                                                                         <h4 className='last_price'>{price?.last}</h4>
@@ -67,7 +67,7 @@ const ProductsSection = ({ productsData }) => {
                                         <div className='about-product'>
                                             <ul className='p-0 mb-5'>
                                                 <li>
-                                                    {/* <Link to='/' className='option-link'>BESTELLEN <i class="fa-solid fa-arrow-right option-link-icon" /></Link> */}
+                                                    {/* <Link to='/' className='option-link'>BESTELLEN <i className="fa-solid fa-arrow-right option-link-icon" /></Link> */}
                                                     <MyLink link={product?.extraDetails?.link?.link_url} text={product?.extraDetails?.link?.link_text} />
                                                 </li>
                                             </ul>
@@ -86,7 +86,7 @@ const ProductsSection = ({ productsData }) => {
             </div>
             {console.log("data", productsData?.button_text)}
             <div className="products_sec_btn text-center">
-                <Link to="#" class="products-main-btn">{productsData?.button_text} <i class="fa-solid fa-arrow-right " /></Link>
+                <Link to="#" className="products-main-btn">{productsData?.button_text} <i className="fa-solid fa-arrow-right " /></Link>
             </div>
         </div>
     )

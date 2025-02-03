@@ -1,6 +1,7 @@
 import React from 'react';
 import homeMenuImg from '../../images/home_menu_img.png'
 import { Link } from 'react-router-dom';
+import svgIcon from '../../images/link_icon.svg'
 
 const HomeMenu = () => {
   return (
@@ -21,7 +22,7 @@ const HomeMenu = () => {
                         </li>
                         <li className='list-items'>
                             <Link>
-                                <h5 className='mb-0'>Team</h5>
+                                <h5 className='mb-0'>Team Apotheke</h5>
                             </Link>
                         </li>
                         <li className='list-items'>
@@ -31,7 +32,7 @@ const HomeMenu = () => {
                         </li>
                         <li className='list-items'>
                             <Link>
-                                <h5 className='mb-0'>Angebote</h5>
+                                <h5 className='mb-0'>Dienstleistungen Apotheke</h5>
                             </Link>
                         </li>
                         <li className='list-items'>
@@ -42,7 +43,7 @@ const HomeMenu = () => {
                     </ul>
                 </div>
                 <div>
-                    <Link className='home_menu_btn'>Übersicht Apotheke <i class="fa-solid fa-arrow-right"/></Link>
+                    <Link className='home_menu_btn'>Termin Apotheke buchen <i><img src={svgIcon} alt="" style={{width: "19px"}}/></i> </Link>
                 </div>
                 
             </div>

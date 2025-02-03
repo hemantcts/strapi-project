@@ -1,80 +1,35 @@
 import React, {useState, useEffect} from 'react'
 import Navbar from './Navbar';
-import heartImg from '../images/HEART.png';
+// import heartImg from '../images/HEART.png';
 // import productImg1 from '../images/product-img1.png';
 // import adImg from '../images/ad-img.png';
-import adImg1 from '../images/ad-img-1.svg';
-import adImg2 from '../images/ad-img-2.svg';
-import adImg3 from '../images/ad-img-3.svg';
+// import adImg1 from '../images/ad-img-1.svg';
+// import adImg2 from '../images/ad-img-2.svg';
+// import adImg3 from '../images/ad-img-3.svg';
 // import { Link } from 'react-router-dom';
 // import discountImg from '../images/discount_img.png'
 import ProductsSection from './ProductsSection';
 import Footer from './Footer';
 import MyLink from './mini_components/MyLink';
 import { Link } from 'react-router-dom';
-import productImg1 from '../images/product-img1.png'
-import productImg2 from '../images/product-img2.png'
+// import productImg1 from '../images/product-img1.png'
+// import productImg2 from '../images/product-img2.png'
 
 const Home = () => {
-
-    const productsData5 = {
-        heading: "Aktionen",
-        paragraph: "",
-        buttonText: "ALLE AKTIONEN",
-        products: [
-            {
-                productDetails: {
-                    image: productImg1,
-                    name: 'Grippe',
-                    description: 'Pretuval® eignet sich zur Behandlung einer Erkältung oder einer Grippe und lindert Kopf- und Gliederschmerzen, Schnupfen, Fieber sowie Reizhusten.',
-                    expiry: 'Gültig bis 30.11.2024'
-                },
-                about: {
-                    heading: 'Pretuval® Grippe & Erkältung',
-                    prices: [
-                        { currentPrice: 'Filmtabletten, 20 Stk.', current: '15.85', lastPrice: 'statt', last: '19.80' },
-                        { currentPrice: 'Brausetabletten, 20 Stk.', current: '20.70', lastPrice: 'statt', last: '25.90' }
-                    ]
-                },
-                extraDetails: {
-                    title: "Bayer (Schweiz) AG",
-                    desc: "Dies ist ein zugelassenes Arzneimittel. Lesen Sie die Packungsbeilage."
-                }
-            },
-            {
-                productDetails: {
-                    image: productImg2,
-                    name: 'Rauchentwöhnung?',
-                    description: 'Nicorette® lindert die Entzugserscheinungen und kann so dabei unterstützen, rauchfrei zu werden.',
-                    expiry: 'Gültig bis 31.01.2025'
-                },
-                about: {
-                    heading: 'Nicorette®',
-                    prices: [
-                        { currentPrice: 'z.B. Mint Spray, 150 Dosierungen', current: '49.70', lastPrice: 'statt', last: '62.10' }
-                    ]
-                },
-                extraDetails: {
-                    title: "JNTL Consumer Health II (Switzerland) GmbH",
-                    desc: "Dies ist ein zugelassenes Arzneimittel. Lesen Sie die Packungsbeilage."
-                }
-            }
-        ]
-    }
 
     const [bannerData, setBannerData] = useState(null);
     const [heartData, setHeartData] = useState(null);
     const [productsData, setProductsData] = useState(null);
     const [adData, setAdData] = useState(null);
 
-    const [pageData, setPageData] = useState(null);
+    // const [pageData, setPageData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/homepage?populate[banner_section][populate]=*&populate[heart_section][populate]=left_side.image&populate[heart_section][populate]=left_side.link&populate[heart_section][populate]=right_side.link&populate[products_section][populate]=products.product_details.image&populate[products_section][populate]=products.extraDetails.link&populate[products_section][populate]=products.about.prices&populate[ad_section][populate]=*`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/homepage?populate[banner_section][populate]=*&populate[heart_section][populate]=left_side.image&populate[heart_section][populate]=left_side.link&populate[heart_section][populate]=right_side.link&populate[products_section][populate]=products.product_details.image&populate[products_section][populate]=products.extraDetails.link&populate[products_section][populate]=products.about.prices&populate[ad_section][populate]=partners.image`)
         const data = await response.json();
         console.log(data);
         if (data) {
-            setPageData(data.data);
+            // setPageData(data.data);
             setBannerData(data.data.banner_section);
             setHeartData(data.data.heart_section);
             setProductsData(data.data.products_section);
@@ -106,6 +61,7 @@ const Home = () => {
                             <div className="col-lg-6 text-center mb-5 mb-lg-0">
                                 <h1>{bannerData?.main_title}</h1>
                                 <p>{bannerData?.description}</p>
+                                <p>{bannerData?.small_description}</p>
                                 <ul className='p-0'>
                                     {bannerData?.links1.map((link, index) => (
                                         <li key={index}>
@@ -233,10 +189,10 @@ const Home = () => {
 
                         <div className="row align-items-center justify-content-around">
 
-                            {adData?.images?.map((image, index) => (
-                                <div key={image?.id ?? index} className="col-lg-4 col-sm-5 col-8 px-lg-5 mb-lg-0 mb-5">
+                            {adData?.partners?.map((partner, index) => (
+                                <div key={partner?.id ?? index} className="col-lg-4 col-sm-5 col-8 px-lg-5 mb-lg-0 mb-5">
                                 <img
-                                    src={`https://medzentrum.entwicklung-loewenmut.ch${image?.url}`}
+                                    src={`https://medzentrum.entwicklung-loewenmut.ch${partner?.image?.url}`}
                                     alt=""
                                 />
                                 </div>

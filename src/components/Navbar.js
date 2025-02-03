@@ -4,6 +4,8 @@ import logo from '../images/logo.svg'
 import HomeMenu from './menu_components/HomeMenu';
 import Menu2 from './menu_components/Menu2';
 import copyrightImg from '../images/copyright_img.png'
+import icon from '../images/accordion-icon.svg'
+import Menu3 from './menu_components/Menu3';
 
 const Navbar = () => {
     const [active, setActive] = useState({ link1: false, link2: false, link3: false, link4: false })
@@ -45,11 +47,15 @@ const Navbar = () => {
                     </button>
 
                     <div className="collapse navbar-collapse align-items-end flex-column" id="navbarNav">
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
+                        <ul className="navbar-nav align-items-center">
+                            <li className="nav-item ms-3 position-relative">
+                                <input type="text" className='search_bar' placeholder='Proin gravida' />
+                                <div className="search_icon"></div>
+                            </li>
+                            <li className="nav-item ms-3">
                                 <Link className="extra-nav-link nav-link" to="#">Jobs</Link>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item ms-3">
                                 <Link className="extra-nav-link nav-link" to="#">Kontakte</Link>
                             </li>
                         </ul>
@@ -67,12 +73,16 @@ const Navbar = () => {
                                 <Link className={`nav-link link4 ${active.link4 && 'active'}`} to="#" onClick={() => handleActive(4)}>GESUNDHEITSTHEMEN</Link>
                             </li>
                         </ul>
-                        {active.link1 && <div className="menu">
+                        {active.link1 && <div className="menu home_menu">
                             <HomeMenu />
                         </div>}
 
-                        {active.link2 && <div className="menu ">
+                        {active.link2 && <div className="menu">
                             <Menu2 />
+                        </div>}
+
+                        {active.link3 && <div className="menu">
+                            <Menu3 />
                         </div>}
                     </div>
                 </div>
@@ -95,8 +105,10 @@ const Navbar = () => {
 
                                 <ul className="navbar-nav">
                                     <li className="nav-item">
-                                        <Link className={`nav-link pb-0 link1 ${active.link1 && 'active'}`} to="#" onClick={() => handleActive(1)}>APOTHEKE</Link>
-                                        <div className={`home_menu_mobile_links2 ${active.link1 && 'active'}`}>
+                                        <Link className={`nav-link pb-0 link1 ${active.link1 && 'active'}`} to="#" onClick={() => handleActive(1)}>
+                                            APOTHEKE <i className='ms-1 arrow_icon'><img src={icon} alt="" style={{width: "15px"}} /> </i>
+                                        </Link>
+                                        <div className={`home_menu_mobile_links ${active.link1 && 'active'}`}>
                                             <ul className='mobile-list-out ps-0'>
                                                 <li className='mobile-list-items border-0'>
                                                     <Link>
@@ -110,7 +122,7 @@ const Navbar = () => {
                                                 </li>
                                                 <li className='mobile-list-items'>
                                                     <Link>
-                                                        Team
+                                                        TEAM APOTHEKE
                                                     </Link>
                                                 </li>
                                                 <li className='mobile-list-items'>
@@ -136,19 +148,83 @@ const Navbar = () => {
 
                                     </li>
                                     <li className="nav-item">
-                                        <Link className={`nav-link pb-0 link2 ${active.link2 && 'active'}`} to="#" onClick={() => handleActive(2)}>PRAXIS</Link>
+                                        <Link className={`nav-link pb-0 link2 ${active.link2 && 'active'}`} to="#" onClick={() => handleActive(2)}>
+                                            PRAXIS <i className='ms-1 arrow_icon'><img src={icon} alt="" style={{width: "15px"}} /> </i>
+                                        </Link>
+                                        <div className={`home_menu_mobile_links ${active.link2 && 'active'}`}>
+                                            <ul className='mobile-list-out ps-0'>
+                                                <li className='mobile-list-items border-0'>
+                                                    <Link>
+                                                        Übersicht Praxis
+                                                    </Link>
+                                                </li>
+                                                <li className='mobile-list-items'>
+                                                    <Link>
+                                                        Termin buchen Praxis
+                                                    </Link>
+                                                </li>
+                                                <li className='mobile-list-items'>
+                                                    <Link>
+                                                        TEAM PRAXIS
+                                                    </Link>
+                                                </li>
+                                                <li className='mobile-list-items'>
+                                                    <Link>
+                                                        Notfall
+                                                    </Link>
+                                                </li>
+                                                <li className='mobile-list-items'>
+                                                    <Link>
+                                                        Dienstleistungen Praxis
+                                                    </Link>
+                                                </li>
+                                                <li className='mobile-list-items'>
+                                                    <Link>
+                                                        Öffnungszeiten und Kontakt
+                                                    </Link>
+                                                </li>
+                                            </ul>
+                                            <Link className='menu_btn1' to='/'>
+                                                Termin Apotheke buchen
+                                            </Link>
+                                        </div>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className={`nav-link pb-0 link3 ${active.link3 && 'active'}`} to="#" onClick={() => handleActive(3)}>ERNÄHRUNGSDIAGNOSTIK</Link>
+                                        <Link className={`nav-link pb-0 link3 ${active.link3 && 'active'}`} to="#" onClick={() => handleActive(3)}>
+                                            ERNÄHRUNGSDIAGNOSTIK <i className='ms-1 arrow_icon'><img src={icon} alt="" style={{width: "15px"}} /> </i>
+                                        </Link>
+                                        <div className={`home_menu_mobile_links ${active.link3 && 'active'}`}>
+                                            <ul className='mobile-list-out ps-0'>
+                                                <li className='mobile-list-items border-0'>
+                                                    <Link>
+                                                        Übersicht Ernährungsdiagnostik
+                                                    </Link>
+                                                </li>
+                                                <li className='mobile-list-items'>
+                                                    <Link>
+                                                        Angebote
+                                                    </Link>
+                                                </li>
+                                            </ul>
+                                            <Link className='menu_btn1' to='/'>
+                                                Termin buchen Beratung
+                                            </Link>
+                                        </div>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className={`nav-link pb-0 link4 ${active.link4 && 'active'}`} to="#" onClick={() => handleActive(4)}>GESUNDHEITSTHEMEN</Link>
+                                        <Link className={`nav-link pb-0 link4 ${active.link4 && 'active'}`} to="#" onClick={() => handleActive(4)}>
+                                            GESUNDHEITSTHEMEN <i className='ms-1 arrow_icon'><img src={icon} alt="" style={{width: "15px"}} /> </i>
+                                        </Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link pb-0" to="#">Jobs</Link>
+                                        <Link className="nav-link pb-0" to="#">
+                                            JOBS
+                                        </Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link pb-0" to="#">Kontakte</Link>
+                                        <Link className="nav-link pb-0" to="#">
+                                            KONTAKTE
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>

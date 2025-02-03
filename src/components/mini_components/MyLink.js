@@ -21,7 +21,7 @@ const MyLink = ({ link, text }) => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                {text} <i><img src={svgIcon} alt="" style={{width: "unset", position: "relative", top: "-2px"}}/></i> 
+                {text} <i><img src={svgIcon} alt="" style={{width: "19px", position: "relative", top: "-2px"}}/></i> 
             </Link>
         </>
     )
