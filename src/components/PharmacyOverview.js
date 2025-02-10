@@ -1,13 +1,18 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Navbar from './Navbar'
 import servicesImg from '../images/services_img.png'
 import specialsImg from '../images/specials_img.png'
 import ProductsSection from './ProductsSection'
 import Footer from './Footer'
+import iconImg from '../images/Fav-icon.png'
+
+import MyLink from './mini_components/MyLink'
+import ServicesSection from './ServicesSection'
+import { PartnersSection } from './PartnersSection'
 
 const PharmacyOverview = () => {
 
-    const productsData = {
+    const productsData2 = {
         heading: "Monatsaktionen der Rotpunkt Apotheken",
         paragraph: "Die Rotpunkt Apotheken zeichnen sich seit über zehn Jahren durch attraktive Sparangebote, viele Serviceleistungen, monatliche Überraschungen und eine persönliche und kompetente Beratung aus.",
         buttonText: "weiter zur Praxis",
@@ -50,37 +55,129 @@ const PharmacyOverview = () => {
         ]
     }
 
+    const servicesData2 = [
+        {
+            image: '../images/img1',
+            title: 'Aktionen',
+            description: 'An dieser Stelle informieren wir Sie laufend über aktuelle Medikamenten-Aktionen.',
+            link: {
+                link_text: "WEITERLESEN ",
+                link_url: "/"
+            }
+        },
+        {
+            image: '../images/img1',
+            title: 'Aktionen',
+            description: 'An dieser Stelle informieren wir Sie laufend über aktuelle Medikamenten-Aktionen.',
+            link: {
+                link_text: "WEITERLESEN ",
+                link_url: "/"
+            }
+        },
+        {
+            image: '../images/img1',
+            title: 'Aktionen',
+            description: 'An dieser Stelle informieren wir Sie laufend über aktuelle Medikamenten-Aktionen.',
+            link: {
+                link_text: "WEITERLESEN ",
+                link_url: "/"
+            }
+        },
+        {
+            image: '../images/img1',
+            title: 'Aktionen',
+            description: 'An dieser Stelle informieren wir Sie laufend über aktuelle Medikamenten-Aktionen.',
+            link: {
+                link_text: "WEITERLESEN ",
+                link_url: "/"
+            }
+        }
+    ]
+
+    const [bannerData, setBannerData] = useState(null);
+    const [servicesData, setServicesData] = useState(null);
+    const [specialsData, setSpecialsData] = useState(null);
+    const [productsData, setProductsData] = useState(null);
+    const [adData, setAdData] = useState(null);
+
+    const getPageData = async () => {
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-overview?populate[banner_section][populate]=banner_image&populate[services_section][populate]=services_data.image&populate[services_section][populate]=services_data.link&populate[specials_section][populate]=image&populate[specials_section][populate]=accordion_data&populate[products_section][populate]=products.product_details.image&populate[products_section][populate]=products.extraDetails.link&populate[products_section][populate]=products.about.prices&populate[ad_section][populate]=partners.image`)
+        const data = await response.json();
+        console.log(data);
+        if (data) {
+            setBannerData(data.data.banner_section);
+            setServicesData(data.data.services_section);
+            setSpecialsData(data.data.specials_section);
+            setProductsData(data.data.products_section);
+            setAdData(data.data.ad_section);
+        }
+    }
+
+    useEffect(() => {
+        getPageData();
+    }, [])
+
     return (
-        <div>
+        <div className='pharmacy'>
             <header>
                 <Navbar />
             </header>
 
             <section className='pharmacy_banner_sec'>
-                <div className="pharmacy_banner">
+                <div className="pharmacy_banner" style={{background: `url('https://medzentrum.entwicklung-loewenmut.ch${bannerData?.banner_image?.url}')`}}>
                     <div className="container">
                         <div className="row align-items-center">
-                            <div className="col-6">
-                                <h1>Übersicht <br /> Apotheke</h1>
+                            <div className="col-lg-7">
+                                <div className='d-flex'>
+                                    <div className="col-1 pharmacy_padding"></div>
+                                    <div className="col-11">
+                                        <div className="pharmacy_heading text-center py-5 px-sm-3">
+                                            <h1>{bannerData?.title}</h1>
+                                            <p className='mb-0'>{bannerData?.description}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section className="services-sec">
+            <section className="services-sec position-relative">
                 <div className="container">
-                    <div className="row align-items-center">
+                    <div className='service_sec_button'>
+                        <span className='icon-img me-2'><img src={iconImg} alt="" /></span><span className='green-heading'>Apotheke | </span> &nbsp;Übersicht Apotheke
+                    </div>
+                    <div className="row">
                         <div className="col-lg-6">
-                            <h2>Dienstleistungen</h2>
-                            <p>Unser Team steht Ihnen mit grosser Fachkompetenz für Ihre Anliegen zur Verfügung. Von einer individuellen und unabhängigen Produkteberatung bis hin zu Behandlungsberatung.</p>
+                            <h2>{servicesData?.title}</h2>
                         </div>
                         <div className="col-lg-6">
                             <div>
-                                <img src={servicesImg} alt="" />
+                                <p>{servicesData?.description}</p>
                             </div>
                         </div>
                     </div>
+
+                    <div className="service-sec-content">
+                        <ServicesSection servicesData={servicesData?.services_data} />
+                    </div>
+                    {/* <div className="row">
+                        <div className="col-6">
+                            <div className='service-sec-inner-content'>
+                                <div className='row align-items-center'>
+                                    <div className="col-5 images">
+                                        <img src={img1} alt="" />
+                                    </div>
+                                    <div className="col-7 content">
+                                        <h4 className='mb-1'>Aktionen</h4>
+                                        <p className='mb-0'>An dieser Stelle informieren wir Sie laufend über aktuelle Medikamenten-Aktionen.</p>
+                                        <MyLink to='/' text='Weiterlesen' color='green' />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> */}
                 </div>
             </section>
 
@@ -93,43 +190,43 @@ const PharmacyOverview = () => {
                         <div className="col-lg-6">
                             <h2>Spezielles</h2>
                             <div className="accordion" id="accordionExample">
-                                <div className="accordion-item">
+                                <div className="accordion-item mb-3">
                                     <h2 className="accordion-header">
                                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                             Medikamentenplanung
                                         </button>
                                     </h2>
                                     <div id="collapseOne" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                        <div className="accordion-body">
+                                        <div className="accordion-body pt-0">
                                             <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
                                         </div>
                                     </div>
                                 </div>
-                                <div className="accordion-item">
+                                <div className="accordion-item mb-3">
                                     <h2 className="accordion-header">
                                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                             Persönliche Mikronährstoff-Mischungen
                                         </button>
                                     </h2>
                                     <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                        <div className="accordion-body">
+                                        <div className="accordion-body pt-0">
                                             <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
                                         </div>
                                     </div>
                                 </div>
-                                <div className="accordion-item">
+                                <div className="accordion-item mb-3">
                                     <h2 className="accordion-header">
                                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                             Antibabypillen Aktion: 20%
                                         </button>
                                     </h2>
                                     <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                        <div className="accordion-body">
+                                        <div className="accordion-body pt-0">
                                             <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
                                         </div>
                                     </div>
                                 </div>
-                                <div className="accordion-item">
+                                <div className="accordion-item mb-3">
                                     <h2 className="accordion-header">
                                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                             Hauslieferdienst
@@ -161,6 +258,10 @@ const PharmacyOverview = () => {
 
             <section className='products-sec'>
                 <ProductsSection productsData={productsData} />
+            </section>
+
+            <section className='ad-sec'>
+                <PartnersSection adData={adData} />
             </section>
 
             <footer>

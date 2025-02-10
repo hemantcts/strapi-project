@@ -12,6 +12,7 @@ import ProductsSection from './ProductsSection';
 import Footer from './Footer';
 import MyLink from './mini_components/MyLink';
 import { Link } from 'react-router-dom';
+import { PartnersSection } from './PartnersSection';
 // import productImg1 from '../images/product-img1.png'
 // import productImg2 from '../images/product-img2.png'
 
@@ -37,16 +38,18 @@ const Home = () => {
         }
     }
 
-    const getProducts = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/products?populate[products][populate]=product_details.image&populate[products][populate]=extraDetails.link&populate[products][populate]=about.prices`)
-        const data = await response.json();
-        console.log(data.data);
-    }
+    // "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-overview?populate[banner_section][populate]=banner_image&populate[specials_section][populate]=image&populate[specials_section][populate]=accordion_data&populate[products_section][populate]=products.product_details.image&populate[products_section][populate]=products.extraDetails.link&populate[products_section][populate]=products.about.prices&populate[ad_section][populate]=partners.image"
+
+    // const getProducts = async () => {
+    //     const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/products?populate[products][populate]=product_details.image&populate[products][populate]=extraDetails.link&populate[products][populate]=about.prices`)
+    //     const data = await response.json();
+    //     console.log(data.data);
+    // }
 
 
     useEffect(() => {
         getPageData();
-        getProducts();
+        // getProducts();
     }, [])
 
     return (
@@ -181,36 +184,7 @@ const Home = () => {
             </section>
 
             <section className='ad-sec'>
-                <div className="container">
-                    <h2 className='text-center'> {adData?.heading} </h2>
-                    <div className="ad-inner-content mt-5 mb-3">
-
-                        
-
-                        <div className="row align-items-center justify-content-around">
-
-                            {adData?.partners?.map((partner, index) => (
-                                <div key={partner?.id ?? index} className="col-lg-4 col-sm-5 col-8 px-lg-5 mb-lg-0 mb-5">
-                                <img
-                                    src={`https://medzentrum.entwicklung-loewenmut.ch${partner?.image?.url}`}
-                                    alt=""
-                                />
-                                </div>
-                            )) }
-
-                            {/* <div className="col-lg-4 col-sm-5 col-8 px-lg-5 mb-lg-0 mb-5">
-                                <img src={adImg1} alt="" />
-                            </div>
-                            <div className="col-lg-4 col-sm-5 col-8 px-lg-5 mb-lg-0 mb-5">
-                                <img src={adImg2} alt="" />
-                            </div>
-                            <div className="col-lg-4 col-sm-5 col-8 px-lg-5 mb-lg-0 mb-5">
-                                <img src={adImg3} alt="" />
-                            </div> */}
-                        </div>
-                    </div>
-                </div>
-
+                <PartnersSection adData={adData} />
             </section>
 
             <footer>

@@ -275,6 +275,14 @@ p{
     z-index: -1;
 }
 
+.option-link.green::before{
+    background: linear-gradient(to bottom right, #1c99aa73, #009e4b85);
+}
+
+.option-link.blue::before{
+    background: linear-gradient(to bottom right, #1c99aa73, #0d659b6b);
+}
+
 .option-link-animate.option-link::before{
     animation: slide 0.4s ease-in-out 0.1s 1 forwards;
 }
@@ -585,69 +593,153 @@ li.list-items a {
 
 /* pharmacy overview style */
 
+.pharmacy{
+
+
+
 .pharmacy_banner_sec{
-    padding-top: 7rem;
+    padding-top: 6rem;
 
     .pharmacy_banner{
-        background-image: url(../images/pharmacy_banner_img.png);
+        /* background-image: url(../images/pharmacy_banner_img.png); */
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        padding: 10rem 0;
+        padding: 8rem 0;
+    }
+
+    .pharmacy_padding{
+        background-color: #009e4b99;
+        backdrop-filter: blur(2px);
+    }
+
+    .pharmacy_heading{
+        background-color: #ececec75;
+        backdrop-filter: blur(3px);
     }
 
     h1{
-        color: #0D659B;
+        color: #009E4B;
+    }
+
+    p{
+        color: #009E4B;
     }
 }
 
 .services-sec{
-    padding: 4rem 0;
+    padding: 7rem 0 3rem;
 
     h2{
-        color: #0D659B;
+        color: #009E4B;
     }
 
     p{
         font-weight: 300;
     }
+
+    .service_sec_button{
+        display: flex;
+        align-items: center;
+        padding: 0.3rem 1.5rem 0.3rem 0.4rem;
+        box-shadow: 0 4px 35px #00000014;
+        border-radius: 30px;
+        position: absolute;
+        top: 1rem;
+
+        .icon-img{
+            display: inline-block;
+            padding: 0.4rem;
+            border-radius: 50%;
+            background-color: #E2E8EC;
+            /* background-image: url('../images/Fav-icon.png'); */
+        }
+
+        .green-heading{
+            color: #009E4B;
+            display: inline-block;
+        }
+
+    }
+
+    .service-sec-content{
+        .service-sec-inner-content{
+            border: 1px solid #E0E0E0;
+
+            .images{
+                position: relative;
+                bottom: 2rem;
+            }
+        }
+        .content{
+            p{
+                font-size: 19px;
+            }
+        }
+
+
+    }
+
 }
 
 .specials-sec{
-    background-color: #FAFAFA;
-    position: relative;
-    padding: 3rem 0 4rem;
+    /* background-color: #FAFAFA; */
+    padding: 0rem 0;
     margin-bottom: 9rem;
 
     h2{
-        color: #0D659B;
+        color: #009E4B;
     }
 
     .accordion-item{
         border: 1px solid #E4E4E4 ;
         border-radius: 0 !important;
-        border-right: 0 !important;
-        border-left: 0 !important;
         background-color: transparent;
+        border-left: 4px solid #009E4B;
 
         .accordion-button{
+            color: #000000;
             font-family: 'Livvic', sans-serif;
             font-size: 22px;
             font-weight: 400;
             border-radius: 0 !important;
             box-shadow: unset !important;
             background-color: transparent;
+            
+        }
+        .accordion-button.collapsed::after{
+            background-color: #009E4B;
+            background-image: url('../images/plus_icon.svg');
+            background-position: center;
+            background-size: 60%;
+            border-radius: 50%;
+            transform: rotate(0deg);
         }
         .accordion-button::after{
-            background-image: url('../images/accordion-icon.svg');
+            background-color: #009E4B;
+            background-image: url('../images/plus_icon.svg');
             background-position: center;
+            background-size: 60%;
+            border-radius: 50%;
+            transform: rotate(-225deg);
         }
     }
 
-    img{
+    /* img{
         position: absolute;
         width: 50%;
         left: 0;
         max-height: 100%;
+    } */
+}
+
+.products-sec{
+    
+    h2{
+        color: #009E4B !important;
     }
+
+}
+
+
 }

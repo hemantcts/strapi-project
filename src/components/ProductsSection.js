@@ -84,10 +84,9 @@ const ProductsSection = ({ productsData }) => {
                     )
                 })}
             </div>
-            {console.log("data", productsData?.button_text)}
-            <div className="products_sec_btn text-center">
+            {productsData?.button_text && <div className="products_sec_btn text-center">
                 <Link to="#" className="products-main-btn">{productsData?.button_text} <i className="fa-solid fa-arrow-right " /></Link>
-            </div>
+            </div>}
         </div>
     )
 }

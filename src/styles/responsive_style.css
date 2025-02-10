@@ -141,7 +141,7 @@
     }
 
     p{
-        /* font-size: 24px; */
+        font-size: 19px;
     }
 
     .option-link {
@@ -213,6 +213,10 @@
 
     h3{
         font-size: 28px !important;
+    }
+
+    p{
+        font-size: 19px;
     }
 
     .navbar {
