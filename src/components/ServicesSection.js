@@ -8,13 +8,13 @@ const ServicesSection = ({servicesData}) => {
             {servicesData?.map((service, index)=>(
                 <div className="col-lg-6 my-4" key={index}>
                     <div className='service-sec-inner-content'>
-                        <div className='row align-items-center'>
+                        <div className='row align-items-center' style={{height: '100%'}}>
                             <div className="col-5 images">
-                                <img src={img1} alt="" />
+                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${service?.image?.url}`} alt="" />
                             </div>
                             <div className="col-7 content">
                                 <h4 className='mb-1'>{service?.title}</h4>
-                                <p className='mb-0'>{service?.description}</p>
+                                <p className='mb-2'>{service?.description}</p>
                                 <MyLink to={service?.link?.link_url} text={service?.link?.link_text} color='green' />
                             </div>
                         </div>

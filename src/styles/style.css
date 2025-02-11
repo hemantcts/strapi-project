@@ -600,6 +600,16 @@ li.list-items a {
 .pharmacy_banner_sec{
     padding-top: 6rem;
 
+    h1{
+        color: #009E4B;
+    }
+
+    p{
+        font-size: 26px;
+        font-weight: 250;
+        color: #009E4B;
+    }
+
     .pharmacy_banner{
         /* background-image: url(../images/pharmacy_banner_img.png); */
         background-position: center;
@@ -616,14 +626,6 @@ li.list-items a {
     .pharmacy_heading{
         background-color: #ececec75;
         backdrop-filter: blur(3px);
-    }
-
-    h1{
-        color: #009E4B;
-    }
-
-    p{
-        color: #009E4B;
     }
 }
 
@@ -664,11 +666,13 @@ li.list-items a {
 
     .service-sec-content{
         .service-sec-inner-content{
+            height: 100%;
             border: 1px solid #E0E0E0;
+            padding: 1rem 1rem 1rem 0;
 
             .images{
                 position: relative;
-                bottom: 2rem;
+                bottom: 3rem;
             }
         }
         .content{

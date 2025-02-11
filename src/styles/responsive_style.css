@@ -1,29 +1,29 @@
 @media (min-width:1400px) {
-    h1{
+    h1 {
         font-size: 60px !important;
     }
-    
-    h2{
+
+    h2 {
         font-size: 58px !important;
     }
-    
-    h3{
+
+    h3 {
         font-size: 40px !important;
     }
-    
-    h4{
+
+    h4 {
         font-size: 30px !important;
     }
-    
-    h5{
-        font-size: 22px !important;
-    }
-    
-    h6{
+
+    h5 {
         font-size: 22px !important;
     }
 
-    p{
+    h6 {
+        font-size: 22px !important;
+    }
+
+    p {
         font-size: 24px;
     }
 
@@ -37,15 +37,15 @@
             font-size: 18px !important;
         }
 
-        .nav-link{
+        .nav-link {
             font-size: 20px;
         }
     }
 
-    .banner{
+    .banner {
         padding: 5rem 0;
 
-        p{
+        p {
             font-size: 30px;
         }
 
@@ -73,31 +73,34 @@
     .products-sec {
 
         padding: 5rem 0;
-        
-        h6{
+
+        h6 {
             font-size: 20px !important;
         }
-        
-        .product-item p, .product-info p {
+
+        .product-item p,
+        .product-info p {
             font-size: 21px;
         }
 
-        .product-info h4{
+        .product-info h4 {
             font-size: 26px !important;
         }
 
-        .product-item small, .product-info small, .about-product small {
+        .product-item small,
+        .product-info small,
+        .about-product small {
             font-size: 18px;
         }
 
-        .products-main-btn{
+        .products-main-btn {
             padding: 0.8rem 1rem;
             font-size: 24px;
         }
     }
 
     .footer-sec {
-        h4{
+        h4 {
             font-size: 26px !important;
         }
 
@@ -105,42 +108,68 @@
             font-size: 22px;
         }
 
-        .copyright{
+        .copyright {
             font-size: 18px;
         }
     }
 
-    .option-link{
+    .option-link {
         font-size: 22px !important;
+    }
+
+
+
+
+
+
+
+
+
+    .pharmacy {
+        .pharmacy_banner_sec {
+            p {
+                font-size: 30px;
+            }
+        }
+
+        .services-sec {
+            .service-sec-content {
+                .content {
+                    p {
+                        font-size: 21px;
+                    }
+                }
+            }
+        }
     }
 }
 
 @media (max-width:1200px) {
-    h1{
+    h1 {
         font-size: 42px !important;
     }
-    
-    h2{
+
+    h2 {
         font-size: 40px !important;
     }
-    
-    h3{
+
+    h3 {
         font-size: 30px !important;
     }
-    
-    h4{
+
+    h4 {
         font-size: 22px !important;
     }
-    
-    h5{
+
+    h5 {
         font-size: 20px !important;
     }
-    
-    h6{
+
+    h6 {
         font-size: 16px !important;
     }
 
-    p{
+    p {
         font-size: 19px;
     }
 
@@ -148,17 +177,18 @@
         font-size: 20px !important;
     }
 
-    .menu{
+    .menu {
         width: 85%;
     }
 
-    .home_menu_btn, .menu_btn1{
+    .home_menu_btn,
+    .menu_btn1 {
         font-size: 20px;
     }
 
-    .banner{
-    
-        p{
+    .banner {
+
+        p {
             font-size: 22px;
         }
 
@@ -179,7 +209,7 @@
         }
     }
 
-    .products-sec{
+    .products-sec {
         .all_products {
             min-height: 14rem;
         }
@@ -188,19 +218,45 @@
             min-height: 9rem;
         }
 
-        .products-main-btn{
+        .products-main-btn {
             padding: 0.7rem 1rem;
             font-size: 18px;
         }
 
-        .product-item p, .product-info p {
+        .product-item p,
+        .product-info p {
             font-size: 16px;
         }
     }
 
-    .footer-sec{
+    .footer-sec {
         h4 {
             font-size: 20px !important;
+        }
+    }
+
+
+
+
+
+
+
+    .pharmacy {
+
+        .pharmacy_banner_sec {
+            p {
+                font-size: 22px;
+            }
+        }
+
+        .services-sec {
+            .service-sec-content {
+                .content {
+                    p {
+                        font-size: 16px;
+                    }
+                }
+            }
         }
     }
 }
@@ -211,11 +267,11 @@
         font-size: 34px !important;
     } */
 
-    h3{
+    h3 {
         font-size: 28px !important;
     }
 
-    p{
+    p {
         font-size: 19px;
     }
 
@@ -228,17 +284,18 @@
         }
     }
 
-    .banner{
-        
-        h1,p{
+    .banner {
+
+        h1,
+        p {
             padding: 0 5rem;
         }
-        
-        .round-1{
+
+        .round-1 {
             margin-right: 0;
         }
     }
-    
+
     .heart-sec {
         .heart-inner-content1 p {
             font-size: 21px;
@@ -251,19 +308,22 @@
 
     .products-sec {
 
-        .all_products{
-            min-height: unset;
-        }
-    
-        .product-info{
+        .all_products {
             min-height: unset;
         }
 
-        .product-item p, .product-info p {
+        .product-info {
+            min-height: unset;
+        }
+
+        .product-item p,
+        .product-info p {
             font-size: 21px;
         }
 
-        .product-item small, .product-info small, .about-product small {
+        .product-item small,
+        .product-info small,
+        .about-product small {
             font-size: 18px;
         }
 
@@ -298,36 +358,55 @@
             margin-bottom: 2rem;
         }
     }
+
+
+
+
+
+
+
+    .pharmacy {
+        .services-sec {
+            .service-sec-content {
+                .content {
+                    p {
+                        font-size: 21px;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media (max-width:767px) {
-    h1{
+    h1 {
         font-size: 40px !important;
     }
-    
-    h2{
+
+    h2 {
         font-size: 32px !important;
     }
-    
-    h3{
+
+    h3 {
         font-size: 26px !important;
     }
-    
-    h4{
+
+    h4 {
         font-size: 24px !important;
     }
-    
-    h5{
+
+    h5 {
         font-size: 20px !important;
     }
-    
-    h6{
+
+    h6 {
         font-size: 16px !important;
     }
 
     .banner {
 
-        h1,p{
+        h1,
+        p {
             padding: unset;
         }
 
@@ -352,17 +431,20 @@
         }
     }
 
-    .products-sec{
-        .products-main-btn{
+    .products-sec {
+        .products-main-btn {
             padding: 0.7rem 1rem;
             font-size: 18px;
         }
 
-        .product-item p, .product-info p {
+        .product-item p,
+        .product-info p {
             font-size: 17px;
         }
 
-        .product-item small, .product-info small, .about-product small {
+        .product-item small,
+        .product-info small,
+        .about-product small {
             font-size: 15px;
         }
 
@@ -377,40 +459,57 @@
 
 
 
-    .pharmacy_banner_sec {
-        
-        .pharmacy_banner {
-            padding: 6rem 0;
+
+    .pharmacy {
+        .pharmacy_banner_sec {
+
+            p {
+                font-size: 20px;
+            }
+
+            .pharmacy_banner {
+                padding: 6rem 0;
+            }
+
+            .pharmacy_banner {
+                padding: 5rem 0;
+            }
         }
 
-        .pharmacy_banner {
-            padding: 5rem 0;
+        .services-sec {
+            .service-sec-content {
+                .content {
+                    p {
+                        font-size: 15px;
+                    }
+                }
+            }
         }
     }
 }
 
 @media (max-width:576px) {
-    h1{
+    h1 {
         font-size: 38px !important;
     }
-    
-    h2{
+
+    h2 {
         font-size: 28px !important;
     }
-    
-    h3{
+
+    h3 {
         font-size: 24px !important;
     }
-    
-    h4{
+
+    h4 {
         font-size: 22px !important;
     }
-    
-    h5{
+
+    h5 {
         font-size: 20px !important;
     }
-    
-    h6{
+
+    h6 {
         font-size: 16px !important;
     }
 
@@ -420,7 +519,7 @@
         }
     }
 
-    .banner-sec{
+    .banner-sec {
         padding-top: 4rem;
     }
 
@@ -436,7 +535,7 @@
             padding: 0 2rem;
         }
 
-        h1{
+        h1 {
             padding: 0 2rem;
         }
     }
@@ -451,16 +550,19 @@
         }
     }
 
-    .products-sec{
-        .product-info h4{
+    .products-sec {
+        .product-info h4 {
             font-size: 20px !important;
         }
 
-        .product-item p, .product-info p {
+        .product-item p,
+        .product-info p {
             font-size: 15px;
         }
 
-        .product-item small, .product-info small, .about-product small {
+        .product-item small,
+        .product-info small,
+        .about-product small {
             font-size: 14px;
         }
     }
@@ -471,42 +573,49 @@
 
 
 
+    .pharmacy {
 
+        .pharmacy_banner_sec{
+            p {
+                font-size: 19px;
+            }
 
-    .pharmacy_banner_sec {
-        .pharmacy_banner {
-            padding: 4rem 0;
+            .pharmacy_banner {
+                padding: 4rem 0;
+            }
         }
     }
 }
 
 @media (max-width:480px) {
-    h1{
+    h1 {
         font-size: 35px !important;
     }
 
-    h2{
+    h2 {
         font-size: 27px !important;
     }
-    
-    h3{
+
+    h3 {
         font-size: 24px !important;
     }
-    
-    h4{
+
+    h4 {
         font-size: 22px !important;
     }
-    
-    h5{
+
+    h5 {
         font-size: 20px !important;
     }
-    
-    h6{
+
+    h6 {
         font-size: 16px !important;
     }
 
-    .mobile-nav{
-        .home_menu_btn, .menu_btn1{
+    .mobile-nav {
+
+        .home_menu_btn,
+        .menu_btn1 {
             width: unset;
             padding: 0.5rem;
             font-size: 14px;
@@ -526,22 +635,22 @@
             padding: 0;
         }
 
-        h1{
+        h1 {
             padding: 0;
         }
     }
 
-    .products-sec{
-        .product-info h4{
+    .products-sec {
+        .product-info h4 {
             font-size: 18px !important;
         }
 
-        .products-main-btn{
+        .products-main-btn {
             padding: 0.7rem 1rem;
             font-size: 16px;
         }
 
-        .discount{
+        .discount {
             width: 3.2rem;
         }
     }
@@ -549,10 +658,21 @@
     .option-link {
         font-size: 17px !important;
     }
+
+
+
+
+    .pharmacy {
+        .pharmacy_banner_sec{
+            p {
+                font-size: 18px;
+            }
+        }
+    }
 }
 
 @media (max-width:385px) {
-    h1{
+    h1 {
         font-size: 32px !important;
     }
 
@@ -566,10 +686,31 @@
     .option-link {
         font-size: 16px !important;
     }
+
+
+
+    .pharmacy {
+
+        .pharmacy_banner_sec{
+            p {
+                font-size: 17px;
+            }
+        }
+
+        .services-sec {
+            .service-sec-content {
+                .service-sec-inner-content {
+                    height: 100%;
+                    border: 1px solid #E0E0E0;
+                    padding: 0.5rem;
+                }
+            }
+        }
+    }
 }
 
 @media (max-width:360px) {
-    h1{
+    h1 {
         font-size: 28px !important;
     }
 
