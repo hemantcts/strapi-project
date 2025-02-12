@@ -9,10 +9,10 @@ const ServicesSection = ({servicesData}) => {
                 <div className="col-lg-6 my-4" key={index}>
                     <div className='service-sec-inner-content'>
                         <div className='row align-items-center' style={{height: '100%'}}>
-                            <div className="col-5 images">
+                            <div className="col-sm-5 images">
                                 <img src={`https://medzentrum.entwicklung-loewenmut.ch${service?.image?.url}`} alt="" />
                             </div>
-                            <div className="col-7 content">
+                            <div className="col-sm-7 mt-3 mt-sm-0 content">
                                 <h4 className='mb-1'>{service?.title}</h4>
                                 <p className='mb-2'>{service?.description}</p>
                                 <MyLink to={service?.link?.link_url} text={service?.link?.link_text} color='green' />

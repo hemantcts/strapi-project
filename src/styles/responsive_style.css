@@ -124,13 +124,19 @@
 
 
 
+    .banner_component{
+        p {
+            font-size: 30px;
+        }
+    }
+
+    .accordion-item{
+        .accordion-button{
+            font-size: 30px;
+        }
+    }
 
     .pharmacy {
-        .pharmacy_banner_sec {
-            p {
-                font-size: 30px;
-            }
-        }
 
         .services-sec {
             .service-sec-content {
@@ -240,14 +246,19 @@
 
 
 
+    .banner_component{
+        p {
+            font-size: 22px;
+        }
+    }
+
+    .accordion-item{
+        .accordion-button{
+            font-size: 22px;
+        }
+    }
 
     .pharmacy {
-
-        .pharmacy_banner_sec {
-            p {
-                font-size: 22px;
-            }
-        }
 
         .services-sec {
             .service-sec-content {
@@ -272,7 +283,7 @@
     }
 
     p {
-        font-size: 19px;
+        font-size: 18px;
     }
 
     .navbar {
@@ -336,36 +347,51 @@
 
 
 
-    .pharmacy_banner_sec {
+    
+
+
+
+
+
+
+    .banner_component{
         padding-top: 6rem;
 
-        .pharmacy_banner {
+        p {
+            font-size: 22px;
+        }
+
+        .banner_banner{
             padding: 6rem 0;
         }
     }
 
-    .services-sec {
-        padding: 2rem 0;
-    }
-
-    .specials-sec {
-
-        margin-bottom: 3rem;
-
-        img {
-            position: static;
-            width: 100%;
-            margin-bottom: 2rem;
+    .accordion-item{
+        .accordion-button{
+            font-size: 22px;
         }
     }
 
-
-
-
-
-
-
     .pharmacy {
+        /* .pharmacy_banner_sec {
+            padding-top: 6rem;
+        } */
+    
+        .services-sec {
+            padding: 6rem 0 3rem 0;
+        }
+    
+        .specials-sec {
+    
+            margin-bottom: 3rem;
+    
+            img {
+                position: static;
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+        }
+
         .services-sec {
             .service-sec-content {
                 .content {
@@ -373,7 +399,16 @@
                         font-size: 21px;
                     }
                 }
+
+                .service-sec-inner-content {
+                    padding: 1rem;
+
+                    .images{
+                        position: unset;
+                    }
+                }
             }
+            
         }
     }
 }
@@ -401,6 +436,10 @@
 
     h6 {
         font-size: 16px !important;
+    }
+
+    p {
+        font-size: 16px;
     }
 
     .banner {
@@ -459,22 +498,23 @@
 
 
 
+    .banner_component{
+        p {
+            font-size: 20px;
+        }
+
+        .banner_banner{
+            padding: 5rem 0;
+        }
+    }
+
+    .accordion-item{
+        .accordion-button{
+            font-size: 20px;
+        }
+    }
 
     .pharmacy {
-        .pharmacy_banner_sec {
-
-            p {
-                font-size: 20px;
-            }
-
-            .pharmacy_banner {
-                padding: 6rem 0;
-            }
-
-            .pharmacy_banner {
-                padding: 5rem 0;
-            }
-        }
 
         .services-sec {
             .service-sec-content {
@@ -511,6 +551,10 @@
 
     h6 {
         font-size: 16px !important;
+    }
+
+    p {
+        font-size: 15px;
     }
 
     .navbar {
@@ -573,18 +617,28 @@
 
 
 
-    .pharmacy {
 
-        .pharmacy_banner_sec{
-            p {
-                font-size: 19px;
-            }
 
-            .pharmacy_banner {
-                padding: 4rem 0;
-            }
+
+
+    .banner_component{
+        p {
+            font-size: 19px;
+        }
+
+        .banner_banner{
+            padding: 4rem 0;
         }
     }
+
+    .accordion-item{
+        .accordion-button{
+            font-size: 19px;
+        }
+    }
+
+    /* .pharmacy {
+    } */
 }
 
 @media (max-width:480px) {
@@ -662,13 +716,27 @@
 
 
 
-    .pharmacy {
-        .pharmacy_banner_sec{
-            p {
-                font-size: 18px;
-            }
+
+
+
+
+
+
+
+    .banner_component{
+        p {
+            font-size: 18px;
         }
     }
+
+    .accordion-item{
+        .accordion-button{
+            font-size: 18px;
+        }
+    }
+
+    /* .pharmacy {
+    } */
 }
 
 @media (max-width:385px) {
@@ -689,19 +757,27 @@
 
 
 
-    .pharmacy {
 
-        .pharmacy_banner_sec{
-            p {
-                font-size: 17px;
-            }
+
+
+
+    .banner_component{
+        p {
+            font-size: 17px;
         }
+    }
+
+    .accordion-item{
+        .accordion-button{
+            font-size: 17px;
+        }
+    }
+
+    .pharmacy {
 
         .services-sec {
             .service-sec-content {
                 .service-sec-inner-content {
-                    height: 100%;
-                    border: 1px solid #E0E0E0;
                     padding: 0.5rem;
                 }
             }

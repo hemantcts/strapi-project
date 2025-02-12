@@ -593,11 +593,74 @@ li.list-items a {
 
 /* pharmacy overview style */
 
+.banner_component{
+    padding-top: 6rem;
+    
+    .green{
+        h1{
+            color: #009E4B;
+        }
+    
+        p{
+            color: #009E4B;
+        }
+
+        .banner_padding{
+            background-color: #009e4b99;
+        }
+    }
+
+    .blue{
+        h1{
+            color: #0D659B;
+        }
+    
+        p{
+            color: #0D659B;
+        }
+
+        .banner_padding{
+            background-color: #0D659B99;
+        }
+    }
+
+    p{
+        font-size: 26px;
+        font-weight: 250;
+    }
+
+
+    .banner_banner{
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 8rem 0;
+    }
+    
+    .banner_padding{
+        backdrop-filter: blur(2px);
+    }
+    
+    .banner_heading{
+        background-color: #ececec75;
+        backdrop-filter: blur(3px);
+    }
+
+}
+
+.accordion-item{
+    .accordion-button{
+        font-size: 26px;
+    }
+}
+
+
+
 .pharmacy{
 
 
 
-.pharmacy_banner_sec{
+/* .pharmacy_banner_sec{
     padding-top: 6rem;
 
     h1{
@@ -611,7 +674,6 @@ li.list-items a {
     }
 
     .pharmacy_banner{
-        /* background-image: url(../images/pharmacy_banner_img.png); */
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -627,7 +689,7 @@ li.list-items a {
         background-color: #ececec75;
         backdrop-filter: blur(3px);
     }
-}
+} */
 
 .services-sec{
     padding: 7rem 0 3rem;
@@ -704,7 +766,7 @@ li.list-items a {
         .accordion-button{
             color: #000000;
             font-family: 'Livvic', sans-serif;
-            font-size: 22px;
+            /* font-size: 26px; */
             font-weight: 400;
             border-radius: 0 !important;
             box-shadow: unset !important;

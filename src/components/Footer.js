@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <div className='footer-sec pb-0'>
             <div className="container">
-                <div className="row">
+                <div className="row justify-content-evenly">
                     <div className="col-lg-3 col-sm-6 mb-4 mb-lg-0">
                         <h4>MedZentrum Pfungen</h4>
                         <ul className='p-0'>
@@ -96,7 +96,7 @@ const Footer = () => {
                             </li>
                         </ul>
                     </div>
-                    <div className="col-lg-3 col-sm-6 mb-4 mb-lg-0">
+                    <div className="col-lg-2 col-sm-6 mb-4 mb-lg-0">
                         <div className="icons mb-4">
                             <span className="social-media-icons">
                                 <a href="http://facebook.com" target="_blank" rel="noopener noreferrer">

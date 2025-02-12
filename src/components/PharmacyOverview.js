@@ -10,6 +10,7 @@ import MyLink from './mini_components/MyLink'
 import ServicesSection from './ServicesSection'
 import { PartnersSection } from './PartnersSection'
 import { Accordion } from './Accordion'
+import { BannerSection } from './BannerSection'
 
 const PharmacyOverview = () => {
 
@@ -125,23 +126,7 @@ const PharmacyOverview = () => {
             </header>
 
             <section className='pharmacy_banner_sec'>
-                <div className="pharmacy_banner" style={{background: `url('https://medzentrum.entwicklung-loewenmut.ch${bannerData?.banner_image?.url}')`}}>
-                    <div className="container">
-                        <div className="row align-items-center">
-                            <div className="col-lg-7">
-                                <div className='d-flex'>
-                                    <div className="col-1 pharmacy_padding"></div>
-                                    <div className="col-11">
-                                        <div className="pharmacy_heading text-center py-5 px-sm-3">
-                                            <h1>{bannerData?.title}</h1>
-                                            <p className='mb-0'>{bannerData?.description}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <BannerSection bannerData={bannerData} color='green' />
             </section>
 
             <section className="services-sec position-relative">
