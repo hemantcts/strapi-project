@@ -3,8 +3,8 @@ import React from 'react'
 export const BannerSection = ({bannerData, color}) => {
     return (
         <div className={`banner_component`}>
-            {/* <div className={`banner_banner ${color}`} style={{ background: `url('https://medzentrum.entwicklung-loewenmut.ch${bannerData?.banner_image?.url}')` }}> */}
-            <div className={`banner_banner ${color}`} style={{ background: `url('https://medzentrum.entwicklung-loewenmut.ch/uploads/pharmacy_banner_img_19336f21ef.png')` }}>
+            <div className={`banner_banner ${color}`} style={{ background: `url('https://medzentrum.entwicklung-loewenmut.ch${bannerData?.banner_image?.url}')` }}>
+            {/* <div className={`banner_banner ${color}`} style={{ background: `url('https://medzentrum.entwicklung-loewenmut.ch/uploads/pharmacy_banner_img_19336f21ef.png')` }}> */}
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-7">

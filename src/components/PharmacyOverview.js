@@ -4,13 +4,15 @@ import servicesImg from '../images/services_img.png'
 import specialsImg from '../images/specials_img.png'
 import ProductsSection from './ProductsSection'
 import Footer from './Footer'
-import iconImg from '../images/Fav-icon.png'
+
 
 import MyLink from './mini_components/MyLink'
 import ServicesSection from './ServicesSection'
 import { PartnersSection } from './PartnersSection'
 import { Accordion } from './Accordion'
 import { BannerSection } from './BannerSection'
+import { MyButton } from './mini_components/MyButton'
+import { TwoContent } from './mini_components/TwoContent'
 
 const PharmacyOverview = () => {
 
@@ -129,41 +131,17 @@ const PharmacyOverview = () => {
                 <BannerSection bannerData={bannerData} color='green' />
             </section>
 
+            <section className='main-button py-3'>
+                <MyButton />
+            </section>
+
             <section className="services-sec position-relative">
                 <div className="container">
-                    <div className='service_sec_button'>
-                        <span className='icon-img me-2'><img src={iconImg} alt="" /></span><span className='green-heading'>Apotheke | </span> &nbsp;Übersicht Apotheke
-                    </div>
-                    <div className="row">
-                        <div className="col-lg-6">
-                            <h2>{servicesData?.title}</h2>
-                        </div>
-                        <div className="col-lg-6">
-                            <div>
-                                <p>{servicesData?.description}</p>
-                            </div>
-                        </div>
-                    </div>
+                    <TwoContent data={servicesData} color='green' />
 
                     <div className="service-sec-content">
                         <ServicesSection servicesData={servicesData?.services_data} />
                     </div>
-                    {/* <div className="row">
-                        <div className="col-6">
-                            <div className='service-sec-inner-content'>
-                                <div className='row align-items-center'>
-                                    <div className="col-5 images">
-                                        <img src={img1} alt="" />
-                                    </div>
-                                    <div className="col-7 content">
-                                        <h4 className='mb-1'>Aktionen</h4>
-                                        <p className='mb-0'>An dieser Stelle informieren wir Sie laufend über aktuelle Medikamenten-Aktionen.</p>
-                                        <MyLink to='/' text='Weiterlesen' color='green' />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             </section>
 

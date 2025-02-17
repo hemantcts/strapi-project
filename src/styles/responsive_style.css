@@ -499,6 +499,8 @@
 
 
     .banner_component{
+        padding-top: 5rem;
+
         p {
             font-size: 20px;
         }

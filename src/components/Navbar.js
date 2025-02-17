@@ -60,17 +60,17 @@ const Navbar = () => {
                             </li>
                         </ul>
                         <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <Link className={`nav-link link1 ${active.link1 && 'active'}`} to="#" onClick={() => handleActive(1)}>APOTHEKE</Link>
+                            <li className="nav-item p-2">
+                                <Link className={`nav-link p-0 link1 ${active.link1 && 'active'}`} to="#" onClick={() => handleActive(1)}>APOTHEKE</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className={`nav-link link2 ${active.link2 && 'active'}`} to="#" onClick={() => handleActive(2)}>PRAXIS</Link>
+                            <li className="nav-item p-2">
+                                <Link className={`nav-link p-0 link2 ${active.link2 && 'active'}`} to="#" onClick={() => handleActive(2)}>PRAXIS</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className={`nav-link link3 ${active.link3 && 'active'}`} to="#" onClick={() => handleActive(3)}>ERNÄHRUNGSDIAGNOSTIK</Link>
+                            <li className="nav-item p-2">
+                                <Link className={`nav-link p-0 link3 ${active.link3 && 'active'}`} to="#" onClick={() => handleActive(3)}>ERNÄHRUNGSDIAGNOSTIK</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className={`nav-link link4 ${active.link4 && 'active'}`} to="#" onClick={() => handleActive(4)}>GESUNDHEITSTHEMEN</Link>
+                            <li className="nav-item p-2">
+                                <Link className={`nav-link p-0 link4 ${active.link4 && 'active'}`} to="#" onClick={() => handleActive(5)}>GESUNDHEITSTHEMEN</Link>
                             </li>
                         </ul>
                         {active.link1 && <div className="menu home_menu">
@@ -105,7 +105,7 @@ const Navbar = () => {
 
                                 <ul className="navbar-nav">
                                     <li className="nav-item">
-                                        <Link className={`nav-link pb-0 link1 ${active.link1 && 'active'}`} to="#" onClick={() => handleActive(1)}>
+                                        <Link className={`nav-link pb-0 ${active.link1 && 'active'}`} to="#" onClick={() => handleActive(1)}>
                                             APOTHEKE <i className='ms-1 arrow_icon'><img src={icon} alt="" style={{width: "15px"}} /> </i>
                                         </Link>
                                         <div className={`home_menu_mobile_links ${active.link1 && 'active'}`}>
@@ -148,7 +148,7 @@ const Navbar = () => {
 
                                     </li>
                                     <li className="nav-item">
-                                        <Link className={`nav-link pb-0 link2 ${active.link2 && 'active'}`} to="#" onClick={() => handleActive(2)}>
+                                        <Link className={`nav-link pb-0 ${active.link2 && 'active'}`} to="#" onClick={() => handleActive(2)}>
                                             PRAXIS <i className='ms-1 arrow_icon'><img src={icon} alt="" style={{width: "15px"}} /> </i>
                                         </Link>
                                         <div className={`home_menu_mobile_links ${active.link2 && 'active'}`}>
@@ -190,7 +190,7 @@ const Navbar = () => {
                                         </div>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className={`nav-link pb-0 link3 ${active.link3 && 'active'}`} to="#" onClick={() => handleActive(3)}>
+                                        <Link className={`nav-link pb-0 ${active.link3 && 'active'}`} to="#" onClick={() => handleActive(3)}>
                                             ERNÄHRUNGSDIAGNOSTIK <i className='ms-1 arrow_icon'><img src={icon} alt="" style={{width: "15px"}} /> </i>
                                         </Link>
                                         <div className={`home_menu_mobile_links ${active.link3 && 'active'}`}>
@@ -212,8 +212,8 @@ const Navbar = () => {
                                         </div>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className={`nav-link pb-0 link4 ${active.link4 && 'active'}`} to="#" onClick={() => handleActive(4)}>
-                                            GESUNDHEITSTHEMEN <i className='ms-1 arrow_icon'><img src={icon} alt="" style={{width: "15px"}} /> </i>
+                                        <Link className={`nav-link pb-0 ${active.link4 && 'active'}`} to="#" onClick={() => handleActive(4)}>
+                                            GESUNDHEITSTHEMEN
                                         </Link>
                                     </li>
                                     <li className="nav-item">
