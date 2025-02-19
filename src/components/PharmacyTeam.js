@@ -20,7 +20,7 @@ const PharmacyTeam = () => {
     if (data) {
       setBannerData(data?.data?.banner_section);
       setFounderData(data?.data?.founder_section);
-      setTeamData(data?.data?.team_section);
+      setTeamData(data?.data?.team_data);
     }
   }
 
@@ -52,19 +52,39 @@ const PharmacyTeam = () => {
         <MyButton />
       </section>
 
-      <section className="wi_full py_3 dien_section">
+      <section className="wi_full py_3 grunderinnen_sec">
         <div className="container-xxl">
-          <TwoContent data={founderData} color='green' />
-          <div className="dien_list">
-            <FounderSection data={founderData} />
+          <TwoContent data={teamData} color='green' />
+          <div className="founder_wrapper mt-5">
+            <FounderSection data={founderData} color='green' />
           </div>
         </div>
       </section>
 
-      <section className='teams'>
-        <div className="container">
-          <h2 className='text-center' >Team MedZentrum</h2>
-          <Team1 data={teams} />
+      <section className='wi_full py_3 pt-0 team_section'>
+        <div className="container-xxl">
+          <div className='sec_title green text-center'>
+            <h2>{teamData?.heading}</h2>
+          </div>
+          <div className='tab_container'>
+            <ul  className='nav nav-tabs' role='tablist'>
+          {teamData?.types?.map((type, index)=>(
+              <li key={index} className='nav-item'>
+                  <a className={`nav-link ${index%2==0 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index+1}`} role="tab">{type?.link_text
+                  }</a>
+              </li>
+            ))}
+            </ul>
+            <div className='tab-content'>
+              <div className='tab-pane active' id='Tab1' role='tabpanel'>
+                <Team1 data={teams} color='green' />
+              </div>
+              <div className='tab-pane' id='Tab2' role='tabpanel'>
+                <Team1 data={teams} color='green' />
+              </div>
+            </div>
+              
+          </div>
         </div>
       </section>
 

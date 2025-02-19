@@ -3,6 +3,8 @@ import Navbar from './Navbar';
 import { BannerSection } from './BannerSection';
 import { MyButton } from './mini_components/MyButton';
 import Footer from './Footer';
+import { EmergencyContact } from './EmergencyContact';
+import { ShuffleComponent } from './ShuffleComponent';
 
 export const PharmacyEmergency = () => {
 
@@ -39,6 +41,16 @@ export const PharmacyEmergency = () => {
                 <MyButton />
             </section>
 
+            <section className='wi_full py_3 notefall_section'>
+                <div className='container-xxl'>
+                    <div className='emrgeny_contact_container'>
+                        <EmergencyContact />
+                    </div>
+                    <div className='shuffle_container mt-5'>
+                        <ShuffleComponent />
+                    </div>
+                </div>
+            </section>
 
             <Footer />
         </div>
