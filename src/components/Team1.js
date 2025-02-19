@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const Team1 = ({ data }) => {
     return (
@@ -10,7 +11,7 @@ export const Team1 = ({ data }) => {
                             <div class="card-body">
                                 <h5 class="card-title">{teamMember?.name}</h5>
                                 <p class="card-text">{teamMember?.designation}</p>
-                                <a href="#" class="btn btn-primary">{teamMember?.skills}</a>
+                                <Link to="#" class="btn btn-primary">{teamMember?.skills}</Link>
                             </div>
                     </div>
                 </div>

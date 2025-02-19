@@ -15,12 +15,12 @@ function App() {
     <div >
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/pharmacy-overview" element={<PharmacyOverview />} />
-        <Route path="/appointment-booking" element={<AppointmentBooking />} />
-        <Route path="/pharmacy-team" element={<PharmacyTeam />} />
-        <Route path="/pharmacy-emergency" element={<PharmacyEmergency />} />
-        <Route path="/pharmacy-services" element={<PharmacyServices />} />
-        <Route path="/overview-practice" element={<OverviewPractice />} />
+        <Route path="/ubersicht-apotheke" element={<PharmacyOverview />} />
+        <Route path="/terminbuchung-apotheke" element={<AppointmentBooking />} />
+        <Route path="/apotheke-team" element={<PharmacyTeam />} />
+        <Route path="/apotheke-notfall" element={<PharmacyEmergency />} />
+        <Route path="/dienstleistungen-apotheke" element={<PharmacyServices />} />
+        <Route path="/ubersicht-praxis" element={<OverviewPractice />} />
       </Routes>
     </div>
   );

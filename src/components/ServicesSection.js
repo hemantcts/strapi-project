@@ -2,20 +2,22 @@ import React from 'react'
 import img1 from '../images/services-sec-img1.png'
 import MyLink from './mini_components/MyLink'
 
-const ServicesSection = ({servicesData}) => {
+const ServicesSection = ({servicesData, color}) => {
     return (
-        <div className="row mt-5">
+        <div className="row dien_list">
             {servicesData?.map((service, index)=>(
-                <div className="col-lg-6 my-4" key={index}>
-                    <div className='service-sec-inner-content'>
-                        <div className='row align-items-center' style={{height: '100%'}}>
-                            <div className="col-sm-5 images">
+                <div className="col-lg-6 dien_itm mt_col" key={index}>
+                    <div className='item_inner'>
+                        <div className='row'>
+                            <div className="item_img">
                                 <img src={`https://medzentrum.entwicklung-loewenmut.ch${service?.image?.url}`} alt="" />
                             </div>
-                            <div className="col-sm-7 mt-3 mt-sm-0 content">
-                                <h4 className='mb-1'>{service?.title}</h4>
-                                <p className='mb-2'>{service?.description}</p>
-                                <MyLink to={service?.link?.link_url} text={service?.link?.link_text} color='green' />
+                            <div className="item_text">
+                                <h3 className='fw_medium'>{service?.title}</h3>
+                                <p>{service?.description}</p>
+                                <div class="btn_block">
+                                    <MyLink className="button blue_btn text-uppercase" to={service?.link?.link_url} text={service?.link?.link_text} color={color} />
+                                </div>
                             </div>
                         </div>
                     </div>

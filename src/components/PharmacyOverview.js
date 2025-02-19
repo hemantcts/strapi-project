@@ -8,6 +8,7 @@ import { Accordion } from './Accordion'
 import { BannerSection } from './BannerSection'
 import { MyButton } from './mini_components/MyButton'
 import { TwoContent } from './mini_components/TwoContent'
+import { SpeziellesSection } from './SpeziellesSection'
 
 const PharmacyOverview = () => {
 
@@ -36,54 +37,34 @@ const PharmacyOverview = () => {
 
     return (
         <div className='pharmacy'>
-            <header>
-                <Navbar />
-            </header>
-
-            <section className='pharmacy_banner_sec'>
+            <Navbar />
+            <div className='inner_banner_Section'>
                 <BannerSection bannerData={bannerData} color='green' />
-            </section>
-
-            <section className='main-button py-3'>
+            </div>
+            <section className='breadcrumb_sec wi_full mt_3'>
                 <MyButton />
             </section>
-
-            <section className="services-sec position-relative">
-                <div className="container">
+            <section className="wi_full py_3 dien_section">
+                <div className="container-xxl">
                     <TwoContent data={servicesData} color='green' />
-
-                    <div className="service-sec-content">
+                    <div className="dien_list">
                         <ServicesSection servicesData={servicesData?.services_data} />
                     </div>
                 </div>
             </section>
 
-            <section className="specials-sec">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-6">
-                            <img src={`https://medzentrum.entwicklung-loewenmut.ch${specialsData?.image?.url}`} alt="" />
-                        </div>
-                        <div className="col-lg-6">
-                            <h2>{specialsData?.heading}</h2>
-
-                            <Accordion data={specialsData?.accordion_data} />
-                        </div>
-                    </div>
-                </div>
+            <section className="wi_full py_3 pt-0 spezielles_section">
+                <SpeziellesSection specialsData={specialsData} color='green' />
             </section>
 
             <section className='products-sec'>
-                <ProductsSection productsData={productsData} />
+                <ProductsSection productsData={productsData} color='green' />
             </section>
 
-            <section className='ad-sec'>
+            <section className='wi_full py_3 partner_sec bg_dark_grey'>
                 <PartnersSection adData={adData} />
             </section>
-
-            <footer>
-                <Footer />
-            </footer>
+            <Footer />
         </div>
     )
 }

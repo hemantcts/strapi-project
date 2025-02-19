@@ -5,6 +5,7 @@ import { BannerSection } from './BannerSection'
 import { MyButton } from './mini_components/MyButton'
 import { TwoContent } from './mini_components/TwoContent'
 import { Team1 } from './Team1'
+import { FounderSection } from './FounderSection'
 
 const PharmacyTeam = () => {
   const [bannerData, setBannerData] = useState();
@@ -41,33 +42,33 @@ const PharmacyTeam = () => {
         <Navbar />
       </header>
 
-      <section className='banner_sec'>
+      <section className='inner_banner_Section'>
         <BannerSection bannerData={bannerData} color='green' />
       </section>
 
-      <section className='main-button py-3'>
+      <section className='breadcrumb_sec wi_full mt_3'>
         <MyButton />
       </section>
 
-      <section className="team-sec position-relative">
-        <div className="container">
-
+      <section className="wi_full py_3 dien_section">
+        <div className="container-xxl">
           <TwoContent data={teamData} color='green' />
-
+          <div className="dien_list">
+            <FounderSection data={teamData} />
+          </div>
         </div>
       </section>
 
       <section className='teams'>
         <div className="container">
-          <h2>Team MedZentrum</h2>
+          <h2 className='text-center' >Team MedZentrum</h2>
 
           <Team1 data={teams} />
         </div>
       </section>
 
-      <footer>
-        <Footer />
-      </footer>
+
+      <Footer />
     </div>
   )
 }

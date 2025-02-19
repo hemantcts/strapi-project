@@ -53,146 +53,78 @@ const Home = () => {
     }, [])
 
     return (
-        <div>
-            <header>
-                <Navbar />
-            </header>
-            <section className='banner-sec'>
-                <div className="banner" style={{background: `url('https://medzentrum.entwicklung-loewenmut.ch${bannerData?.banner_image?.url}')`}}>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-6 text-center mb-5 mb-lg-0">
-                                <h1>{bannerData?.main_title}</h1>
-                                <p>{bannerData?.description}</p>
-                                <p>{bannerData?.small_description}</p>
-                                <ul className='p-0'>
-                                    {bannerData?.links1.map((link, index) => (
-                                        <li key={index}>
-                                            <MyLink link={link.link_url} text={link.link_text} />
-                                        </li>
-                                    ))}
-                                    {/* <li>
-                                        <MyLink link="/" text="ZUR APOTHEKE" />
-                                    </li>
-                                    <li>
-                                        <MyLink link="/" text="ZUR PRAXIS" />
-                                    </li> */}
-                                </ul>
-                            </div>
-                            <div className="col-lg-6">
-                                <div className="d-flex banner-item justify-content-lg-end align-items-lg-end justify-content-around align-items-start">
-                                    {bannerData?.links2.map((roundLink, index) => (
-                                        <div key={index} className={`round round-${index + 1}`}>
-                                        <Link to={roundLink.link_url} className="round-link">
-                                            {roundLink.link_text}
-                                        </Link>
-                                        </div>
-                                    ))}
-                                    {/* <div className="round round-1">
-                                        <Link to='#' className="round-link">
-                                            TERMIN FÜR DIE APOTHEKE BUCHEN
-                                        </Link>
-                                    </div>
-                                    <div className="round round-2">
-                                        <Link to='#' className="round-link">
-                                            TERMIN FÜR DIE PRAXIS BUCHEN
-                                        </Link>
-                                    </div> */}
-                                    
-                                </div>
-                            </div>             
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section className="heart-sec">
-                <div className="container ps-lg-0">
-                    <div className="row justify-content-between">
-                        <div className="col-lg-7 p-lg-0">
-                            <div className="heart-inner-content1 mb-5 mb-lg-0">
-                                <div className="row align-items-center mb-5">
-                                    <div className="col-4 ps-lg-0">
-                                        <img src={`https://medzentrum.entwicklung-loewenmut.ch${heartData?.left_side?.image?.url}`} alt="" />
-                                    </div>
-                                    <div className="col-8">
-                                        <div className="heart-sec-inner-content">
-                                            <h5>{heartData?.left_side?.small_heading}</h5>
-                                            <h2>{heartData?.left_side?.large_heading}</h2>
-                                            <p>{heartData?.left_side?.text}</p>
-                                            <ul className='p-0'>
-                                                <li>
-                                                    <MyLink link='/' text={heartData?.left_side?.link?.link_text} />
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 plg--0">
-                            <div className="heart-inner-content2">
-                                {heartData?.right_side?.map((item, index) => (
-                                    <div key={item?.id ?? index} className={`item-${index + 1} mb-5`}>
-                                    <h5>{item?.small_heading ?? "Default Small Heading"}</h5>
-                                    <h3>{item?.large_heading ?? "Default Large Heading"}</h3>
-                                    <p>{item?.text ?? "Default text for the right side."}</p>
-                                    <ul className="p-0">
-                                        <li>
-                                        <MyLink link="/" text="WEITERLESEN" />
-                                        </li>
-                                    </ul>
+    <div>
+        <Navbar />
+        <section className='wi_full py_3 banner_sec main_banner' style={{background: `url('https://medzentrum.entwicklung-loewenmut.ch${bannerData?.banner_image?.url}')`}}>
+            <div className="container-xxl">
+                <div className="row">
+                    <div className="col-12 col-lg-6">
+                        <div className="banner_content text-center">
+                            <h1>{bannerData?.main_title}</h1>
+                            <p>{bannerData?.description}</p>
+                            <p>{bannerData?.small_description}</p>
+                            <div className='btn_block justify-content-center'>
+                                {bannerData?.links1.map((link, index) => (
+                                    <div className={`buttn_${index + 1}`} key={index}>
+                                        <MyLink link={link.link_url} text={link.link_text} color={index%2==0 ? 'green': ''} />
                                     </div>
                                 ))}
-                                {/* <div className="item-1 mb-5">
-                                    <h5>Impfungen</h5>
-                                    <h3>Grippeimpfung</h3>
-                                    <p>
-                                        Vorbeugen ist besser als Heilen. Mit einer
-                                        Grippeimpfung schützen Sie nicht nur sich selbst,
-                                        sondern auch Ihre nahen Angehörigen und andere
-                                        Mitmenschen. 
-                                    </p>
-                                    <ul className='p-0'>
-                                        <li>
-                                            <MyLink link="/" text="WEITERLESEN" />
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div className="item-2">
-                                    <h5>Wundambulatorium </h5>
-                                    <h3>Fäden ziehen</h3>
-                                    <p>Im Dr. Andres Wundambulatorium werden akute und
-                                    chronische Wunden professionell versorgt.</p>
-                                    <ul className='p-0'>
-                                        <li>
-
-                                            <MyLink link="/" text="WEITERLESEN" />
-                                        </li>
-                                    </ul>
-                                </div> */}
-                                        
                             </div>
                         </div>
                     </div>
+                    <div className="col-12 col-lg-6 align-self-end">
+                        <div className="banner_btns">
+                            {bannerData?.links2.map((roundLink, index) => (
+                                <div key={index} className={`round_btn round_${index + 1}`}>
+                                    <Link to={roundLink.link_url} className="text-uppercase">
+                                        {roundLink.link_text}
+                                    </Link>
+                                </div>
+                            ))}
+                        </div>
+                    </div>             
                 </div>
-            </section>
-
-            <section className='products-sec'>
-                <ProductsSection productsData={productsData} />
-            </section>
-
-            <section className='ad-sec'>
-                <PartnersSection adData={adData} />
-            </section>
-
-            <footer>
-                <Footer />
-            </footer>
-
-
-        </div>
+            </div>
+        </section>
+        <section className="wi_full py_3 heart_sec">
+            <div className="container-xxl">
+                <div className="row align-items-center">
+                    <div className="col-12 col-lg-7 content_box">
+                        <div className="heart_block">
+                            <img className="heart_img" src={`https://medzentrum.entwicklung-loewenmut.ch${heartData?.left_side?.image?.url}`} alt="" />
+                            <div className="content_wrap">
+                                <div className="sub_title">{heartData?.left_side?.small_heading}</div>
+                                <h2>{heartData?.left_side?.large_heading}</h2>
+                                <p>{heartData?.left_side?.text}</p>
+                                <div className='btn_block'>
+                                    <MyLink link='/' text={heartData?.left_side?.link?.link_text} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-12 col-lg-5 content_box">
+                        {heartData?.right_side?.map((item, index) => (
+                        <div key={item?.id ?? index} className={`item-${index + 1} content_wrap`}>
+                            <div className="sub_title">{item?.small_heading ?? "Default Small Heading"}</div>
+                            <h3>{item?.large_heading ?? "Default Large Heading"}</h3>
+                            <p>{item?.text ?? "Default text for the right side."}</p>
+                            <div className="btn_block">
+                                <MyLink link="/" text="WEITERLESEN" />
+                            </div>
+                        </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section className='wi_full py_3 aktionen_sec bg_light_blue products-sec'>
+            <ProductsSection productsData={productsData} />
+        </section>
+        <section className='wi_full py_3 partner_sec bg_dark_grey'>
+            <PartnersSection adData={adData} />
+        </section>
+        <Footer />
+    </div>
     )
 }
 

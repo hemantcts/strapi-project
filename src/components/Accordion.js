@@ -1,33 +1,24 @@
 import React from 'react'
 
-export const Accordion = ({data}) => {
+export const Accordion = ({data, color}) => {
     return (
-        <div className="accordion" id="accordionExample">
+        <div className={`accordion_wrapper ${color}`}>
+        <div className="accordion" id="accordion" role='tablist' aria-multiselectable='true'>
             {data?.map((item, index) => (
-                <div className="accordion-item mb-3" key={item?.id}>
-                    <h2 className="accordion-header">
-                        <button
-                            className="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target={`#collapse${item?.id}`}
-                            aria-expanded="false"
-                            aria-controls={`collapse${item?.id}`}
-                        >
+                <div className="card mb-3" key={item?.id}>
+                    <div className="card-header">
+                        <a className="collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${item?.id}`} aria-expanded="false" aria-controls={`collapse${item?.id}`}>
                             {item?.title}
-                        </button>
-                    </h2>
-                    <div
-                        id={`collapse${item?.id}`}
-                        className="accordion-collapse collapse"
-                        data-bs-parent="#accordionExample"
-                    >
-                        <div className="accordion-body pt-0">
+                        </a>
+                    </div>
+                    <div id={`collapse${item?.id}`} className="collapse" data-bs-parent="#accordion">
+                        <div className="card-body">
                             <p>{item?.description}</p>
                         </div>
                     </div>
                 </div>
             ))}
+        </div>
         </div>
     );
 }

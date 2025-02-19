@@ -33,25 +33,21 @@ export const PharmacyServices = () => {
                 <Navbar />
             </header>
 
-            <section className='pharmacy_banner_sec'>
+            <section className='inner_banner_Section'>
                 <BannerSection bannerData={bannerData} color='green' />
             </section>
 
-            <section className='main-button py-3'>
+            <section className='breadcrumb_sec wi_full mt_3'>
                 <MyButton />
             </section>
 
-            <section className="services-sec position-relative">
-                <div className="container">
-
+            <section className="wi_full py_3 dien_section">
+                <div className="container-xxl">
                     <TwoContent data={servicesData} color='green' />
-
                 </div>
             </section>
 
-            <footer>
-                <Footer />
-            </footer>
+            <Footer />
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar';
 import { BannerSection } from './BannerSection';
 import { MyButton } from './mini_components/MyButton';
@@ -31,17 +31,16 @@ export const PharmacyEmergency = () => {
                 <Navbar />
             </header>
 
-            <section className='pharmacy_banner_sec'>
+            <section className='inner_banner_Section'>
                 <BannerSection bannerData={bannerData} color='green' />
             </section>
 
-            <section className='main-button py-3'>
+            <section className='breadcrumb_sec wi_full mt_3'>
                 <MyButton />
             </section>
 
-            <footer>
-                <Footer />
-            </footer>
+
+            <Footer />
         </div>
     )
 }

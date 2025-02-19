@@ -5,50 +5,37 @@ import svgIcon from '../../images/link_icon.svg'
 
 const HomeMenu = () => {
   return (
-      <div className="container">
+      <div className="megamenu-content withoutdesc">
         <div className="row justify-content-between">
-            <div className="col-5 d-flex flex-column">
+            <div className="col-lg-6">
                 <div className='menu_links'>
-                    <ul className='list-out'>
-                        <li className='list-items border-0'>
-                            <Link>
-                                <h5 className='mb-0'>Übersicht Apotheke</h5>
-                            </Link>
+                    <ul className='submenu_list'>
+                        <li>
+                            <Link to='/ubersicht-apotheke'>Übersicht Apotheke</Link>
                         </li>
                         <li className='list-items'>
-                            <Link>
-                                <h5 className='mb-0'>Termin buchen Apotheke</h5>
-                            </Link>
+                            <Link to='/terminbuchung-apotheke'>Termin buchen </Link>
                         </li>
                         <li className='list-items'>
-                            <Link>
-                                <h5 className='mb-0'>Team Apotheke</h5>
-                            </Link>
+                            <Link to='/apotheke-team'>Team Apotheke</Link>
                         </li>
                         <li className='list-items'>
-                            <Link>
-                                <h5 className='mb-0'>Notfall</h5>
-                            </Link>
+                            <Link to='/apotheke-notfall'>Notfall</Link>
                         </li>
                         <li className='list-items'>
-                            <Link>
-                                <h5 className='mb-0'>Dienstleistungen Apotheke</h5>
-                            </Link>
+                            <Link to='/dienstleistungen-apotheke'>Dienstleistungen Apotheke</Link>
                         </li>
+                        {/* <li className='list-items'>
+                            <Link >Öffnungszeiten und Kontakt</Link>
+                        </li> */}
                         <li className='list-items'>
-                            <Link>
-                                <h5 className='mb-0'>Öffnungszeiten und Kontakt</h5>
-                            </Link>
+                            <Link to='/' className='termin_aproke'>Termin Apotheke buchen <i><img src={svgIcon} alt=""/></i> </Link>
                         </li>
                     </ul>
                 </div>
-                <div>
-                    <Link className='home_menu_btn'>Termin Apotheke buchen <i><img src={svgIcon} alt="" style={{width: "19px"}}/></i> </Link>
-                </div>
-                
             </div>
-            <div className="col-5 home_menu_image">
-                <img src={homeMenuImg} alt="" />
+            <div className="col-lg-6 d-none d-lg-block">
+                <img src={homeMenuImg} className="w-100" alt="" />
             </div>
         </div>
       </div>

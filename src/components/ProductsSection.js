@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import discountImg from '../images/discount_img.png'
 import MyLink from './mini_components/MyLink';
 
-const ProductsSection = ({ productsData }) => {
+const ProductsSection = ({ productsData, color }) => {
     return (
-        <div className="container">
+        <div className={`container ${color}`}>
             {productsData?.heading && <h2 className='text-center mb-5'>{productsData?.heading}</h2>}
             {productsData?.paragraph && <p className='text-center mb-5 paragraph'>{productsData?.paragraph}</p>}
             <div className="row">
@@ -68,7 +68,7 @@ const ProductsSection = ({ productsData }) => {
                                             <ul className='p-0 mb-5'>
                                                 <li>
                                                     {/* <Link to='/' className='option-link'>BESTELLEN <i className="fa-solid fa-arrow-right option-link-icon" /></Link> */}
-                                                    <MyLink link={product?.extraDetails?.link?.link_url} text={product?.extraDetails?.link?.link_text} />
+                                                    <MyLink link={product?.extraDetails?.link?.link_url} text={product?.extraDetails?.link?.link_text} color={color} />
                                                 </li>
                                             </ul>
 
