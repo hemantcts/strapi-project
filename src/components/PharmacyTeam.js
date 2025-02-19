@@ -50,20 +50,39 @@ const PharmacyTeam = () => {
         <MyButton />
       </section>
 
-      <section className="wi_full py_3 dien_section">
+      <section className="wi_full py_3 grunderinnen_sec">
         <div className="container-xxl">
           <TwoContent data={teamData} color='green' />
-          <div className="dien_list">
-            <FounderSection data={teamData} />
+          <div className="founder_wrapper mt-5">
+            <FounderSection data={teamData} color='green' />
           </div>
         </div>
       </section>
 
-      <section className='teams'>
-        <div className="container">
-          <h2 className='text-center' >Team MedZentrum</h2>
-
-          <Team1 data={teams} />
+      <section className='wi_full py_3 pt-0 team_section'>
+        <div className="container-xxl">
+          <div className='sec_title green text-center'>
+            <h2>Team MedZentrum</h2>
+          </div>
+          <div className='tab_container'>
+            <ul className='nav nav-tabs' role='tablist'>
+              <li className='nav-item'>
+                  <a className="nav-link active" data-bs-toggle="tab" href="#Tab1" role="tab">Team Apotheke</a>
+              </li>
+              <li className='nav-item'>
+                  <a className="nav-link" data-bs-toggle="tab" href="#Tab2" role="tab">Team Praxis</a>
+              </li>
+            </ul>
+            <div className='tab-content'>
+              <div className='tab-pane active' id='Tab1' role='tabpanel'>
+                <Team1 data={teams} color='green' />
+              </div>
+              <div className='tab-pane' id='Tab2' role='tabpanel'>
+                <Team1 data={teams} color='green' />
+              </div>
+            </div>
+              
+          </div>
         </div>
       </section>
 

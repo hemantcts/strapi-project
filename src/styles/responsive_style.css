@@ -125,6 +125,11 @@
     .banner_sec .banner_btns {
         justify-content: flex-end;
     }
+    .founder_wrapper .content_col {
+        margin-left: -100px;
+        padding: 2rem;
+        margin-top: 0;
+    }
     .heart_sec {
         .heart_block .content_wrap {
             padding: 0 2rem;
@@ -214,6 +219,9 @@
         overflow: hidden;
     }
     header {
+        #mainNavbar ul.navbar-nav li:first-child {
+            display: none;
+        }
         button.navbar-toggler {
             padding: 0;
             order: 3;
@@ -365,12 +373,14 @@
     }
     
     @media (max-width: 575px){
+    header {
     .navbar .navbar-brand {
         max-width: 220px;
     }
     #mainNavbar.collapse.show {
         width: 100%;
     }
+}
     .round_btn {
         width: 160px;
         height: 160px;

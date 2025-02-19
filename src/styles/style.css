@@ -292,10 +292,10 @@ ul.navbar-nav.main--menu li.nav-item .dropdown-toggle:after {
 }
 
 .banner_sec {
-        /* padding-top: calc(120px + 3rem) !important; */
-        background-repeat: no-repeat !important;
-        background-size: cover !important;
-        background-position: center !important;
+    padding-top: calc(120px + 3rem) !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
  p {
     font-size: var(--bs-h3);
 }
@@ -417,7 +417,7 @@ ul {
 }
 
 .inner_banner {
-    height: 650px;
+    height: 550px;
     display: flex;
     align-items: center;
 .banner_content {
@@ -483,6 +483,73 @@ ul {
     display: block;
 }
 }
+
+.founder_wrapper .content_col {
+    margin-top: 2rem;
+    background: #fff;
+    padding: 1.5rem;
+    box-shadow: 0 2px 30px rgb(0 0 0 / 5%);
+}
+
+.team_section {
+    .team_itm img.item_img {
+        width: 100%;
+        border-radius: 20px;
+        object-fit: cover;
+        border: 2px solid transparent;
+    }
+    .team_itm:hover img.item_img {
+        border-color: var(--bs-green);
+    }
+    .green {
+        color: var(--bs-green);
+    }
+    .item_body {
+        padding: 1rem;
+        line-height: 1.25;
+    p {
+        font-size: var(--bs-fs22);
+        font-weight: var(--bs-fw400);
+        margin-bottom: 10px;
+        min-height: 50px;
+        border-bottom: 1px solid rgba(226, 226, 226, 1);
+        padding-bottom: 10px;
+    } 
+    small {
+        font-size: var(--bs-fs18);
+    }
+}
+}
+
+.tab_container {
+ul.nav.nav-tabs {
+    border-bottom: 0;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+ul.nav-tabs li {
+    margin: 0;
+}
+ul.nav-tabs li a {
+    font-size: var(--bs-fs24);
+    font-weight: var(--bs-fw400);
+    color: rgba(217, 217, 217, 1);
+    font-family: var(--bs-fontvolkhov);
+    padding: 10px 30px;
+    border-radius: 0;
+    text-transform: uppercase;
+    border: 0;
+    border-bottom: 3px solid rgba(217, 217, 217, 1);
+}
+ul.nav-tabs li a.active {
+    border-bottom-color: var(--bs-green) !important;
+    color: #000;
+}
+}
+
+
+
 
 .accordion {
 .card {

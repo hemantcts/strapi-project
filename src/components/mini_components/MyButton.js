@@ -1,5 +1,5 @@
 import React from 'react'
-import iconImg from '../../images/Fav-icon.png'
+import iconImg from '../../images/breadcrumb-icon.svg'
 
 export const MyButton = () => {
     return (
