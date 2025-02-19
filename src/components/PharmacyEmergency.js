@@ -9,7 +9,7 @@ export const PharmacyEmergency = () => {
     const [bannerData, setBannerData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-emergency?populate[banner_section][populate]=banner_image`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-emergency?populate[banner_section][populate]=banner_image&populate[info_section][populate]=icons&populate[pharmacy_services][populate]=image`)
         const data = await response.json();
         console.log(data);
         if (data) {

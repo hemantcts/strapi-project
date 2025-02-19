@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.svg'
 import burgermenu from '../images/burger-menu.svg'
@@ -13,117 +13,121 @@ import Menu3 from './menu_components/Menu3';
 const Navbar = () => {
     const [active, setActive] = useState({ link1: false, link2: false, link3: false, link4: false })
     const [hover, setHover] = useState({ link1: false, link2: false, link3: false, link4: false })
-    const [isClicked, setClicked ] = useState(false);
+    // const [isClicked, setClicked ] = useState(false);
+    const [sticky, setSticky] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setSticky(window.scrollY > 0);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+        document.body.classList.toggle('body_overflow', !menuOpen);
+    };
 
     const handleActive = (link) => {
-        let obj = { link1: false, link2: false, link3: false, link4: false };
-        if (link === 1) {
-            if (!active.link1) {
-                obj.link1 = true;
-            }
-        }
-        if (link === 2) {
-            if (!active.link2) {
-                obj.link2 = true;
-            }
-        }
-        if (link === 3) {
-            if (!active.link3) {
-                obj.link3 = true;
-            }
-        }
-        if (link === 4) {
-            if (!active.link4) {
-                obj.link4 = true;
-            }
-        }
-        setActive(obj);
-        setClicked(!isClicked);
-        console.log("clicked", isClicked);
-    }
+        setActive((prev) => ({ ...prev, [`link${link}`]: !prev[`link${link}`] }));
+    };
 
     const handleMouseEnter = (link) => {
-        let obj = { link1: false, link2: false, link3: false, link4: false };
-        if (link === 1) {
-            if (!hover.link1) {
-                obj.link1 = true;
-            }
-        }
-        if (link === 2) {
-            if (!hover.link2) {
-                obj.link2 = true;
-            }
-        }
-        if (link === 3) {
-            if (!hover.link3) {
-                obj.link3 = true;
-            }
-        }
-        if (link === 4) {
-            if (!hover.link4) {
-                obj.link4 = true;
-            }
-        }
-        setHover(obj);
+        setHover((prev) => ({ ...prev, [`link${link}`]: true }));
+    };
 
-        console.log('handleMouseEnter')
-        
-    }
-
-    const handleMouseLeave = () => {
-        let obj = { link1: false, link2: false, link3: false, link4: false };
-        setHover(obj);
-    }
+    const handleMouseLeave = (link) => {
+        setTimeout(() => {
+            setHover((prev) => ({ ...prev, [`link${link}`]: false }));
+        }, 300);
+    };
     
 
     return (
         <div>
             <header>
-        <nav className='navbar navbar-expand-lg'>
+        <nav className={`navbar navbar-expand-lg ${sticky ? 'sticky' : ''}`}>
             <div className='nav_overlay'></div>
             <div className='container-xxl'>
                 <Link className='navbar-brand' to='/'><img src={logo} alt='logo' /></Link>
-                <button className='navbar-toggler' type='button' data-bs-target='#mainNavbar' aria-expanded='false'>
+                <button className='navbar-toggler' onClick={toggleMenu} type='button' data-bs-target='#mainNavbar' aria-expanded='false'>
                     <img src={burgermenu} alt='menu' />
                 </button>
-                <div className='collapse navbar-collapse' id='mainNavbar'>
+                <div className={`collapse navbar-collapse ${menuOpen ? 'show' : ''}`} id='mainNavbar'>
                 <div className='open--menu--header'>
                         <img src={logo} alt='menu' className='open-menu-logo' />
-                        <img src={closemenu} alt='menu' className='close_navbtn' />
+                        <img src={closemenu} alt='menu' className='close_navbtn' onClick={toggleMenu} />
                     </div>
                     <div className='header-menu-h ms-auto'>
                         <ul className='navbar-nav main--menu'>
                             <li className='nav-item megamenu-fw apotheke_menu'>
                                 <Link className={`nav-link link1 ${(active.link1 || hover.link1) && 'active'}`} to="#" onClick={() => handleActive(1)}
                                 onMouseEnter={()=> handleMouseEnter(1)}
-                                onMouseLeave={handleMouseLeave}
+                                onMouseLeave={(e) => {
+                                    if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.home_menu')) {
+                                        handleMouseLeave(1);
+                                    }
+                                }}
                                 >Apotheke <b className='caret'></b></Link>
-                                {(active.link1 || hover.link1)  && <ul className="dropdown-menu d-block half menu home_menu">
+                                {(active.link1 || hover.link1)  && <ul 
+                                onMouseEnter={()=> handleMouseEnter(1)}
+                                onMouseLeave={(e) => {
+                                    if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget?.closest('.apotheke_menu')) {
+                                        handleMouseLeave(1);
+                                    }
+                                }}
+                                 className="dropdown-menu d-block half menu home_menu">
                                     <HomeMenu />
                                 </ul>}
                             </li>
                             <li className='nav-item megamenu-fw praxis_menu'>
                                 <Link className={`nav-link link2 ${(active.link2 || hover.link2) && 'active'}`} to="#" onClick={() => handleActive(2)}
                                 onMouseEnter={()=> handleMouseEnter(2)}
-                                onMouseLeave={handleMouseLeave}
+                                onMouseLeave={(e) => {
+                                    if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget?.closest('.menu1')) {
+                                        handleMouseLeave(2);
+                                    }
+                                }}
                                 >Praxis <b className='caret'></b></Link>
-                                {(active.link2 || hover.link2) && <ul className="dropdown-menu d-block half menu">
+                                {(active.link2 || hover.link2) && <ul 
+                                onMouseEnter={()=> handleMouseEnter(2)}
+                                onMouseLeave={(e) => {
+                                    if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.praxis_menu')) {
+                                        handleMouseLeave(2);
+                                    }
+                                }}
+                                className="dropdown-menu d-block half menu1">
                                     <Menu2 />
                                 </ul>}                        
                             </li>
                             <li className='nav-item megamenu-fw ubersicth_menu'>
                                 <Link className={`nav-link link3 ${(active.link3 || hover.link3) && 'active'}`} to="#" onClick={() => handleActive(3)}
                                 onMouseEnter={()=> handleMouseEnter(3)}
-                                onMouseLeave={handleMouseLeave}
+                                onMouseLeave={(e) => {
+                                    if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.menu2')) {
+                                        handleMouseLeave(3);
+                                    }
+                                }}
                                 >Ernährungsdiagnostik <b className='caret'></b></Link>
-                                {(active.link3 || hover.link3) && <ul className="dropdown-menu d-block half menu">
+                                {(active.link3 || hover.link3) && <ul 
+                                onMouseEnter={()=> handleMouseEnter(3)}
+                                onMouseLeave={(e) => {
+                                    if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.ubersicth_menu')) {
+                                        handleMouseLeave(3);
+                                    }
+                                }}
+                                className="dropdown-menu d-block half menu2">
                                     <Menu3 />
                                 </ul>}
                             </li>
                             <li className='nav-item'>
                                 <Link className={`nav-link link4 ${(active.link4 || hover.link4) && 'active'}`} to="#" onClick={() => handleActive(4)}
                                 onMouseEnter={()=> handleMouseEnter(4)}
-                                onMouseLeave={handleMouseLeave}
+                                onMouseLeave={()=> handleMouseLeave(4)}
                                 >Gesundheitsthemen</Link>
                             </li>
                         </ul>

@@ -9,10 +9,12 @@ import PharmacyTeam from './components/PharmacyTeam';
 import { PharmacyEmergency } from './components/PharmacyEmergency';
 import { PharmacyServices } from './components/PharmacyServices';
 import OverviewPractice from './components/OverviewPractice';
+import ScrollToTop from './components/mini_components/ScrollToTop';
 
 function App() {
   return (
     <div >
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ubersicht-apotheke" element={<PharmacyOverview />} />

@@ -9,16 +9,18 @@ import { FounderSection } from './FounderSection'
 
 const PharmacyTeam = () => {
   const [bannerData, setBannerData] = useState();
+  const [founderData, setFounderData] = useState();
   const [teamData, setTeamData] = useState();
   const [teams, setTeams] = useState();
 
   const getPageData = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[banner_section][populate]=banner_image&populate[team_section][populate]`)
+    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[banner_section][populate]=banner_image&populate[founder_section][populate]=founder_image&populate[team_data][populate]=types`)
     const data = await response.json();
     console.log(data);
     if (data) {
-      setBannerData(data.data.banner_section);
-      setTeamData(data.data.team_section);
+      setBannerData(data?.data?.banner_section);
+      setFounderData(data?.data?.founder_section);
+      setTeamData(data?.data?.team_section);
     }
   }
 
@@ -52,9 +54,9 @@ const PharmacyTeam = () => {
 
       <section className="wi_full py_3 dien_section">
         <div className="container-xxl">
-          <TwoContent data={teamData} color='green' />
+          <TwoContent data={founderData} color='green' />
           <div className="dien_list">
-            <FounderSection data={teamData} />
+            <FounderSection data={founderData} />
           </div>
         </div>
       </section>
@@ -62,13 +64,14 @@ const PharmacyTeam = () => {
       <section className='teams'>
         <div className="container">
           <h2 className='text-center' >Team MedZentrum</h2>
-
           <Team1 data={teams} />
         </div>
       </section>
 
 
       <Footer />
+
+      
     </div>
   )
 }
