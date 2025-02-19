@@ -17,11 +17,11 @@ const MyLink = ({ link, text, color }) => {
         <>
             <Link
                 to={link}
-                className={`option-link pb-2 ${isAnimated && 'option-link-animate'} ${color}`}
+                className={`button blue_btn text-uppercase ${isAnimated && 'option-link-animate'} ${color}`}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                {text} <i><img src={svgIcon} alt="" style={{width: "19px", position: "relative", top: "-2px"}}/></i> 
+                <span>{text} <i><img src={svgIcon} alt=""/></i> </span>
             </Link>
         </>
     )

@@ -123,38 +123,32 @@ const PharmacyOverview = () => {
 
     return (
         <div className='pharmacy'>
-            <header>
-                <Navbar />
-            </header>
-
-            <section className='pharmacy_banner_sec'>
+            <Navbar />
+            <div className='inner_banner_Section'>
                 <BannerSection bannerData={bannerData} color='green' />
-            </section>
-
-            <section className='main-button py-3'>
+            </div>
+            <section className='breadcrumb_sec wi_full mt_3'>
                 <MyButton />
             </section>
-
-            <section className="services-sec position-relative">
-                <div className="container">
+            <section className="wi_full py_3 dien_section">
+                <div className="container-xxl">
                     <TwoContent data={servicesData} color='green' />
-
-                    <div className="service-sec-content">
+                    <div className="dien_list">
                         <ServicesSection servicesData={servicesData?.services_data} />
                     </div>
                 </div>
             </section>
-
-            <section className="specials-sec">
-                <div className="container">
+            <section className="wi_full py_3 pt-0 spezielles_section">
+                <div className="container-xxl">
                     <div className="row">
-                        <div className="col-lg-6">
-                            <img src={`https://medzentrum.entwicklung-loewenmut.ch${specialsData?.image?.url}`} alt="" />
+                        <div className="col-lg-6 img_col">
+                            <img src={`https://medzentrum.entwicklung-loewenmut.ch${specialsData?.image?.url}`} className='w-100' alt="" />
                         </div>
-                        <div className="col-lg-6">
-                            <h2>{specialsData?.heading}</h2>
-
-                            <Accordion data={specialsData?.accordion_data} />
+                        <div className="col-lg-6 content_col">
+                            <div className='sec_title green'>
+                                <h2>{specialsData?.heading}</h2>
+                            </div>
+                            <Accordion data={specialsData?.accordion_data}  color='green' />
                         </div>
                     </div>
                 </div>
@@ -164,13 +158,10 @@ const PharmacyOverview = () => {
                 <ProductsSection productsData={productsData} />
             </section>
 
-            <section className='ad-sec'>
+            <section className='wi_full py_3 partner_sec bg_dark_grey'>
                 <PartnersSection adData={adData} />
             </section>
-
-            <footer>
-                <Footer />
-            </footer>
+            <Footer />
         </div>
     )
 }
