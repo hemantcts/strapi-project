@@ -14,7 +14,7 @@ const PharmacyTeam = () => {
   const [teams, setTeams] = useState();
 
   const getPageData = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[banner_section][populate]=banner_image&populate[founder_section][populate]=founder_image&populate[team_data][populate]=types`)
+    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[banner_section][populate]=banner_image&populate[founder_section][populate]=founder_data.image&populate[team_data][populate]=types`)
     const data = await response.json();
     console.log(data);
     if (data) {
@@ -54,9 +54,9 @@ const PharmacyTeam = () => {
 
       <section className="wi_full py_3 grunderinnen_sec">
         <div className="container-xxl">
-          <TwoContent data={teamData} color='green' />
+          <TwoContent data={founderData} color='green' />
           <div className="founder_wrapper mt-5">
-            <FounderSection data={founderData} color='green' />
+            <FounderSection data={founderData?.founder_data} color='green' />
           </div>
         </div>
       </section>
@@ -70,7 +70,7 @@ const PharmacyTeam = () => {
             <ul  className='nav nav-tabs' role='tablist'>
           {teamData?.types?.map((type, index)=>(
               <li key={index} className='nav-item'>
-                  <a className={`nav-link ${index%2==0 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index+1}`} role="tab">{type?.link_text
+                  <a className={`nav-link ${index===0 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index+1}`} role="tab">{type?.link_text
                   }</a>
               </li>
             ))}

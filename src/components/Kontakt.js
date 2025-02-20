@@ -39,8 +39,8 @@ const Kontakt = () => {
             <section className='breadcrumb_sec wi_full mt_3'>
                 <MyButton />
             </section>
-            <section className='wi_full py_3'>
-                <div className='container-xxl'>
+            <section className='wi_full py_3 kontakt_section'>
+                <div className='container-xxl text-black'>
                     <KontaktDetails />
                 </div>
             </section>

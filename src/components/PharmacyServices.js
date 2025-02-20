@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import { BannerSection } from './BannerSection'
 import { MyButton } from './mini_components/MyButton'
@@ -12,7 +12,7 @@ export const PharmacyServices = () => {
     const [servicesData, setServicesData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-service?populate[banner_section][populate]=banner_image&populate[services_data][populate]`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-service?populate[banner_section][populate]=banner_image&populate[services_data][populate]=*&populate[pharmacy_services_data][populate]=image`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -48,6 +48,9 @@ export const PharmacyServices = () => {
                     <div className='shuffle_container pt-5'>
                         <ShuffleComponent />
                     </div>
+                </div>
+                <div className='shuffle_container mt-5'>
+                    {/* <ShuffleComponent data={servicesData} color='green' /> */}
                 </div>
             </section>
 
