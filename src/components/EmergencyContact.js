@@ -3,63 +3,20 @@ import svgCall from '../images/icn-call.svg'
 import svgMoon from '../images/icn-moon.svg'
 import svgSun from '../images/icn-sun.svg'
 
-export const EmergencyContact = () => {
+export const EmergencyContact = ({ contactData, color }) => {
     return (
         <div className='row emergeny_list'>
-            <div className="emergency_itm mt_col">
-                <div className='item_inner'>
-                    <img src={svgCall} alt='#' className='item_icon' />
-                    <div className='itm_info'>
-                        <p>Notfalldienst-Apotheke</p>
-                        <h3>0900 55 35 55</h3>
+            {contactData?.map((contact, index) => (
+                <div key={index} className="emergency_itm mt_col">
+                    <div className='item_inner'>
+                        <img src={`https://medzentrum.entwicklung-loewenmut.ch${contact?.icons?.url}`} alt='' className='item_icon' />
+                        <div className='itm_info'>
+                            <p>{contact?.info_title}</p>
+                            <h3>{contact?.phone}</h3>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="emergency_itm mt_col">
-                <div className='item_inner'>
-                    <img src={svgCall} alt='#' className='item_icon' />
-                    <div className='itm_info'>
-                        <p>Notfalldienst-Apotheke</p>
-                        <h3>0900 55 35 55</h3>
-                    </div>
-                </div>
-            </div>
-            <div className="emergency_itm mt_col">
-                <div className='item_inner'>
-                    <img src={svgCall} alt='#' className='item_icon' />
-                    <div className='itm_info'>
-                        <p>Notfalldienst-Apotheke</p>
-                        <h3>0900 55 35 55</h3>
-                    </div>
-                </div>
-            </div>
-            <div className="emergency_itm mt_col">
-                <div className='item_inner'>
-                    <img src={svgSun} alt='#' className='item_icon' />
-                    <div className='itm_info'>
-                        <p>Notfalldienst-Apotheke</p>
-                        <h3>0900 55 35 55</h3>
-                    </div>
-                </div>
-            </div>
-            <div className="emergency_itm mt_col">
-                <div className='item_inner'>
-                    <img src={svgMoon} alt='#' className='item_icon' />
-                    <div className='itm_info'>
-                        <p>Notfalldienst-Apotheke</p>
-                        <h3>0900 55 35 55</h3>
-                    </div>
-                </div>
-            </div>
-            <div className="emergency_itm mt_col">
-                <div className='item_inner'>
-                    <img src={svgCall} alt='#' className='item_icon' />
-                    <div className='itm_info'>
-                        <p>Notfalldienst-Apotheke</p>
-                        <h3>0900 55 35 55</h3>
-                    </div>
-                </div>
-            </div>
+            ))}
         </div>
     )
 }

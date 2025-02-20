@@ -9,6 +9,8 @@ import { ShuffleComponent } from './ShuffleComponent';
 export const PharmacyEmergency = () => {
 
     const [bannerData, setBannerData] = useState(null);
+    const [contactData, setContactData] = useState(null);
+    const [pharmacyServicesData, setPharmacyServicesData] = useState(null);
 
     const getPageData = async () => {
         const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-emergency?populate[banner_section][populate]=banner_image&populate[info_section][populate]=icons&populate[pharmacy_services][populate]=image`)
@@ -16,8 +18,8 @@ export const PharmacyEmergency = () => {
         console.log(data);
         if (data) {
             setBannerData(data.data.banner_section);
-            // setServicesData(data.data.services_section);
-            // setSpecialsData(data.data.specials_section);
+            setContactData(data.data.info_section);
+            setPharmacyServicesData(data.data.pharmacy_services);
             // setProductsData(data.data.products_section);
             // setAdData(data.data.ad_section);
         }
@@ -44,10 +46,10 @@ export const PharmacyEmergency = () => {
             <section className='wi_full py_3 notefall_section'>
                 <div className='container-xxl'>
                     <div className='emrgeny_contact_container'>
-                        <EmergencyContact />
+                        <EmergencyContact contactData={contactData} color='green' />
                     </div>
                     <div className='shuffle_container mt-5'>
-                        <ShuffleComponent />
+                        <ShuffleComponent data={pharmacyServicesData} color='green' />
                     </div>
                 </div>
             </section>
