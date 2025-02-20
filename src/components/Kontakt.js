@@ -7,7 +7,7 @@ import { KontaktDetails } from './KontaktDetails'
 
 const Kontakt = () => {
 
-    // const [bannerData, setBannerData] = useState(null);
+    const [bannerData, setBannerData] = useState(null);
     // const [servicesData, setServicesData] = useState(null);
     // const [specialsData, setSpecialsData] = useState(null);
     // const [productsData, setProductsData] = useState(null);
@@ -34,12 +34,16 @@ const Kontakt = () => {
         <div className='kontakt'>
             <Navbar />
             <div className='inner_banner_Section'>
-                <BannerSection bannerData={bannerData} />
+                {<BannerSection bannerData={bannerData} />}
             </div>
             <section className='breadcrumb_sec wi_full mt_3'>
                 <MyButton />
             </section>
-            <KontaktDetails />
+            <section className='wi_full py_3'>
+                <div className='container-xxl'>
+                    <KontaktDetails />
+                </div>
+            </section>
             <Footer />
         </div>
     )

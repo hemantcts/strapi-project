@@ -9,6 +9,7 @@ import PharmacyTeam from './components/PharmacyTeam';
 import { PharmacyEmergency } from './components/PharmacyEmergency';
 import { PharmacyServices } from './components/PharmacyServices';
 import OverviewPractice from './components/OverviewPractice';
+import Kontakt from './components/Kontakt';
 import ScrollToTop from './components/mini_components/ScrollToTop';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/apotheke-notfall" element={<PharmacyEmergency />} />
         <Route path="/dienstleistungen-apotheke" element={<PharmacyServices />} />
         <Route path="/ubersicht-praxis" element={<OverviewPractice />} />
+        <Route path="/kontakt" element={<Kontakt />} />
       </Routes>
     </div>
   );

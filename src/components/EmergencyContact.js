@@ -11,7 +11,7 @@ export const EmergencyContact = () => {
                     <span className='item_icon'><img src={svgCall} alt='#' /></span>
                     <div className='itm_info'>
                         <p>Notfalldienst-Apotheke</p>
-                        <h4>0900 55 35 55</h4>
+                        <h3>0900 55 35 55</h3>
                     </div>
                 </div>
             </div>
@@ -20,7 +20,7 @@ export const EmergencyContact = () => {
                     <span className='item_icon'><img src={svgCall} alt='#' /></span>
                     <div className='itm_info'>
                         <p>Notfalldienst-Apotheke</p>
-                        <h4>0900 55 35 55</h4>
+                        <h3>0900 55 35 55</h3>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@ export const EmergencyContact = () => {
                     <span className='item_icon'><img src={svgCall} alt='#' /></span>
                     <div className='itm_info'>
                         <p>Notfalldienst-Apotheke</p>
-                        <h4>0900 55 35 55</h4>
+                        <h3>0900 55 35 55</h3>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@ export const EmergencyContact = () => {
                     <span className='item_icon'><img src={svgSun} alt='#' /></span>
                     <div className='itm_info'>
                         <p>Notfalldienst-Apotheke</p>
-                        <h4>0900 55 35 55</h4>
+                        <h3>0900 55 35 55</h3>
                     </div>
                 </div>
             </div>
@@ -47,16 +47,7 @@ export const EmergencyContact = () => {
                     <span className='item_icon'><img src={svgMoon} alt='#' /></span>
                     <div className='itm_info'>
                         <p>Notfalldienst-Apotheke</p>
-                        <h4>0900 55 35 55</h4>
-                    </div>
-                </div>
-            </div>
-            <div className="emergency_itm">
-                <div className='item_inner'>
-                    <span className='item_icon'><img src={svgCall} alt='#' /></span>
-                    <div className='itm_info'>
-                        <p>Notfalldienst-Apotheke</p>
-                        <h4>0900 55 35 55</h4>
+                        <h3>0900 55 35 55</h3>
                     </div>
                 </div>
             </div>
