@@ -583,7 +583,7 @@ ul.nav-tabs li a.active {
 
 .emrgeny_contact_container {
     .emergency_itm {
-        width: calc(100% / 6);
+        width: calc(100% / 5);
         text-align: center;
         line-height: 1.25;
         margin-top: 3rem;
@@ -593,6 +593,7 @@ ul.nav-tabs li a.active {
         border-radius: 10px;
         box-shadow: 0 2px 30px rgba(0, 0, 0, 0.08);
         padding: 0 1rem 1rem;
+        height: 100%;
     }
     span.item_icon {
         width: 60px;

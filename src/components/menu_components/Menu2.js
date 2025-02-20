@@ -14,16 +14,16 @@ const Menu2 = () => {
                             <Link to='/ubersicht-praxis' >Übersicht Praxis</Link>
                         </li>
                         <li className='list-items'>
-                            <Link>Termin buchen Praxis</Link>
+                            <Link to='/terminbuchung-praxis'>Termin buchen Praxis</Link>
                         </li>
                         <li className='list-items'>
-                            <Link>TEAM PRAXIS</Link>
+                            <Link to='/praxis-team'>TEAM PRAXIS</Link>
                         </li>
                         <li className='list-items'>
-                            <Link>Notfall</Link>
+                            <Link to='/praxis-notfall'>Notfall</Link>
                         </li>
                         <li className='list-items'>
-                            <Link>Dienstleistungen Praxis</Link>
+                            <Link to='/dienstleistungen-praxis'>Dienstleistungen Praxis</Link>
                         </li>
                         <li className='list-items'>
                             <Link>Öffnungszeiten und Kontakt</Link>

@@ -52,7 +52,7 @@ const OverviewPractice = () => {
 
             <section className="wi_full py_3 dien_section">
                 <div className="container-xxl">
-                    <TwoContent data={servicesData} color='green' />
+                    <TwoContent data={servicesData} color='blue' />
                     <div className="dien_list">
                         <ServicesSection servicesData={servicesData?.services_data} color='blue' />
                     </div>

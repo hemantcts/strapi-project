@@ -7,7 +7,7 @@ import { TwoContent } from './mini_components/TwoContent'
 import { Team1 } from './Team1'
 import { FounderSection } from './FounderSection'
 
-const PharmacyTeam = () => {
+const PraxisTeam = () => {
   const [bannerData, setBannerData] = useState();
   const [founderSection, setFounderSection] = useState();
   const [founderData, setFounderData] = useState();
@@ -16,7 +16,7 @@ const PharmacyTeam = () => {
   const [teams2, setTeams2] = useState();
 
   const getPageData = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[banner_section][populate]=banner_image&populate[founder_section][populate]=*&populate[founder_data][populate]=image&populate[team_data][populate]=types`)
+    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/praxis-team?populate[banner_section][populate]=banner_image&populate[founder_section][populate]=*&populate[founder_data][populate]=image&populate[team_data][populate]=types`)
     const data = await response.json();
     console.log(data);
     if (data) {
@@ -58,7 +58,7 @@ const PharmacyTeam = () => {
       </header>
 
       <section className='inner_banner_Section'>
-        <BannerSection bannerData={bannerData} color='green' />
+        <BannerSection bannerData={bannerData} color='blue' />
       </section>
 
       <section className='breadcrumb_sec wi_full mt_3'>
@@ -67,33 +67,33 @@ const PharmacyTeam = () => {
 
       <section className="wi_full py_3 grunderinnen_sec">
         <div className="container-xxl">
-          <TwoContent data={founderSection} color='green' />
+          <TwoContent data={founderSection} color='blue' />
           <div className="founder_wrapper mt-5">
-            <FounderSection data={founderData} color='green' />
+            <FounderSection data={founderData} color='blue' />
           </div>
         </div>
       </section>
 
       <section className='wi_full py_3 pt-0 team_section'>
         <div className="container-xxl">
-          <div className='sec_title green text-center'>
+          <div className='sec_title blue text-center'>
             <h2>{teamData?.heading}</h2>
           </div>
           <div className='tab_container'>
             <ul  className='nav nav-tabs' role='tablist'>
           {teamData?.types?.map((type, index)=>(
               <li key={index} className='nav-item'>
-                  <a className={`nav-link ${index===0 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index+1}`} role="tab">{type?.link_text
+                  <a className={`nav-link ${index===1 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index+1}`} role="tab">{type?.link_text
                   }</a>
               </li>
             ))}
             </ul>
             <div className='tab-content'>
-              <div className='tab-pane active' id='Tab1' role='tabpanel'>
-                <Team1 data={teams} color='green' />
+              <div className='tab-pane' id='Tab1' role='tabpanel'>
+                <Team1 data={teams} color='blue' />
               </div>
-              <div className='tab-pane' id='Tab2' role='tabpanel'>
-                <Team1 data={teams2} color='green' />
+              <div className='tab-pane active' id='Tab2' role='tabpanel'>
+                <Team1 data={teams2} color='blue' />
               </div>
             </div>
               
@@ -109,4 +109,4 @@ const PharmacyTeam = () => {
   )
 }
 
-export default PharmacyTeam
+export default PraxisTeam
