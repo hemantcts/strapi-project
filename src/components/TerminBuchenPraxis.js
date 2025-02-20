@@ -4,6 +4,7 @@ import Footer from './Footer'
 import { BannerSection } from './BannerSection'
 import { MyButton } from './mini_components/MyButton'
 import { TwoContent } from './mini_components/TwoContent'
+import Iframe from './Iframe'
 
 export const TerminBuchenPraxis = () => {
   const [bannerData, setBannerData] = useState();
@@ -40,7 +41,12 @@ export const TerminBuchenPraxis = () => {
       <section className="wi_full py_3 dien_section">
         <div className="container-xxl">
           <TwoContent data={bookingData} color='blue' />
+          
+          <div className='iframe mt-5'>
+            <Iframe />
+          </div>
         </div>
+
       </section>
 
 

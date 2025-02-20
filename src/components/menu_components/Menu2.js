@@ -26,7 +26,7 @@ const Menu2 = () => {
                             <Link to='/dienstleistungen-praxis'>Dienstleistungen Praxis</Link>
                         </li>
                         <li className='list-items'>
-                            <Link>Öffnungszeiten und Kontakt</Link>
+                            <Link to='/kontakt'>Öffnungszeiten und Kontakt</Link>
                         </li>
                         <li className='list-items'>
                             <Link className='termin_praxis'>Termin Praxis buchen <i><img src={svgIcon} alt=""/></i> </Link>
