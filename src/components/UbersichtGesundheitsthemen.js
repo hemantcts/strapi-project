@@ -1,7 +1,13 @@
-import React from "react";
-import Blogs from './Blogs';
+import React, { useState, useEffect } from 'react'
+import Navbar from './Navbar'
+// import Footer from './Footer'
+import { BannerSection } from './BannerSection'
+import { MyButton } from './mini_components/MyButton'
+import { Blogs } from './Blogs'
+import Footer from './Footer'
 
 export const UbersichtGesundheitsthemen = ({ data, color }) => {
+    const [bannerData, setBannerData] = useState();
     return (
         <div className="ubersicht-gesundheitsthemen">
             <header>
@@ -16,9 +22,18 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
                 <MyButton />
             </section>
 
-            <section className="blogs">
-                <Blogs />
+            <section className="wi_full py_3 blog_section">
+                <div className='container-xxl'>
+                    <div className='sec_title text-center'>
+                        <h2>Proin gravida nibh</h2>
+                    </div>
+                    <div className='blog_container mt-4'>
+                        <Blogs />
+                    </div>
+                </div>
             </section>
+
+            <Footer />
         </div>
     )
 }

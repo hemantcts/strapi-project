@@ -17,6 +17,8 @@ import { TerminBuchenPraxis } from './components/TerminBuchenPraxis';
 import PraxisTeam from './components/PraxisTeam';
 import { PraxisNotfall } from './components/PraxisNotfall';
 import { DienstleistungenPraxis } from './components/DienstleistungenPraxis';
+import { UbersichtGesundheitsthemen } from './components/UbersichtGesundheitsthemen';
+import { Blog } from './components/Blog';
 
 function App() {
   return (
@@ -39,6 +41,9 @@ function App() {
         <Route path="/kontakt" element={<Kontakt />} />
         <Route path="/ernahrungsdiagnostik" element={<Ernahrungsdiagnostik />} />
         <Route path="/datenschutz" element={<Datenschutz />} />
+
+        <Route path="/ubersicht-gesundheitsthemen" element={<UbersichtGesundheitsthemen />} />
+        <Route path="/blog" element={<Blog />} />
       </Routes>
     </div>
   );
