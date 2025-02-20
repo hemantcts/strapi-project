@@ -567,6 +567,11 @@ ul.nav-tabs li a.active {
     h3 {
         font-weight: var(--bs-fw400);
     }
+    h4 {
+        font-weight: var(--bs-fw600);
+        font-size: var(--bs-fs24);
+        color: var(--bs-blue);
+    }
     .content_box ul li {
         position: relative;
         padding-left: 30px;
@@ -628,6 +633,33 @@ ul.nav-tabs li a.active {
         font-weight: var(--bs-fw600);
         line-height: 1;
         margin-top: auto;
+    }
+}
+
+.nuitrition_diagnos {
+    margin-top: 5rem;
+    background: var(--bs-bgblue) url(../images/Graphic_Elements.png) no-repeat right bottom;
+    background-size: contain;
+    .content_col {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    .img_col img {
+        height: calc(100% + 5rem);
+        margin-top: -5rem;
+    }
+    blockquote p {
+        font-size: var(--bs-h3);
+        font-style: italic;
+    }
+    blockquote h3 {
+        font-weight: var(--bs-fw600);
+    }
+    blockquote small {
+        font-size: var(--bs-fs22);
+        font-weight: var(--bs-fw400);
+        line-height: 1.25;
+        display: block;
     }
 }
 
@@ -708,14 +740,6 @@ ul.nav-tabs li a.active {
     .card .card-header a.collapsed:before {
         background-image: url(../images/plus-green.svg) !important;
     } 
-    .kontkt_itm {
-        .item_inner {
-            background: linear-gradient(to right, rgba(224, 243, 255, 1), rgba(233, 255, 243, 1));
-        }
-        span.icon_img {
-            background: linear-gradient(to bottom, rgba(0, 158, 75, 1), rgba(37, 150, 169, 1));
-        }
-    }
 }
 
 .team_section {
@@ -728,6 +752,15 @@ ul.nav-tabs li a.active {
                 color: var(--bs-green);
             }
         }
+    }
+}
+
+.kontkt_itm.green {
+    .item_inner {
+        background: linear-gradient(to right, rgba(224, 243, 255, 1), rgba(233, 255, 243, 1));
+    }
+    span.icon_img {
+        background: linear-gradient(to bottom, rgba(0, 158, 75, 1), rgba(37, 150, 169, 1));
     }
 }
 

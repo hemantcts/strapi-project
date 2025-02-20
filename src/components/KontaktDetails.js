@@ -5,8 +5,8 @@ import iconEnvelope from '../images/icn-envelope.svg'
 export const KontaktDetails = ({data, color}) => {
     return (
         <div className={`row kontakt_row  ${color}`}>
-            <div className="col-lg-6 kontkt_itm">
-                <div className='item_inner green'>
+            <div className="col-lg-6 kontkt_itm green">
+                <div className='item_inner'>
                     <h2 className='h3_large'>Apotheke</h2>
                     <ul>
                         <li><span className='icon_img'><img src={iconCall} alt='' /></span><a href='tel: 0523050350'>052 305 03 50</a></li>

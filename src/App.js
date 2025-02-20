@@ -10,6 +10,8 @@ import { PharmacyEmergency } from './components/PharmacyEmergency';
 import { PharmacyServices } from './components/PharmacyServices';
 import OverviewPractice from './components/OverviewPractice';
 import Kontakt from './components/Kontakt';
+import Ernahrungsdiagnostik from './components/Ernahrungsdiagnostik';
+import Datenschutz from './components/Datenschutz';
 import ScrollToTop from './components/mini_components/ScrollToTop';
 import { TerminBuchenPraxis } from './components/TerminBuchenPraxis';
 import PraxisTeam from './components/PraxisTeam';
@@ -35,6 +37,8 @@ function App() {
         <Route path="/praxis-notfall" element={<PraxisNotfall />} />
         <Route path="/dienstleistungen-praxis" element={<DienstleistungenPraxis />} />
         <Route path="/kontakt" element={<Kontakt />} />
+        <Route path="/ernahrungsdiagnostik" element={<Ernahrungsdiagnostik />} />
+        <Route path="/datenschutz" element={<Datenschutz />} />
       </Routes>
     </div>
   );

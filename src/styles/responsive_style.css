@@ -45,6 +45,15 @@ ul.dropdown-menu.half {
     padding: 13px 0 !important;
 }
 }
+
+@media (min-width: 1200px){
+.nuitrition_diagnos {
+    blockquote {
+        padding-right: 3rem;
+        margin-bottom: 0;
+    }
+}
+}
     
 @media (min-width: 992px){
 .container-xxl {
@@ -181,6 +190,11 @@ header {
     .shuffle_item_wrap:nth-child(even) .content_box {
         padding-left: 2rem;
         padding-right: 1.2rem;
+    }
+}
+.nuitrition_diagnos{
+    .img_col {
+        align-self: end;
     }
 }
 }
