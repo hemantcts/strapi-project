@@ -9,9 +9,6 @@ const Kontakt = () => {
 
     const [bannerData, setBannerData] = useState(null);
     const [contactData, setContactData] = useState(null);
-    // const [specialsData, setSpecialsData] = useState(null);
-    // const [productsData, setProductsData] = useState(null);
-    // const [adData, setAdData] = useState(null);
 
     const getPageData = async () => {
         const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/oeffnungszeiten-und-kontakt?populate[banner_section][populate]=banner_image&populate[contact_details][populate]=details.icon&populate[contact_details][populate]=time_details`)
@@ -20,9 +17,6 @@ const Kontakt = () => {
         if (data) {
             setBannerData(data.data.banner_section);
             setContactData(data.data.contact_details);
-            // setSpecialsData(data.data.specials_section);
-            // setProductsData(data.data.products_section);
-            // setAdData(data.data.ad_section);
         }
     }
 

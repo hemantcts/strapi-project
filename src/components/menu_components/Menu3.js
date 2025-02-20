@@ -11,7 +11,7 @@ const Menu3 = () => {
                 <div className='menu_links'>
                     <ul className='submenu_list'>
                         <li className='list-items border-0'>
-                            <Link>Übersicht Ernährungsdiagnostik</Link>
+                            <Link to='/ernahrungsdiagnostik'>Übersicht Ernährungsdiagnostik</Link>
                         </li>
                         <li className='list-items'>
                             <Link>Angebote</Link>

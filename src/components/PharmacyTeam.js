@@ -82,7 +82,7 @@ const PharmacyTeam = () => {
           <div className='tab_container'>
             <ul  className='nav nav-tabs' role='tablist'>
           {teamData?.types?.map((type, index)=>(
-              <li key={index} className='nav-item'>
+              <li key={index} className={`nav-item tab${index+1}`}>
                   <a className={`nav-link ${index===0 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index+1}`} role="tab">{type?.link_text
                   }</a>
               </li>
@@ -93,7 +93,7 @@ const PharmacyTeam = () => {
                 <Team1 data={teams} color='green' />
               </div>
               <div className='tab-pane' id='Tab2' role='tabpanel'>
-                <Team1 data={teams2} color='green' />
+                <Team1 data={teams2} color='blue' />
               </div>
             </div>
               

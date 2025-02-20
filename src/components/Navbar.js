@@ -45,7 +45,9 @@ const Navbar = () => {
     };
 
     const handleActive = (link) => {
-        setActive((prev) => ({ ...prev, [`link${link}`]: !prev[`link${link}`] }));
+        if (!isHoverEnabled) {
+            setActive((prev) => ({ ...prev, [`link${link}`]: !prev[`link${link}`] }));
+        }
     };
 
     const handleMouseEnter = (link) => {
@@ -58,7 +60,7 @@ const Navbar = () => {
         if (isHoverEnabled) {
             setTimeout(() => {
                 setHover((prev) => ({ ...prev, [`link${link}`]: false }));
-            }, 300);
+            }, 100);
         }
     };
 
