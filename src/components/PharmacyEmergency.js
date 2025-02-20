@@ -48,7 +48,7 @@ export const PharmacyEmergency = () => {
                     <div className='emrgeny_contact_container'>
                         <EmergencyContact contactData={contactData} color='green' />
                     </div>
-                    <div className='shuffle_container mt-5'>
+                    <div className='shuffle_container pt-5'>
                         <ShuffleComponent data={pharmacyServicesData} color='green' />
                     </div>
                 </div>

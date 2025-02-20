@@ -5,18 +5,20 @@ import svgSun from '../images/icn-sun.svg'
 
 export const EmergencyContact = ({ contactData, color }) => {
     return (
-        <div className='row emergeny_list'>
-            {contactData?.map((contact, index) => (
-                <div key={index} className="emergency_itm mt_col">
-                    <div className='item_inner'>
-                        <img src={`https://medzentrum.entwicklung-loewenmut.ch${contact?.icons?.url}`} alt='' className='item_icon' />
-                        <div className='itm_info'>
-                            <p>{contact?.info_title}</p>
-                            <h3>{contact?.phone}</h3>
+        <div className={`${color}`}>
+            <div className='row emergeny_list'>
+                {contactData?.map((contact, index) => (
+                    <div key={index} className="emergency_itm">
+                        <div className='item_inner'>
+                            <span className='item_icon'><img src={`https://medzentrum.entwicklung-loewenmut.ch${contact?.icons?.url}`} alt='#' /></span>
+                            <div className='itm_info'>
+                                <p>{contact?.info_title}</p>
+                                <h3>{contact?.phone}</h3>
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     )
 }

@@ -5,7 +5,7 @@ import imgNotefall from '../images/notefall-2.png'
 export const ShuffleComponent = ({ data, color }) => {
 
     return (
-        <div>
+        <div className='shuffle_item_wrap'>
             {data?.map((services, index)=>(
                 <div key={index} className='row shuffle_row'>
                     <div className='col-12 col-lg-6 img_col'>
