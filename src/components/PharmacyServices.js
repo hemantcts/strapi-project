@@ -4,6 +4,7 @@ import { BannerSection } from './BannerSection'
 import { MyButton } from './mini_components/MyButton'
 import Footer from './Footer'
 import { TwoContent } from './mini_components/TwoContent'
+import { ShuffleComponent } from './ShuffleComponent'
 
 export const PharmacyServices = () => {
 
@@ -41,9 +42,12 @@ export const PharmacyServices = () => {
                 <MyButton />
             </section>
 
-            <section className="wi_full py_3 dien_section">
+            <section className="wi_full py_3 dien_shuffle">
                 <div className="container-xxl">
                     <TwoContent data={servicesData} color='green' />
+                    <div className='shuffle_container pt-5'>
+                        <ShuffleComponent />
+                    </div>
                 </div>
             </section>
 
