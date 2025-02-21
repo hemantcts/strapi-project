@@ -8,10 +8,12 @@ import productImg from '../images/product-2.png'
 import productImg2 from '../images/product-3.png'
 import imgBlog from '../images/blog-img.png'
 import MyLink from './mini_components/MyLink';
+import { Accordion } from './Accordion'
 
 export const Blog = ({ data, color }) => {
     const [productDetails, setProductDetails] = useState();
     const [extraDetails, setExtraDetails] = useState();
+    const [blogs, setBlogs] = useState();
 
     const getPageData = async () => {
         const response = await fetch('https://medzentrum.entwicklung-loewenmut.ch/api/single-blog?populate[product_details][populate]=image&populate[extra_details][populate]=accordion_data')
@@ -23,8 +25,18 @@ export const Blog = ({ data, color }) => {
         }
     }
 
+    const getBlogs = async () => {
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*`)
+        const data = await response.json();
+        console.log(data);
+        if (data) {
+            setBlogs(data.data);
+        }
+    }
+
     useEffect(() => {
         getPageData();
+        getBlogs();
     }, [])
 
 
@@ -61,50 +73,32 @@ export const Blog = ({ data, color }) => {
                                     <button type="button" className="button fill_btn">ALLE AKTIONEN  <img src={arrowImg} alt="#" /></button>
                                 </div>
                             </div>
+
+                            <div className='post_data_wrapper text-black mt-5 pt-lg-5'>
+                                <h1>{extraDetails?.heading}</h1>
+                                <Accordion data={extraDetails?.accordion_data} />
+                            </div>
+
                         </div>
                         <div className='col-lg-4 sticky_col'>
                             <div className='related_blogs'>
                                 <h3>Alle Gesundheitsthemen </h3>
                                 <div className='rel_blog_list'>
-                                    <div className='rb_item'>
-                                        <div className='rb_itm_iner'>
-                                            <div className='rbitm_img'>
-                                                <a href=""><img src={imgBlog} alt='' /></a>
-                                            </div>
-                                            <div className='rbitm_content text-black'>
-                                                <h4><a href="">Proin gravida nibh vel velit auctor aliquet</a></h4>
-                                                <div className='btn_block'>
-                                                    <MyLink link='/' text='Mehr erfahren ' />
+                                    {blogs?.slice(0, 3).map((blog, index)=>(
+                                        <div className='rb_item'>
+                                            <div className='rb_itm_iner'>
+                                                <div className='rbitm_img'>
+                                                    <a href=""><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.image?.url}`} alt='' /></a>
+                                                </div>
+                                                <div className='rbitm_content text-black'>
+                                                    <h4><a href="">{blog?.title}</a></h4>
+                                                    <div className='btn_block'>
+                                                        <MyLink link='/' text='Mehr erfahren ' />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className='rb_item'>
-                                        <div className='rb_itm_iner'>
-                                            <div className='rbitm_img'>
-                                                <a href=""><img src={imgBlog} alt='' /></a>
-                                            </div>
-                                            <div className='rbitm_content text-black'>
-                                                <h4><a href="">Proin gravida nibh vel velit auctor aliquet</a></h4>
-                                                <div className='btn_block'>
-                                                    <MyLink link='/' text='Mehr erfahren ' />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className='rb_item'>
-                                        <div className='rb_itm_iner'>
-                                            <div className='rbitm_img'>
-                                                <a href=""><img src={imgBlog} alt='' /></a>
-                                            </div>
-                                            <div className='rbitm_content text-black'>
-                                                <h4><a href="">Proin gravida nibh vel velit auctor aliquet</a></h4>
-                                                <div className='btn_block'>
-                                                    <MyLink link='/' text='Mehr erfahren ' />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>

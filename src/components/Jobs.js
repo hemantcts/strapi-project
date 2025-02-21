@@ -43,7 +43,7 @@ export const Jobs = () => {
             <section className="wi_full py_3 job_sec">
                 <div className="container-xxl">
                     <TwoContent />
-                    <div className='mt_3 job_shuffle'>
+                    <div className='job_shuffle'>
                         <JobShuffle />
                     </div>
                 </div>

@@ -21,7 +21,7 @@ import { UbersichtGesundheitsthemen } from './components/UbersichtGesundheitsthe
 import { Blog } from './components/Blog';
 import { Impressum } from './components/Impressum';
 import { Jobs } from './components/Jobs';
-import { ErrorPage } from './components/ErrorPage';
+import { Error } from './components/Error';
 
 function App() {
   return (
@@ -58,7 +58,7 @@ function App() {
 
 
         {/* Catch-All Route for Undefined Paths */}
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );
