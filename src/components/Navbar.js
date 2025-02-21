@@ -143,7 +143,7 @@ const Navbar = () => {
                                         </ul>}
                                     </li>
                                     <li className='nav-item'>
-                                        <Link className={`nav-link link4 ${(active.link4 || hover.link4) && 'active'}`} to="#" onClick={() => handleActive(4)}
+                                        <Link className={`nav-link link4 ${(active.link4 || hover.link4) && 'active'}`} to='/ubersicht-gesundheitsthemen' onClick={() => handleActive(4)}
                                             onMouseEnter={() => handleMouseEnter(4)}
                                             onMouseLeave={() => handleMouseLeave(4)}
                                         >Gesundheitsthemen</Link>

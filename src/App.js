@@ -19,6 +19,8 @@ import { PraxisNotfall } from './components/PraxisNotfall';
 import { DienstleistungenPraxis } from './components/DienstleistungenPraxis';
 import { UbersichtGesundheitsthemen } from './components/UbersichtGesundheitsthemen';
 import { Blog } from './components/Blog';
+import { NoJobs } from './components/NoJobs';
+import { ErrorPage } from './components/ErrorPage';
 
 function App() {
   return (
@@ -50,6 +52,11 @@ function App() {
 
         <Route path="/ubersicht-gesundheitsthemen" element={<UbersichtGesundheitsthemen />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/no-jobs" element={<NoJobs />} />
+
+
+        {/* Catch-All Route for Undefined Paths */}
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
   );
