@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const Accordion = ({data, color}) => {
+export const Accordion = ({data, color, greyy}) => {
     return (
         <div className={`accordion_wrapper ${color}`}>
-        <div className="accordion" id="accordion" role='tablist' aria-multiselectable='true'>
+        <div className={`accordion ${greyy === true? 'greyy' : ''}`} id="accordion" role='tablist' aria-multiselectable='true'>
             {data?.map((item, index) => (
                 <div className="card mb-3" key={item?.id}>
                     <div className="card-header">

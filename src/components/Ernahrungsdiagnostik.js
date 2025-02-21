@@ -34,7 +34,7 @@ const Ernahrungsdiagnostik = () => {
     }, [])
 
     return (
-        <div className='kontakt'>
+        <div className='ernahrung'>
             <Navbar />
             <div className='inner_banner_Section'>
                 {<BannerSection bannerData={bannerData} />}

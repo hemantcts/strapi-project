@@ -87,7 +87,7 @@ export const Blog = ({ data, color }) => {
 
                             <div className='post_data_wrapper text-black mt-5 pt-lg-5'>
                                 <h1>{extraDetails?.heading}</h1>
-                                <Accordion data={extraDetails?.accordion_data} />
+                                <Accordion data={extraDetails?.accordion_data} greyy={true} />
                             </div>
 
                         </div>
