@@ -22,6 +22,8 @@ import { Blog } from './components/Blog';
 import { Impressum } from './components/Impressum';
 import { Jobs } from './components/Jobs';
 import { Error } from './components/Error';
+import { SearchResult } from './components/SearchResult';
+import { Angebot } from './components/Angebot';
 
 function App() {
   return (
@@ -55,6 +57,8 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/impressum" element={<Impressum />} />
         <Route path="/jobs" element={<Jobs />} />
+        <Route path="/search-result" element={<SearchResult />} />
+        <Route path="/angebot" element={<Angebot />} />
 
 
         {/* Catch-All Route for Undefined Paths */}
