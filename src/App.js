@@ -52,7 +52,7 @@ function App() {
         <Route path="/datenschutz" element={<Datenschutz />} />
 
         <Route path="/ubersicht-gesundheitsthemen" element={<UbersichtGesundheitsthemen />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:id" element={<Blog />} />
         <Route path="/impressum" element={<Impressum />} />
         <Route path="/jobs" element={<Jobs />} />
 
