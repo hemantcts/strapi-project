@@ -6,7 +6,7 @@ import iconEnvelope from '../images/envelope-blue.svg'
 export const ImpressumKontakt = ({ data, color }) => {
     return (
         <div className='row imp_address_row'>
-            <div className='col-lg-6 imp_itm'>
+            <div className='col-md-6 imp_itm'>
                 <div className='imp_shadow'>
                     <h3 className='font-volk mb-4'>Herausgeber</h3>
                     <ul>
@@ -16,7 +16,7 @@ export const ImpressumKontakt = ({ data, color }) => {
                     </ul>
                 </div>
             </div>
-            <div className='col-lg-6 imp_itm'>
+            <div className='col-md-6 imp_itm'>
                 <div className='imp_shadow'>
                     <h3 className='font-volk mb-4'>Konzeption und Realisation</h3>
                     <ul>

@@ -16,6 +16,32 @@ header {
     padding-left: 40px;
     padding-right: 40px;
 }
+.kontkt_itm {
+    ul { 
+        flex-wrap: wrap;
+    }
+    ul li {
+        flex-grow: unset;
+        flex-basis: unset;
+    }
+    .offnun_inr span {
+        width: 100%;
+        margin: 0;
+    }
+    .offnun_inr {
+        margin: 10px 0;
+    }
+}
+.single-blog {
+    .detail_col, .sticky_col {
+        width: 100%;
+    }
+}
+footer {
+    .ftr_block {
+        width: 50%;
+    }
+}
 }
 
 @media (min-width: 992px) and (max-width: 1260px) {
@@ -59,6 +85,9 @@ ul.dropdown-menu.half {
 .container-xxl {
     padding-left: 80px;
     padding-right: 80px;
+}
+.single-blog {
+    margin-top: 120px;
 }
 header {
     .hdr_copygt, .open--menu--header {
@@ -197,6 +226,16 @@ header {
         align-self: end;
     }
 }
+.job_sec{
+    .job_shuffle .row:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+}
+.error_sec {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
 }
     
 @media (min-width: 1600px){
@@ -273,12 +312,18 @@ footer .col-lg-3.ftr_block {
         }
     }
 }
+.inner_banner {
+    height: 650px;
+    .banner_content {
+        max-width: 900px;
+    }
+}
 }
 
 @media (max-width: 1199px){
 :root {
     --bs-h1: 38px;
-    --bs-h2: 38px;
+    --bs-h2: 36px;
     --bs-h3: 22px;
     --bs-h4: 20px;
     --bs-h50: 35px;
@@ -289,12 +334,45 @@ footer .col-lg-3.ftr_block {
     --bs-fs18: 14px;
     --bs-fsbody: 18px;
 }
+.emergeny_list {
+    justify-content: center;
+    .emergency_itm {
+        width: calc(100% / 3);
+    }
+    .itm_info p {
+        font-size: 18px;
+    }
+}
+.impressum_sec {
+    .imp_shadow {
+        padding: 1.5rem 1rem 10px;
+    }
+    ul li {
+        padding-left: 50px;
+    }
+    ul li img {
+        width: 38px;
+    }
+}
+.single-blog {
+    margin-top: 100px;
+    .related_blogs {
+        margin-top: 2rem;
+    } 
+    .grey_box  img {
+        width: 200px;
+    }
+}
+
 }
 
 @media (max-width: 991px){
 .py_3 {
     padding-top: 2rem;
     padding-bottom: 2rem;
+}
+.mt_3 {
+    margin-top: 2rem;
 }
 .container-xxl {
     padding-left: 30px;
@@ -366,7 +444,7 @@ header {
     }
     #mainNavbar .header-menu-h {
         height: 100%;
-        max-height: calc(100vh - 100px);
+        max-height: calc(100vh - 180px);
         overflow-x: hidden;
         overflow-y: auto;
         padding: 10px 0;
@@ -433,6 +511,13 @@ header {
     .navbar .hdr_copygt p img {
         width: 25px;
     }
+    .navbar-brand {
+        max-width: 230px;
+        padding: 10px 0;
+    }
+}
+.banner_sec {
+    margin-top: 90px;
 }
 .heart_sec {
     .heart_block img.heart_img {
@@ -451,10 +536,107 @@ header {
 footer {
     padding-top: 2rem;
 }
+.dien_section {
+    .dien_list .dien_itm .item_inner .item_text {
+        padding-left: .75rem;
+    }
+}
+.shuffle_container {
+    .img_col img {
+        top: 0;
+    }
+    .shuffle_item_wrap {
+        margin-top: 2rem;
+    }
+    .content_box {
+        padding-bottom: 10px;
+    }
+}
+.error_sec {
+    padding-top: 100px;
+    padding-bottom: 2rem;
+    .img_col img {
+        max-width: 200px;
+        margin-top: 0;
+    }
+    .content_col {
+        text-align: center;
+    }
+    .btn_block {
+        justify-content: center;
+    }
+}
+.kontkt_itm {
+    margin-bottom: 1.5rem;
+}
+.spezielles_section {
+    .content_col {
+        margin-top: 1.5rem;
+    }
+}
+.accordion {
+    .card-header a:before {
+        width: 30px;
+        height: 30px;
+        background-size: 30px;
+    }
+}
+.inner_banner {
+    height: 450px;
+    .banner_content { 
+        padding: 2rem 1rem;
+        border-left-width: 20px;
+    }
+}
+.pharmacy_services .shuffle_container {
+    padding-top: 0 !important;
+}
+.nuitrition_diagnos {
+    margin-top: 2rem;
+    .img_col img {
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+}
+.job_sec {
+    .job_img {
+        margin-top: 1.5rem;
+    }
+}
 }
 
 @media (max-width: 767px){
-
+:root {
+    --bs-h1: 32px;
+    --bs-h2: 32px;
+    --bs-h3: 22px;
+    --bs-h4: 20px;
+    --bs-h50: 35px;
+    --bs-h40: 30px;
+    --bs-fs26: 20px;
+    --bs-fs22: 18px;
+    --bs-fs20: 16px;
+    --bs-fs18: 14px;
+    --bs-fsbody: 16px;
+}
+.banner_sec {
+    p {
+        font-size: 20px;
+    }
+}
+.team_section {
+    .item_body {
+        p {
+            min-height: unset;
+        }
+    }
+}
+.impressum_sec { 
+    .imp_itm {
+        margin-top: 1.5rem;
+    }
+}
 }
 
 @media (max-width: 575px){
@@ -485,12 +667,59 @@ header {
         padding-top: 2rem;
     }
 }
+.mt-5 {
+    margin-top: 1.5rem !important;
+}
+.emergeny_list {
+    .emergency_itm {
+        width: calc(100% / 2);
+    }
+}
+.founder_wrapper .content_col {
+    padding: 1rem;
+}
+.kontkt_itm {
+    .item_inner {
+        padding: 1.5rem;
+    }
+    ul {
+        flex-wrap: wrap;
+    }
+    ul li {
+        flex-grow: unset;
+        flex-basis: unset;
+        width: 100%;
+    }
+    .offnun_inr span {
+        font-size: 15px;
+    }
+}
+.single-blog {
+    .related_blogs {
+        .rb_itm_iner {
+            align-items: flex-start;
+        }
+        .rbitm_img {
+            width: 90px;
+        }
+        .rbitm_content {
+            width: calc(100% - 90px);
+        }
+        h4 {
+            font-size: 18px;
+        }
+        .button {
+            padding: 8px !important;
+            font-size: 14px;
+        }
+    }
+}
 }
 
 @media (max-width: 480px){
 :root {
-    --bs-h1: 34px;
-    --bs-h2: 34px;
+    --bs-h1: 28px;
+    --bs-h2: 28px;
     --bs-h3: 20px;
     --bs-h4: 18px;
     --bs-h50: 30px;
@@ -516,6 +745,19 @@ header {
 .fill_btn img {
     width: 20px;
 }
+.pdf_btn img {
+    width: 15px;
+}
+header {
+    #mainNavbar ul.navbar-nav > li > a.nav-link {
+        font-size: 17px;
+    }
+    .navbar-nav li.megamenu-fw a b.caret {
+        width: 17px;
+        height: 17px;
+        margin-top: -2px;
+    }
+}
 .banner_sec {
     .round_btn {
         width: 120px;
@@ -528,15 +770,63 @@ header {
     .buttn_1, .buttn_2 {
         margin: 0 10px 1rem;
     }
+    p {
+        font-size: 18px;
+    }
+}
+.inner_banner {
+    height: 350px;
 }
 .partner_sec {
     .partner_wrap .img_item {
         width: 33%;
     }
 }
+.dien_section {
+    .dien_list .dien_itm .item_inner .item_text {
+        padding: 0 1.5rem;
+        width: 100%;
+    }
+    .dien_list .dien_itm .item_img {
+        width: 100%;
+        margin-bottom: -25px;
+        img {
+            width: 95%;
+        }
+    }
+}
+.inner_banner {
+    .banner_content {
+        padding: 20px 10px;
+        border-left-width: 10px;
+    }
+}
+.emergeny_list {
+    .emergency_itm {
+        width: calc(100%);
+    }
+}
+.kontkt_itm {
+    .item_inner {
+        padding: 1rem;
+    }
+    .offnun_inr {
+        margin: 10px 0;
+    span {
+        font-size: 15px;
+        width: 100%;
+        margin: 0;
+    }
+}
+}
 }
 
 
+@media (max-width:360px) {
+    :root {
+        --bs-h1: 25px;
+    }
+}
 
 
 @media (min-width:1400px) {

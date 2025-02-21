@@ -21,6 +21,7 @@ import { UbersichtGesundheitsthemen } from './components/UbersichtGesundheitsthe
 import { Blog } from './components/Blog';
 import { Impressum } from './components/Impressum';
 import { Jobs } from './components/Jobs';
+import { Error } from './components/Error';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/impressum" element={<Impressum />} />
         <Route path="/jobs" element={<Jobs />} />
+        <Route path="/error" element={<Error />} />
       </Routes>
     </div>
   );

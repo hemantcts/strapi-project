@@ -14,7 +14,7 @@ export const JobShuffle = ({ data, color }) => {
                     <div className='job_content text-black'>
                         <h2>Werden Sie ein Teil unseres Teams</h2>
                         <p>Zur Ergänzung unseres Teams suchen wir ein/e</p>
-                        <h3 className='h3_large'>Arzt/Ärztin Allgemeine Innere Medizin</h3>
+                        <h3>Arzt/Ärztin Allgemeine Innere Medizin</h3>
                         <div className='job_accordion'></div>
                         <div className='job_contact'>
                             <p>Frau Dr. med. Eva Naegeli (leitende Ärztin) freut sich über Ihre Kontaktaufnahme</p>
@@ -36,7 +36,7 @@ export const JobShuffle = ({ data, color }) => {
                     <div className='job_content text-black'>
                         <h2>Werden Sie ein Teil unseres Teams</h2>
                         <p>Zur Ergänzung unseres Teams suchen wir ein/e</p>
-                        <h3 className='h3_large'>Arzt/Ärztin Allgemeine Innere Medizin</h3>
+                        <h3>Arzt/Ärztin Allgemeine Innere Medizin</h3>
                         <div className='job_accordion'></div>
                         <div className='job_contact'>
                             <p>Frau Dr. med. Eva Naegeli (leitende Ärztin) freut sich über Ihre Kontaktaufnahme</p>
