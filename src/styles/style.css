@@ -550,6 +550,9 @@ ul.nav-tabs li a.active {
     border-bottom-color: var(--bs-green) !important;
     color: #000;
 }
+ul.nav-tabs li.tab2 a.active {
+    border-bottom-color: var(--bs-blue) !important;
+}
 }
 
 .shuffle_container {
@@ -711,7 +714,7 @@ ul.nav-tabs li a.active {
     .card-header a {
         width: 100%;
         display: inline-block;
-        padding: 7px 15px;
+        padding: 12px 15px;
         padding-right: 50px;
         position: relative;
         background: #fff;
@@ -719,6 +722,7 @@ ul.nav-tabs li a.active {
         color: #161615;
         border-radius: 0;
         font-size: var(--bs-h3);
+        line-height: 1.15;
     }
     .card-header a:before {
         content: ' ';
@@ -837,6 +841,93 @@ ul.nav-tabs li a.active {
     .offnun_inr span {
         width: 50%;
         margin: 6px 0;
+    }
+}
+
+.single-blog {
+    h1 {
+        font-size: var(--bs-h50);
+        color: var(--bs-blue);
+    }
+    h3 {
+        font-weight: var(--bs-fw500);
+    }
+    .grey_box {
+        background: rgba(238, 241, 244, 1);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 1rem 0;
+        img {
+            width: 300px;
+            padding: 2rem 0;
+        }
+    }
+    .related_blogs {
+        h3 {
+            font-weight: var(--bs-fw600);
+        }
+        .rb_item {
+            margin-top: 1.25rem;
+        }
+        .rb_itm_iner {
+            border: 1px solid rgba(223, 223, 223, 1);
+            border-radius: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px;
+        }
+        .rbitm_img {
+            width: 120px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .rbitm_content {
+            width: calc(100% - 120px);
+            padding-left: 1rem;
+        }
+        h4 {
+            font-weight: var(--bs-fw400);
+            line-height: 1.25;
+            font-size: var(--bs-fs24);
+        }
+        .btn_block {
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        .button {
+            padding: 8px 10px !important;
+            font-size: var(--bs-fs20);
+        }
+    }
+}
+
+.impressum_sec {
+    .impresm_block {
+        margin-top: 2rem;
+    }
+    .imp_shadow {
+        background: #fff;
+        padding: 2rem 2rem 1rem;
+        box-shadow: 0 2px 30px rgb(0 0 0 / 9%);
+    }
+    ul li {
+        position: relative;
+        padding-left: 60px;
+        margin: 12px 0;
+        min-height: 45px;
+        display: flex;
+        align-items: center;
+    }
+    ul li address {
+        margin-bottom: 0;
+    }
+    ul li img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 45px;
     }
 }
 

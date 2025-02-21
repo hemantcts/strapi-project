@@ -6,6 +6,8 @@ import postThumb from '../images/post-thumbnail.png'
 import arrowImg from '../images/white-arrow.svg'
 import productImg from '../images/product-2.png'
 import productImg2 from '../images/product-3.png'
+import imgBlog from '../images/blog-img.png'
+import MyLink from './mini_components/MyLink';
 
 export const Blog = ({data, color}) => {
     const [bannerData, setBannerData] = useState();
@@ -22,7 +24,7 @@ export const Blog = ({data, color}) => {
                     <div className='row'>
                         <div className='col-lg-8 detail_col'>
                             <div className='post_data_wrapper text-black'>
-                                <h1 className='h3_large'>Proin gravida nibh vel velit auctor aliquet</h1>
+                                <h1>Proin gravida nibh vel velit auctor aliquet</h1>
                                 <img src={postThumb} alt="" className='w-100 my-3' />
                                 <h3>Proin gravida nibh vel velit auctor aliquet</h3>
                                 <p> Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus</p>
@@ -45,6 +47,47 @@ export const Blog = ({data, color}) => {
                         <div className='col-lg-4 sticky_col'>
                             <div className='related_blogs'>
                                 <h3>Alle Gesundheitsthemen </h3>
+                                <div className='rel_blog_list'>
+                                    <div className='rb_item'>
+                                        <div className='rb_itm_iner'>
+                                            <div className='rbitm_img'>
+                                                <a href=""><img src={imgBlog} alt='' /></a>
+                                            </div>
+                                            <div className='rbitm_content text-black'>
+                                                <h4><a href="">Proin gravida nibh vel velit auctor aliquet</a></h4>
+                                                <div className='btn_block'>
+                                                    <MyLink link='/' text='Mehr erfahren ' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='rb_item'>
+                                        <div className='rb_itm_iner'>
+                                            <div className='rbitm_img'>
+                                                <a href=""><img src={imgBlog} alt='' /></a>
+                                            </div>
+                                            <div className='rbitm_content text-black'>
+                                                <h4><a href="">Proin gravida nibh vel velit auctor aliquet</a></h4>
+                                                <div className='btn_block'>
+                                                    <MyLink link='/' text='Mehr erfahren ' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className='rb_item'>
+                                        <div className='rb_itm_iner'>
+                                            <div className='rbitm_img'>
+                                                <a href=""><img src={imgBlog} alt='' /></a>
+                                            </div>
+                                            <div className='rbitm_content text-black'>
+                                                <h4><a href="">Proin gravida nibh vel velit auctor aliquet</a></h4>
+                                                <div className='btn_block'>
+                                                    <MyLink link='/' text='Mehr erfahren ' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

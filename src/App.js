@@ -19,6 +19,8 @@ import { PraxisNotfall } from './components/PraxisNotfall';
 import { DienstleistungenPraxis } from './components/DienstleistungenPraxis';
 import { UbersichtGesundheitsthemen } from './components/UbersichtGesundheitsthemen';
 import { Blog } from './components/Blog';
+import { Impressum } from './components/Impressum';
+import { Jobs } from './components/Jobs';
 
 function App() {
   return (
@@ -50,6 +52,8 @@ function App() {
 
         <Route path="/ubersicht-gesundheitsthemen" element={<UbersichtGesundheitsthemen />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/impressum" element={<Impressum />} />
+        <Route path="/jobs" element={<Jobs />} />
       </Routes>
     </div>
   );

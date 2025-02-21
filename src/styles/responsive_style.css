@@ -250,6 +250,29 @@ footer .col-lg-3.ftr_block {
     margin-left: -1rem;
     width: calc(25% + 1rem);
 }
+.single-blog {
+    .related_blogs {
+        .rb_itm_iner {
+            border: 1px solid rgba(223, 223, 223, 1);
+            border-radius: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 10px;
+        }
+        .rbitm_img {
+            width: 140px;
+        }
+        .rbitm_content {
+            width: calc(100% - 140px);
+        }
+        h4 {
+            font-size: var(--bs-h4);
+        }
+        .button {
+            padding: 10px 12px !important;
+        }
+    }
+}
 }
 
 @media (max-width: 1199px){
