@@ -19,7 +19,8 @@ import { PraxisNotfall } from './components/PraxisNotfall';
 import { DienstleistungenPraxis } from './components/DienstleistungenPraxis';
 import { UbersichtGesundheitsthemen } from './components/UbersichtGesundheitsthemen';
 import { Blog } from './components/Blog';
-import { NoJobs } from './components/NoJobs';
+import { Impressum } from './components/Impressum';
+import { Jobs } from './components/Jobs';
 import { ErrorPage } from './components/ErrorPage';
 
 function App() {
@@ -52,7 +53,8 @@ function App() {
 
         <Route path="/ubersicht-gesundheitsthemen" element={<UbersichtGesundheitsthemen />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/no-jobs" element={<NoJobs />} />
+        <Route path="/impressum" element={<Impressum />} />
+        <Route path="/jobs" element={<Jobs />} />
 
 
         {/* Catch-All Route for Undefined Paths */}
