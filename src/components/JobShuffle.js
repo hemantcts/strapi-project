@@ -18,7 +18,7 @@ export const JobShuffle = ({ data, color }) => {
                             <p>Zur Ergänzung unseres Teams suchen wir ein/e</p>
                             <h3>Arzt/Ärztin Allgemeine Innere Medizin</h3>
                             <div className='job_accordion'>
-                                <Accordion data={job?.jobs_info?.accordion_data} greyy={true} />
+                                <Accordion data={job?.jobs_info?.accordion_data} greyy={true} isHtml={true} />
                             </div>
                             <div className='job_contact'>
                                 <p>{job?.contact_details?.title}</p>

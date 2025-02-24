@@ -975,6 +975,20 @@ ul.nav-tabs li.tab2 a.active {
             padding-left: 10px;
             border-left: 1px solid var(--bs-blue);
         }
+        .card-body {
+            ul {
+                margin-bottom: 0;
+                padding-left: 18px;
+                li {
+                  list-style: disc;  
+                  color: #000;
+                  padding-left: 0;
+                }
+                li::marker {
+                color: var(--bs-blue) !important;
+            }
+        }
+    }
     }
     
     .job_row + .job_row {

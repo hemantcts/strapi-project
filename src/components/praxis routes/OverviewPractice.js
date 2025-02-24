@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from './Navbar'
-import ProductsSection from './ProductsSection'
-import Footer from './Footer'
-import ServicesSection from './ServicesSection'
-import { PartnersSection } from './PartnersSection'
-import { Accordion } from './Accordion'
-import { BannerSection } from './BannerSection'
-import { MyButton } from './mini_components/MyButton'
-import { TwoContent } from './mini_components/TwoContent'
-import { SpeziellesSection } from './SpeziellesSection'
+import Navbar from '../Navbar'
+import ProductsSection from '../ProductsSection'
+import Footer from '../Footer'
+import ServicesSection from '../ServicesSection'
+import { PartnersSection } from '../PartnersSection'
+import { Accordion } from '../Accordion'
+import { BannerSection } from '../BannerSection'
+import { MyButton } from '../mini_components/MyButton'
+import { TwoContent } from '../mini_components/TwoContent'
+import { SpeziellesSection } from '../SpeziellesSection'
 
 const OverviewPractice = () => {
-
+    const activeLink = { link1: false, link2: true, link3: false, link4: false, link5: false, link6: false }
     const pageColor = 'blue';
     const [bannerData, setBannerData] = useState(null);
     const [servicesData, setServicesData] = useState(null);
@@ -39,7 +39,7 @@ const OverviewPractice = () => {
     return (
         <div className='pharmacy'>
             <header>
-                <Navbar />
+                <Navbar activeLink={activeLink} />
             </header>
 
             <section className='pharmacy_banner_sec'>
@@ -47,7 +47,7 @@ const OverviewPractice = () => {
             </section>
 
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton />
+                <MyButton buttonText={bannerData?.title} activePage='Praxis' />
             </section>
 
             <section className="wi_full py_3 dien_section">

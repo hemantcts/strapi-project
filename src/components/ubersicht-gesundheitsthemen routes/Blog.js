@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from './Navbar'
-import { MyButton } from './mini_components/MyButton'
-import Footer from './Footer'
-import postThumb from '../images/post-thumbnail.png'
-import arrowImg from '../images/white-arrow.svg'
-import productImg from '../images/product-2.png'
-import productImg2 from '../images/product-3.png'
-import imgBlog from '../images/blog-img.png'
-import MyLink from './mini_components/MyLink';
-import { Accordion } from './Accordion'
+import Navbar from '../Navbar'
+import { MyButton } from '../mini_components/MyButton'
+import Footer from '../Footer'
+import postThumb from '../../images/post-thumbnail.png'
+import arrowImg from '../../images/white-arrow.svg'
+import productImg from '../../images/product-2.png'
+import productImg2 from '../../images/product-3.png'
+import imgBlog from '../../images/blog-img.png'
+import MyLink from '../mini_components/MyLink';
+import { Accordion } from '../Accordion'
 import { useNavigate, useParams } from 'react-router-dom'
 
 export const Blog = ({ data, color }) => {
@@ -53,10 +53,12 @@ export const Blog = ({ data, color }) => {
             if (matchedBlog) {
                 setBlog(matchedBlog);
             } else {
-                navigate("/404"); // Redirect to trigger the catch-all error route
+                navigate("/error"); // Redirect to trigger the catch-all error route
             }
         }
     }, [blogs, title]);
+
+    if (!blog) return null;
 
 
     return (
@@ -65,7 +67,7 @@ export const Blog = ({ data, color }) => {
                 <Navbar />
             </header>
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton />
+                <MyButton buttonText={blog?.title} activePage='HerzCheck' />
             </section>
             <section className='wi_full py_3 blog_detail'>
                 <div className='container-xxl'>

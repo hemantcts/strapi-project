@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from './Navbar'
-// import Footer from './Footer'
-import { BannerSection } from './BannerSection'
-import { MyButton } from './mini_components/MyButton'
-import { Blogs } from './Blogs'
-import Footer from './Footer'
+import Navbar from '../Navbar'
+// import Footer from '../Footer'
+import { BannerSection } from '../BannerSection'
+import { MyButton } from '../mini_components/MyButton'
+import { Blogs } from '../Blogs'
+import Footer from '../Footer'
 
 export const UbersichtGesundheitsthemen = ({ data, color }) => {
+    const activeLink = { link1: false, link2: false, link3: false, link4: true, link5: false, link6: false }
     const [bannerData, setBannerData] = useState();
     const [blogTitle, setBlogTitle] = useState();
     const [blogs, setBlogs] = useState();
@@ -16,7 +17,7 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
         const data = await response.json();
         console.log(data);
         if (data) {
-          setBannerData(data?.data?.banner_section);
+          setBannerData(data?.data?.banner_section); 
           setBlogTitle(data?.data?.blogs_title);
         //   setFounderSection(data?.data?.founder_section);
         //   setFounderData(data?.data?.founder_data);
@@ -41,7 +42,7 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
     return (
         <div className="ubersicht-gesundheitsthemen">
             <header>
-                <Navbar />
+                <Navbar activeLink={activeLink} />
             </header>
 
             <section className='inner_banner_Section'>
@@ -49,7 +50,7 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
             </section>
 
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton />
+                <MyButton buttonText={bannerData?.title} />
             </section>
 
             <section className="wi_full py_3 blog_section">

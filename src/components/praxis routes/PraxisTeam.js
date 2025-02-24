@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from './Navbar'
-import Footer from './Footer'
-import { BannerSection } from './BannerSection'
-import { MyButton } from './mini_components/MyButton'
-import { TwoContent } from './mini_components/TwoContent'
-import { Team1 } from './Team1'
-import { FounderSection } from './FounderSection'
+import Navbar from '../Navbar'
+import Footer from '../Footer'
+import { BannerSection } from '../BannerSection'
+import { MyButton } from '../mini_components/MyButton'
+import { TwoContent } from '../mini_components/TwoContent'
+import { Team1 } from '../Team1'
+import { FounderSection } from '../FounderSection'
 
 const PraxisTeam = () => {
+  const activeLink = { link1: false, link2: true, link3: false, link4: false, link5: false, link6: false }
   const [bannerData, setBannerData] = useState();
   const [founderSection, setFounderSection] = useState();
   const [founderData, setFounderData] = useState();
@@ -54,7 +55,7 @@ const PraxisTeam = () => {
   return (
     <div className='pharmacy_team'>
       <header>
-        <Navbar />
+        <Navbar activeLink={activeLink} />
       </header>
 
       <section className='inner_banner_Section'>
@@ -62,7 +63,7 @@ const PraxisTeam = () => {
       </section>
 
       <section className='breadcrumb_sec wi_full mt_3'>
-        <MyButton />
+        <MyButton buttonText={bannerData?.title} activePage='Praxis' />
       </section>
 
       <section className="wi_full py_3 grunderinnen_sec">

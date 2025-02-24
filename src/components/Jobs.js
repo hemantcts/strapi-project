@@ -7,7 +7,7 @@ import Footer from './Footer';
 import { JobShuffle } from './JobShuffle';
 
 export const Jobs = () => {
-
+    const activeLink = { link1: false, link2: false, link3: false, link4: false, link5: true, link6: false }
     const [bannerData, setBannerData] = useState(null);
     const [jobSection, setJobSection] = useState(null);
     const [jobsData, setJobsData] = useState(null);
@@ -30,13 +30,13 @@ export const Jobs = () => {
     return (
         <div className='jobs'>
             <header>
-                <Navbar />
+                <Navbar activeLink={activeLink} />
             </header>
             <section className='inner_banner_Section'>
                 <BannerSection bannerData={bannerData} color='blue' />
             </section>
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton />
+                <MyButton buttonText={bannerData?.title} />
             </section>
             <section className="wi_full py_3 job_sec">
                 <div className="container-xxl">

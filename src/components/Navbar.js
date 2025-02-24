@@ -10,9 +10,9 @@ import Menu2 from './menu_components/Menu2';
 // import icon from '../images/accordion-icon.svg'
 import Menu3 from './menu_components/Menu3';
 
-const Navbar = () => {
-    const [active, setActive] = useState({ link1: false, link2: false, link3: false, link4: false })
-    const [hover, setHover] = useState({ link1: false, link2: false, link3: false, link4: false })
+const Navbar = ({activeLink}) => {
+    const [active, setActive] = useState({ link1: false, link2: false, link3: false, link4: false, link5: false, link6: false })
+    const [hover, setHover] = useState({ link1: false, link2: false, link3: false, link4: false, link5: false, link6: false })
     // const [isClicked, setClicked ] = useState(false);
     const [sticky, setSticky] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -64,6 +64,12 @@ const Navbar = () => {
         }
     };
 
+    useEffect(() => {
+        if(activeLink){
+            console.log(activeLink);
+            setActive(activeLink);
+        }
+    }, [activeLink])
 
     return (
         <div>
@@ -91,7 +97,7 @@ const Navbar = () => {
                                                 }
                                             }}
                                         >Apotheke <b className='caret'></b></Link>
-                                        {(active.link1 || hover.link1) && <ul
+                                        {(hover.link1) && <ul
                                             onMouseEnter={() => handleMouseEnter(1)}
                                             onMouseLeave={(e) => {
                                                 if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget?.closest('.apotheke_menu')) {
@@ -111,7 +117,7 @@ const Navbar = () => {
                                                 }
                                             }}
                                         >Praxis <b className='caret'></b></Link>
-                                        {(active.link2 || hover.link2) && <ul
+                                        {(hover.link2) && <ul
                                             onMouseEnter={() => handleMouseEnter(2)}
                                             onMouseLeave={(e) => {
                                                 if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.praxis_menu')) {
@@ -131,7 +137,7 @@ const Navbar = () => {
                                                 }
                                             }}
                                         >Ernährungsdiagnostik <b className='caret'></b></Link>
-                                        {(active.link3 || hover.link3) && <ul
+                                        {(hover.link3) && <ul
                                             onMouseEnter={() => handleMouseEnter(3)}
                                             onMouseLeave={(e) => {
                                                 if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.ubersicth_menu')) {
@@ -149,7 +155,7 @@ const Navbar = () => {
                                         >Gesundheitsthemen</Link>
                                     </li>
                                 </ul>
-                                <ul className='navbar-nav top_menu'>
+                                <ul className='navbar-nav top_menu align-items-center'>
                                     <li className='nav-item'>
                                         <div className='search_hdr position-relative'>
                                             <input type="text" className='search_bar' placeholder='Proin gravida' />
@@ -157,10 +163,16 @@ const Navbar = () => {
                                         </div>
                                     </li>
                                     <li className='nav-item'>
-                                        <Link className="extra-nav-link nav-link" to="/jobs">Jobs</Link>
+                                        <Link className={`extra-nav-link nav-link link5 ${(active.link5 || hover.link5) && 'active'}`} to="/jobs" onClick={() => handleActive(5)}
+                                            onMouseEnter={() => handleMouseEnter(5)}
+                                            onMouseLeave={() => handleMouseLeave(5)}
+                                        >Jobs</Link>
                                     </li>
                                     <li className='nav-item'>
-                                        <Link className="extra-nav-link nav-link" to="#">Kontakte</Link>
+                                        <Link className={`extra-nav-link nav-link link6 ${(active.link6 || hover.link6) && 'active'}`} to='/kontakt' onClick={() => handleActive(6)}
+                                            onMouseEnter={() => handleMouseEnter(6)}
+                                            onMouseLeave={() => handleMouseLeave(6)}
+                                        >Kontakte</Link>
                                     </li>
                                 </ul>
                             </div>

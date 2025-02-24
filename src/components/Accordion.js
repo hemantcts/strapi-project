@@ -13,7 +13,7 @@ export const Accordion = ({ data, color, greyy, isHtml }) => {
                         </div>
                         <div id={`collapse${item?.id}`} className="collapse" data-bs-parent="#accordion">
                             <div className="card-body">
-                                {isHtml ? (
+                                {!isHtml ? (
                                     <p>{item?.description}</p>
                                 ) : (
                                     <div dangerouslySetInnerHTML={{ __html: item?.description }} />

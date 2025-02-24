@@ -38,7 +38,7 @@ export const Impressum = () => {
                 <BannerSection bannerData={bannerData} color='blue' />
             </section>
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton />
+                <MyButton buttonText={bannerData?.title} />
             </section>
             <section className='wi_full py_3 impressum_sec'>
                 <div className='container-xxl'>

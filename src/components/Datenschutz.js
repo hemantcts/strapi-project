@@ -31,7 +31,7 @@ const Datenschutz = () => {
                 {<BannerSection bannerData={bannerData} />}
             </div>
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton />
+                <MyButton buttonText={bannerData?.title} />
             </section>
             <section className='wi_full py_3 daten_section'>
                 <div className='container-xxl'>
