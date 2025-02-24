@@ -1,171 +1,244 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.svg'
+import burgermenu from '../images/burger-menu.svg'
+import closemenu from '../images/close-icon.svg'
+import loewenmutlogo from '../images/loewenmut-logo.svg'
 import HomeMenu from './menu_components/HomeMenu';
 import Menu2 from './menu_components/Menu2';
-import copyrightImg from '../images/copyright_img.png'
+// import copyrightImg from '../images/copyright_img.png'
+// import icon from '../images/accordion-icon.svg'
+import Menu3 from './menu_components/Menu3';
 
-const Navbar = () => {
-    const [active, setActive] = useState({ link1: false, link2: false, link3: false, link4: false })
+const Navbar = ({ activeLink }) => {
+    const [active, setActive] = useState({ link1: false, link2: false, link3: false, link4: false, link5: false, link6: false })
+    const [hover, setHover] = useState({ link1: false, link2: false, link3: false, link4: false, link5: false, link6: false })
+    // const [isClicked, setClicked ] = useState(false);
+    const [bannerData, setBannerData] = useState();
+    const [bookingData, setBookingData] = useState();
+    const [pageData, setPageData] = useState();
+
+    const [sticky, setSticky] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [isHoverEnabled, setIsHoverEnabled] = useState(window.innerWidth >= 992);
+    const [searchKeyword, setSearchKeyword] = useState('');
+    const [matchedKeys, setMatchedKeys] = useState([]);
+
+
+    const handleChange = (e) => {
+        setSearchKeyword(e.target.value);
+        console.log(e.target.value)
+    }
+
+    const handleClick = () => {
+        if (!pageData || !searchKeyword) {
+            setMatchedKeys([]);
+            return;
+        }
+
+        const matches = findMatchingKeys(pageData, searchKeyword.toLowerCase());
+        setMatchedKeys(matches);
+        console.log("data found", matches)
+    }
+
+    const findMatchingKeys = (data, keyword, parentKey = "") => {
+        let matches = [];
+
+        for (const key in data) {
+            if (typeof data[key] === "object" && data[key] !== null) {
+                matches = matches.concat(findMatchingKeys(data[key], keyword, key)); // Recursive search
+            } else if (typeof data[key] === "string" && data[key].toLowerCase().includes(keyword)) {
+                matches.push(parentKey ? `${parentKey}.${key}` : key); // Store matched key path
+            }
+        }
+
+        return matches;
+    };
+
+
+
+    const getPageData = async () => {
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/appointment-booking?populate[banner_section][populate]=banner_image&populate[booking_section][populate]`)
+        const data = await response.json();
+        console.log("nav data ", data.data);
+        if (data) {
+            setBannerData(data.data.banner_section);
+            setBookingData(data.data.booking_section);
+            setPageData(data.data);
+        }
+    }
+
+    useEffect(() => {
+        getPageData();
+    }, [])
+
+
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsHoverEnabled(window.innerWidth >= 992);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setSticky(window.scrollY > 0);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+        document.body.classList.toggle('body_overflow', !menuOpen);
+    };
 
     const handleActive = (link) => {
-        let obj = { link1: false, link2: false, link3: false, link4: false };
-        if (link === 1) {
-            if (!active.link1) {
-                obj.link1 = true;
-            }
+        if (!isHoverEnabled) {
+            setActive((prev) => ({ ...prev, [`link${link}`]: !prev[`link${link}`] }));
         }
-        if (link === 2) {
-            if (!active.link2) {
-                obj.link2 = true;
-            }
+    };
+
+    const handleMouseEnter = (link) => {
+        if (isHoverEnabled) {
+            setHover((prev) => ({ ...prev, [`link${link}`]: true }));
         }
-        if (link === 3) {
-            if (!active.link3) {
-                obj.link3 = true;
-            }
+    };
+
+    const handleMouseLeave = (link) => {
+        if (isHoverEnabled) {
+            setTimeout(() => {
+                setHover((prev) => ({ ...prev, [`link${link}`]: false }));
+            }, 100);
         }
-        if (link === 4) {
-            if (!active.link4) {
-                obj.link4 = true;
-            }
+    };
+
+    useEffect(() => {
+        if (activeLink) {
+            console.log(activeLink);
+            setActive(activeLink);
         }
-        setActive(obj);
-    }
+    }, [activeLink])
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg d-none d-lg-flex">
-                <div className="container">
-                    <Link className="navbar-brand logo" to="/">
-                        <img src={logo} alt="" />
-                    </Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div className="collapse navbar-collapse align-items-end flex-column" id="navbarNav">
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <Link className="extra-nav-link nav-link" to="#">Jobs</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="extra-nav-link nav-link" to="#">Kontakte</Link>
-                            </li>
-                        </ul>
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <Link className={`nav-link link1 ${active.link1 && 'active'}`} to="#" onClick={() => handleActive(1)}>APOTHEKE</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className={`nav-link link2 ${active.link2 && 'active'}`} to="#" onClick={() => handleActive(2)}>PRAXIS</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className={`nav-link link3 ${active.link3 && 'active'}`} to="#" onClick={() => handleActive(3)}>ERNÄHRUNGSDIAGNOSTIK</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className={`nav-link link4 ${active.link4 && 'active'}`} to="#" onClick={() => handleActive(4)}>GESUNDHEITSTHEMEN</Link>
-                            </li>
-                        </ul>
-                        {active.link1 && <div className="menu">
-                            <HomeMenu />
-                        </div>}
-
-                        {active.link2 && <div className="menu ">
-                            <Menu2 />
-                        </div>}
-                    </div>
-                </div>
-            </nav>
-
-            {/* mobile navbar */}
-
-            <nav className="navbar navbar-expand-lg mobile-nav d-flex d-lg-none">
-                <div className="container">
-                    <Link className="navbar-brand logo" to="/">
-                        <img src={logo} alt="" />
-                    </Link>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div className="collapse navbar-collapse align-items-end flex-column" id="navbarNav">
-                        <div className="container nav-box">
-                            <div>
-
-                                <ul className="navbar-nav">
-                                    <li className="nav-item">
-                                        <Link className={`nav-link pb-0 link1 ${active.link1 && 'active'}`} to="#" onClick={() => handleActive(1)}>APOTHEKE</Link>
-                                        <div className={`home_menu_mobile_links2 ${active.link1 && 'active'}`}>
-                                            <ul className='mobile-list-out ps-0'>
-                                                <li className='mobile-list-items border-0'>
-                                                    <Link>
-                                                        Übersicht Apotheke
-                                                    </Link>
-                                                </li>
-                                                <li className='mobile-list-items'>
-                                                    <Link>
-                                                        Termin buchen Apotheke
-                                                    </Link>
-                                                </li>
-                                                <li className='mobile-list-items'>
-                                                    <Link>
-                                                        Team
-                                                    </Link>
-                                                </li>
-                                                <li className='mobile-list-items'>
-                                                    <Link>
-                                                        Notfall
-                                                    </Link>
-                                                </li>
-                                                <li className='mobile-list-items'>
-                                                    <Link>
-                                                        Angebote
-                                                    </Link>
-                                                </li>
-                                                <li className='mobile-list-items'>
-                                                    <Link>
-                                                        Öffnungszeiten und Kontakt
-                                                    </Link>
-                                                </li>
-                                            </ul>
-                                            <Link className='home_menu_btn' to='/'>
-                                                Termin Apotheke buchen
-                                            </Link>
+            <header>
+                <nav className={`navbar navbar-expand-lg ${sticky ? 'sticky' : ''}`}>
+                    <div className='nav_overlay'></div>
+                    <div className='container-xxl'>
+                        <Link className='navbar-brand' to='/'><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Frame_8cd1fd56fd.svg' alt='logo' /></Link>
+                        <button className='navbar-toggler' onClick={toggleMenu} type='button' data-bs-target='#mainNavbar' aria-expanded='false'>
+                            <img src={burgermenu} alt='menu' />
+                        </button>
+                        <div className={`collapse navbar-collapse ${menuOpen ? 'show' : ''}`} id='mainNavbar'>
+                            <div className='open--menu--header'>
+                                <img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Frame_8cd1fd56fd.svg' alt='menu' className='open-menu-logo' />
+                                <img src={closemenu} alt='menu' className='close_navbtn' onClick={toggleMenu} />
+                            </div>
+                            <div className='header-menu-h ms-auto'>
+                                <ul className='navbar-nav main--menu'>
+                                    <li className='nav-item megamenu-fw apotheke_menu'>
+                                        <Link className={`nav-link link1 ${(active.link1 || hover.link1) && 'active'}`} to="#" onClick={() => handleActive(1)}
+                                            onMouseEnter={() => handleMouseEnter(1)}
+                                            onMouseLeave={(e) => {
+                                                if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.home_menu')) {
+                                                    handleMouseLeave(1);
+                                                }
+                                            }}
+                                        >Apotheke <b className='caret'></b></Link>
+                                        {(hover.link1) && <ul
+                                            onMouseEnter={() => handleMouseEnter(1)}
+                                            onMouseLeave={(e) => {
+                                                if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget?.closest('.apotheke_menu')) {
+                                                    handleMouseLeave(1);
+                                                }
+                                            }}
+                                            className="dropdown-menu d-block half menu home_menu">
+                                            <HomeMenu />
+                                        </ul>}
+                                    </li>
+                                    <li className='nav-item megamenu-fw praxis_menu'>
+                                        <Link className={`nav-link link2 ${(active.link2 || hover.link2) && 'active'}`} to="#" onClick={() => handleActive(2)}
+                                            onMouseEnter={() => handleMouseEnter(2)}
+                                            onMouseLeave={(e) => {
+                                                if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget?.closest('.menu1')) {
+                                                    handleMouseLeave(2);
+                                                }
+                                            }}
+                                        >Praxis <b className='caret'></b></Link>
+                                        {(hover.link2) && <ul
+                                            onMouseEnter={() => handleMouseEnter(2)}
+                                            onMouseLeave={(e) => {
+                                                if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.praxis_menu')) {
+                                                    handleMouseLeave(2);
+                                                }
+                                            }}
+                                            className="dropdown-menu d-block half menu1">
+                                            <Menu2 />
+                                        </ul>}
+                                    </li>
+                                    <li className='nav-item megamenu-fw ubersicth_menu'>
+                                        <Link className={`nav-link link3 ${(active.link3 || hover.link3) && 'active'}`} to="#" onClick={() => handleActive(3)}
+                                            onMouseEnter={() => handleMouseEnter(3)}
+                                            onMouseLeave={(e) => {
+                                                if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.menu2')) {
+                                                    handleMouseLeave(3);
+                                                }
+                                            }}
+                                        >Ernährungsdiagnostik <b className='caret'></b></Link>
+                                        {(hover.link3) && <ul
+                                            onMouseEnter={() => handleMouseEnter(3)}
+                                            onMouseLeave={(e) => {
+                                                if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.ubersicth_menu')) {
+                                                    handleMouseLeave(3);
+                                                }
+                                            }}
+                                            className="dropdown-menu d-block half menu2">
+                                            <Menu3 />
+                                        </ul>}
+                                    </li>
+                                    <li className='nav-item'>
+                                        <Link className={`nav-link link4 ${(active.link4 || hover.link4) && 'active'}`} to='/ubersicht-gesundheitsthemen' onClick={() => handleActive(4)}
+                                            onMouseEnter={() => handleMouseEnter(4)}
+                                            onMouseLeave={() => handleMouseLeave(4)}
+                                        >Gesundheitsthemen</Link>
+                                    </li>
+                                </ul>
+                                <ul className='navbar-nav top_menu align-items-center'>
+                                    <li className='nav-item'>
+                                        <div className='search_hdr position-relative'>
+                                            <input type="text" value={searchKeyword} onChange={handleChange} className='search_bar' placeholder='Proin gravida' />
+                                            <button className="search_icon" onClick={handleClick}></button>
                                         </div>
-
                                     </li>
-                                    <li className="nav-item">
-                                        <Link className={`nav-link pb-0 link2 ${active.link2 && 'active'}`} to="#" onClick={() => handleActive(2)}>PRAXIS</Link>
+                                    <li className='nav-item'>
+                                        <Link className={`extra-nav-link nav-link link5 ${(active.link5 || hover.link5) && 'active'}`} to="/jobs" onClick={() => handleActive(5)}
+                                            onMouseEnter={() => handleMouseEnter(5)}
+                                            onMouseLeave={() => handleMouseLeave(5)}
+                                        >Jobs</Link>
                                     </li>
-                                    <li className="nav-item">
-                                        <Link className={`nav-link pb-0 link3 ${active.link3 && 'active'}`} to="#" onClick={() => handleActive(3)}>ERNÄHRUNGSDIAGNOSTIK</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className={`nav-link pb-0 link4 ${active.link4 && 'active'}`} to="#" onClick={() => handleActive(4)}>GESUNDHEITSTHEMEN</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link pb-0" to="#">Jobs</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link pb-0" to="#">Kontakte</Link>
+                                    <li className='nav-item'>
+                                        <Link className={`extra-nav-link nav-link link6 ${(active.link6 || hover.link6) && 'active'}`} to='/kontakt' onClick={() => handleActive(6)}
+                                            onMouseEnter={() => handleMouseEnter(6)}
+                                            onMouseLeave={() => handleMouseLeave(6)}
+                                        >Kontakte</Link>
                                     </li>
                                 </ul>
                             </div>
-
-                            <div>
-                                <div className="copyright" style={{ position: "static", bottom: "0", fontSize: "14px", fontWeight: "300" }}>
-                                    <div className="py-2 pe-5">
-                                        © Copyright 2025 | MedZentrum AG, Pfungen | Design by Loewenmut. <img src={copyrightImg} alt="" style={{ width: "20px" }} />
-                                    </div>
-                                </div>
+                            <div className='hdr_copygt'>
+                                <p>© Copyright 2025 | MedZentrum AG, Pfungen | Design by <a href='https://www.loewenmut.ch/' target='_blank'>Loewenmut. <img src={loewenmutlogo} alt='loewenmut' /></a></p>
                             </div>
-
                         </div>
-
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </header>
         </div>
     )
 }

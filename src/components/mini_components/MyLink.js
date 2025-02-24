@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import svgIcon from '../../images/option-link-icon.svg'
 
-const MyLink = ({ link, text }) => {
+const MyLink = ({ link, text, color }) => {
     const [isAnimated, setAnimated] = useState(false);
 
     const handleMouseEnter = () => {
@@ -17,11 +17,11 @@ const MyLink = ({ link, text }) => {
         <>
             <Link
                 to={link}
-                className={`option-link pb-2 ${isAnimated && 'option-link-animate'}`}
+                className={`button blue_btn text-uppercase ${isAnimated ? 'option-link-animate' : ''} ${color? color : ''}`}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                {text} <i><img src={svgIcon} alt="" style={{width: "unset", position: "relative", top: "-2px"}}/></i> 
+                <span>{text} <i><img src={svgIcon} alt=""/></i> </span>
             </Link>
         </>
     )

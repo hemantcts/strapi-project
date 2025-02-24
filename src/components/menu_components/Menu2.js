@@ -1,48 +1,41 @@
 import React from 'react';
 import MenuImg from '../../images/menu_img2.png'
 import { Link } from 'react-router-dom';
+import svgIcon from '../../images/link_icon.svg'
 
 const Menu2 = () => {
   return (
-      <div className="container">
-        <div className="row justify-content-between">
-            <div className="col-5 d-flex flex-column">
-                <div className='menu_links'>
-                    <ul className='list-out'>
+    <div className="megamenu-content withoutdesc">
+    <div className="row justify-content-between">
+        <div className="col-lg-6">
+            <div className='menu_links'>
+                <ul className='submenu_list'>
                         <li className='list-items border-0'>
-                            <Link>
-                                <h5 className='mb-0'>Übersicht Praxis</h5>
-                            </Link>
+                            <Link to='/ubersicht-praxis' >Übersicht Praxis</Link>
                         </li>
                         <li className='list-items'>
-                            <Link>
-                                <h5 className='mb-0'>Termin buchen Praxis</h5>
-                            </Link>
+                            <Link to='/terminbuchung-praxis'>Termin buchen Praxis</Link>
                         </li>
                         <li className='list-items'>
-                            <Link>
-                                <h5 className='mb-0'>Notfall</h5>
-                            </Link>
+                            <Link to='/praxis-team'>TEAM PRAXIS</Link>
                         </li>
                         <li className='list-items'>
-                            <Link>
-                                <h5 className='mb-0'>Dienstleistungen Praxis</h5>
-                            </Link>
+                            <Link to='/praxis-notfall'>Notfall</Link>
                         </li>
                         <li className='list-items'>
-                            <Link>
-                                <h5 className='mb-0'>Öffnungszeiten und Kontakt </h5>
-                            </Link>
+                            <Link to='/dienstleistungen-praxis'>Dienstleistungen Praxis</Link>
+                        </li>
+                        <li className='list-items'>
+                            <Link to='/kontakt'>Öffnungszeiten und Kontakt</Link>
+                        </li>
+                        <li className='list-items'>
+                            <Link className='termin_praxis'>Termin Praxis buchen <i><img src={svgIcon} alt=""/></i> </Link>
                         </li>
                     </ul>
                 </div>
-                <div>
-                    <Link className='menu_btn1'>Termin Praxis buchen <i class="fa-solid fa-arrow-right"/></Link>
-                </div>
-                
             </div>
-            <div className="col-5 menu_image1">
-                <img src={MenuImg} alt="" />
+            <div className="col-lg-6 d-none d-lg-block">
+                <img src={MenuImg}  className="w-100" alt="" />
             </div>
         </div>
       </div>
