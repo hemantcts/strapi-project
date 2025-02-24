@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import svgIcon from '../../images/option-link-icon.svg'
 
 const MyLink = ({ link, text }) => {
     const [isAnimated, setAnimated] = useState(false);
@@ -20,7 +21,7 @@ const MyLink = ({ link, text }) => {
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                {text} <i class="fa-solid fa-arrow-right option-link-icon" />
+                {text} <i><img src={svgIcon} alt="" style={{width: "unset", position: "relative", top: "-2px"}}/></i> 
             </Link>
         </>
     )

@@ -7,10 +7,10 @@ import MyLink from './mini_components/MyLink';
 const ProductsSection = ({ productsData }) => {
     return (
         <div className="container">
-            {productsData.heading && <h2 className='text-center mb-5'>{productsData.heading}</h2>}
-            {productsData.paragraph && <p className='text-center mb-5 paragraph'>{productsData.paragraph}</p>}
+            {productsData?.heading && <h2 className='text-center mb-5'>{productsData?.heading}</h2>}
+            {productsData?.paragraph && <p className='text-center mb-5 paragraph'>{productsData?.paragraph}</p>}
             <div className="row">
-                {productsData.products.map((product, index) => {
+                {productsData?.products.map((product, index) => {
                     return (
                         <div className="col-lg-6" key={index} >
                             <div className="product-items mb-5 mb-lg-0 px-lg-2">
@@ -19,13 +19,13 @@ const ProductsSection = ({ productsData }) => {
                                         <div className="row" >
                                             <div className="col-7">
                                                 <div className='product-item mb-4'>
-                                                    <h4>{product.productDetails.name}</h4>
-                                                    <p>{product.productDetails.description}</p>
-                                                    <small>{product.productDetails.expiry}</small>
+                                                    <h4>{product?.product_details?.name}</h4>
+                                                    <p>{product?.product_details?.description}</p>
+                                                    <small>{product?.product_details?.expiry}</small>
                                                 </div>
                                             </div>
                                             <div className="col-5" style={{ position: "relative" }}>
-                                                <img src={product.productDetails.image} alt="" />
+                                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${product?.product_details?.image?.url}`} alt="" />
                                                 <div className="discount">
                                                     <img src={discountImg} alt="" />
                                                 </div>
@@ -34,25 +34,25 @@ const ProductsSection = ({ productsData }) => {
                                     </div>
                                     <div className="col-12">
                                         <div className="product-info mb-4">
-                                            <h4 className='mb-3' >{product.about.heading}</h4>
+                                            <h4 className='mb-3' >{product?.about?.heading}</h4>
                                             <div>
-                                                {product.about?.prices?.map((price, i) => {
+                                                {product?.about?.prices?.map((price, i) => {
                                                     return (
                                                         <div className="row" key={i}>
                                                             <div className="col-12">
                                                                 <div className="row align-items-center">
 
                                                                     <div className='col-4'>
-                                                                        <p className='mb-0'>{price.currentPrice}</p>
+                                                                        <p className='mb-0'>{price?.currentPrice}</p>
                                                                     </div>
                                                                     <div className='col-3'>
-                                                                        <h3>{price.current}</h3>
+                                                                        <h3>{price?.current}</h3>
                                                                     </div>
                                                                     <div className='col-2'>
-                                                                        <p className='mb-0'>{price.lastPrice}</p>
+                                                                        <p className='mb-0'>{price?.lastPrice}</p>
                                                                     </div>
                                                                     <div className='col-3'>
-                                                                        <h4 className='last_price'>{price.last}</h4>
+                                                                        <h4 className='last_price'>{price?.last}</h4>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -68,12 +68,12 @@ const ProductsSection = ({ productsData }) => {
                                             <ul className='p-0 mb-5'>
                                                 <li>
                                                     {/* <Link to='/' className='option-link'>BESTELLEN <i class="fa-solid fa-arrow-right option-link-icon" /></Link> */}
-                                                    <MyLink link="/" text="BESTELLEN" />
+                                                    <MyLink link={product?.extraDetails?.link?.link_url} text={product?.extraDetails?.link?.link_text} />
                                                 </li>
                                             </ul>
 
-                                            <h6>{product.extraDetails.title}</h6>
-                                            <small>{product.extraDetails.desc}</small>
+                                            <h6>{product?.extraDetails?.title}</h6>
+                                            <small>{product?.extraDetails?.description}</small>
                                         </div>
                                     </div>
                                 </div>
@@ -84,9 +84,10 @@ const ProductsSection = ({ productsData }) => {
                     )
                 })}
             </div>
-            {productsData?.buttonText && <div className="products_sec_btn text-center">
-                <Link to="#" class="products-main-btn">{productsData.buttonText} <i class="fa-solid fa-arrow-right " /></Link>
-            </div>}
+            {console.log("data", productsData?.button_text)}
+            <div className="products_sec_btn text-center">
+                <Link to="#" class="products-main-btn">{productsData?.button_text} <i class="fa-solid fa-arrow-right " /></Link>
+            </div>
         </div>
     )
 } 

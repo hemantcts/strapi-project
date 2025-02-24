@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Navbar from './Navbar';
 import heartImg from '../images/HEART.png';
 // import productImg1 from '../images/product-img1.png';
@@ -17,14 +17,14 @@ import productImg2 from '../images/product-img2.png'
 
 const Home = () => {
 
-    const productsData = {
+    const productsData5 = {
         heading: "Aktionen",
         paragraph: "",
         buttonText: "ALLE AKTIONEN",
         products: [
             {
                 productDetails: {
-                    image : productImg1,
+                    image: productImg1,
                     name: 'Grippe',
                     description: 'Pretuval® eignet sich zur Behandlung einer Erkältung oder einer Grippe und lindert Kopf- und Gliederschmerzen, Schnupfen, Fieber sowie Reizhusten.',
                     expiry: 'Gültig bis 30.11.2024'
@@ -64,6 +64,37 @@ const Home = () => {
         ]
     }
 
+    const [bannerData, setBannerData] = useState(null);
+    const [heartData, setHeartData] = useState(null);
+    const [productsData, setProductsData] = useState(null);
+    const [adData, setAdData] = useState(null);
+
+    const [pageData, setPageData] = useState(null);
+
+    const getPageData = async () => {
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/homepage?populate[banner_section][populate]=*&populate[heart_section][populate]=left_side.image&populate[heart_section][populate]=left_side.link&populate[heart_section][populate]=right_side.link&populate[products_section][populate]=products.product_details.image&populate[products_section][populate]=products.extraDetails.link&populate[products_section][populate]=products.about.prices&populate[ad_section][populate]=*`)
+        const data = await response.json();
+        console.log(data);
+        if (data) {
+            setPageData(data.data);
+            setBannerData(data.data.banner_section);
+            setHeartData(data.data.heart_section);
+            setProductsData(data.data.products_section);
+            setAdData(data.data.ad_section);
+        }
+    }
+
+    const getProducts = async () => {
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/products?populate[products][populate]=product_details.image&populate[products][populate]=extraDetails.link&populate[products][populate]=about.prices`)
+        const data = await response.json();
+        console.log(data.data);
+    }
+
+
+    useEffect(() => {
+        getPageData();
+        getProducts();
+    }, [])
 
     return (
         <div>
@@ -71,25 +102,36 @@ const Home = () => {
                 <Navbar />
             </header>
             <section className='banner-sec'>
-                <div className="banner">
+                <div className="banner" style={{background: `url('https://medzentrum.entwicklung-loewenmut.ch${bannerData?.banner_image?.url}')`}}>
                     <div className="container">
                         <div className="row">
                             <div className="col-lg-6 text-center mb-5 mb-lg-0">
-                                <h1>Apotheke und Praxis unter einem Dach</h1>
-                                <p>Unser Team aus Hausärzt/innen, Gynäkolog/ irurg/innen und Apotheker/innen arbeitet interdisziplinär, um Sie individuell und kompetent zu betreuen.</p>
-                                <p>Wir freuen uns auf Ihren Besuch!</p>
+                                <h1>{bannerData?.main_title}</h1>
+                                <p>{bannerData?.description}</p>
                                 <ul className='p-0'>
-                                    <li>
+                                    {bannerData?.links1.map((link, index) => (
+                                        <li key={index}>
+                                            <MyLink link={link.link_url} text={link.link_text} />
+                                        </li>
+                                    ))}
+                                    {/* <li>
                                         <MyLink link="/" text="ZUR APOTHEKE" />
                                     </li>
                                     <li>
                                         <MyLink link="/" text="ZUR PRAXIS" />
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </div>
                             <div className="col-lg-6">
                                 <div className="d-flex banner-item justify-content-lg-end align-items-lg-end justify-content-around align-items-start">
-                                    <div className="round round-1">
+                                    {bannerData?.links2.map((roundLink, index) => (
+                                        <div key={index} className={`round round-${index + 1}`}>
+                                        <Link to={roundLink.link_url} className="round-link">
+                                            {roundLink.link_text}
+                                        </Link>
+                                        </div>
+                                    ))}
+                                    {/* <div className="round round-1">
                                         <Link to='#' className="round-link">
                                             TERMIN FÜR DIE APOTHEKE BUCHEN
                                         </Link>
@@ -98,7 +140,8 @@ const Home = () => {
                                         <Link to='#' className="round-link">
                                             TERMIN FÜR DIE PRAXIS BUCHEN
                                         </Link>
-                                    </div>
+                                    </div> */}
+                                    
                                 </div>
                             </div>             
                         </div>
@@ -113,22 +156,16 @@ const Home = () => {
                             <div className="heart-inner-content1 mb-5 mb-lg-0">
                                 <div className="row align-items-center mb-5">
                                     <div className="col-4 ps-lg-0">
-                                        <img src={heartImg} alt="" />
+                                        <img src={`https://medzentrum.entwicklung-loewenmut.ch${heartData?.left_side?.image?.url}`} alt="" />
                                     </div>
                                     <div className="col-8">
                                         <div className="heart-sec-inner-content">
-                                            <h5>Gesundheitsvorsorge </h5>
-                                            <h2>HerzCheck</h2>
-                                            <p>
-                                                Neun von zehn Herzinfarkte und Hirnschläge
-                                                werden von Faktoren beeinflusst, die sich messen
-                                                und kontrollieren lassen. Mit dem HerzCheck
-                                                erfahren Sie, wie es um Ihre Herz-Kreislauf Gesundheit steht. Wenn Sie Ihre Risikofaktoren
-                                                kennen, können Sie aktiv etwas dagegen tun.
-                                            </p>
+                                            <h5>{heartData?.left_side?.small_heading}</h5>
+                                            <h2>{heartData?.left_side?.large_heading}</h2>
+                                            <p>{heartData?.left_side?.text}</p>
                                             <ul className='p-0'>
                                                 <li>
-                                                    <MyLink link="/" text="WEITERLESEN" />
+                                                    <MyLink link='/' text={heartData?.left_side?.link?.link_text} />
                                                 </li>
                                             </ul>
                                         </div>
@@ -138,7 +175,19 @@ const Home = () => {
                         </div>
                         <div className="col-lg-4 plg--0">
                             <div className="heart-inner-content2">
-                                <div className="item-1 mb-5">
+                                {heartData?.right_side?.map((item, index) => (
+                                    <div key={item?.id ?? index} className={`item-${index + 1} mb-5`}>
+                                    <h5>{item?.small_heading ?? "Default Small Heading"}</h5>
+                                    <h3>{item?.large_heading ?? "Default Large Heading"}</h3>
+                                    <p>{item?.text ?? "Default text for the right side."}</p>
+                                    <ul className="p-0">
+                                        <li>
+                                        <MyLink link="/" text="WEITERLESEN" />
+                                        </li>
+                                    </ul>
+                                    </div>
+                                ))}
+                                {/* <div className="item-1 mb-5">
                                     <h5>Impfungen</h5>
                                     <h3>Grippeimpfung</h3>
                                     <p>
@@ -165,8 +214,8 @@ const Home = () => {
                                             <MyLink link="/" text="WEITERLESEN" />
                                         </li>
                                     </ul>
-                                </div>
-
+                                </div> */}
+                                        
                             </div>
                         </div>
                     </div>
@@ -179,10 +228,23 @@ const Home = () => {
 
             <section className='ad-sec'>
                 <div className="container">
-                    <h2 className='text-center'> Unsere Partner </h2>
+                    <h2 className='text-center'> {adData?.heading} </h2>
                     <div className="ad-inner-content mt-5 mb-3">
+
+                        
+
                         <div className="row align-items-center justify-content-around">
-                            <div className="col-lg-4 col-sm-5 col-8 px-lg-5 mb-lg-0 mb-5">
+
+                            {adData?.images?.map((image, index) => (
+                                <div key={image?.id ?? index} className="col-lg-4 col-sm-5 col-8 px-lg-5 mb-lg-0 mb-5">
+                                <img
+                                    src={`https://medzentrum.entwicklung-loewenmut.ch${image?.url}`}
+                                    alt=""
+                                />
+                                </div>
+                            )) }
+
+                            {/* <div className="col-lg-4 col-sm-5 col-8 px-lg-5 mb-lg-0 mb-5">
                                 <img src={adImg1} alt="" />
                             </div>
                             <div className="col-lg-4 col-sm-5 col-8 px-lg-5 mb-lg-0 mb-5">
@@ -190,7 +252,7 @@ const Home = () => {
                             </div>
                             <div className="col-lg-4 col-sm-5 col-8 px-lg-5 mb-lg-0 mb-5">
                                 <img src={adImg3} alt="" />
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
