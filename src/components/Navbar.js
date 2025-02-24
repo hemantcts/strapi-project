@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../images/logo.svg'
 import burgermenu from '../images/burger-menu.svg'
 import closemenu from '../images/close-icon.svg'
@@ -11,18 +11,35 @@ import Menu2 from './menu_components/Menu2';
 import Menu3 from './menu_components/Menu3';
 
 const Navbar = ({ activeLink }) => {
+    const allUrls = [
+        "https://medzentrum.entwicklung-loewenmut.ch/api/appointment-booking?populate[banner_section][populate]=banner_image&populate[booking_section][populate]",
+        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-overview?populate[banner_section][populate]=banner_image&populate[services_section][populate]=services_data.image&populate[services_section][populate]=services_data.link&populate[specials_section][populate]=image&populate[specials_section][populate]=accordion_data&populate[products_section][populate]=products.product_details.image&populate[products_section][populate]=products.extraDetails.link&populate[products_section][populate]=products.about.prices&populate[ad_section][populate]=partners.image",
+        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-emergency?populate[banner_section][populate]=banner_image&populate[info_section][populate]=icons&populate[pharmacy_services][populate]=image",
+        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-service?populate[banner_section][populate]=banner_image&populate[services_data][populate]=*&populate[pharmacy_services_data][populate]=image&populate[pharmacy_services_data][populate]=list_items",
+        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[banner_section][populate]=banner_image&populate[founder_section][populate]=*&populate[founder_data][populate]=image&populate[team_data][populate]=types",
+        "https://medzentrum.entwicklung-loewenmut.ch/api/dienstleistungen-praxis?populate[banner_section][populate]=banner_image&populate[services_data][populate]=*&populate[pharmacy_services_data][populate]=image&populate[pharmacy_services_data][populate]=list_items",
+        "https://medzentrum.entwicklung-loewenmut.ch/api/oeffnungszeiten-und-kontakt?populate[banner_section][populate]=banner_image&populate[contact_details][populate]=details.icon&populate[contact_details][populate]=time_details",
+        "https://medzentrum.entwicklung-loewenmut.ch/api/overview-practice?populate[banner_section][populate]=banner_image&populate[services_section][populate]=services_data.image&populate[services_section][populate]=services_data.link&populate[specials_section][populate]=image&populate[specials_section][populate]=accordion_data&populate[products_section][populate]=products.product_details.image&populate[products_section][populate]=products.extraDetails.link&populate[products_section][populate]=products.about.prices&populate[ad_section][populate]=partners.image",
+        "https://medzentrum.entwicklung-loewenmut.ch/api/praxis-notfall?populate[banner_section][populate]=banner_image&populate[info_section][populate]=icons&populate[pharmacy_services][populate]=image",
+        "https://medzentrum.entwicklung-loewenmut.ch/api/praxis-team?populate[banner_section][populate]=banner_image&populate[founder_section][populate]=*&populate[founder_data][populate]=image&populate[team_data][populate]=types",
+        "https://medzentrum.entwicklung-loewenmut.ch/api/terminbuchung-praxis?populate[banner_section][populate]=banner_image&populate[booking_section][populate]",
+        "https://medzentrum.entwicklung-loewenmut.ch/api/uebersicht-gesundheitsthemen?populate[banner_section][populate]=banner_image",
+        "https://medzentrum.entwicklung-loewenmut.ch/api/ubersicht-ernaehrungsdiagnostik?populate[banner_section][populate]=banner_image&populate[health_section][populate]=*&populate[specials_section][populate]=image&populate[specials_section][populate]=accordion_data&populate[author_section][populate]=image&populate[ad_section][populate]=partners.image",
+        "https://medzentrum.entwicklung-loewenmut.ch/api/job?populate[banner_section][populate]=banner_image&populate[jobs_section]=*&populate[jobs][populate]=jobs_info.image&populate[jobs][populate]=jobs_info.accordion_data&populate[jobs][populate]=contact_details.details.icon",
+        "https://medzentrum.entwicklung-loewenmut.ch/api/impressum?populate[banner_section][populate]=banner_image&populate[contact_section][populate]=details.icon&populate[data_section][populate]=*",
+        "https://medzentrum.entwicklung-loewenmut.ch/api/datenschutzerklaerung?populate[banner_section][populate]=banner_image&populate[data_protection_section][populate]=accordion_data"
+    ];
+    const navigate = useNavigate();
     const [active, setActive] = useState({ link1: false, link2: false, link3: false, link4: false, link5: false, link6: false })
     const [hover, setHover] = useState({ link1: false, link2: false, link3: false, link4: false, link5: false, link6: false })
     // const [isClicked, setClicked ] = useState(false);
-    const [bannerData, setBannerData] = useState();
-    const [bookingData, setBookingData] = useState();
-    const [pageData, setPageData] = useState();
+    // const [pageData, setPageData] = useState([]);
 
     const [sticky, setSticky] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [isHoverEnabled, setIsHoverEnabled] = useState(window.innerWidth >= 992);
     const [searchKeyword, setSearchKeyword] = useState('');
-    const [matchedKeys, setMatchedKeys] = useState([]);
+    // const [matchedKeys, setMatchedKeys] = useState([]);
 
 
     const handleChange = (e) => {
@@ -31,46 +48,8 @@ const Navbar = ({ activeLink }) => {
     }
 
     const handleClick = () => {
-        if (!pageData || !searchKeyword) {
-            setMatchedKeys([]);
-            return;
-        }
-
-        const matches = findMatchingKeys(pageData, searchKeyword.toLowerCase());
-        setMatchedKeys(matches);
-        console.log("data found", matches)
-    }
-
-    const findMatchingKeys = (data, keyword, parentKey = "") => {
-        let matches = [];
-
-        for (const key in data) {
-            if (typeof data[key] === "object" && data[key] !== null) {
-                matches = matches.concat(findMatchingKeys(data[key], keyword, key)); // Recursive search
-            } else if (typeof data[key] === "string" && data[key].toLowerCase().includes(keyword)) {
-                matches.push(parentKey ? `${parentKey}.${key}` : key); // Store matched key path
-            }
-        }
-
-        return matches;
+        navigate(`/search-result?s=${searchKeyword}`);
     };
-
-
-
-    const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/appointment-booking?populate[banner_section][populate]=banner_image&populate[booking_section][populate]`)
-        const data = await response.json();
-        console.log("nav data ", data.data);
-        if (data) {
-            setBannerData(data.data.banner_section);
-            setBookingData(data.data.booking_section);
-            setPageData(data.data);
-        }
-    }
-
-    useEffect(() => {
-        getPageData();
-    }, [])
 
 
 
