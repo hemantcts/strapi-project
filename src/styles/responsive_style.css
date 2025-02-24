@@ -120,7 +120,8 @@ header {
         text-transform: uppercase;
         position: relative;
     }
-    ul.navbar-nav.main--menu li.nav-item .nav-link:before {
+    ul.navbar-nav.main--menu li.nav-item .nav-link:before,
+    ul.navbar-nav.top_menu  li.nav-item .nav-link:before {
         content: '';
         position: absolute;
         left: 0;
@@ -133,7 +134,8 @@ header {
     ul.navbar-nav.main--menu li.nav-item.apotheke_menu .nav-link:before {
         background-color: var(--bs-green);
     }
-    ul.navbar-nav.main--menu li.nav-item .nav-link.active:before {
+    ul.navbar-nav.main--menu li.nav-item .nav-link.active:before,
+    ul.navbar-nav.top_menu  li.nav-item .nav-link.active:before {
         width: 100%;
     }
     ul.navbar-nav.top_menu {
@@ -143,6 +145,7 @@ header {
     ul.navbar-nav.top_menu li {
         margin-left: 2rem;
         padding-top: 1rem;
+        position: relative;
     }
     ul.navbar-nav.top_menu li .nav-link {
         color: rgba(52, 52, 52, 1);

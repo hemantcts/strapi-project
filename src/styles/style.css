@@ -1015,6 +1015,13 @@ ul.nav-tabs li.tab2 a.active {
     padding: 10px 20px 10px 12px;
     overflow: hidden;
     white-space: nowrap;
+    color: #000;
+    .green-heading {
+        color: var(--bs-green);
+    }
+    .blue-heading {
+        color: var(--bs-blue);
+    }
 }
 
 .search_result {
