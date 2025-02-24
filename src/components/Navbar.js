@@ -10,13 +10,69 @@ import Menu2 from './menu_components/Menu2';
 // import icon from '../images/accordion-icon.svg'
 import Menu3 from './menu_components/Menu3';
 
-const Navbar = ({activeLink}) => {
+const Navbar = ({ activeLink }) => {
     const [active, setActive] = useState({ link1: false, link2: false, link3: false, link4: false, link5: false, link6: false })
     const [hover, setHover] = useState({ link1: false, link2: false, link3: false, link4: false, link5: false, link6: false })
     // const [isClicked, setClicked ] = useState(false);
+    const [bannerData, setBannerData] = useState();
+    const [bookingData, setBookingData] = useState();
+    const [pageData, setPageData] = useState();
+
     const [sticky, setSticky] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [isHoverEnabled, setIsHoverEnabled] = useState(window.innerWidth >= 992);
+    const [searchKeyword, setSearchKeyword] = useState('');
+    const [matchedKeys, setMatchedKeys] = useState([]);
+
+
+    const handleChange = (e) => {
+        setSearchKeyword(e.target.value);
+        console.log(e.target.value)
+    }
+
+    const handleClick = () => {
+        if (!pageData || !searchKeyword) {
+            setMatchedKeys([]);
+            return;
+        }
+
+        const matches = findMatchingKeys(pageData, searchKeyword.toLowerCase());
+        setMatchedKeys(matches);
+        console.log("data found", matches)
+    }
+
+    const findMatchingKeys = (data, keyword, parentKey = "") => {
+        let matches = [];
+
+        for (const key in data) {
+            if (typeof data[key] === "object" && data[key] !== null) {
+                matches = matches.concat(findMatchingKeys(data[key], keyword, key)); // Recursive search
+            } else if (typeof data[key] === "string" && data[key].toLowerCase().includes(keyword)) {
+                matches.push(parentKey ? `${parentKey}.${key}` : key); // Store matched key path
+            }
+        }
+
+        return matches;
+    };
+
+
+
+    const getPageData = async () => {
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/appointment-booking?populate[banner_section][populate]=banner_image&populate[booking_section][populate]`)
+        const data = await response.json();
+        console.log("nav data ", data.data);
+        if (data) {
+            setBannerData(data.data.banner_section);
+            setBookingData(data.data.booking_section);
+            setPageData(data.data);
+        }
+    }
+
+    useEffect(() => {
+        getPageData();
+    }, [])
+
+
 
     useEffect(() => {
         const handleResize = () => {
@@ -65,7 +121,7 @@ const Navbar = ({activeLink}) => {
     };
 
     useEffect(() => {
-        if(activeLink){
+        if (activeLink) {
             console.log(activeLink);
             setActive(activeLink);
         }
@@ -158,8 +214,8 @@ const Navbar = ({activeLink}) => {
                                 <ul className='navbar-nav top_menu align-items-center'>
                                     <li className='nav-item'>
                                         <div className='search_hdr position-relative'>
-                                            <input type="text" className='search_bar' placeholder='Proin gravida' />
-                                            <div className="search_icon"></div>
+                                            <input type="text" value={searchKeyword} onChange={handleChange} className='search_bar' placeholder='Proin gravida' />
+                                            <button className="search_icon" onClick={handleClick}></button>
                                         </div>
                                     </li>
                                     <li className='nav-item'>

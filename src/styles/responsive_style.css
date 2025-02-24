@@ -527,7 +527,11 @@ header {
         max-width: 230px;
         padding: 10px 0;
     }
+    ul.navbar-nav.top_menu {
+        align-items: start !important;
+    }
 }
+
 .banner_sec {
     margin-top: 90px;
 }

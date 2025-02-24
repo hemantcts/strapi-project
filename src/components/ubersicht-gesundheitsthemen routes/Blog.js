@@ -9,7 +9,7 @@ import productImg2 from '../../images/product-3.png'
 import imgBlog from '../../images/blog-img.png'
 import MyLink from '../mini_components/MyLink';
 import { Accordion } from '../Accordion'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 export const Blog = ({ data, color }) => {
 
@@ -105,15 +105,15 @@ export const Blog = ({ data, color }) => {
                                 <h3>Alle Gesundheitsthemen </h3>
                                 <div className='rel_blog_list'>
                                     {blogs?.slice(0, 3).map((blog, index)=>(
-                                        <div className='rb_item'>
+                                        <div key={index} className='rb_item'>
                                             <div className='rb_itm_iner'>
                                                 <div className='rbitm_img'>
-                                                    <a href=""><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.image?.url}`} alt='' /></a>
+                                                    <Link to={`/${blog?.title}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.image?.url}`} alt='' /></Link>
                                                 </div>
                                                 <div className='rbitm_content text-black'>
-                                                    <h4><a href="">{blog?.title}</a></h4>
+                                                    <h4><Link to={`/${blog?.title}`}>{blog?.title}</Link></h4>
                                                     <div className='btn_block'>
-                                                        <MyLink link='/' text='Mehr erfahren ' />
+                                                        <MyLink link={`/${blog?.title}`} text='Mehr erfahren ' />
                                                     </div>
                                                 </div>
                                             </div>
