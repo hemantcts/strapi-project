@@ -9,25 +9,23 @@ import { JobShuffle } from './JobShuffle';
 export const Jobs = () => {
 
     const [bannerData, setBannerData] = useState(null);
-    //const [contactData, setContactData] = useState(null);
-    //const [pharmacyServicesData, setPharmacyServicesData] = useState(null);
+    const [jobSection, setJobSection] = useState(null);
+    const [jobsData, setJobsData] = useState(null);
 
-    // const getPageData = async () => {
-    //     const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/praxis-notfall?populate[banner_section][populate]=banner_image&populate[info_section][populate]=icons&populate[pharmacy_services][populate]=image`)
-    //     const data = await response.json();
-    //     console.log(data);
-    //     if (data) {
-    //         setBannerData(data.data.banner_section);
-    //         setContactData(data.data.info_section);
-    //         setPharmacyServicesData(data.data.pharmacy_services);
-    //         // setProductsData(data.data.products_section);
-    //         // setAdData(data.data.ad_section);
-    //     }
-    // }
+    const getPageData = async () => {
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/job?populate[banner_section][populate]=banner_image&populate[jobs_section]=*&populate[jobs][populate]=jobs_info.image&populate[jobs][populate]=jobs_info.accordion_data&populate[jobs][populate]=contact_details.details.icon`)
+        const data = await response.json();
+        console.log(data);
+        if (data) {
+            setBannerData(data.data.banner_section);
+            setJobSection(data.data.jobs_section);
+            setJobsData(data.data.jobs);
+        }
+    }
 
-    // useEffect(() => {
-    //     getPageData();
-    // }, [])
+    useEffect(() => {
+        getPageData();
+    }, [])
 
     return (
         <div className='jobs'>
@@ -42,9 +40,9 @@ export const Jobs = () => {
             </section>
             <section className="wi_full py_3 job_sec">
                 <div className="container-xxl">
-                    <TwoContent />
+                    <TwoContent data={jobSection} />
                     <div className='job_shuffle'>
-                        <JobShuffle />
+                        <JobShuffle data={jobsData} />
                     </div>
                 </div>
             </section>

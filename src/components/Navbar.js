@@ -6,8 +6,8 @@ import closemenu from '../images/close-icon.svg'
 import loewenmutlogo from '../images/loewenmut-logo.svg'
 import HomeMenu from './menu_components/HomeMenu';
 import Menu2 from './menu_components/Menu2';
-import copyrightImg from '../images/copyright_img.png'
-import icon from '../images/accordion-icon.svg'
+// import copyrightImg from '../images/copyright_img.png'
+// import icon from '../images/accordion-icon.svg'
 import Menu3 from './menu_components/Menu3';
 
 const Navbar = () => {
@@ -71,13 +71,13 @@ const Navbar = () => {
                 <nav className={`navbar navbar-expand-lg ${sticky ? 'sticky' : ''}`}>
                     <div className='nav_overlay'></div>
                     <div className='container-xxl'>
-                        <Link className='navbar-brand' to='/'><img src={logo} alt='logo' /></Link>
+                        <Link className='navbar-brand' to='/'><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Frame_8cd1fd56fd.svg' alt='logo' /></Link>
                         <button className='navbar-toggler' onClick={toggleMenu} type='button' data-bs-target='#mainNavbar' aria-expanded='false'>
                             <img src={burgermenu} alt='menu' />
                         </button>
                         <div className={`collapse navbar-collapse ${menuOpen ? 'show' : ''}`} id='mainNavbar'>
                             <div className='open--menu--header'>
-                                <img src={logo} alt='menu' className='open-menu-logo' />
+                                <img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Frame_8cd1fd56fd.svg' alt='menu' className='open-menu-logo' />
                                 <img src={closemenu} alt='menu' className='close_navbtn' onClick={toggleMenu} />
                             </div>
                             <div className='header-menu-h ms-auto'>
@@ -157,7 +157,7 @@ const Navbar = () => {
                                         </div>
                                     </li>
                                     <li className='nav-item'>
-                                        <Link className="extra-nav-link nav-link" to="#">Jobs</Link>
+                                        <Link className="extra-nav-link nav-link" to="/jobs">Jobs</Link>
                                     </li>
                                     <li className='nav-item'>
                                         <Link className="extra-nav-link nav-link" to="#">Kontakte</Link>

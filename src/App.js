@@ -1,7 +1,7 @@
 
 import './styles/style.css';
 import './styles/responsive_style.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useParams } from 'react-router-dom';
 import Home from './components/Home';
 import PharmacyOverview from './components/PharmacyOverview';
 import { AppointmentBooking } from './components/AppointmentBooking';
@@ -24,8 +24,36 @@ import { Jobs } from './components/Jobs';
 import { Error } from './components/Error';
 import { SearchResult } from './components/SearchResult';
 import { Angebot } from './components/Angebot';
+import { useState } from 'react';
 
 function App() {
+
+  // const { title } = useParams();
+  // const [blogs, setBlogs] = useState();
+  // const [isMatched, setMatched] = useState(false);
+
+  // const getBlogs = async () => {
+  //   const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*`)
+  //   const data = await response.json();
+  //   console.log(data);
+  //   if (data) {
+  //     setBlogs(data.data);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   getBlogs();
+  // }, [])
+
+  // useEffect(() => {
+  //   if (blogs?.length > 0 && title) {
+  //     const matchedBlog = blogs?.find((blog) => blog.title.toString() === title);
+  //     if(matchedBlog){
+  //       setMatched(true);
+  //     }
+  //   }
+  // }, [blogs, title]);
+
   return (
     <div >
       <ScrollToTop />
@@ -38,7 +66,7 @@ function App() {
         <Route path="/apotheke-team" element={<PharmacyTeam />} />
         <Route path="/apotheke-notfall" element={<PharmacyEmergency />} />
         <Route path="/dienstleistungen-apotheke" element={<PharmacyServices />} />
-        
+
         {/* praxis routes */}
         <Route path="/ubersicht-praxis" element={<OverviewPractice />} />
         <Route path="/terminbuchung-praxis" element={<TerminBuchenPraxis />} />
@@ -54,7 +82,7 @@ function App() {
         <Route path="/datenschutz" element={<Datenschutz />} />
 
         <Route path="/ubersicht-gesundheitsthemen" element={<UbersichtGesundheitsthemen />} />
-        <Route path="/blog/:id" element={<Blog />} />
+        <Route path="/:title" element={<Blog />} />
         <Route path="/impressum" element={<Impressum />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/search-result" element={<SearchResult />} />

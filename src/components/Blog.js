@@ -9,15 +9,16 @@ import productImg2 from '../images/product-3.png'
 import imgBlog from '../images/blog-img.png'
 import MyLink from './mini_components/MyLink';
 import { Accordion } from './Accordion'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export const Blog = ({ data, color }) => {
 
-    const { id } = useParams();
+    const { title } = useParams();
     const [productDetails, setProductDetails] = useState();
     const [extraDetails, setExtraDetails] = useState();
     const [blogs, setBlogs] = useState();
     const [blog, setBlog] = useState(null);
+    const navigate = useNavigate();
 
     const getPageData = async () => {
         const response = await fetch('https://medzentrum.entwicklung-loewenmut.ch/api/single-blog?populate[product_details][populate]=image&populate[extra_details][populate]=accordion_data')
@@ -41,15 +42,21 @@ export const Blog = ({ data, color }) => {
     useEffect(() => {
         getPageData();
         getBlogs();
+        // navigate("/404");
     }, [])
 
     useEffect(() => {
-        if (blogs?.length > 0 && id) {
-            const matchedBlog = blogs?.find((blog) => blog.id.toString() === id);
+        if (blogs?.length > 0 && title) {
+            const matchedBlog = blogs?.find((blog) => blog.title.toString() === title);
             console.log(blog);
-            setBlog(matchedBlog);
+            // setBlog(matchedBlog);
+            if (matchedBlog) {
+                setBlog(matchedBlog);
+            } else {
+                navigate("/404"); // Redirect to trigger the catch-all error route
+            }
         }
-    }, [blogs, id]);
+    }, [blogs, title]);
 
 
     return (
@@ -66,8 +73,8 @@ export const Blog = ({ data, color }) => {
                         <div className='col-lg-8 detail_col'>
                             <div className='post_data_wrapper text-black'>
                                 <h1>{blog?.title}</h1>
-                                <img src={postThumb} alt="" className='w-100 my-3' />
-                                <h3>Proin gravida nibh vel velit auctor aliquet</h3>
+                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.image?.url}`} alt="" className='w-100 my-3' />
+                                <h3>{blog?.title}</h3>
                                 <div dangerouslySetInnerHTML={{ __html: blog?.description }} />
 
                             </div>
