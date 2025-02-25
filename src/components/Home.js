@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from './Navbar';
 // import heartImg from '../images/HEART.png';
 // import productImg1 from '../images/product-img1.png';
@@ -13,6 +13,7 @@ import Footer from './Footer';
 import MyLink from './mini_components/MyLink';
 import { Link } from 'react-router-dom';
 import { PartnersSection } from './PartnersSection';
+import Skeleton from 'react-loading-skeleton';
 // import productImg1 from '../images/product-img1.png'
 // import productImg2 from '../images/product-img2.png'
 
@@ -53,78 +54,94 @@ const Home = () => {
     }, [])
 
     return (
-    <div>
-        <Navbar />
-        <section className='wi_full py_3 banner_sec main_banner' style={{background: `url('https://medzentrum.entwicklung-loewenmut.ch${bannerData?.banner_image?.url}')`}}>
-            <div className="container-xxl">
-                <div className="row">
-                    <div className="col-12 col-lg-6">
-                        <div className="banner_content text-center">
-                            <h1>{bannerData?.main_title}</h1>
-                            <p>{bannerData?.description}</p>
-                            <p>{bannerData?.small_description}</p>
-                            <div className='btn_block justify-content-center'>
-                                {bannerData?.links1.map((link, index) => (
-                                    <div className={`buttn_${index + 1}`} key={index}>
-                                        <MyLink link={link.link_url} text={link.link_text} color={index%2==0 ? 'green': ''} />
+        <div>
+            <Navbar />
+            <section className='wi_full py_3 banner_sec main_banner' style={{ background: `url('https://medzentrum.entwicklung-loewenmut.ch${bannerData?.banner_image?.url}')` }}>
+                <div className="container-xxl">
+                    <div className="row">
+                        <div className="col-12 col-lg-6">
+                            {bannerData ? (
+                                <div className="banner_content text-center">
+                                    <h1>{bannerData?.main_title}</h1>
+                                    <p>{bannerData?.description}</p>
+                                    <p>{bannerData?.small_description}</p>
+                                    <div className='btn_block justify-content-center'>
+                                        {bannerData?.links1.map((link, index) => (
+                                            <div className={`buttn_${index + 1}`} key={index}>
+                                                <MyLink link={link.link_url} text={link.link_text} color={index % 2 == 0 ? 'green' : ''} />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="banner_content text-center">
+                                    <h1><Skeleton count={2} /></h1>
+                                    <p><Skeleton count={4} /></p>
+                                    <p><Skeleton count={1} /></p>
+                                    <div className='btn_block justify-content-center'>
+                                        {bannerData?.links1.map((link, index) => (
+                                            <div className={`buttn_${index + 1}`} key={index}>
+                                                <MyLink link={link.link_url} text={link.link_text} color={index % 2 == 0 ? 'green' : ''} />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )
+                            }
+                        </div>
+                        <div className="col-12 col-lg-6 align-self-end">
+                            <div className="banner_btns">
+                                {bannerData?.links2.map((roundLink, index) => (
+                                    <div key={index} className={`round_btn round_${index + 1}`}>
+                                        <Link to={roundLink.link_url} className="text-uppercase">
+                                            {roundLink.link_text}
+                                        </Link>
                                     </div>
                                 ))}
                             </div>
                         </div>
                     </div>
-                    <div className="col-12 col-lg-6 align-self-end">
-                        <div className="banner_btns">
-                            {bannerData?.links2.map((roundLink, index) => (
-                                <div key={index} className={`round_btn round_${index + 1}`}>
-                                    <Link to={roundLink.link_url} className="text-uppercase">
-                                        {roundLink.link_text}
-                                    </Link>
+                </div>
+            </section>
+            <section className="wi_full py_3 heart_sec">
+                <div className="container-xxl">
+                    <div className="row align-items-center">
+                        <div className="col-12 col-lg-7 content_box">
+                            <div className="heart_block">
+                                <img className="heart_img" src={`https://medzentrum.entwicklung-loewenmut.ch${heartData?.left_side?.image?.url}`} alt="" />
+                                <div className="content_wrap">
+                                    <div className="sub_title">{heartData?.left_side?.small_heading}</div>
+                                    <h2>{heartData?.left_side?.large_heading}</h2>
+                                    <p>{heartData?.left_side?.text}</p>
+                                    <div className='btn_block'>
+                                        <MyLink link='/' text={heartData?.left_side?.link?.link_text} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-12 col-lg-5 content_box">
+                            {heartData?.right_side?.map((item, index) => (
+                                <div key={item?.id ?? index} className={`item-${index + 1} content_wrap`}>
+                                    <div className="sub_title">{item?.small_heading ?? "Default Small Heading"}</div>
+                                    <h3>{item?.large_heading ?? "Default Large Heading"}</h3>
+                                    <p>{item?.text ?? "Default text for the right side."}</p>
+                                    <div className="btn_block">
+                                        <MyLink link="/" text="WEITERLESEN" />
+                                    </div>
                                 </div>
                             ))}
                         </div>
-                    </div>             
-                </div>
-            </div>
-        </section>
-        <section className="wi_full py_3 heart_sec">
-            <div className="container-xxl">
-                <div className="row align-items-center">
-                    <div className="col-12 col-lg-7 content_box">
-                        <div className="heart_block">
-                            <img className="heart_img" src={`https://medzentrum.entwicklung-loewenmut.ch${heartData?.left_side?.image?.url}`} alt="" />
-                            <div className="content_wrap">
-                                <div className="sub_title">{heartData?.left_side?.small_heading}</div>
-                                <h2>{heartData?.left_side?.large_heading}</h2>
-                                <p>{heartData?.left_side?.text}</p>
-                                <div className='btn_block'>
-                                    <MyLink link='/' text={heartData?.left_side?.link?.link_text} />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-12 col-lg-5 content_box">
-                        {heartData?.right_side?.map((item, index) => (
-                        <div key={item?.id ?? index} className={`item-${index + 1} content_wrap`}>
-                            <div className="sub_title">{item?.small_heading ?? "Default Small Heading"}</div>
-                            <h3>{item?.large_heading ?? "Default Large Heading"}</h3>
-                            <p>{item?.text ?? "Default text for the right side."}</p>
-                            <div className="btn_block">
-                                <MyLink link="/" text="WEITERLESEN" />
-                            </div>
-                        </div>
-                        ))}
                     </div>
                 </div>
-            </div>
-        </section>
-        <section className='wi_full py_3 aktionen_sec bg_light_blue products-sec'>
-            <ProductsSection productsData={productsData} />
-        </section>
-        <section className='wi_full py_3 partner_sec bg_dark_grey'>
-            <PartnersSection adData={adData} />
-        </section>
-        <Footer />
-    </div>
+            </section>
+            <section className='wi_full py_3 aktionen_sec bg_light_blue products-sec'>
+                <ProductsSection productsData={productsData} />
+            </section>
+            <section className='wi_full py_3 partner_sec bg_dark_grey'>
+                <PartnersSection adData={adData} />
+            </section>
+            <Footer />
+        </div>
     )
 }
 

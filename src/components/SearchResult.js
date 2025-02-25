@@ -3,6 +3,9 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import postThumb from '../images/post-thumbnail.png'
 import { Link, useLocation } from 'react-router-dom'
+import Skeleton from 'react-loading-skeleton';
+import "react-loading-skeleton/dist/skeleton.css";
+
 
 
 export const SearchResult = ({ data, color }) => {
@@ -42,7 +45,7 @@ export const SearchResult = ({ data, color }) => {
         "/terminbuchung-praxis",
         "/ubersicht-gesundheitsthemen",
         "/ernahrungsdiagnostik",
-        "/job",
+        "/jobs",
         "/impressum",
         "/datenschutz",
     ]
@@ -50,6 +53,7 @@ export const SearchResult = ({ data, color }) => {
     const [pageData, setPageData] = useState([]);
     const [matchedKeys, setMatchedKeys] = useState([]);
     const [matchedIndices, setMatchedIndices] = useState([]);
+    const [isLoading, setLoading] = useState(true);
 
     const handleClick = () => {
         // console.log(pageData);
@@ -88,6 +92,8 @@ export const SearchResult = ({ data, color }) => {
     };
 
     const getPageData = async () => {
+        setLoading(true);
+        setMatchedIndices([]);
         try {
             const urls = allUrls;
 
@@ -112,9 +118,13 @@ export const SearchResult = ({ data, color }) => {
                     console.log("index", index);
                 }
             });
+            setLoading(false);
         } catch (error) {
             console.error("Error fetching page data:", error);
+        } finally{
+            setLoading(false);
         }
+
     };
 
     useEffect(() => {
@@ -134,21 +144,46 @@ export const SearchResult = ({ data, color }) => {
                         <p>Es gibt 3 Ergebnisse für deine Suche.</p>
                     </div>
                     <div className='search_list_row'>
-                        {matchedIndices?.map((index, i) => (
-                            // pageData[index]?.map(()=>(
-                                // {console.log(pageData[index])}
+                        {!isLoading ? (
+                            matchedIndices.map((index, i) => (
+                                <div key={i} className="srch_li_item text-black">
+                                    {pageData[index]?.banner_section?.banner_image && (
+                                        <Link to={allRoutes[index]}><img
+                                            src={`https://medzentrum.entwicklung-loewenmut.ch${pageData[index]?.banner_section?.banner_image?.url}`}
+                                            alt=""
+                                            className="src_post_img"
+                                        /></Link>
+                                    )}
 
-                                <div key={i} className='srch_li_item text-black'>
-                                    {pageData[index]?.banner_section?.banner_image && <img src={`https://medzentrum.entwicklung-loewenmut.ch${pageData[index]?.banner_section?.banner_image?.url}`} alt='' className='src_post_img' />}
-                                    <div className='src_post_content'>
+                                    <div className="src_post_content">
                                         <h3>
-                                            <Link to={allRoutes[index]}>{pageData[index]?.banner_section?.title}</Link>
+                                            <Link to={allRoutes[index]}>
+                                                {pageData[index]?.banner_section?.title || <Skeleton width={180} height={20} />}
+                                            </Link>
                                         </h3>
-                                        <p>{pageData[index]?.banner_section?.description}</p>
+                                        <p>{pageData[index]?.banner_section?.description || <Skeleton count={2} />}</p>
                                     </div>
                                 </div>
-                            // ))
-                        ))}
+                            ))
+                        ) : (
+                            // Show skeleton loaders if no matches
+                            Array(1)
+                                .fill()
+                                .map((_, i) => (
+                                    <div key={i} className="srch_li_item text-black">
+                                        <Skeleton height={135} width={145} className="me-3 mb-sm-0 mb-3" />
+                                        <div className="src_post_content">
+                                            <h3>
+                                                <Skeleton width={180} height={20} />
+                                            </h3>
+                                            <p>
+                                                <Skeleton count={2} />
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))
+                        )}
+
                     </div>
                 </div>
             </section>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import logo from '../images/logo.svg'
+// import logo from '../images/logo.svg'
 import burgermenu from '../images/burger-menu.svg'
 import closemenu from '../images/close-icon.svg'
 import loewenmutlogo from '../images/loewenmut-logo.svg'
@@ -11,24 +11,6 @@ import Menu2 from './menu_components/Menu2';
 import Menu3 from './menu_components/Menu3';
 
 const Navbar = ({ activeLink }) => {
-    const allUrls = [
-        "https://medzentrum.entwicklung-loewenmut.ch/api/appointment-booking?populate[banner_section][populate]=banner_image&populate[booking_section][populate]",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-overview?populate[banner_section][populate]=banner_image&populate[services_section][populate]=services_data.image&populate[services_section][populate]=services_data.link&populate[specials_section][populate]=image&populate[specials_section][populate]=accordion_data&populate[products_section][populate]=products.product_details.image&populate[products_section][populate]=products.extraDetails.link&populate[products_section][populate]=products.about.prices&populate[ad_section][populate]=partners.image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-emergency?populate[banner_section][populate]=banner_image&populate[info_section][populate]=icons&populate[pharmacy_services][populate]=image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-service?populate[banner_section][populate]=banner_image&populate[services_data][populate]=*&populate[pharmacy_services_data][populate]=image&populate[pharmacy_services_data][populate]=list_items",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[banner_section][populate]=banner_image&populate[founder_section][populate]=*&populate[founder_data][populate]=image&populate[team_data][populate]=types",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/dienstleistungen-praxis?populate[banner_section][populate]=banner_image&populate[services_data][populate]=*&populate[pharmacy_services_data][populate]=image&populate[pharmacy_services_data][populate]=list_items",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/oeffnungszeiten-und-kontakt?populate[banner_section][populate]=banner_image&populate[contact_details][populate]=details.icon&populate[contact_details][populate]=time_details",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/overview-practice?populate[banner_section][populate]=banner_image&populate[services_section][populate]=services_data.image&populate[services_section][populate]=services_data.link&populate[specials_section][populate]=image&populate[specials_section][populate]=accordion_data&populate[products_section][populate]=products.product_details.image&populate[products_section][populate]=products.extraDetails.link&populate[products_section][populate]=products.about.prices&populate[ad_section][populate]=partners.image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/praxis-notfall?populate[banner_section][populate]=banner_image&populate[info_section][populate]=icons&populate[pharmacy_services][populate]=image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/praxis-team?populate[banner_section][populate]=banner_image&populate[founder_section][populate]=*&populate[founder_data][populate]=image&populate[team_data][populate]=types",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/terminbuchung-praxis?populate[banner_section][populate]=banner_image&populate[booking_section][populate]",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/uebersicht-gesundheitsthemen?populate[banner_section][populate]=banner_image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/ubersicht-ernaehrungsdiagnostik?populate[banner_section][populate]=banner_image&populate[health_section][populate]=*&populate[specials_section][populate]=image&populate[specials_section][populate]=accordion_data&populate[author_section][populate]=image&populate[ad_section][populate]=partners.image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/job?populate[banner_section][populate]=banner_image&populate[jobs_section]=*&populate[jobs][populate]=jobs_info.image&populate[jobs][populate]=jobs_info.accordion_data&populate[jobs][populate]=contact_details.details.icon",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/impressum?populate[banner_section][populate]=banner_image&populate[contact_section][populate]=details.icon&populate[data_section][populate]=*",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/datenschutzerklaerung?populate[banner_section][populate]=banner_image&populate[data_protection_section][populate]=accordion_data"
-    ];
     const navigate = useNavigate();
     const [active, setActive] = useState({ link1: false, link2: false, link3: false, link4: false, link5: false, link6: false })
     const [hover, setHover] = useState({ link1: false, link2: false, link3: false, link4: false, link5: false, link6: false })
@@ -47,7 +29,8 @@ const Navbar = ({ activeLink }) => {
         console.log(e.target.value)
     }
 
-    const handleClick = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         navigate(`/search-result?s=${searchKeyword}`);
     };
 
@@ -132,7 +115,7 @@ const Navbar = ({ activeLink }) => {
                                                 }
                                             }}
                                         >Apotheke <b className='caret'></b></Link>
-                                        {(hover.link1) && <ul
+                                        {((active.link1 && !isHoverEnabled) || hover.link1) && <ul
                                             onMouseEnter={() => handleMouseEnter(1)}
                                             onMouseLeave={(e) => {
                                                 if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget?.closest('.apotheke_menu')) {
@@ -152,7 +135,7 @@ const Navbar = ({ activeLink }) => {
                                                 }
                                             }}
                                         >Praxis <b className='caret'></b></Link>
-                                        {(hover.link2) && <ul
+                                        {((active.link2 && !isHoverEnabled) || hover.link2) && <ul
                                             onMouseEnter={() => handleMouseEnter(2)}
                                             onMouseLeave={(e) => {
                                                 if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.praxis_menu')) {
@@ -172,7 +155,7 @@ const Navbar = ({ activeLink }) => {
                                                 }
                                             }}
                                         >Ernährungsdiagnostik <b className='caret'></b></Link>
-                                        {(hover.link3) && <ul
+                                        {((active.link3 && !isHoverEnabled) || hover.link3) && <ul
                                             onMouseEnter={() => handleMouseEnter(3)}
                                             onMouseLeave={(e) => {
                                                 if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.ubersicth_menu')) {
@@ -193,8 +176,10 @@ const Navbar = ({ activeLink }) => {
                                 <ul className='navbar-nav top_menu align-items-center'>
                                     <li className='nav-item'>
                                         <div className='search_hdr position-relative'>
-                                            <input type="text" value={searchKeyword} onChange={handleChange} className='search_bar' placeholder='Proin gravida' />
-                                            <button className="search_icon" onClick={handleClick}></button>
+                                            <form onSubmit={(e)=>handleSubmit(e)}>
+                                                <input type="text" value={searchKeyword} onChange={handleChange} className='search_bar' placeholder='Proin gravida' />
+                                            </form>
+                                            <button className="search_icon border-0" onClick={(e)=>handleSubmit(e)}></button>
                                         </div>
                                     </li>
                                     <li className='nav-item'>
@@ -212,7 +197,7 @@ const Navbar = ({ activeLink }) => {
                                 </ul>
                             </div>
                             <div className='hdr_copygt'>
-                                <p>© Copyright 2025 | MedZentrum AG, Pfungen | Design by <a href='https://www.loewenmut.ch/' target='_blank'>Loewenmut. <img src={loewenmutlogo} alt='loewenmut' /></a></p>
+                                <p>© Copyright 2025 | MedZentrum AG, Pfungen | Design by <a href='https://www.loewenmut.ch/' target='_blank' rel="noreferrer">Loewenmut. <img src={loewenmutlogo} alt='loewenmut' /></a></p>
                             </div>
                         </div>
                     </div>
