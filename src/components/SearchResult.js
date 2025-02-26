@@ -121,7 +121,7 @@ export const SearchResult = ({ data, color }) => {
             setLoading(false);
         } catch (error) {
             console.error("Error fetching page data:", error);
-        } finally{
+        } finally {
             setLoading(false);
         }
 
@@ -141,29 +141,33 @@ export const SearchResult = ({ data, color }) => {
                 <div className='container-xxl'>
                     <div className='sec_title text-black'>
                         <h1 className='text-blue'>Suchergebnisse für „{searchKeyword}“</h1>
-                        <p>Es gibt 3 Ergebnisse für deine Suche.</p>
+                        {!isLoading ? (
+                            <p>Es gibt {matchedIndices.length} Ergebnisse für deine Suche.</p>
+                        ) : (
+                            <Skeleton />
+                        )}
                     </div>
                     <div className='search_list_row'>
                         {!isLoading ? (
                             matchedIndices.map((index, i) => (
-                                <div key={i} className="srch_li_item text-black">
-                                    {pageData[index]?.banner_section?.banner_image && (
-                                        <Link to={allRoutes[index]}><img
-                                            src={`https://medzentrum.entwicklung-loewenmut.ch${pageData[index]?.banner_section?.banner_image?.url}`}
-                                            alt=""
-                                            className="src_post_img"
-                                        /></Link>
-                                    )}
+                                <Link key={i} to={allRoutes[index]}>
+                                    <div className="srch_li_item text-black">
+                                        {pageData[index]?.banner_section?.banner_image && (
+                                            <img
+                                                src={`https://medzentrum.entwicklung-loewenmut.ch${pageData[index]?.banner_section?.banner_image?.url}`}
+                                                alt=""
+                                                className="src_post_img"
+                                            />
+                                        )}
 
-                                    <div className="src_post_content">
-                                        <h3>
-                                            <Link to={allRoutes[index]}>
+                                        <div className="src_post_content">
+                                            <h3>
                                                 {pageData[index]?.banner_section?.title || <Skeleton width={180} height={20} />}
-                                            </Link>
-                                        </h3>
-                                        <p>{pageData[index]?.banner_section?.description || <Skeleton count={2} />}</p>
+                                            </h3>
+                                            <p>{pageData[index]?.banner_section?.description || <Skeleton count={2} />}</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             ))
                         ) : (
                             // Show skeleton loaders if no matches

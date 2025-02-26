@@ -5,6 +5,7 @@ import envelopeicon from '../images/icon-envelope.svg'
 import facebookicon from '../images/icon-facebook.svg'
 import instagramicon from '../images/icon-instagram.svg'
 import linkedinicon from '../images/icon-linkedin.svg'
+import { Link } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -16,29 +17,29 @@ const Footer = () => {
                         <div className='row'>
                             <div className='col-12 col-sm-6 col-lg-3 ftr_block'>
                                 <h4>MedZentrum Pfungen</h4>
-                                <address>Riedäckerstrasse 5<br />8422 Pfungen</address>
+                                <address>Riedäckerstrasse 5<br />CH-8422 Pfungen</address>
                                 <h4>Quick Links</h4>
                                 <ul>
-                                    <li><a href=''>Apotheke</a></li>
-                                    <li><a href=''>Praxis</a></li>
-                                    <li><a href=''>Ernährungsdiagnostik</a></li>
-                                    <li><a href=''>Gesundheitsthemen</a></li>
+                                    <li><Link to='/ubersicht-apotheke'>Apotheke</Link></li>
+                                    <li><Link to='/ubersicht-praxis'>Praxis</Link></li>
+                                    <li><Link to='/ernahrungsdiagnostik'>Ernährungsdiagnostik</Link></li>
+                                    <li><Link to='/ubersicht-gesundheitsthemen'>Gesundheitsthemen</Link></li>
                                 </ul>
                             </div>
                             <div className='col-12 col-sm-6 col-lg-4 ftr_block'>
                                 <h4>Apotheke</h4>
                                 <div className='offen_detail'>
-                                    <ul>
+                                    <ul className='mb-3'>
                                         <li><a href='tel: 052 305 03 50'><img src={phoneicon} alt='#' /><span>052 305 03 50</span></a></li>
                                         <li><a href='mailto: apotheke@medzentrum.ch'><img src={envelopeicon} alt='#' /><span>apotheke@medzentrum.ch</span></a></li>
                                     </ul>
-                                    <p>Öffnungszeiten Apotheke<br />Montag bis Freitag<br />8:00 – 12:15 | 13:00 – 18:30 <br />Samstag 8:00 – 13:00</p>
+                                    <p>Öffnungszeiten Apotheke:<br />Montag bis Freitag<br />8:00 – 12:15 | 13:00 – 18:30 <br />Samstag 8:00 – 13:00</p>
                                 </div>
                             </div>
                             <div className='col-12 col-sm-6 col-lg-3 ftr_block'>
                                 <h4>Praxis</h4>
                                 <div className='offen_detail'>
-                                    <ul>
+                                    <ul className='mb-3'>
                                         <li><a href='tel: 052 305 03 55'><img src={phoneicon} alt='#' /><span>052 305 03 55</span></a></li>
                                         <li><a href='mailto: praxis@medzentrum.ch'><img src={envelopeicon} alt='#' /><span>praxis@medzentrum.ch</span></a></li>
                                     </ul>
@@ -54,8 +55,8 @@ const Footer = () => {
                                 </div>
                                 <h4>Rechtliches</h4>
                                 <ul>
-                                    <li><a href=''>Impressum</a></li>
-                                    <li><a href=''>Datenschutzerklärung</a></li>
+                                    <li><Link to='/impressum'>Impressum</Link></li>
+                                    <li><Link to='/datenschutz'>Datenschutzerklärung</Link></li>
                                 </ul>
                             </div>
                         </div>

@@ -101,7 +101,9 @@ const Navbar = ({ activeLink }) => {
                         </button>
                         <div className={`collapse navbar-collapse ${menuOpen ? 'show' : ''}`} id='mainNavbar'>
                             <div className='open--menu--header'>
-                                <img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Frame_8cd1fd56fd.svg' alt='menu' className='open-menu-logo' />
+                                <Link to='/'>
+                                    <img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Frame_8cd1fd56fd.svg' alt='menu' className='open-menu-logo' />
+                                </Link>
                                 <img src={closemenu} alt='menu' className='close_navbtn' onClick={toggleMenu} />
                             </div>
                             <div className='header-menu-h ms-auto'>
@@ -176,10 +178,10 @@ const Navbar = ({ activeLink }) => {
                                 <ul className='navbar-nav top_menu align-items-center'>
                                     <li className='nav-item'>
                                         <div className='search_hdr position-relative'>
-                                            <form onSubmit={(e)=>handleSubmit(e)}>
-                                                <input type="text" value={searchKeyword} onChange={handleChange} className='search_bar' placeholder='Proin gravida' />
+                                            <form onSubmit={(e) => handleSubmit(e)}>
+                                                <input type="text" value={searchKeyword} onChange={handleChange} className='search_bar' placeholder='suchen...' />
                                             </form>
-                                            <button className="search_icon border-0" onClick={(e)=>handleSubmit(e)}></button>
+                                            <button className="search_icon border-0" onClick={(e) => handleSubmit(e)}></button>
                                         </div>
                                     </li>
                                     <li className='nav-item'>

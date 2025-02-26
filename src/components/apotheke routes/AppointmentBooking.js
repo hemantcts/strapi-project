@@ -36,7 +36,7 @@ export const AppointmentBooking = () => {
       </section>
 
       <section className='breadcrumb_sec wi_full mt_3'>
-        <MyButton buttonText={bannerData?.title} activePage='Apotheke' />
+        <MyButton buttonText={bannerData?.title} activePage='Apotheke' color='green' />
       </section>
 
       <section className="wi_full py_3 dien_section">
