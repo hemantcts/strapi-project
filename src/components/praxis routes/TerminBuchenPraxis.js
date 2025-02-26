@@ -5,6 +5,7 @@ import { BannerSection } from '../BannerSection'
 import { MyButton } from '../mini_components/MyButton'
 import { TwoContent } from '../mini_components/TwoContent'
 import Iframe from '../Iframe'
+import { StickyButton } from '../mini_components/StickyButton'
 
 export const TerminBuchenPraxis = () => {
   const activeLink = { link1: false, link2: true, link3: false, link4: false, link5: false, link6: false }
@@ -27,6 +28,9 @@ export const TerminBuchenPraxis = () => {
 
   return (
     <div className='appointement'>
+      <div className='stickY_btn'>
+        <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
+      </div>
       <header>
         <Navbar activeLink={activeLink} />
       </header>
@@ -42,7 +46,7 @@ export const TerminBuchenPraxis = () => {
       <section className="wi_full py_3 dien_section">
         <div className="container-xxl">
           <TwoContent data={bookingData} color='blue' />
-          
+
           <div className='iframe mt-5'>
             <Iframe />
           </div>

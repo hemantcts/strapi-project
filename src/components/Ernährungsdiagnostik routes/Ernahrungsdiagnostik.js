@@ -7,6 +7,7 @@ import { MyButton } from '../mini_components/MyButton'
 import { TwoContent } from '../mini_components/TwoContent'
 import { SpeziellesSection } from '../SpeziellesSection'
 import { PartnersSection } from '../PartnersSection';
+import { StickyButton } from '../mini_components/StickyButton'
 
 const Ernahrungsdiagnostik = () => {
     const activeLink = { link1: false, link2: false, link3: true, link4: false, link5: false, link6: false }
@@ -35,6 +36,9 @@ const Ernahrungsdiagnostik = () => {
 
     return (
         <div className='ernahrung'>
+            <div className='stickY_btn'>
+                <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
+            </div>
             <Navbar activeLink={activeLink} />
             <div className='inner_banner_Section'>
                 {<BannerSection bannerData={bannerData} />}

@@ -6,6 +6,7 @@ import { MyButton } from '../mini_components/MyButton'
 import { TwoContent } from '../mini_components/TwoContent'
 import { Team1 } from '../Team1'
 import { FounderSection } from '../FounderSection'
+import { StickyButton } from '../mini_components/StickyButton'
 
 const PharmacyTeam = () => {
   const activeLink = { link1: true, link2: false, link3: false, link4: false, link5: false, link6: false }
@@ -54,6 +55,9 @@ const PharmacyTeam = () => {
 
   return (
     <div className='pharmacy_team'>
+      <div className='stickY_btn'>
+        <StickyButton btntext='Termin Buchen Apotheke' btnLink='/terminbuchung-apotheke' color='green' />
+      </div>
       <header>
         <Navbar activeLink={activeLink} />
       </header>
@@ -81,13 +85,13 @@ const PharmacyTeam = () => {
             <h2>{teamData?.heading}</h2>
           </div>
           <div className='tab_container'>
-            <ul  className='nav nav-tabs' role='tablist'>
-          {teamData?.types?.map((type, index)=>(
-              <li key={index} className={`nav-item tab${index+1}`}>
-                  <a className={`nav-link ${index===0 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index+1}`} role="tab">{type?.link_text
+            <ul className='nav nav-tabs' role='tablist'>
+              {teamData?.types?.map((type, index) => (
+                <li key={index} className={`nav-item tab${index + 1}`}>
+                  <a className={`nav-link ${index === 0 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index + 1}`} role="tab">{type?.link_text
                   }</a>
-              </li>
-            ))}
+                </li>
+              ))}
             </ul>
             <div className='tab-content'>
               <div className='tab-pane active' id='Tab1' role='tabpanel'>
@@ -97,7 +101,7 @@ const PharmacyTeam = () => {
                 <Team1 data={teams2} color='blue' />
               </div>
             </div>
-              
+
           </div>
         </div>
       </section>
@@ -105,7 +109,7 @@ const PharmacyTeam = () => {
 
       <Footer />
 
-      
+
     </div>
   )
 }

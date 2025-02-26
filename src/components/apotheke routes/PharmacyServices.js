@@ -5,6 +5,7 @@ import { MyButton } from '../mini_components/MyButton'
 import Footer from '../Footer'
 import { TwoContent } from '../mini_components/TwoContent'
 import { ShuffleComponent } from '../ShuffleComponent'
+import { StickyButton } from '../mini_components/StickyButton'
 
 export const PharmacyServices = () => {
     const activeLink = { link1: true, link2: false, link3: false, link4: false, link5: false, link6: false }
@@ -31,6 +32,9 @@ export const PharmacyServices = () => {
 
     return (
         <div className='pharmacy_services'>
+            <div className='stickY_btn'>
+                <StickyButton btntext='Termin Buchen Apotheke' btnLink='/terminbuchung-apotheke' color='green' />
+            </div>
             <header>
                 <Navbar activeLink={activeLink} />
             </header>
@@ -47,7 +51,7 @@ export const PharmacyServices = () => {
                 <div className="container-xxl">
                     <TwoContent data={servicesData} color='green' />
                     <div className='shuffle_container pt-5'>
-                    <ShuffleComponent data={pharmacyServicesData} color='green' />
+                        <ShuffleComponent data={pharmacyServicesData} color='green' />
                     </div>
                 </div>
                 {/* <div className='shuffle_container mt-5'>

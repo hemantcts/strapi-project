@@ -5,6 +5,7 @@ import { MyButton } from '../mini_components/MyButton';
 import Footer from '../Footer';
 import { EmergencyContact } from '../EmergencyContact';
 import { ShuffleComponent } from '../ShuffleComponent';
+import { StickyButton } from '../mini_components/StickyButton';
 
 export const PraxisNotfall = () => {
     const activeLink = { link1: false, link2: true, link3: false, link4: false, link5: false, link6: false }
@@ -31,6 +32,9 @@ export const PraxisNotfall = () => {
 
     return (
         <div className='pharmacy_emergency'>
+            <div className='stickY_btn'>
+                <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
+            </div>
             <header>
                 <Navbar activeLink={activeLink} />
             </header>

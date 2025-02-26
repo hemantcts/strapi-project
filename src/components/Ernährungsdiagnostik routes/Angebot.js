@@ -6,6 +6,7 @@ import { TwoContent } from '../mini_components/TwoContent'
 import Footer from '../Footer'
 import { AngebotDesktop } from '../AngebotDesktop'
 import { AngebotMobile } from '../AngebotMobile'
+import { StickyButton } from '../mini_components/StickyButton'
 
 export const Angebot = ({ data, color }) => {
     const activeLink = { link1: false, link2: false, link3: true, link4: false, link5: false, link6: false }
@@ -42,6 +43,9 @@ export const Angebot = ({ data, color }) => {
 
     return (
         <div className="angebot-page">
+            <div className='stickY_btn'>
+                <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
+            </div>
             <header>
                 <Navbar activeLink={activeLink} />
             </header>

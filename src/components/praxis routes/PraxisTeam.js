@@ -6,6 +6,7 @@ import { MyButton } from '../mini_components/MyButton'
 import { TwoContent } from '../mini_components/TwoContent'
 import { Team1 } from '../Team1'
 import { FounderSection } from '../FounderSection'
+import { StickyButton } from '../mini_components/StickyButton'
 
 const PraxisTeam = () => {
   const activeLink = { link1: false, link2: true, link3: false, link4: false, link5: false, link6: false }
@@ -54,6 +55,9 @@ const PraxisTeam = () => {
 
   return (
     <div className='pharmacy_team'>
+      <div className='stickY_btn'>
+        <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
+      </div>
       <header>
         <Navbar activeLink={activeLink} />
       </header>
@@ -81,13 +85,13 @@ const PraxisTeam = () => {
             <h2>{teamData?.heading}</h2>
           </div>
           <div className='tab_container'>
-            <ul  className='nav nav-tabs' role='tablist'>
-          {teamData?.types?.map((type, index)=>(
-              <li key={index} className={`nav-item tab${index+1}`}>
-                  <a className={`nav-link ${index===1 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index+1}`} role="tab">{type?.link_text
+            <ul className='nav nav-tabs' role='tablist'>
+              {teamData?.types?.map((type, index) => (
+                <li key={index} className={`nav-item tab${index + 1}`}>
+                  <a className={`nav-link ${index === 1 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index + 1}`} role="tab">{type?.link_text
                   }</a>
-              </li>
-            ))}
+                </li>
+              ))}
             </ul>
             <div className='tab-content'>
               <div className='tab-pane' id='Tab1' role='tabpanel'>
@@ -97,7 +101,7 @@ const PraxisTeam = () => {
                 <Team1 data={teams2} color='blue' />
               </div>
             </div>
-              
+
           </div>
         </div>
       </section>
@@ -105,7 +109,7 @@ const PraxisTeam = () => {
 
       <Footer />
 
-      
+
     </div>
   )
 }

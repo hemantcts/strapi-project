@@ -9,6 +9,7 @@ import { BannerSection } from '../BannerSection'
 import { MyButton } from '../mini_components/MyButton'
 import { TwoContent } from '../mini_components/TwoContent'
 import { SpeziellesSection } from '../SpeziellesSection'
+import { StickyButton } from '../mini_components/StickyButton'
 
 const OverviewPractice = () => {
     const activeLink = { link1: false, link2: true, link3: false, link4: false, link5: false, link6: false }
@@ -38,6 +39,9 @@ const OverviewPractice = () => {
 
     return (
         <div className='pharmacy'>
+            <div className='stickY_btn'>
+                <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
+            </div>
             <header>
                 <Navbar activeLink={activeLink} />
             </header>
