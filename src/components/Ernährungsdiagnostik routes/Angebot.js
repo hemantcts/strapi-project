@@ -60,8 +60,12 @@ export const Angebot = ({ data, color }) => {
                         <div className='sec_title'>
                             <h2>Angebote</h2>
                         </div>
-                        <AngebotDesktop />
-                        <AngebotMobile />
+                        <div className='dektop_angebot_table'>
+                            <AngebotDesktop />
+                        </div>
+                        <div className='mobile_angebot_table'>
+                            <AngebotMobile />
+                        </div>
                     </div>
                 </div>
             </section>

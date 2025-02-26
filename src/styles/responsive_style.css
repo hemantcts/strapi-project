@@ -1,4 +1,7 @@
 @media (min-width: 992px) and (max-width: 1199px) {
+.blue_btn, .green_btn {
+    padding: 12px;
+}
 header {
     ul.navbar-nav.main--menu li.nav-item {
         margin-left: 1rem !important;
@@ -11,10 +14,33 @@ header {
             width: calc(100% / 3);
         }
     }
+    .navbar-brand {
+        max-width: 230px;
+    }
+    .navbar-nav .dropdown-menu ul li a {
+        font-size: var(--bs-fs18);
+    }
+    .navbar-nav .dropdown-menu ul li .termin_praxis, .navbar-nav .dropdown-menu ul li .termin_aproke {
+        font-size: 13.5px;
+        padding: 15px 10px !important;
+    }
+    .navbar-nav .dropdown-menu ul li {
+        padding-right: 20px !important;
+    }
 }
 .container-xxl {
     padding-left: 40px;
     padding-right: 40px;
+}
+.banner_sec {
+    .buttn_1 {
+        margin-right: 1rem;
+    }
+}
+.heart_sec {
+    .heart_block img.heart_img {
+        width: 200px;
+    }
 }
 .kontkt_itm {
     ul { 
@@ -211,7 +237,11 @@ header {
     .heart_block .content_wrap {
         padding: 0 2rem;
     }
+    .item-2.content_wrap {
+        margin-top: 3rem;
+    }
 }
+
 .shuffle_container {
     .shuffle_item_wrap:nth-child(even) .shuffle_row {
         flex-direction: row-reverse;
@@ -245,6 +275,9 @@ header {
     min-height: 80vh;
     display: flex;
     align-items: center;
+}
+.mobile_angebot_table {
+    display: none !important;
 }
 }
     
@@ -293,6 +326,9 @@ header {
     }
     .heart_block img.heart_img {
         width: 250px;
+    }
+    .item-2.content_wrap {
+        margin-top: 4rem;
     }
 }
 footer .col-lg-3.ftr_block {
@@ -385,6 +421,9 @@ footer .col-lg-3.ftr_block {
 }
 .mt_3 {
     margin-top: 2rem;
+}
+.mb_3 {
+    margin-bottom: 2rem;
 }
 .container-xxl {
     padding-left: 30px;
@@ -601,7 +640,12 @@ footer {
     height: 450px;
     .banner_content { 
         padding: 2rem 1rem;
-        border-left-width: 20px;
+        width: calc(100% - 20px);
+        margin-left: 20px;
+        &:before {
+            width: 20px;
+            left: -20px;
+        }
     }
 }
 .pharmacy_services .shuffle_container {
@@ -618,6 +662,34 @@ footer {
 .job_sec {
     .job_img {
         margin-top: 1.5rem;
+    }
+}
+
+.angebot_table_container {
+    padding: 2rem 0;
+    .dektop_angebot_table {
+        display: none !important;
+    }
+    h2 {
+        text-align: center;
+    }
+    .mobile_angebot_table {
+        table {
+            margin-top: 1rem;
+            margin-bottom: 0;
+            th, td {
+                padding: 8px 10px;
+            }
+            th:not(:first-child) {
+                white-space: nowrap;
+            }
+            td {
+                border-top: 1px solid var(--bs-blue);
+            }
+            td:first-child {
+                padding-left: 0;
+            }
+        }
     }
 }
 }
@@ -656,6 +728,9 @@ footer {
 }
 
 @media (max-width: 575px){
+.all_sec_button {
+    overflow-x: auto;
+}
 header {
     .navbar .navbar-brand {
         max-width: 220px;
