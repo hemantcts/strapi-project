@@ -4,7 +4,7 @@ import { Accordion } from './Accordion'
 export const SpeziellesSection = ({specialsData, color}) => {
     return (
         <div className="container-xxl">
-            <div className="row align-items-center">
+            <div className="row">
                 <div className="col-lg-6 img_col">
                     <img src={`https://medzentrum.entwicklung-loewenmut.ch${specialsData?.image?.url}`} className='w-100' alt="" />
                 </div>
