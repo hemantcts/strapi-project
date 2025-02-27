@@ -117,7 +117,7 @@ const Navbar = ({ activeLink }) => {
                                                 }
                                             }}
                                         >Apotheke <b className='caret'></b></Link>
-                                        {true && <ul
+                                        {((active.link1 && !isHoverEnabled) || hover.link1) && <ul
                                             onMouseEnter={() => handleMouseEnter(1)}
                                             onMouseLeave={(e) => {
                                                 if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget?.closest('.apotheke_menu')) {
