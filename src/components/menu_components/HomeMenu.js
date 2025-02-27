@@ -10,7 +10,7 @@ const HomeMenu = () => {
                 <div className="col-lg-6">
                     <div className='menu_links'>
                         <ul className='submenu_list'>
-                            <li>
+                            <li className='active'>
                                 <Link to='/ubersicht-apotheke'>Übersicht Apotheke</Link>
                             </li>
                             <li className='list-items'>

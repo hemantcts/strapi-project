@@ -14,7 +14,7 @@ const Menu3 = () => {
                             <Link to='/ernahrungsdiagnostik'>Übersicht Ernährungsdiagnostik</Link>
                         </li>
                         <li className='list-items'>
-                            <Link>Angebote</Link>
+                            <Link to='/angebot'>Angebote</Link>
                         </li>
                         <li className='list-items'>
                             <Link className='termin_praxis'>Termin buchen Beratung <i><img src={svgIcon} alt=""/></i> </Link>

@@ -282,7 +282,7 @@ ul.navbar-nav.main--menu li.nav-item .dropdown-toggle:after {
 .navbar-nav .dropdown-menu ul li a:hover, .navbar-nav .dropdown-menu ul li a.active {
     color: var(--bs-blue);
 }
-.navbar-nav .apotheke_menu .dropdown-menu ul li a:hover, .navbar-nav .apotheke_menu .dropdown-menu ul li a.active {
+.navbar-nav .apotheke_menu .dropdown-menu ul li a:hover, .navbar-nav .apotheke_menu .dropdown-menu ul li.active a {
     color: var(--bs-green);
 }
 }
@@ -1296,6 +1296,7 @@ ul.nav-tabs li.tab2 a.active {
 
     h4, h6 {
         font-weight: 600;
+        color: #000 !important;
     }
 
     .products-main-btn {
