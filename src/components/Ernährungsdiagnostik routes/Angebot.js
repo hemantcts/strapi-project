@@ -61,7 +61,7 @@ export const Angebot = ({ data, color }) => {
                 </div>
                 <div className='angebot_table_container'>
                     <div className='container-xxl'>
-                        <div className='sec_title'>
+                        <div className='sec_title d-lg-none'>
                             <h2>Angebote</h2>
                         </div>
                         <div className='dektop_angebot_table'>
