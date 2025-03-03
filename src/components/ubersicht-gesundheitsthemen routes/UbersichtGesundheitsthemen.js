@@ -6,6 +6,7 @@ import { MyButton } from '../mini_components/MyButton'
 import { Blogs } from '../Blogs'
 import Footer from '../Footer'
 import { StickyButton } from '../mini_components/StickyButton'
+import Select from "react-select";
 
 export const UbersichtGesundheitsthemen = ({ data, color }) => {
     const activeLink = { link1: false, link2: false, link3: false, link4: true, link5: false, link6: false }
@@ -36,10 +37,21 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
         if (data) {
             setBlogs(data.data);
             const uniqueCategories = [...new Set(data.data.map(blog => blog.category))];
-            setCategories(uniqueCategories);
-            setSelectedCategory(uniqueCategories[0]);
+            const formattedOptions = uniqueCategories.map(category => ({
+                value: category.toLowerCase(),
+                label: category,
+            }));
+    
+            setCategories(formattedOptions); // Set formatted options
+            setSelectedCategory(formattedOptions[0]);
         }
     }
+
+    const options = [
+        { value: "health", label: "Health" },
+        { value: "education", label: "Education" }
+    ];
+
 
     useEffect(() => {
         getPageData();
@@ -72,15 +84,17 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
                     <div className='sec_title text-center'>
                         <h2>{blogTitle}</h2>
                     </div>
-                    <div className='text-center'>
-                        <select value={selectedCategory} onChange={handleChange}>
+                    <div className='health_topic text-center mt-3'>
+                        {/* <select value={selectedCategory} onChange={handleChange}>
                             {categories.map((category, index) => (
                                 <option key={index} value={category}>{category}</option>
                             ))}
-                        </select>
+                        </select> */}
+                        <Select className='filter_select' options={categories} value={selectedCategory} onChange={setSelectedCategory} />
+                        {/* <p>{selectedCategory}</p> */}
                     </div>
                     <div className='blog_container mt-4'>
-                        <Blogs blogs={blogs} selectedCategory={selectedCategory} />
+                        <Blogs blogs={blogs} selectedCategory={selectedCategory?.value} />
                     </div>
                 </div>
             </section>
