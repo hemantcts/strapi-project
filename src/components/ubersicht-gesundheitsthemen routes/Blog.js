@@ -67,7 +67,7 @@ export const Blog = ({ data, color }) => {
                 <Navbar />
             </header>
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton buttonText={blog?.title} activePage='HerzCheck' />
+                <MyButton buttonText={blog?.title} activePage={blog?.category} />
             </section>
             <section className='wi_full py_3 blog_detail'>
                 <div className='container-xxl'>

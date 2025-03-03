@@ -10,21 +10,34 @@ export const Jobs = () => {
     const activeLink = { link1: false, link2: false, link3: false, link4: false, link5: true, link6: false }
     const [bannerData, setBannerData] = useState(null);
     const [jobSection, setJobSection] = useState(null);
-    const [jobsData, setJobsData] = useState(null);
+    const [noJobSection, setNoJobSection] = useState(null);
+    const [jobsData, setJobsData] = useState([]);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/job?populate[banner_section][populate]=banner_image&populate[jobs_section]=*&populate[jobs][populate]=jobs_info.image&populate[jobs][populate]=jobs_info.accordion_data&populate[jobs][populate]=contact_details.details.icon`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/job?populate[banner_section][populate]=banner_image&populate[jobs_section]=*&populate[no_jobs_section]=*`)
         const data = await response.json();
         console.log(data);
         if (data) {
             setBannerData(data.data.banner_section);
             setJobSection(data.data.jobs_section);
-            setJobsData(data.data.jobs);
+            setNoJobSection(data.data.no_jobs_section);
         }
     }
 
+    const getJobsData = async () => {
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/jobs-data?populate[jobs_info][populate]=image&populate[jobs_info][populate]=accordion_data&populate[contact_details][populate]=details.icon`)
+        const data = await response.json();
+        console.log(data);
+        if (data) {
+            setJobsData(data.data);
+        }
+    }
+
+    
+
     useEffect(() => {
         getPageData();
+        getJobsData();
     }, [])
 
     return (
@@ -40,7 +53,7 @@ export const Jobs = () => {
             </section>
             <section className="wi_full py_3 job_sec">
                 <div className="container-xxl">
-                    <TwoContent data={jobSection} />
+                    <TwoContent data={jobsData?.length > 0 ? jobSection : noJobSection} />
                     <div className='job_shuffle'>
                         <JobShuffle data={jobsData} />
                     </div>
