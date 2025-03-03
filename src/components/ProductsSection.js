@@ -7,8 +7,8 @@ import MyLink from './mini_components/MyLink';
 const ProductsSection = ({ productsData, color }) => {
     return (
         <div className={`container ${color}`}>
-            {productsData?.heading && <h2 className='text-center mb-5'>{productsData?.heading}</h2>}
-            {productsData?.paragraph && <p className='text-center mb-5 paragraph'>{productsData?.paragraph}</p>}
+            {productsData?.heading && <h2 className='text-center mb-3'>{productsData?.heading}</h2>}
+            {productsData?.description && <p className='text-center mb-5 description'>{productsData?.description}</p>}
             <div className="row">
                 {productsData?.products.map((product, index) => {
                     return (
