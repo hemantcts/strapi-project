@@ -279,7 +279,7 @@ ul.navbar-nav.main--menu li.nav-item .dropdown-toggle:after {
 .navbar-nav .dropdown-menu ul li a.termin_aproke img {
     margin-left: 10px;
 }
-.navbar-nav .dropdown-menu ul li a:hover, .navbar-nav .dropdown-menu ul li a.active {
+.navbar-nav .dropdown-menu ul li a:hover, .navbar-nav .dropdown-menu ul li.active a {
     color: var(--bs-blue);
 }
 .navbar-nav .apotheke_menu .dropdown-menu ul li a:hover, .navbar-nav .apotheke_menu .dropdown-menu ul li.active a {

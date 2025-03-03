@@ -12,33 +12,43 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
     const [bannerData, setBannerData] = useState();
     const [blogTitle, setBlogTitle] = useState();
     const [blogs, setBlogs] = useState();
+    const [categories, setCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState("");
+
 
     const getPageData = async () => {
         const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/uebersicht-gesundheitsthemen?populate[banner_section][populate]=banner_image`)
         const data = await response.json();
         console.log(data);
         if (data) {
-          setBannerData(data?.data?.banner_section); 
-          setBlogTitle(data?.data?.blogs_title);
-        //   setFounderSection(data?.data?.founder_section);
-        //   setFounderData(data?.data?.founder_data);
-        //   setTeamData(data?.data?.team_data);
+            setBannerData(data?.data?.banner_section);
+            setBlogTitle(data?.data?.blogs_title);
+            //   setFounderSection(data?.data?.founder_section);
+            //   setFounderData(data?.data?.founder_data);
+            //   setTeamData(data?.data?.team_data);
         }
-      }
-    
-      const getBlogs = async () => {
+    }
+
+    const getBlogs = async () => {
         const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*`)
         const data = await response.json();
         console.log(data);
         if (data) {
-          setBlogs(data.data);
+            setBlogs(data.data);
+            const uniqueCategories = [...new Set(data.data.map(blog => blog.category))];
+            setCategories(uniqueCategories);
+            setSelectedCategory(uniqueCategories[0]);
         }
-      }
-    
-      useEffect(() => {
+    }
+
+    useEffect(() => {
         getPageData();
         getBlogs();
-      }, [])
+    }, [])
+
+    const handleChange = (event) => {
+        setSelectedCategory(event.target.value);
+    };
 
     return (
         <div className="ubersicht-gesundheitsthemen">
@@ -62,8 +72,15 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
                     <div className='sec_title text-center'>
                         <h2>{blogTitle}</h2>
                     </div>
+                    <div className='text-center'>
+                        <select value={selectedCategory} onChange={handleChange}>
+                            {categories.map((category, index) => (
+                                <option key={index} value={category}>{category}</option>
+                            ))}
+                        </select>
+                    </div>
                     <div className='blog_container mt-4'>
-                        <Blogs blogs={blogs} />
+                        <Blogs blogs={blogs} selectedCategory={selectedCategory} />
                     </div>
                 </div>
             </section>
