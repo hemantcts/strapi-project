@@ -6,14 +6,15 @@ import { MyButton } from '../mini_components/MyButton'
 import { Blogs } from '../Blogs'
 import Footer from '../Footer'
 import { StickyButton } from '../mini_components/StickyButton'
+import Select from "react-select";
 
 export const UbersichtGesundheitsthemen = ({ data, color }) => {
     const activeLink = { link1: false, link2: false, link3: false, link4: true, link5: false, link6: false }
     const [bannerData, setBannerData] = useState();
     const [blogTitle, setBlogTitle] = useState();
     const [blogs, setBlogs] = useState();
-    const [categories, setCategories] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState("");
+    const [categories, setCategories] = useState([{ value: "", label: "Alle Themen" }]);
+    const [selectedCategory, setSelectedCategory] = useState({ value: "", label: "Alle Themen" });
 
 
     const getPageData = async () => {
@@ -36,10 +37,22 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
         if (data) {
             setBlogs(data.data);
             const uniqueCategories = [...new Set(data.data.map(blog => blog.category))];
-            setCategories(uniqueCategories);
-            setSelectedCategory(uniqueCategories[0]);
+            const formattedOptions = uniqueCategories.map(category => ({
+                value: category.toLowerCase(),
+                label: category,
+            }));
+    
+            setCategories((prev) => 
+                prev.length === 1 ? [...prev, ...formattedOptions] : prev
+            )
         }
     }
+
+    const options = [
+        { value: "health", label: "Health" },
+        { value: "education", label: "Education" }
+    ];
+
 
     useEffect(() => {
         getPageData();
@@ -72,15 +85,11 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
                     <div className='sec_title text-center'>
                         <h2>{blogTitle}</h2>
                     </div>
-                    <div className='text-center'>
-                        <select value={selectedCategory} onChange={handleChange}>
-                            {categories.map((category, index) => (
-                                <option key={index} value={category}>{category}</option>
-                            ))}
-                        </select>
+                    <div className='health_topic text-center mt-3'>
+                        <Select className='filter_select' options={categories} value={selectedCategory} onChange={setSelectedCategory} />
                     </div>
                     <div className='blog_container mt-4'>
-                        <Blogs blogs={blogs} selectedCategory={selectedCategory} />
+                        <Blogs blogs={blogs} selectedCategory={selectedCategory?.value} />
                     </div>
                 </div>
             </section>

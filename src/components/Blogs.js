@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export const Blogs = ({ blogs, color, selectedCategory }) => {
 
     const filteredBlogs = selectedCategory
-        ? blogs.filter(blog => blog?.category === selectedCategory)
+        ? blogs?.filter(blog => blog?.category === selectedCategory)
         : blogs; // Show all if no category selected
 
     return (
