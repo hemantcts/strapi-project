@@ -5,6 +5,7 @@ import { BannerSection } from '../BannerSection'
 import { MyButton } from '../mini_components/MyButton'
 import { KontaktDetails } from '../KontaktDetails'
 import { StickyButton } from '../mini_components/StickyButton'
+import MapComponent from '../MapComponent'
 
 const Kontakt = () => {
     const activeLink = { link1: false, link2: false, link3: false, link4: false, link5: false, link6: true }
@@ -40,6 +41,14 @@ const Kontakt = () => {
             <section className='wi_full py_3 kontakt_section'>
                 <div className='container-xxl text-black'>
                     <KontaktDetails contactData={contactData} />
+                </div>
+            </section>
+
+            <section>
+                <div className="map">
+                    <div className='map mt-5'>
+                        <MapComponent />
+                    </div>
                 </div>
             </section>
             <Footer />

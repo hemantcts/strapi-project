@@ -1,6 +1,7 @@
 import React from 'react'
 import iconCall from '../images/icn-call.svg'
 import iconEnvelope from '../images/icn-envelope.svg'
+// import MapComponent from './MapComponent'
 
 export const KontaktDetails = ({contactData, color}) => {
     return (
@@ -28,6 +29,7 @@ export const KontaktDetails = ({contactData, color}) => {
                 </div>
             </div>
             ))}
+                    
         </div>
     )
 }

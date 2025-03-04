@@ -1420,3 +1420,11 @@ ul.nav-tabs li.tab2 a.active {
 }
 }
 }
+
+/* .gm-style-iw.gm-style-iw-c{
+    display: none !important;
+} */
+
+.gm-style-iw.gm-style-iw-c:nth-of-type(2) {
+  display: none !important;
+}
