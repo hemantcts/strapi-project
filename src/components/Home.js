@@ -27,7 +27,7 @@ const Home = () => {
     // const [pageData, setPageData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/homepage?populate[banner_section][populate]=*&populate[heart_section][populate]=left_side.image&populate[heart_section][populate]=left_side.link&populate[heart_section][populate]=right_side.link&populate[products_section][populate]=products.product_details.image&populate[products_section][populate]=products.extraDetails.link&populate[products_section][populate]=products.about.prices&populate[ad_section][populate]=partners.image`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/homepage?populate[banner_section][populate]=*&populate[heart_section][populate]=left_side.image&populate[heart_section][populate]=left_side.link&populate[heart_section][populate]=right_side.link&populate[products_section][populate]=products.product_details.image&populate[products_section][populate]=products.extraDetails.link&populate[products_section][populate]=products.about.prices&populate[products_section][populate]=button&populate[ad_section][populate]=partners.image`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -114,7 +114,7 @@ const Home = () => {
                                     <h2>{heartData?.left_side?.large_heading}</h2>
                                     <p>{heartData?.left_side?.text}</p>
                                     <div className='btn_block'>
-                                        <MyLink link='/' text={heartData?.left_side?.link?.link_text} />
+                                        <MyLink link={heartData?.left_side?.link?.link_url} text={heartData?.left_side?.link?.link_text} />
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@ const Home = () => {
                                     <h3>{item?.large_heading ?? "Default Large Heading"}</h3>
                                     <p>{item?.text ?? "Default text for the right side."}</p>
                                     <div className="btn_block">
-                                        <MyLink link="/" text="WEITERLESEN" />
+                                        <MyLink link={item?.link?.link_url} text={item?.link?.link_text} />
                                     </div>
                                 </div>
                             ))}

@@ -84,8 +84,8 @@ const ProductsSection = ({ productsData, color }) => {
                     )
                 })}
             </div>
-            {productsData?.button_text && <div className="products_sec_btn text-center">
-                <Link to="#" className="products-main-btn">{productsData?.button_text} <i className="fa-solid fa-arrow-right " /></Link>
+            {productsData?.button?.link_text && <div className="products_sec_btn text-center">
+                <a href={productsData?.button?.link_url} className="products-main-btn">{productsData?.button?.link_text} <i className="fa-solid fa-arrow-right " /></a>
             </div>}
         </div>
     )

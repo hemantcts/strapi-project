@@ -11,21 +11,21 @@ import { StickyButton } from '../mini_components/StickyButton'
 export const Angebot = ({ data, color }) => {
     const activeLink = { link1: false, link2: false, link3: true, link4: false, link5: false, link6: false }
     const [bannerData, setBannerData] = useState();
-    // const [blogTitle, setBlogTitle] = useState();
+    const [offersData, setOffersData] = useState();
     // const [blogs, setBlogs] = useState();
 
-    // const getPageData = async () => {
-    //     const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/uebersicht-gesundheitsthemen?populate[banner_section][populate]=banner_image`)
-    //     const data = await response.json();
-    //     console.log(data);
-    //     if (data) {
-    //       setBannerData(data?.data?.banner_section);
-    //       setBlogTitle(data?.data?.blogs_title);
-    //     //   setFounderSection(data?.data?.founder_section);
-    //     //   setFounderData(data?.data?.founder_data);
-    //     //   setTeamData(data?.data?.team_data);
-    //     }
-    //   }
+    const getPageData = async () => {
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/ernaehrungsdiagnostik-angebote?populate[banner_section][populate]=banner_image&populate[offers_section][populate]=*`)
+        const data = await response.json();
+        console.log(data);
+        if (data) {
+          setBannerData(data?.data?.banner_section);
+          setOffersData(data?.data?.offers_section);
+        //   setFounderSection(data?.data?.founder_section);
+        //   setFounderData(data?.data?.founder_data);
+        //   setTeamData(data?.data?.team_data);
+        }
+      }
     
     //   const getBlogs = async () => {
     //     const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*`)
@@ -36,10 +36,9 @@ export const Angebot = ({ data, color }) => {
     //     }
     //   }
     
-    //   useEffect(() => {
-    //     getPageData();
-    //     getBlogs();
-    //   }, [])
+      useEffect(() => {
+        getPageData();
+      }, [])
 
     return (
         <div className="angebot-page">
@@ -56,10 +55,10 @@ export const Angebot = ({ data, color }) => {
                 <MyButton buttonText={bannerData?.title} activePage='Ernährungsdiagnostik' />
             </section>
             <section className='wi_full py_3 angebot_Sec'>
-                <div className='container-xxl'>
-                    <TwoContent />
+                <div className='container-xxl pb-5'>
+                    <TwoContent data={offersData} />
                 </div>
-                <div className='angebot_table_container'>
+                <div className='angebot_table_container mt-5'>
                     <div className='container-xxl'>
                         <div className='sec_title d-lg-none'>
                             <h2>Angebote</h2>

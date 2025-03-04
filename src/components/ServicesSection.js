@@ -16,7 +16,7 @@ const ServicesSection = ({servicesData, color}) => {
                                 <h3 className='fw_medium'>{service?.title}</h3>
                                 <p>{service?.description}</p>
                                 <div class="btn_block">
-                                    <MyLink className="button blue_btn text-uppercase" to={service?.link?.link_url} text={service?.link?.link_text} color={color} />
+                                    <MyLink className="button blue_btn text-uppercase" link={service?.link?.link_url} text={service?.link?.link_text} color={color} />
                                 </div>
                             </div>
                         </div>
