@@ -586,11 +586,17 @@ ul.nav-tabs li.tab2 a.active {
         border: 1px solid var(--bs-blue);
         margin-top: 6rem;
     }
-    .img_col img {
+    .img_col img, .owl-carousel {
         height: 100%;
         object-fit: cover;
         top: -3.5rem;
         position: relative;
+    }
+    .owl-carousel img {
+        top: 0;
+    }
+    .owl-dot.active2{
+        color: #0D659B;
     }
     .content_box {
         padding: 2rem 1.25rem;
@@ -1139,7 +1145,7 @@ ul.nav-tabs li.tab2 a.active {
     }
     }
     
-    .job_row + .job_row {
+    .job_row {
         margin-top: 3rem;
     }
 }
@@ -1338,11 +1344,14 @@ ul.nav-tabs li.tab2 a.active {
         margin: auto;
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
-        background: linear-gradient(to right, rgba(13, 101, 155, 1), rgba(2, 159, 76, 1));
+        background: linear-gradient(to right, #0D659B, #1C99AA);
         -webkit-transform-origin: 0 50%;
         -moz-transform-origin: 0 50%;
         -webkit-transform: rotate(-90deg) translate(-50%, 50%);
         -moz-transform: rotate(-90deg) translate(-50%, 50%);
+    }
+    .stick_btn_wrap.green {
+        background: linear-gradient(to right, rgba(13, 101, 155, 1), rgba(2, 159, 76, 1));
     }
     a {
         color: #fff;

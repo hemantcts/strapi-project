@@ -14,7 +14,7 @@ export const PharmacyServices = () => {
     const [pharmacyServicesData, setPharmacyServicesData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-service?populate[banner_section][populate]=banner_image&populate[services_data][populate]=*&populate[pharmacy_services_data][populate]=image&populate[pharmacy_services_data][populate]=list_items`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-service?populate[banner_section][populate]=banner_image&populate[services_data][populate]=*&populate[pharmacy_services_data][populate]=image.image&populate[pharmacy_services_data][populate]=list_items`)
         const data = await response.json();
         console.log(data);
         if (data) {
