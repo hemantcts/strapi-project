@@ -12,9 +12,8 @@ export const Error = () => {
             <div className='stickY_btn'>
                 <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
             </div>
-            <header>
-                <Navbar />
-            </header>
+
+            <Navbar />
             <section className="wi_full error_sec">
                 <div className="container-xxl">
                     <div className='row align-items-center flex-lg-row-reverse'>

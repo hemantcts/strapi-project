@@ -41,8 +41,8 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
                 value: category.toLowerCase(),
                 label: category,
             }));
-    
-            setCategories((prev) => 
+
+            setCategories((prev) =>
                 prev.length === 1 ? [...prev, ...formattedOptions] : prev
             )
         }
@@ -68,9 +68,8 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
             <div className='stickY_btn'>
                 <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
             </div>
-            <header>
-                <Navbar activeLink={activeLink} />
-            </header>
+
+            <Navbar activeLink={activeLink} />
 
             <section className='inner_banner_Section'>
                 <BannerSection bannerData={bannerData} color='blue' />

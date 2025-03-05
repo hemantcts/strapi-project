@@ -58,9 +58,8 @@ const PraxisTeam = () => {
       <div className='stickY_btn'>
         <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
       </div>
-      <header>
-        <Navbar activeLink={activeLink} />
-      </header>
+
+      <Navbar activeLink={activeLink} />
 
       <section className='inner_banner_Section'>
         <BannerSection bannerData={bannerData} color='blue' />

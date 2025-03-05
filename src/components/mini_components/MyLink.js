@@ -16,11 +16,11 @@ const MyLink = ({ link, text, color }) => {
 
     return link?.startsWith('/') ? (
         <Link to={link} {...commonProps}>
-            <span>{text} <i><img src={svgIcon} alt="" /></i></span>
+            <span>{text} <i><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Vector_10_a0cd67dfb4.svg' alt="" /></i></span>
         </Link>
     ) : (
         <a href={link} target="_blank" rel="noopener noreferrer" {...commonProps}>
-            <span>{text} <i><img src={svgIcon} alt="" /></i></span>
+            <span>{text} <i><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Vector_10_a0cd67dfb4.svg' alt="" /></i></span>
         </a>
     );
 };

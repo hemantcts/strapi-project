@@ -4,7 +4,7 @@ export const FounderSection = ({data, color}) => {
   return (
     <div className='row align-items-center'>
         <div className="col-lg-6 img_col">
-            <img src={`https://medzentrum.entwicklung-loewenmut.ch${data?.image?.url}`} alt="" />
+            <img src={`https://medzentrum.entwicklung-loewenmut.ch${data?.image?.url}`} alt="" className='w-100' />
         </div>
         <div className="col-lg-6 text-black">
             <div className={`content_col ${color}`}>

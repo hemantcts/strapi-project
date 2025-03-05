@@ -35,9 +35,9 @@ export const Impressum = () => {
             <div className='stickY_btn'>
                 <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
             </div>
-            <header>
-                <Navbar />
-            </header>
+            
+            <Navbar />
+
             <section className='inner_banner_Section'>
                 <BannerSection bannerData={bannerData} color='blue' />
             </section>

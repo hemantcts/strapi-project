@@ -407,12 +407,17 @@ footer {
 .ftr_block {
     margin-bottom: 1.5rem;
 }
-.footer_copyright p {
+.footer_copyright {
+    p {
     color: #393939;
     font-size: var(--bs-fs18);
 }
-.footer_copyright p img {
-    width: 22px;
+p img {
+    width: 30px;
+}
+a:hover {
+    color: var(--bs-blue);
+}
 }
 .offen_detail a {
     display: flex;
@@ -448,15 +453,15 @@ ul {
     -webkit-backdrop-filter: blur(7px);
     backdrop-filter: blur(7px);
     max-width: 800px;
-    width: calc(100% - 30px);
-    margin-left: 30px;
+    width: calc(100% - 40px);
+    margin-left: 40px;
     position: relative;
     &:before {
         content: '';
         position: absolute;
-        left: -30px;
+        left: -40px;
         top: 0;
-        width: 30px;
+        width: 40px;
         height: 100%;
         background: rgba(13, 101, 155, 0.6);
     }
@@ -1224,40 +1229,28 @@ ul.nav-tabs li.tab2 a.active {
     }
     .product-items {
         height: 100%;
-
         .row {
             height: 100%;
         }
     }
-
-    .product-item,
-    .product-info,
-    .about-product {
+    .product-item, .product-info, .about-product {
         color: #000000 !important;
     }
-
     .all_products {
         min-height: 10rem;
     }
-
     .product-info {
         min-height: 9.5rem;
     }
-
-    .product-item p,
-    .product-info p {
+    .product-item p, .product-info p {
         font-size: 18px;
         font-weight: 300;
     }
-
-    .product-item small,
-    .product-info small,
-    .about-product small {
+    .product-item small, .product-info small, .about-product small {
         font-family: 'Livvic', sans-serif !important;
         font-weight: 300;
         font-size: 16px;
     }
-
     .discount {
         width: 4.2rem;
         aspect-ratio: 1 / 1;
@@ -1274,10 +1267,7 @@ ul.nav-tabs li.tab2 a.active {
         justify-content: center;
         align-items: center;
     }
-
-    .product-info h5,
-    .product-info h3,
-    .product-info h4 {
+    .product-info h5, .product-info h3, .product-info h4 {
         color: #1C99AA !important;
         font-weight: 700;
         position: relative;
@@ -1296,21 +1286,17 @@ ul.nav-tabs li.tab2 a.active {
         background-color: #1C99AA;
         width: 100%;
     }
-
     li {
         list-style-type: none;
     }
-
     li .option-link {
         font-family: 'Livvic', sans-serif;
         color: #1B639C !important;
     }
-
     h4, h6 {
         font-weight: 600;
         color: #000 !important;
     }
-
     .products-main-btn {
         display: inline-block;
         padding: 0.7rem 1rem;
@@ -1323,7 +1309,6 @@ ul.nav-tabs li.tab2 a.active {
         font-weight: 700;
     }
 }
-
 
 .stickY_btn {
     position: fixed;
@@ -1420,11 +1405,18 @@ ul.nav-tabs li.tab2 a.active {
 }
 }
 }
-
-/* .gm-style-iw.gm-style-iw-c{
-    display: none !important;
-} */
-
 .gm-style-iw.gm-style-iw-c:nth-of-type(2) {
   display: none !important;
+}
+.gm-style .gm-style-iw-c button.gm-ui-hover-effect {
+    position: absolute !important;
+    right: 0;
+    top: 0;
+}
+.gm-style .gm-style-iw-c p {
+    margin-bottom: 5px;
+}
+.gm-style .gm-style-iw-c p a {
+    display: block;
+    margin-top: 12px;
 }

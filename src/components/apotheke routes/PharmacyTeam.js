@@ -58,9 +58,8 @@ const PharmacyTeam = () => {
       <div className='stickY_btn'>
         <StickyButton btntext='Termin Buchen Apotheke' btnLink='/terminbuchung-apotheke' color='green' />
       </div>
-      <header>
-        <Navbar activeLink={activeLink} />
-      </header>
+      
+      <Navbar activeLink={activeLink} />
 
       <section className='inner_banner_Section'>
         <BannerSection bannerData={bannerData} color='green' />

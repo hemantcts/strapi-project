@@ -63,9 +63,9 @@ export const Blog = ({ data, color }) => {
 
     return (
         <div className='single-blog'>
-            <header>
-                <Navbar />
-            </header>
+
+            <Navbar />
+
             <section className='breadcrumb_sec wi_full mt_3'>
                 <MyButton buttonText={blog?.title} activePage={blog?.category} />
             </section>
@@ -80,7 +80,7 @@ export const Blog = ({ data, color }) => {
                                 <div dangerouslySetInnerHTML={{ __html: blog?.description }} />
 
                             </div>
-                            
+
                             <div className='post_data_wrapper text-black mt-5 pt-lg-5'>
                                 <h2>{productDetails?.title}</h2>
                                 <div className='grey_box'>
@@ -104,7 +104,7 @@ export const Blog = ({ data, color }) => {
                             <div className='related_blogs'>
                                 <h3>Alle Gesundheitsthemen </h3>
                                 <div className='rel_blog_list'>
-                                    {blogs?.slice(0, 3).map((blog, index)=>(
+                                    {blogs?.slice(0, 3).map((blog, index) => (
                                         <div key={index} className='rb_item'>
                                             <div className='rb_itm_iner'>
                                                 <div className='rbitm_img'>

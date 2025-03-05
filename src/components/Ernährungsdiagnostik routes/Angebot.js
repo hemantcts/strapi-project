@@ -19,14 +19,14 @@ export const Angebot = ({ data, color }) => {
         const data = await response.json();
         console.log(data);
         if (data) {
-          setBannerData(data?.data?.banner_section);
-          setOffersData(data?.data?.offers_section);
-        //   setFounderSection(data?.data?.founder_section);
-        //   setFounderData(data?.data?.founder_data);
-        //   setTeamData(data?.data?.team_data);
+            setBannerData(data?.data?.banner_section);
+            setOffersData(data?.data?.offers_section);
+            //   setFounderSection(data?.data?.founder_section);
+            //   setFounderData(data?.data?.founder_data);
+            //   setTeamData(data?.data?.team_data);
         }
-      }
-    
+    }
+
     //   const getBlogs = async () => {
     //     const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*`)
     //     const data = await response.json();
@@ -35,19 +35,19 @@ export const Angebot = ({ data, color }) => {
     //       setBlogs(data.data);
     //     }
     //   }
-    
-      useEffect(() => {
+
+    useEffect(() => {
         getPageData();
-      }, [])
+    }, [])
 
     return (
         <div className="angebot-page">
             <div className='stickY_btn'>
                 <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
             </div>
-            <header>
-                <Navbar activeLink={activeLink} />
-            </header>
+
+            <Navbar activeLink={activeLink} />
+
             <section className='inner_banner_Section'>
                 <BannerSection bannerData={bannerData} color='blue' />
             </section>

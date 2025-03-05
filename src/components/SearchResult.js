@@ -134,9 +134,7 @@ export const SearchResult = ({ data, color }) => {
 
     return (
         <div className='search_page'>
-            <header>
-                <Navbar />
-            </header>
+            <Navbar />
             <section className='wi_full py_3 search_result'>
                 <div className='container-xxl'>
                     <div className='sec_title text-black'>

@@ -42,9 +42,8 @@ const OverviewPractice = () => {
             <div className='stickY_btn'>
                 <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
             </div>
-            <header>
-                <Navbar activeLink={activeLink} />
-            </header>
+
+            <Navbar activeLink={activeLink} />
 
             <section className='pharmacy_banner_sec'>
                 <BannerSection bannerData={bannerData} color={pageColor} />

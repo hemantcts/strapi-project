@@ -123,7 +123,7 @@ const Home = () => {
                             {heartData?.right_side?.map((item, index) => (
                                 <div key={item?.id ?? index} className={`item-${index + 1} content_wrap`}>
                                     <div className="sub_title">{item?.small_heading ?? "Default Small Heading"}</div>
-                                    <h3>{item?.large_heading ?? "Default Large Heading"}</h3>
+                                    <h3 className='font-volk h3_large'>{item?.large_heading ?? "Default Large Heading"}</h3>
                                     <p>{item?.text ?? "Default text for the right side."}</p>
                                     <div className="btn_block">
                                         <MyLink link={item?.link?.link_url} text={item?.link?.link_text} />

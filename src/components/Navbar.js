@@ -58,8 +58,10 @@ const Navbar = ({ activeLink }) => {
     }, []);
 
     const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-        document.body.classList.toggle('body_overflow', !menuOpen);
+        if (!isHoverEnabled) {
+            setMenuOpen(!menuOpen);
+            document.body.classList.toggle('body_overflow', !menuOpen);
+        }
     };
 
     const handleActive = (link) => {
@@ -93,7 +95,7 @@ const Navbar = ({ activeLink }) => {
         <div>
             <header>
                 <nav className={`navbar navbar-expand-lg ${sticky ? 'sticky' : ''}`}>
-                    <div className='nav_overlay'></div>
+                    <div className={`nav_overlay ${menuOpen ? 'show' : ''}`}></div>
                     <div className='container-xxl'>
                         <Link className='navbar-brand' to='/'><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Frame_8cd1fd56fd.svg' alt='logo' /></Link>
                         <button className='navbar-toggler' onClick={toggleMenu} type='button' data-bs-target='#mainNavbar' aria-expanded='false'>
@@ -125,7 +127,7 @@ const Navbar = ({ activeLink }) => {
                                                 }
                                             }}
                                             className="dropdown-menu d-block half menu home_menu">
-                                            <HomeMenu />
+                                            <HomeMenu toggleMenu={toggleMenu} />
                                         </ul>}
                                     </li>
                                     <li className='nav-item megamenu-fw praxis_menu'>
@@ -145,7 +147,7 @@ const Navbar = ({ activeLink }) => {
                                                 }
                                             }}
                                             className="dropdown-menu d-block half menu1">
-                                            <Menu2 />
+                                            <Menu2 toggleMenu={toggleMenu} />
                                         </ul>}
                                     </li>
                                     <li className='nav-item megamenu-fw ubersicth_menu'>
@@ -165,11 +167,11 @@ const Navbar = ({ activeLink }) => {
                                                 }
                                             }}
                                             className="dropdown-menu d-block half menu2">
-                                            <Menu3 />
+                                            <Menu3 toggleMenu={toggleMenu} />
                                         </ul>}
                                     </li>
                                     <li className='nav-item'>
-                                        <Link className={`nav-link link4 ${(active.link4 || hover.link4) && 'active'}`} to='/ubersicht-gesundheitsthemen' onClick={() => handleActive(4)}
+                                        <Link className={`nav-link link4 ${(active.link4 || hover.link4) && 'active'}`} to='/ubersicht-gesundheitsthemen' onClick={toggleMenu}
                                             onMouseEnter={() => handleMouseEnter(4)}
                                             onMouseLeave={() => handleMouseLeave(4)}
                                         >Gesundheitsthemen</Link>
@@ -185,13 +187,13 @@ const Navbar = ({ activeLink }) => {
                                         </div>
                                     </li>
                                     <li className='nav-item'>
-                                        <Link className={`extra-nav-link nav-link link5 ${(active.link5 || hover.link5) && 'active'}`} to="/jobs" onClick={() => handleActive(5)}
+                                        <Link className={`extra-nav-link nav-link link5 ${(active.link5 || hover.link5) && 'active'}`} to="/jobs" onClick={toggleMenu}
                                             onMouseEnter={() => handleMouseEnter(5)}
                                             onMouseLeave={() => handleMouseLeave(5)}
                                         >Jobs</Link>
                                     </li>
                                     <li className='nav-item'>
-                                        <Link className={`extra-nav-link nav-link link6 ${(active.link6 || hover.link6) && 'active'}`} to='/kontakt' onClick={() => handleActive(6)}
+                                        <Link className={`extra-nav-link nav-link link6 ${(active.link6 || hover.link6) && 'active'}`} to='/kontakt' onClick={toggleMenu}
                                             onMouseEnter={() => handleMouseEnter(6)}
                                             onMouseLeave={() => handleMouseLeave(6)}
                                         >Kontakte</Link>

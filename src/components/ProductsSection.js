@@ -86,7 +86,7 @@ const ProductsSection = ({ productsData, color }) => {
                 })}
             </div>
             {productsData?.button?.link_text && <div className="products_sec_btn text-center">
-                <a href={productsData?.button?.link_url} className="products-main-btn">{productsData?.button?.link_text} <i><img src={svgIcon} alt="" /></i></a>
+                <a href={productsData?.button?.link_url} className="products-main-btn">{productsData?.button?.link_text} <i><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Vector_9_a374977eb9.svg' alt="" /></i></a>
             </div>}
         </div>
     )
