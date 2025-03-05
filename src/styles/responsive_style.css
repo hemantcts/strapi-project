@@ -1,3 +1,27 @@
+@media (min-width: 1200px) and (max-width: 1300px) {
+:root {
+    --bs-fsbody: 18px;
+}
+header {
+    ul.navbar-nav.main--menu li.nav-item {
+        margin-left: 1rem !important;
+    }
+    ul.navbar-nav.main--menu li.nav-item .nav-link {
+        font-size: 16px;
+    }
+    .navbar-nav .dropdown-menu ul li a {
+        font-size: 15px !important;
+    }
+    .navbar-nav .dropdown-menu ul li .termin_praxis, .navbar-nav .dropdown-menu ul li .termin_aproke {
+        font-size: 14px;
+        padding: 10px 10px !important;
+    }
+    .navbar-nav .dropdown-menu ul li {
+        padding-right: 20px !important;
+    }
+}
+}
+
 @media (min-width: 992px) and (max-width: 1199px) {
 .blue_btn, .green_btn {
     padding: 12px;
@@ -163,10 +187,10 @@ header {
     ul.navbar-nav.main--menu li.nav-item {
         margin-left: 2rem;
         padding-top: 15px;
-        padding-bottom: 10px;
+        padding-bottom: 0;
     }
     ul.navbar-nav.main--menu li.nav-item .nav-link {
-        padding: 8px 0;
+        padding: 8px 0 18px;
         line-height: 1;
         color: var(--bs-grey);
         font-weight: var(--bs-fw700);
@@ -183,6 +207,9 @@ header {
         height: 2px;
         background-color: var(--bs-blue);
         transition: .4s all;
+    }
+    ul.navbar-nav.main--menu li.nav-item .nav-link:before {
+        bottom: 10px;
     }
     ul.navbar-nav.main--menu li.nav-item.apotheke_menu .nav-link:before {
         background-color: var(--bs-green);
@@ -294,7 +321,7 @@ header {
     }
 }
 .job_sec{
-    .job_shuffle .row:nth-child(even) {
+    .job_shuffle .row:nth-child(odd) {
         flex-direction: row-reverse;
     }
 }
@@ -347,6 +374,16 @@ header {
 }
 .blue_btn img, .green_btn img, footer .offen_detail a img {
     width: 25px;
+}
+.inner_banner {
+.banner_content {
+    width: calc(100% - 60px);
+    margin-left: 60px;
+    &:before {
+        left: -60px;
+        width: 60px;
+    }
+}
 }
 .heart_sec {
     .heart_block .content_wrap {
@@ -479,8 +516,9 @@ header {
     }
     #mainNavbar ul.navbar-nav.top_menu li:first-child {
         position: absolute;
-        top: 109px;
+        top: 100px;
         width: 90%;
+        background: #f8f8f8;
     }
     button.navbar-toggler {
         padding: 0;
@@ -711,7 +749,7 @@ footer {
 }
 .job_sec {
     .job_img {
-        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
     }
 }
 

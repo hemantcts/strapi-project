@@ -12,6 +12,9 @@ export const JobShuffle = ({ data, color }) => {
         <div className='job_list_wrapper'>
             {data?.map((job, index) => (
                 <div className='row job_row'>
+                    <div className='col-lg-6 job_img'>
+                        <img src={`https://medzentrum.entwicklung-loewenmut.ch${job?.jobs_info?.image?.url}`} alt='' className='w-100' />
+                    </div>
                     <div className='col-lg-6 job_col'>
                         <div className='job_content text-black'>
                             <h2>{job?.jobs_info?.heading}</h2>
@@ -32,9 +35,6 @@ export const JobShuffle = ({ data, color }) => {
                                 <a href='' className='button fill_btn pdf_btn'>pdf download <img src={pdfIcon} alt='#' /></a>
                             </div>
                         </div>
-                    </div>
-                    <div className='col-lg-6 job_img'>
-                        <img src={`https://medzentrum.entwicklung-loewenmut.ch${job?.jobs_info?.image?.url}`} alt='' className='w-100' />
                     </div>
                 </div>
             ))}
