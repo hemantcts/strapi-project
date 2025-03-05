@@ -4,10 +4,14 @@ import Footer from './Footer';
 import iconError from '../images/error-image.svg'
 import arrowIcon from '../images/white-arrow.svg'
 import { Link } from 'react-router-dom';
+import { StickyButton } from './mini_components/StickyButton';
 
 export const Error = () => {
     return (
         <div className='error'>
+            <div className='stickY_btn'>
+                <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
+            </div>
             <header>
                 <Navbar />
             </header>

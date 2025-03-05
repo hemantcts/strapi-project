@@ -4,6 +4,7 @@ import Footer from './Footer'
 import { BannerSection } from './BannerSection'
 import { MyButton } from './mini_components/MyButton'
 import { Accordion } from './Accordion'
+import { StickyButton } from './mini_components/StickyButton'
 
 const Datenschutz = () => {
 
@@ -25,7 +26,10 @@ const Datenschutz = () => {
     }, [])
 
     return (
-        <div className='kontakt'>
+        <div className='datenschutz'>
+            <div className='stickY_btn'>
+                <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
+            </div>
             <Navbar />
             <div className='inner_banner_Section'>
                 {<BannerSection bannerData={bannerData} />}

@@ -5,6 +5,7 @@ import { MyButton } from './mini_components/MyButton'
 import { TwoContent } from './mini_components/TwoContent'
 import Footer from './Footer';
 import { JobShuffle } from './JobShuffle';
+import { StickyButton } from './mini_components/StickyButton';
 
 export const Jobs = () => {
     const activeLink = { link1: false, link2: false, link3: false, link4: false, link5: true, link6: false }
@@ -42,6 +43,9 @@ export const Jobs = () => {
 
     return (
         <div className='jobs'>
+            <div className='stickY_btn'>
+                <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
+            </div>
             <header>
                 <Navbar activeLink={activeLink} />
             </header>

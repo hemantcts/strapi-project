@@ -5,6 +5,7 @@ import { MyButton } from './mini_components/MyButton'
 import Footer from './Footer';
 import { ImpressumData } from './ImpressumData';
 import { ImpressumKontakt } from './ImpressumKontakt';
+import { StickyButton } from './mini_components/StickyButton';
 
 export const Impressum = () => {
 
@@ -31,6 +32,9 @@ export const Impressum = () => {
 
     return (
         <div className='impressum'>
+            <div className='stickY_btn'>
+                <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
+            </div>
             <header>
                 <Navbar />
             </header>

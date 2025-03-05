@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 // import productImg1 from '../images/product-img1.png';
 import discountImg from '../images/discount_img.png'
 import MyLink from './mini_components/MyLink';
+import svgIcon from '../images/option-link-icon.svg';
 
 const ProductsSection = ({ productsData, color }) => {
     return (
@@ -85,7 +86,7 @@ const ProductsSection = ({ productsData, color }) => {
                 })}
             </div>
             {productsData?.button?.link_text && <div className="products_sec_btn text-center">
-                <a href={productsData?.button?.link_url} className="products-main-btn">{productsData?.button?.link_text} <i className="fa-solid fa-arrow-right " /></a>
+                <a href={productsData?.button?.link_url} className="products-main-btn">{productsData?.button?.link_text} <i><img src={svgIcon} alt="" /></i></a>
             </div>}
         </div>
     )
