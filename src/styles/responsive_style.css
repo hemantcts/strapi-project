@@ -432,6 +432,11 @@ footer .col-lg-3.ftr_block {
         max-width: 900px;
     }
 }
+.products-sec {
+    .product-info {
+        min-height: 209px;
+    }
+}
 }
 
 @media (max-width: 1199px){
@@ -795,6 +800,60 @@ footer {
             }
         }
     }
+    .angbot_moble_card {
+        .card {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            background-color: #fff;
+            box-shadow: 0 3px 30px #0000001a;
+            border-radius: 20px;
+            overflow: hidden;
+            .card-header {
+                background: var(--bs-blue);
+                border: 0;
+                h2 {
+                    margin: 0;
+                    padding: 5px;
+                    color: #fff;
+                    font-size: 20px;
+                }
+            }
+            .card-body {
+                ul {
+                li {
+                    margin: 10px 0;
+                    font-size: 14px;
+                    display: flex;
+                    justify-content: space-between;
+                    position: relative;
+                    padding-left: 23px;
+                    line-height: 1.25;
+                    text-align: right;
+                }
+                li:before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 1px;
+                    width: 15px;
+                    height: 15px;
+                    background: url(../images/tick-icon.svg) no-repeat center;
+                    background-size: contain;
+                }
+                li span {
+                    width: 70%;
+                    padding-right: 10px;
+                    color: var(--bs-blue);
+                    text-align: left;
+                }
+            }
+            }
+        }
+        .mob_margn {
+            margin-bottom: 1.25rem;
+        }
+    }
 }
 }
 
@@ -1103,6 +1162,7 @@ header {
 
         .product-info {
             min-height: unset;
+            margin-bottom: 0 !important;
         }
 
         .product-item p,
@@ -1119,6 +1179,11 @@ header {
         .discount {
             width: 5.5rem;
             padding: 12px;
+        }
+        .products-main-btn {
+            img {
+                width: 20px;
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <div>
-            <footer className='wi_full bg_light_blue'>
+            <footer className='wi_full'>
                 <div className='container-xxl'>
                     <div className='upper_footer'>
                         <div className='row'>

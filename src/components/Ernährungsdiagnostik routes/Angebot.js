@@ -55,13 +55,13 @@ export const Angebot = ({ data, color }) => {
                 <MyButton buttonText={bannerData?.title} activePage='Ernährungsdiagnostik' />
             </section>
             <section className='wi_full py_3 angebot_Sec'>
-                <div className='container-xxl pb-5'>
+                <div className='container-xxl pb-lg-5'>
                     <TwoContent data={offersData} />
                 </div>
                 <div className='angebot_table_container mt-5'>
                     <div className='container-xxl'>
                         <div className='sec_title d-lg-none'>
-                            <h2>Angebote</h2>
+                            <h2 className='mb-4'>Angebote</h2>
                         </div>
                         <div className='dektop_angebot_table'>
                             <AngebotDesktop />

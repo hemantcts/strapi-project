@@ -43,10 +43,10 @@ const ProductsSection = ({ productsData, color }) => {
                                                             <div className="col-12">
                                                                 <div className="row align-items-center">
 
-                                                                    <div className='col-4'>
+                                                                    <div className='col-5'>
                                                                         <p className='mb-0'>{price?.currentPrice}</p>
                                                                     </div>
-                                                                    <div className='col-3'>
+                                                                    <div className='col-2 p-0'>
                                                                         <h3>{price?.current}</h3>
                                                                     </div>
                                                                     <div className='col-2'>

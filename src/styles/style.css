@@ -404,8 +404,15 @@ ul.navbar-nav.main--menu li.nav-item .dropdown-toggle:after {
 
 footer {
     padding-top: 4rem;
+    background-color: #E2E8EC;
 .ftr_block {
     margin-bottom: 1.5rem;
+}
+.ftr_scl {
+    padding-top: 7px;
+}
+h4 {
+    font-weight: var(--bs-fw700);
 }
 .footer_copyright {
     p {
@@ -1277,6 +1284,9 @@ ul.nav-tabs li.tab2 a.active {
     .product-info h3, .product-info .last_price {
         font-family: var(--bs-fontvolkhov);
     }
+    .product-info h3 {
+        font-size: var(--bs-h40);
+    }
     .product-info .last_price:before {
         content: '';
         position: absolute;
@@ -1307,6 +1317,12 @@ ul.nav-tabs li.tab2 a.active {
         text-transform: uppercase;
         text-align: center;
         font-weight: 700;
+        img {
+            width: 30px;
+            position: relative;
+            margin-left: 7px;
+            top: -2px;
+        }
     }
 }
 
