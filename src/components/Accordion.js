@@ -1,6 +1,11 @@
 import React from 'react'
 
 export const Accordion = ({ data, color, greyy, isHtml }) => {
+    const isHtml2 = (str) => {
+        const doc = new DOMParser().parseFromString(str, "text/html");
+        return Array.from(doc.body.childNodes).some(node => node.nodeType === 1);
+    };
+
     return (
         <div className={`accordion_wrapper ${color}`}>
             <div className={`accordion ${greyy === true ? 'greyy' : ''}`} id="accordion" role='tablist' aria-multiselectable='true'>
@@ -13,7 +18,7 @@ export const Accordion = ({ data, color, greyy, isHtml }) => {
                         </div>
                         <div id={`collapse${item?.id}`} className="collapse" data-bs-parent="#accordion">
                             <div className="card-body">
-                                {!isHtml ? (
+                                {!isHtml2(item?.description) ? (
                                     <p>{item?.description}</p>
                                 ) : (
                                     <div dangerouslySetInnerHTML={{ __html: item?.description }} />
