@@ -23,7 +23,7 @@ const ServicesSection = ({servicesData, color}) => {
                                 {!isHtml(service?.description) ? (
                                     <p>{service?.description}</p>
                                 ) : (
-                                    <div dangerouslySetInnerHTML={{ __html: service?.description }} />
+                                    <div className={`${color}`} dangerouslySetInnerHTML={{ __html: service?.description }} />
                                 )}
                                 <div class="btn_block">
                                     <MyLink className="button blue_btn text-uppercase" link={service?.link?.link_url} text={service?.link?.link_text} color={color} />

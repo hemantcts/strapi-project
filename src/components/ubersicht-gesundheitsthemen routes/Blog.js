@@ -51,7 +51,7 @@ export const Blog = ({ data, color }) => {
             // setBlog(matchedBlog);
             if (matchedBlog) {
                 setBlog(matchedBlog);
-                setProductDetails(matchedBlog?.product_details);
+                setProductDetails(matchedBlog?.product_detail);
                 setExtraDetails(matchedBlog?.extra_details);
             } else {
                 navigate("/error"); // Redirect to trigger the catch-all error route
@@ -85,9 +85,9 @@ export const Blog = ({ data, color }) => {
                             <div className='post_data_wrapper text-black mt-5 pt-lg-5'>
                                 <h2>{productDetails?.title}</h2>
                                 <div className='grey_box'>
-                                    {/* <img src={`https://medzentrum.entwicklung-loewenmut.ch${productDetails?.image?.url}`} alt='' /> */}
-                                    <img src={productImg} alt='' />
-                                    <img src={productImg2} alt='' />
+                                    {productDetails?.image?.map((img, index)=>(
+                                        <img key={index} src={`https://medzentrum.entwicklung-loewenmut.ch${img?.image?.url}`} alt="" />
+                                    ))}
                                 </div>
                                 <div dangerouslySetInnerHTML={{ __html: productDetails?.description }} />
                                 <div className='btn_block mt-5'>

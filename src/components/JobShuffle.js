@@ -6,8 +6,23 @@ import iconMail from '../images/icon-envelope.svg'
 import iconWeb from '../images/icon-website.svg'
 import pdfIcon from '../images/dwnload-arrow.svg'
 import { Accordion } from './Accordion'
+import { saveAs } from 'file-saver';
 
 export const JobShuffle = ({ data, color }) => {
+
+    const handleDownload = async (url) => {
+        try {
+            // Fetch the PDF file
+            const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch${url}`);
+            const blob = await response.blob();
+
+            // Use file-saver to trigger the download
+            saveAs(blob, 'Baumgruben_mit_Baumsubstrate_NEU.pdf');
+        } catch (error) {
+            console.error('Error downloading the PDF:', error);
+        }
+    };
+
     return (
         <div className='job_list_wrapper'>
             {data?.map((job, index) => (
@@ -32,7 +47,7 @@ export const JobShuffle = ({ data, color }) => {
                                         </li>
                                     ))}
                                 </ul>
-                                <a href='' className='button fill_btn pdf_btn'>pdf download <img src={pdfIcon} alt='#' /></a>
+                                <button onClick={()=> handleDownload(job?.pdf_link?.url)} className='button fill_btn pdf_btn'>pdf download <img src={pdfIcon} alt='' /></button>
                             </div>
                         </div>
                     </div>
