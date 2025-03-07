@@ -85,13 +85,13 @@ export const Blog = ({ data, color }) => {
                             <div className='post_data_wrapper text-black mt-5 pt-lg-5'>
                                 <h2>{productDetails?.title}</h2>
                                 <div className='grey_box'>
-                                    {productDetails?.image?.map((img, index)=>(
+                                    {productDetails?.image?.map((img, index) => (
                                         <img key={index} src={`https://medzentrum.entwicklung-loewenmut.ch${img?.image?.url}`} alt="" />
                                     ))}
                                 </div>
                                 <div dangerouslySetInnerHTML={{ __html: productDetails?.description }} />
                                 <div className='btn_block mt-5'>
-                                    <button type="button" className="button fill_btn">ALLE AKTIONEN  <img src={arrowImg} alt="#" /></button>
+                                    <a href='https://www.rotpunkt-apotheken.ch/aktionen' target='_blank' className="button fill_btn">ALLE AKTIONEN  <img src={arrowImg} alt="#" /></a>
                                 </div>
                             </div>
 
@@ -105,21 +105,28 @@ export const Blog = ({ data, color }) => {
                             <div className='related_blogs'>
                                 <h3>Alle Gesundheitsthemen </h3>
                                 <div className='rel_blog_list'>
-                                    {blogs?.slice(0, 3).map((blog, index) => (
-                                        <div key={index} className='rb_item'>
-                                            <div className='rb_itm_iner'>
-                                                <div className='rbitm_img'>
-                                                    <Link to={`/${blog?.title}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.image?.url}`} alt='' /></Link>
-                                                </div>
-                                                <div className='rbitm_content text-black'>
-                                                    <h4><Link to={`/${blog?.title}`}>{blog?.title}</Link></h4>
-                                                    <div className='btn_block'>
-                                                        <MyLink link={`/${blog?.title}`} text='Mehr erfahren ' />
+                                    {blogs
+                                        ?.filter((b) => b.id !== blog.id) // Exclude the current blog
+                                        ?.filter((b, _, arr) => {
+                                            const sameCategoryBlogs = arr.filter((item) => item.category === blog.category);
+                                            return sameCategoryBlogs.length > 0 ? b.category === blog.category : true;
+                                        })
+                                        ?.slice(0, 3) // Limit to 3 blogs
+                                        .map((blog, index) => (
+                                            <div key={index} className='rb_item'>
+                                                <div className='rb_itm_iner'>
+                                                    <div className='rbitm_img'>
+                                                        <Link to={`/${blog?.title}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.image?.url}`} alt='' /></Link>
+                                                    </div>
+                                                    <div className='rbitm_content text-black'>
+                                                        <h4><Link to={`/${blog?.title}`}>{blog?.title}</Link></h4>
+                                                        <div className='btn_block'>
+                                                            <MyLink link={`/${blog?.title}`} text='Mehr erfahren ' />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    ))}
+                                        ))}
                                 </div>
                             </div>
                         </div>

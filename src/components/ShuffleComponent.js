@@ -8,6 +8,12 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 export const ShuffleComponent = ({ data, color }) => {
 
+    const [showInfo, setShowInfo] = useState(false)
+
+    const changeShowInfo = ()=>{
+        setShowInfo(!showInfo);
+    }
+
     return (
         <div className={`${color}`}>
             {data?.map((services, index) => (
@@ -45,7 +51,23 @@ export const ShuffleComponent = ({ data, color }) => {
                                 {services?.list_items && (
                                     <ul>
                                         {services?.list_items?.map((list_item, index) => (
-                                            <li key={index}>{list_item?.title}</li>
+                                            <li key={index}>
+                                                {/* {list_item?.title} */}
+
+                                                {list_item?.title?.includes("{info}") ? (
+                                                    <>
+                                                        {list_item.title.replace("{info}", "")}
+                                                        <button onClick={changeShowInfo} className='info-icon ms-2'>
+                                                            <img src="https://medzentrum.entwicklung-loewenmut.ch/uploads/Union_29_1667bd2206.svg" alt="" />
+                                                            {showInfo && <div className='info-container'>
+                                                                <p className='m-0'>(Blutdruckmessung plus Medikationscheck plus Messung von Bauchumfang, Body Mass Index BMI und Körperfett)</p>
+                                                            </div>}
+                                                        </button>
+                                                    </>
+                                                ) : (
+                                                    list_item?.title
+                                                )}
+                                            </li>
                                         ))}
                                     </ul>
                                 )}

@@ -1517,3 +1517,30 @@ button.owl-dot.active span {
     display: block;
     margin-top: 12px;
 }
+
+.info-icon{
+    height: 20px;
+    width: 20px;
+    background-color: #009E4B;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: 0;
+}
+
+.info-container{
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    box-shadow: 0 4px 14px 1px #00000026;
+    padding: 0.5rem;
+    width: 232px;
+    position: absolute;
+    z-index: 99;
+    top: 50%;
+    left: 80%;
+    font-size: 14px;
+
+}

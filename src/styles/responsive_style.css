@@ -136,6 +136,10 @@ footer {
         top: -25px;
     }
 }
+.info-container{
+    top: 110%;
+    left: unset;
+}
 }
 
 @media (min-width: 1441px){
@@ -163,6 +167,7 @@ ul.dropdown-menu.half {
         height: 100%;
     }
 }
+
 }
     
 @media (min-width: 992px){
@@ -1084,6 +1089,11 @@ header {
             font-size: 14px;
         }
     }
+}
+.info-container{
+    top: 50%;
+    right: 80%;
+    left: unset;
 }
 }
 
