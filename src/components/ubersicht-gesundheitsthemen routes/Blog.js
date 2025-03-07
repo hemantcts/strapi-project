@@ -20,18 +20,18 @@ export const Blog = ({ data, color }) => {
     const [blog, setBlog] = useState(null);
     const navigate = useNavigate();
 
-    const getPageData = async () => {
-        const response = await fetch('https://medzentrum.entwicklung-loewenmut.ch/api/single-blog?populate[product_details][populate]=image&populate[extra_details][populate]=accordion_data')
-        const data = await response.json();
-        console.log(data);
-        if (data) {
-            setProductDetails(data.data.product_details);
-            setExtraDetails(data.data.extra_details);
-        }
-    }
+    // const getPageData = async () => {
+    //     const response = await fetch('https://medzentrum.entwicklung-loewenmut.ch/api/single-blog?populate[product_details][populate]=image&populate[extra_details][populate]=accordion_data')
+    //     const data = await response.json();
+    //     console.log(data);
+    //     if (data) {
+    //         // setProductDetails(data.data.product_details);
+    //         // setExtraDetails(data.data.extra_details);
+    //     }
+    // }
 
     const getBlogs = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate[image][populate]=*&populate[product_detail][populate]=image.image&populate[extra_details][populate]=accordion_data`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -40,9 +40,8 @@ export const Blog = ({ data, color }) => {
     }
 
     useEffect(() => {
-        getPageData();
+        // getPageData();
         getBlogs();
-        // navigate("/404");
     }, [])
 
     useEffect(() => {
@@ -52,6 +51,8 @@ export const Blog = ({ data, color }) => {
             // setBlog(matchedBlog);
             if (matchedBlog) {
                 setBlog(matchedBlog);
+                setProductDetails(matchedBlog?.product_details);
+                setExtraDetails(matchedBlog?.extra_details);
             } else {
                 navigate("/error"); // Redirect to trigger the catch-all error route
             }

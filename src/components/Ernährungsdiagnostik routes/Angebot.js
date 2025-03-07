@@ -12,15 +12,16 @@ export const Angebot = ({ data, color }) => {
     const activeLink = { link1: false, link2: false, link3: true, link4: false, link5: false, link6: false }
     const [bannerData, setBannerData] = useState();
     const [offersData, setOffersData] = useState();
-    // const [blogs, setBlogs] = useState();
+    const [tableData, setTableData] = useState([]);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/ernaehrungsdiagnostik-angebote?populate[banner_section][populate]=banner_image&populate[offers_section][populate]=*`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/ernaehrungsdiagnostik-angebote?populate[banner_section][populate]=banner_image&populate[offers_section][populate]=*&populate[table_section][populate]=*`)
         const data = await response.json();
         console.log(data);
         if (data) {
             setBannerData(data?.data?.banner_section);
             setOffersData(data?.data?.offers_section);
+            setTableData(data?.data?.table_section);
             //   setFounderSection(data?.data?.founder_section);
             //   setFounderData(data?.data?.founder_data);
             //   setTeamData(data?.data?.team_data);
@@ -64,10 +65,10 @@ export const Angebot = ({ data, color }) => {
                             <h2 className='mb-4'>Angebote</h2>
                         </div>
                         <div className='dektop_angebot_table'>
-                            <AngebotDesktop />
+                            <AngebotDesktop tableData={tableData} />
                         </div>
                         <div className='mobile_angebot_table'>
-                            <AngebotMobile />
+                            <AngebotMobile tableData={tableData} />
                         </div>
                     </div>
                 </div>
