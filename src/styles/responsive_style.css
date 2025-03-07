@@ -340,6 +340,9 @@ header {
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
+.spezielles_section .img_col {
+    padding-right: 2rem;
+}
 }
     
 @media (min-width: 1600px){
@@ -468,6 +471,9 @@ footer .col-lg-3.ftr_block {
     .card-body {
         padding-left: 22px;
         padding-right: 22px;
+        ul li:before {
+            top: 16px;
+        }
     }
 }
 }
