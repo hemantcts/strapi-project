@@ -665,19 +665,23 @@ ul.nav-tabs li.tab2 a.active {
             object-fit: cover;
         }
     }
-    .owl-dots{
-        button.owl-dot span {
-        width: 10px;
-        height: 10px;
-        display: block;
-        margin: 5px;
-        background: rgba(241, 241, 241, 1);
-        opacity: 1;
-    }
-    button.owl-dot.active span {
-        background: var(--bs-green);
-        transform: scale(1.4);
-    }
+}
+}
+
+
+.owl-carousel {
+.owl-dots{
+    button.owl-dot span {
+    width: 10px;
+    height: 10px;
+    display: block;
+    margin: 5px;
+    background: rgba(241, 241, 241, 1);
+    opacity: 1;
+}
+button.owl-dot.active span {
+    background: var(--bs-blue);
+    transform: scale(1.4);
 }
 }
 }
@@ -1011,6 +1015,13 @@ ul.nav-tabs li.tab2 a.active {
     .card .card-header a.collapsed:before {
         background-image: url(../images/plus-green.svg) !important;
     } 
+    .owl-carousel {
+        .owl-dots{
+        button.owl-dot.active span {
+            background: var(--bs-green);
+        }
+        }
+    }
     
 }
 
