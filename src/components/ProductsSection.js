@@ -9,8 +9,8 @@ const ProductsSection = ({ productsData, color }) => {
     return (
         <div className={`container ${color}`}>
             {productsData?.heading && <h2 className='text-center mb-3'>{productsData?.heading}</h2>}
-            {productsData?.description && <p className='text-center mb-5 description'>{productsData?.description}</p>}
-            <div className="row">
+            {productsData?.description && <p className='text-center mb-3 description'>{productsData?.description}</p>}
+            <div className="row mt-5">
                 {productsData?.products.map((product, index) => {
                     return (
                         <div className="col-lg-6" key={index} >
