@@ -297,6 +297,9 @@ header {
 }
 
 .shuffle_container {
+    .shuffle_row {
+        align-items: center;
+    }
     .shuffle_item_wrap:nth-child(even) .shuffle_row {
         flex-direction: row-reverse;
     }
@@ -354,7 +357,7 @@ header {
     --bs-fs22: 22px;
     --bs-fs20: 20px;
     --bs-fs18: 18px;
-    --bs-fsbody: 22px;
+    --bs-fsbody: 25px;
 }
 .banner_sec {
     .round_btn {
@@ -374,6 +377,12 @@ header {
 }
 .blue_btn img, .green_btn img, footer .offen_detail a img {
     width: 25px;
+}
+header {
+.navbar-nav .dropdown-menu ul li a {
+    font-size: var(--bs-fs22) !important;
+    padding: 13px 0 !important;
+}
 }
 .inner_banner {
 .banner_content {
@@ -402,6 +411,11 @@ header {
 footer .col-lg-3.ftr_block {
     margin-left: -1rem;
     width: calc(25% + 1rem);
+}
+.shuffle_container {
+    h4 {
+        font-size: var(--bs-h4);
+    }
 }
 .single-blog {
     .related_blogs {
@@ -435,6 +449,79 @@ footer .col-lg-3.ftr_block {
 .products-sec {
     .product-info {
         min-height: 209px;
+    }
+}
+}
+
+
+@media (min-width: 1700px){
+    .container-xxl {
+        max-width: 1650px !important;
+    }
+}
+
+@media (min-width: 2000px) and (max-width: 2500px) {
+header {
+.navbar-nav .dropdown-menu ul li a {
+    font-size: 24px !important;
+    padding: 15px 0 !important;
+}
+.navbar-nav .dropdown-menu ul li a.termin_praxis img, .navbar-nav .dropdown-menu ul li a.termin_aproke img {
+    width: 35px !important;
+}
+.navbar-nav .dropdown-menu ul li .termin_praxis, .navbar-nav .dropdown-menu ul li .termin_aproke {
+    padding: 15px 25px !important;
+}
+.navbar-nav .dropdown-menu { 
+    padding: 2rem;
+}
+}
+}
+
+@media (min-width: 2000px) {
+:root {
+    --bs-h1: 60px;
+    --bs-h2: 60px;
+    --bs-h3: 30px;
+    --bs-h4: 26px;
+    --bs-h50: 50px;
+    --bs-h40: 40px;
+    --bs-fs26: 28px;
+    --bs-fs22: 24px;
+    --bs-fs20: 22px;
+    --bs-fs18: 20px;
+    --bs-fsbody: 27px;
+}
+}
+
+@media (min-width: 2501px) {
+header {
+.navbar-nav .dropdown-menu ul li a {
+    font-size: 28px !important;
+    padding: 20px 0 !important;
+}
+.navbar-nav .dropdown-menu ul li a.termin_praxis img, .navbar-nav .dropdown-menu ul li a.termin_aproke img {
+    width: 40px !important;
+}
+.navbar-nav .dropdown-menu ul li .termin_praxis, .navbar-nav .dropdown-menu ul li .termin_aproke {
+    padding: 20px 35px !important;
+}
+.navbar-nav .dropdown-menu { 
+    padding: 2.25rem;
+}
+ul.navbar-nav.main--menu li.nav-item .nav-link {
+    padding: 12px 0 22px;
+    font-size: 24px;
+}
+ul.navbar-nav.top_menu li .nav-link {
+    font-size: 24px;
+}
+}
+footer {
+    .footer_copyright {
+        p {
+            font-size: var(--bs-fs20);
+        }
     }
 }
 }
