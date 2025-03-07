@@ -507,6 +507,9 @@ ul {
     ul {
         padding-left: 18px;
         position: relative;
+        strong {
+            font-weight: var(--bs-fw400);
+        }
     }
     ul:before {
         content: '';
