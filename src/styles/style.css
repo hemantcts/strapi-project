@@ -1544,3 +1544,19 @@ button.owl-dot.active span {
     font-size: 14px;
 
 }
+
+.home_menu, .menu1, .menu2{
+    animation: slide-it 0.5s ease-in-out forwards;
+}
+
+@keyframes slide-it {
+    from{
+        transform: translateX(-5%);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    
+}
