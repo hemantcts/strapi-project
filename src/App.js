@@ -35,41 +35,42 @@ function App() {
         <Route path="/" element={<Home />} />
 
         {/* apotheke routes */}
-        <Route path="/ubersicht-apotheke" element={<PharmacyOverview />} />
+        {/* <Route path="/ubersicht-apotheke" element={<PharmacyOverview />} />
         <Route path="/terminbuchung-apotheke" element={<AppointmentBooking />} />
         <Route path="/apotheke-team" element={<PharmacyTeam />} />
         <Route path="/apotheke-notfall" element={<PharmacyEmergency />} />
-        <Route path="/dienstleistungen-apotheke" element={<PharmacyServices />} />
+        <Route path="/dienstleistungen-apotheke" element={<PharmacyServices />} /> */}
 
         {/* praxis routes */}
-        <Route path="/ubersicht-praxis" element={<OverviewPractice />} />
+        {/* <Route path="/ubersicht-praxis" element={<OverviewPractice />} />
         <Route path="/terminbuchung-praxis" element={<TerminBuchenPraxis />} />
         <Route path="/praxis-team" element={<PraxisTeam />} />
         <Route path="/praxis-notfall" element={<PraxisNotfall />} />
         <Route path="/dienstleistungen-praxis" element={<DienstleistungenPraxis />} />
-        <Route path="/kontakt" element={<Kontakt />} />
+        <Route path="/kontakt" element={<Kontakt />} /> */}
 
 
         {/* Ernährungsdiagnostik routes */}
-        <Route path="/ernahrungsdiagnostik" element={<Ernahrungsdiagnostik />} />
-        <Route path="/angebot" element={<Angebot />} />
+        {/* <Route path="/ernahrungsdiagnostik" element={<Ernahrungsdiagnostik />} />
+        <Route path="/angebot" element={<Angebot />} /> */}
 
         {/* ubersicht-gesundheitsthemen routes */}
-        <Route path="/ubersicht-gesundheitsthemen" element={<UbersichtGesundheitsthemen />} />
-        <Route path="/:title" element={<Blog />} />
+        {/* <Route path="/ubersicht-gesundheitsthemen" element={<UbersichtGesundheitsthemen />} />
+        <Route path="/:title" element={<Blog />} /> */}
 
         {/* extra routes */}
-        <Route path="/datenschutz" element={<Datenschutz />} />
-        <Route path="/impressum" element={<Impressum />} />
+        {/* <Route path="/datenschutz" element={<Datenschutz />} />
+        <Route path="/impressum" element={<Impressum />} /> */}
 
         {/* jobs routes */}
-        <Route path="/jobs" element={<Jobs />} />
+        {/* <Route path="/jobs" element={<Jobs />} /> */}
 
         {/* search routes */}
-        <Route path="/search-result" element={<SearchResult />} />
+        {/* <Route path="/search-result" element={<SearchResult />} /> */}
         
         {/* Catch-All Route for Undefined Paths */}
-        <Route path="/error" element={<Error />} />
+        {/* <Route path="/error" element={<Error />} /> */}
+        <Route path="*" element={<Error />} />
 
       </Routes>
     </div>

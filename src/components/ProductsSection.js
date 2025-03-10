@@ -8,10 +8,10 @@ import svgIcon from '../images/option-link-icon.svg';
 const ProductsSection = ({ productsData, color }) => {
     return (
         <div className={`container ${color}`}>
-            {productsData?.heading && <h2 className='text-center mb-3'>{productsData?.heading}</h2>}
-            {productsData?.description && <p className='text-center mb-3 description'>{productsData?.description}</p>}
+            {productsData?.Uberschrift && <h2 className='text-center mb-3'>{productsData?.Uberschrift}</h2>}
+            {productsData?.Beschreibung && <p className='text-center mb-3 description'>{productsData?.Beschreibung}</p>}
             <div className="row mt-5">
-                {productsData?.products.map((product, index) => {
+                {productsData?.Produkte.map((product, index) => {
                     return (
                         <div className="col-lg-6" key={index} >
                             <div className="product-items mb-5 mb-lg-0 px-lg-2">
@@ -20,13 +20,13 @@ const ProductsSection = ({ productsData, color }) => {
                                         <div className="row" >
                                             <div className="col-7">
                                                 <div className='product-item mb-4'>
-                                                    <h4>{product?.product_details?.name}</h4>
-                                                    <p>{product?.product_details?.description}</p>
-                                                    <small>{product?.product_details?.expiry}</small>
+                                                    <h4>{product?.product_details?.Name}</h4>
+                                                    <p>{product?.product_details?.Beschreibung}</p>
+                                                    <small>{product?.product_details?.Ablaufdatum}</small>
                                                 </div>
                                             </div>
                                             <div className="col-5" style={{ position: "relative" }}>
-                                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${product?.product_details?.image?.url}`} alt="" />
+                                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${product?.product_details?.Bild?.url}`} alt="" />
                                                 <div className="discount">
                                                     <img src={discountImg} alt="" />
                                                 </div>
@@ -35,9 +35,9 @@ const ProductsSection = ({ productsData, color }) => {
                                     </div>
                                     <div className="col-12">
                                         <div className="product-info mb-4">
-                                            <h4 className='mb-3' >{product?.about?.heading}</h4>
+                                            <h4 className='mb-3' >{product?.Uber_uns?.Uberschrift}</h4>
                                             <div>
-                                                {product?.about?.prices?.map((price, i) => {
+                                                {product?.Uber_uns?.Preise?.map((price, i) => {
                                                     return (
                                                         <div className="row" key={i}>
                                                             <div className="col-12">
@@ -69,12 +69,12 @@ const ProductsSection = ({ productsData, color }) => {
                                             <ul className='p-0 mb-5'>
                                                 <li>
                                                     {/* <Link to='/' className='option-link'>BESTELLEN <i className="fa-solid fa-arrow-right option-link-icon" /></Link> */}
-                                                    <MyLink link={product?.extraDetails?.link?.link_url} text={product?.extraDetails?.link?.link_text} color={color} />
+                                                    <MyLink link={product?.zusatzliche_Details?.Link?.Link_URL} text={product?.zusatzliche_Details?.Link?.link_text} color={color} />
                                                 </li>
                                             </ul>
 
-                                            <h6>{product?.extraDetails?.title}</h6>
-                                            <small>{product?.extraDetails?.description}</small>
+                                            <h6>{product?.zusatzliche_Details?.Title}</h6>
+                                            <small>{product?.zusatzliche_Details?.Beschreibung}</small>
                                         </div>
                                     </div>
                                 </div>

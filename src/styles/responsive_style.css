@@ -481,6 +481,19 @@ footer .col-lg-3.ftr_block {
         }
     }
 }
+.angebot_table_container {
+    .angebot_table_row {
+        .table_col {
+            .tble_col_content ul {
+                li:first-child {
+                    img {
+                        top: 11px;
+                    }
+                }
+            }
+        }
+    }
+}
 }
 
 

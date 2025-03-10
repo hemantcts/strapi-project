@@ -1,4 +1,5 @@
 import React from 'react'
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 export const Accordion = ({ data, color, greyy, isHtml }) => {
     const isHtml2 = (str) => {
@@ -18,11 +19,23 @@ export const Accordion = ({ data, color, greyy, isHtml }) => {
                         </div>
                         <div id={`collapse${item?.id}`} className="collapse" data-bs-parent="#accordion">
                             <div className="card-body">
-                                {!isHtml2(item?.description) ? (
+                                {/* {!isHtml2(item?.description) ? (
                                     <p>{item?.description}</p>
                                 ) : (
                                     <div dangerouslySetInnerHTML={{ __html: item?.description }} />
-                                )}
+                                )} */}
+
+                                {item?.description && <BlocksRenderer content={item?.description} 
+                                    // blocks={{
+                                    //     paragraph: ({ children }) => (
+                                    //         <small>
+                                    //             {children}
+                                    //         </small>
+                                    //     ),
+                                    // }} 
+                                />}
+
+
 
                             </div>
                         </div>
