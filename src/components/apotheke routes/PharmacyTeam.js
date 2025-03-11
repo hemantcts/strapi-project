@@ -18,14 +18,14 @@ const PharmacyTeam = () => {
   const [teams2, setTeams2] = useState();
 
   const getPageData = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[banner_section][populate]=banner_image&populate[founder_section][populate]=*&populate[founder_data][populate]=image&populate[team_data][populate]=types`)
+    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[Bannerbereich][populate]=Banner_Bild&populate[Grunderbreich][populate]=*&populate[Grunderdaten][populate]=Bild&populate[Teamdaten][populate]=Typen`)
     const data = await response.json();
     console.log(data);
     if (data) {
-      setBannerData(data?.data?.banner_section);
-      setFounderSection(data?.data?.founder_section);
-      setFounderData(data?.data?.founder_data);
-      setTeamData(data?.data?.team_data);
+      setBannerData(data?.data?.Bannerbereich);
+      setFounderSection(data?.data?.Grunderbreich);
+      setFounderData(data?.data?.Grunderdaten);
+      setTeamData(data?.data?.Teamdaten);
     }
   }
 
@@ -66,7 +66,7 @@ const PharmacyTeam = () => {
       </section>
 
       <section className='breadcrumb_sec wi_full mt_3'>
-        <MyButton buttonText={bannerData?.title} activePage='Apotheke' color='green' />
+        <MyButton buttonText={bannerData?.Titel} activePage='Apotheke' color='green' />
       </section>
 
       <section className="wi_full py_3 grunderinnen_sec">
@@ -81,11 +81,11 @@ const PharmacyTeam = () => {
       <section className='wi_full py_3 pt-0 team_section'>
         <div className="container-xxl">
           <div className='sec_title green text-center'>
-            <h2>{teamData?.heading}</h2>
+            <h2>{teamData?.Uberschrift}</h2>
           </div>
           <div className='tab_container'>
             <ul className='nav nav-tabs' role='tablist'>
-              {teamData?.types?.map((type, index) => (
+              {teamData?.Typen?.map((type, index) => (
                 <li key={index} className={`nav-item tab${index + 1}`}>
                   <a className={`nav-link ${index === 0 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index + 1}`} role="tab">{type?.link_text
                   }</a>

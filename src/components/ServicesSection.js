@@ -1,6 +1,7 @@
 import React from 'react'
 import img1 from '../images/services-sec-img1.png'
 import MyLink from './mini_components/MyLink'
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 const ServicesSection = ({servicesData, color}) => {
     const isHtml = (str) => {
@@ -15,18 +16,19 @@ const ServicesSection = ({servicesData, color}) => {
                     <div className='item_inner'>
                         <div className='row'>
                             <div className="item_img">
-                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${service?.image?.url}`} alt="" />
+                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${service?.Bild?.url}`} alt="" />
                             </div>
                             <div className="item_text">
-                                <h3 className='fw_medium'>{service?.title}</h3>
+                                <h3 className='fw_medium'>{service?.Titel}</h3>
                                 {/* <p>{service?.description}</p> */}
-                                {!isHtml(service?.description) ? (
+                                {/* {!isHtml(service?.description) ? (
                                     <p>{service?.description}</p>
                                 ) : (
                                     <div className={`${color}`} dangerouslySetInnerHTML={{ __html: service?.description }} />
-                                )}
+                                )} */}
+                                {service?.Beschreibung && <BlocksRenderer content={service?.Beschreibung} />}
                                 <div class="btn_block">
-                                    <MyLink className="button blue_btn text-uppercase" link={service?.link?.link_url} text={service?.link?.link_text} color={color} />
+                                    <MyLink className="button blue_btn text-uppercase" link={service?.Link?.Link_URL} text={service?.Link?.link_text} color={color} />
                                 </div>
                             </div>
                         </div>

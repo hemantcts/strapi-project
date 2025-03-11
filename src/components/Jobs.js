@@ -15,18 +15,18 @@ export const Jobs = () => {
     const [jobsData, setJobsData] = useState([]);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/job?populate[banner_section][populate]=banner_image&populate[jobs_section]=*&populate[no_jobs_section]=*`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/job?populate[Bannerbereich][populate]=Banner_Bild&populate[Jobbereich]=*&populate[Kein_Job]=*`)
         const data = await response.json();
         console.log(data);
         if (data) {
-            setBannerData(data.data.banner_section);
-            setJobSection(data.data.jobs_section);
-            setNoJobSection(data.data.no_jobs_section);
+            setBannerData(data.data.Bannerbereich);
+            setJobSection(data.data.Jobbereich);
+            setNoJobSection(data.data.Kein_Job);
         }
     }
 
     const getJobsData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/jobs-data?populate[jobs_info][populate]=image&populate[jobs_info][populate]=accordion_data&populate[contact_details][populate]=details.icon&populate[pdf_link][populate]=*`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/jobs-data?populate[Job_Informationen][populate]=Bild&populate[Job_Informationen][populate]=erweiterbare_Daten&populate[Kontaktdaten][populate]=Details.icon&populate[PDF_Link][populate]=*`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -53,7 +53,7 @@ export const Jobs = () => {
                 <BannerSection bannerData={bannerData} color='blue' />
             </section>
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton buttonText={bannerData?.title} />
+                <MyButton buttonText={bannerData?.Titel} />
             </section>
             <section className="wi_full py_3 job_sec">
                 <div className="container-xxl">

@@ -1,6 +1,7 @@
 import React from 'react'
 import iconCall from '../images/icn-call.svg'
 import iconEnvelope from '../images/icn-envelope.svg'
+import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 // import MapComponent from './MapComponent'
 
 export const KontaktDetails = ({ contactData, color }) => {
@@ -11,8 +12,8 @@ export const KontaktDetails = ({ contactData, color }) => {
                     <div className={`item_inner`}>
                         <h2 className='h3_large'>{data?.main_title}</h2>
                         <ul>
-                            {data?.details?.map((detail, i) => {
-                                const cleanDetail = detail?.details?.replace(/\s+/g, ""); // Remove spaces
+                            {data?.Details?.map((detail, i) => {
+                                const cleanDetail = detail?.Details?.replace(/\s+/g, ""); // Remove spaces
                                 const isEmail = cleanDetail.includes("@");
                                 const isPhone = /^\+?\d+$/.test(cleanDetail); // Check if it's a phone number
                                 const href = isEmail
@@ -26,7 +27,7 @@ export const KontaktDetails = ({ contactData, color }) => {
                                         <span className='icon_img'>
                                             <img src={`https://medzentrum.entwicklung-loewenmut.ch${detail?.icon?.url}`} alt='' />
                                         </span>
-                                        <a href={href}>{detail?.details}</a>
+                                        <a href={href}>{detail?.Details}</a>
                                     </li>
                                 );
                             })}
@@ -36,8 +37,9 @@ export const KontaktDetails = ({ contactData, color }) => {
                             <div className='offnun_item'>
                                 {data?.time_details?.map((time, i) => (
                                     <div key={i} className='offnun_inr'>
-                                        <span>{time?.title}</span>
-                                        <span>{time?.description}</span>
+                                        <span>{time?.Titel}</span>
+                                        {time?.Beschreibung && <BlocksRenderer content={time?.Beschreibung} />}
+                                        {/* <span>{time?.Beschreibung}</span> */}
                                     </div>
                                 ))}
                             </div>

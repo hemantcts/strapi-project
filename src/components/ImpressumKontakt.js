@@ -2,6 +2,7 @@ import React from 'react'
 import iconPhone from '../images/call-blue.svg'
 import iconLocation from '../images/location-blue.svg'
 import iconEnvelope from '../images/envelope-blue.svg'
+import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 
 export const ImpressumKontakt = ({ contactData, color }) => {
     const getHref = (details) => {
@@ -29,42 +30,26 @@ export const ImpressumKontakt = ({ contactData, color }) => {
                     <div className='imp_shadow'>
                         <h3 className='font-volk mb-4'>{contact?.title}</h3>
                         <ul>
-                            {/* {contact?.details?.map((innerDetails, index)=>(
-                                <li key={index} className='pe-5'><img src={`https://medzentrum.entwicklung-loewenmut.ch${innerDetails?.icon?.url}`} alt='' /><a className='pe-5'>{innerDetails?.details}</a></li>
-                            ))} */}
-                            {contact?.details?.map((innerDetails, index) => (
+                            {contact?.Details?.map((innerDetails, index) => (
                                 <li key={index} className='pe-5'>
                                     <img
                                         src={`https://medzentrum.entwicklung-loewenmut.ch${innerDetails?.icon?.url}`}
                                         alt=''
                                     />
-                                    {getHref(innerDetails?.details) !== '' ? (
-                                        <a className='pe-5' href={getHref(innerDetails?.details)}>
-                                            {innerDetails?.details}
+                                    {getHref(innerDetails?.Details) !== '' ? (
+                                        <a className='pe-5' href={getHref(innerDetails?.Details)}>
+                                            {innerDetails?.Details}
                                         </a>
                                     ) : (
-                                        <span>{innerDetails?.details}</span>
+                                        <span>{innerDetails?.Details}</span>
                                     )
                                     }
-                                    {/* <a className='pe-5' href={getHref(innerDetails?.details)}>
-                                        {innerDetails?.details}
-                                    </a> */}
                                 </li>
                             ))}
                         </ul>
                     </div>
                 </div>
             ))}
-            {/* <div className='col-lg-6 imp_itm'>
-                <div className='imp_shadow'>
-                    <h3 className='font-volk mb-4'>Konzeption und Realisation</h3>
-                    <ul>
-                        <li><img src={iconLocation} alt='' /><a>Loewenmut Punkt GmbH<br />Ida-Sträuli-Strasse 95<br />CH-8404 Winterthur</a></li>
-                        <li><img src={iconPhone} alt='' /><a href='tel: 0522247788'>052 224 77 88</a></li>
-                        <li><img src={iconEnvelope} alt='' /><a href='mailto: info@loewenmut.ch'>info@loewenmut.ch</a></li>
-                    </ul>
-                </div>
-            </div> */}
         </div>
     )
 }

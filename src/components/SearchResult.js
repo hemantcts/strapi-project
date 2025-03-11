@@ -5,6 +5,7 @@ import postThumb from '../images/post-thumbnail.png'
 import { Link, useLocation } from 'react-router-dom'
 import Skeleton from 'react-loading-skeleton';
 import "react-loading-skeleton/dist/skeleton.css";
+import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 
 
 
@@ -13,22 +14,37 @@ export const SearchResult = ({ data, color }) => {
     const searchKeyword = new URLSearchParams(location.search).get("s");
 
     const allUrls = [
-        "https://medzentrum.entwicklung-loewenmut.ch/api/appointment-booking?populate[banner_section][populate]=banner_image&populate[booking_section][populate]",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-overview?populate[banner_section][populate]=banner_image&populate[services_section][populate]=services_data.image&populate[services_section][populate]=services_data.link&populate[specials_section][populate]=image&populate[specials_section][populate]=accordion_data&populate[products_section][populate]=products.product_details.image&populate[products_section][populate]=products.extraDetails.link&populate[products_section][populate]=products.about.prices&populate[ad_section][populate]=partners.image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-emergency?populate[banner_section][populate]=banner_image&populate[info_section][populate]=icons&populate[pharmacy_services][populate]=image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-service?populate[banner_section][populate]=banner_image&populate[services_data][populate]=*&populate[pharmacy_services_data][populate]=image&populate[pharmacy_services_data][populate]=list_items",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[banner_section][populate]=banner_image&populate[founder_section][populate]=*&populate[founder_data][populate]=image&populate[team_data][populate]=types",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/dienstleistungen-praxis?populate[banner_section][populate]=banner_image&populate[services_data][populate]=*&populate[pharmacy_services_data][populate]=image&populate[pharmacy_services_data][populate]=list_items",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/oeffnungszeiten-und-kontakt?populate[banner_section][populate]=banner_image&populate[contact_details][populate]=details.icon&populate[contact_details][populate]=time_details",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/overview-practice?populate[banner_section][populate]=banner_image&populate[services_section][populate]=services_data.image&populate[services_section][populate]=services_data.link&populate[specials_section][populate]=image&populate[specials_section][populate]=accordion_data&populate[products_section][populate]=products.product_details.image&populate[products_section][populate]=products.extraDetails.link&populate[products_section][populate]=products.about.prices&populate[ad_section][populate]=partners.image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/praxis-notfall?populate[banner_section][populate]=banner_image&populate[info_section][populate]=icons&populate[pharmacy_services][populate]=image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/praxis-team?populate[banner_section][populate]=banner_image&populate[founder_section][populate]=*&populate[founder_data][populate]=image&populate[team_data][populate]=types",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/terminbuchung-praxis?populate[banner_section][populate]=banner_image&populate[booking_section][populate]",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/uebersicht-gesundheitsthemen?populate[banner_section][populate]=banner_image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/ubersicht-ernaehrungsdiagnostik?populate[banner_section][populate]=banner_image&populate[health_section][populate]=*&populate[specials_section][populate]=image&populate[specials_section][populate]=accordion_data&populate[author_section][populate]=image&populate[ad_section][populate]=partners.image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/job?populate[banner_section][populate]=banner_image&populate[jobs_section]=*&populate[no_jobs_section]=*",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/impressum?populate[banner_section][populate]=banner_image&populate[contact_section][populate]=details.icon&populate[data_section][populate]=*",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/datenschutzerklaerung?populate[banner_section][populate]=banner_image&populate[data_protection_section][populate]=accordion_data"
+        "https://medzentrum.entwicklung-loewenmut.ch/api/appointment-booking?populate[Bannerbereich][populate]=Banner_Bild&populate[Buchungsbereich][populate]",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-overview?populate[Bannerbereich][populate]=Banner_Bild&populate[Dienstleistungsbereich][populate]=Service_Daten.Bild&populate[Dienstleistungsbereich][populate]=Service_Daten.Link&populate[Sonderangebotsbereich][populate]=Bild&populate[Sonderangebotsbereich][populate]=erweiterbare_Daten&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=partners.Bild",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-emergency?populate[Bannerbereich][populate]=Banner_Bild&populate[Informationsbereich][populate]=icons&populate[Apotheken_Dienstleistungen][populate]=Bild",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-service?populate[Bannerbereich][populate]=Banner_Bild&populate[Service_Daten][populate]=*&populate[Apotheken_Dienstleistungsdaten][populate]=Bild.Bild&populate[Apotheken_Dienstleistungsdaten][populate]=list_items",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[Bannerbereich][populate]=Banner_Bild&populate[Grunderbreich][populate]=*&populate[Grunderdaten][populate]=Bild&populate[Teamdaten][populate]=Typen",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/dienstleistungen-praxis?populate[Bannerbereich][populate]=Banner_Bild&populate[Service_Daten][populate]=*&populate[Apotheken_Dienstleistungsdaten][populate]=Bild.Bild&populate[Apotheken_Dienstleistungsdaten][populate]=list_items",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/oeffnungszeiten-und-kontakt?populate[Bannerbereich][populate]=Banner_Bild&populate[Kontaktdaten][populate]=Details.icon&populate[Kontaktdaten][populate]=time_details",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/overview-practice?populate[Bannerbereich][populate]=Banner_Bild&populate[Dienstleistungsbereich][populate]=Service_Daten.Bild&populate[Dienstleistungsbereich][populate]=Service_Daten.Link&populate[Sonderangebotsbereich][populate]=Bild&populate[Sonderangebotsbereich][populate]=erweiterbare_Daten&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=partners.Bild",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/praxis-notfall?populate[Bannerbereich][populate]=Banner_Bild&populate[Informationsbereich][populate]=icons&populate[Apotheken_Dienstleistungen][populate]=Bild",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/praxis-team?populate[Bannerbereich][populate]=Banner_Bild&populate[Grunderbreich][populate]=*&populate[Grunderdaten][populate]=Bild&populate[Teamdaten][populate]=Typen",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/terminbuchung-praxis?populate[Bannerbereich][populate]=Banner_Bild&populate[Buchungsbereich][populate]",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/uebersicht-gesundheitsthemen?populate[Bannerbereich][populate]=Banner_Bild",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/ubersicht-ernaehrungsdiagnostik?populate[Bannerbereich][populate]=Banner_Bild&populate[Gesundheitsbereich][populate]=*&populate[Sonderangebotsbereich][populate]=Bild&populate[Sonderangebotsbereich][populate]=erweiterbare_Daten&populate[Autorenbereich][populate]=Bild&populate[Anzeigenbereich][populate]=partners.Bild",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/job?populate[Bannerbereich][populate]=Banner_Bild&populate[Jobbereich]=*&populate[Kein_Job]=*",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/impressum?populate[Bannerbereich][populate]=Banner_Bild&populate[Kontaktbereich][populate]=Details.icon&populate[Datenbereich][populate]=*",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/datenschutzerklaerung?populate[Bannerbereich][populate]=Banner_Bild&populate[Datenschutzbereich][populate]=erweiterbare_Daten"
     ];
 
     const allRoutes = [
@@ -150,9 +166,9 @@ export const SearchResult = ({ data, color }) => {
                             matchedIndices.map((index, i) => (
                                 <Link key={i} to={allRoutes[index]}>
                                     <div className="srch_li_item text-black">
-                                        {pageData[index]?.banner_section?.banner_image && (
+                                        {pageData[index]?.Bannerbereich?.Banner_Bild && (
                                             <img
-                                                src={`https://medzentrum.entwicklung-loewenmut.ch${pageData[index]?.banner_section?.banner_image?.url}`}
+                                                src={`https://medzentrum.entwicklung-loewenmut.ch${pageData[index]?.Bannerbereich?.Banner_Bild?.url}`}
                                                 alt=""
                                                 className="src_post_img"
                                             />
@@ -160,9 +176,9 @@ export const SearchResult = ({ data, color }) => {
 
                                         <div className="src_post_content">
                                             <h3>
-                                                {pageData[index]?.banner_section?.title || <Skeleton width={180} height={20} />}
+                                                {pageData[index]?.Bannerbereich?.Titel || <Skeleton width={180} height={20} />}
                                             </h3>
-                                            <p>{pageData[index]?.banner_section?.description || <Skeleton count={2} />}</p>
+                                            <p>{<BlocksRenderer content={pageData[index]?.Bannerbereich?.Beschreibung} />  || <Skeleton count={2} />}</p>
                                         </div>
                                     </div>
                                 </Link>

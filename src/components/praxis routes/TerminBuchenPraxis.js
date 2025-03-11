@@ -13,12 +13,12 @@ export const TerminBuchenPraxis = () => {
   const [bookingData, setBookingData] = useState();
 
   const getPageData = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/terminbuchung-praxis?populate[banner_section][populate]=banner_image&populate[booking_section][populate]`)
+    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/terminbuchung-praxis?populate[Bannerbereich][populate]=Banner_Bild&populate[Buchungsbereich][populate]`)
     const data = await response.json();
     console.log(data);
     if (data) {
-      setBannerData(data.data.banner_section);
-      setBookingData(data.data.booking_section);
+      setBannerData(data.data.Bannerbereich);
+      setBookingData(data.data.Buchungsbereich);
     }
   }
 
@@ -39,7 +39,7 @@ export const TerminBuchenPraxis = () => {
       </section>
 
       <section className='breadcrumb_sec wi_full mt_3'>
-        <MyButton buttonText={bannerData?.title} activePage='Praxis' />
+        <MyButton buttonText={bannerData?.Titel} activePage='Praxis' />
       </section>
 
       <section className="wi_full py_3 dien_section">

@@ -14,13 +14,13 @@ export const PharmacyServices = () => {
     const [pharmacyServicesData, setPharmacyServicesData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-service?populate[banner_section][populate]=banner_image&populate[services_data][populate]=*&populate[pharmacy_services_data][populate]=image.image&populate[pharmacy_services_data][populate]=list_items`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-service?populate[Bannerbereich][populate]=Banner_Bild&populate[Service_Daten][populate]=*&populate[Apotheken_Dienstleistungsdaten][populate]=Bild.Bild&populate[Apotheken_Dienstleistungsdaten][populate]=list_items`)
         const data = await response.json();
         console.log(data);
         if (data) {
-            setBannerData(data.data.banner_section);
-            setServicesData(data.data.services_data);
-            setPharmacyServicesData(data.data.pharmacy_services_data);
+            setBannerData(data.data.Bannerbereich);
+            setServicesData(data.data.Service_Daten);
+            setPharmacyServicesData(data.data.Apotheken_Dienstleistungsdaten);
             // setProductsData(data.data.products_section);
             // setAdData(data.data.ad_section);
         }
@@ -43,7 +43,7 @@ export const PharmacyServices = () => {
             </section>
 
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton buttonText={bannerData?.title} activePage='Apotheke' color='green' />
+                <MyButton buttonText={bannerData?.Titel} activePage='Apotheke' color='green' />
             </section>
 
             <section className="wi_full py_3 dien_shuffle">

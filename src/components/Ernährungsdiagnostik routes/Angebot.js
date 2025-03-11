@@ -15,13 +15,13 @@ export const Angebot = ({ data, color }) => {
     const [tableData, setTableData] = useState([]);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/ernaehrungsdiagnostik-angebote?populate[banner_section][populate]=banner_image&populate[offers_section][populate]=*&populate[table_section][populate]=*`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/ernaehrungsdiagnostik-angebote?populate[Bannerbereich][populate]=Banner_Bild&populate[Angebotsbereich][populate]=*&populate[Tabellenbereich][populate]=*`)
         const data = await response.json();
         console.log(data);
         if (data) {
-            setBannerData(data?.data?.banner_section);
-            setOffersData(data?.data?.offers_section);
-            setTableData(data?.data?.table_section);
+            setBannerData(data?.data?.Bannerbereich);
+            setOffersData(data?.data?.Angebotsbereich);
+            setTableData(data?.data?.Tabellenbereich);
             //   setFounderSection(data?.data?.founder_section);
             //   setFounderData(data?.data?.founder_data);
             //   setTeamData(data?.data?.team_data);
@@ -53,7 +53,7 @@ export const Angebot = ({ data, color }) => {
                 <BannerSection bannerData={bannerData} color='blue' />
             </section>
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton buttonText={bannerData?.title} activePage='Ernährungsdiagnostik' />
+                <MyButton buttonText={bannerData?.Titel} activePage='Ernährungsdiagnostik' />
             </section>
             <section className='wi_full py_3 angebot_Sec'>
                 <div className='container-xxl pb-lg-5'>

@@ -14,26 +14,13 @@ export const Accordion = ({ data, color, greyy, isHtml }) => {
                     <div className="card mb-3" key={item?.id}>
                         <div className="card-header">
                             <a className="collapsed" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${item?.id}`} aria-expanded="false" aria-controls={`collapse${item?.id}`}>
-                                {item?.title}
+                                {item?.Titel}
                             </a>
                         </div>
                         <div id={`collapse${item?.id}`} className="collapse" data-bs-parent="#accordion">
                             <div className="card-body">
-                                {/* {!isHtml2(item?.description) ? (
-                                    <p>{item?.description}</p>
-                                ) : (
-                                    <div dangerouslySetInnerHTML={{ __html: item?.description }} />
-                                )} */}
 
-                                {item?.description && <BlocksRenderer content={item?.description} 
-                                    // blocks={{
-                                    //     paragraph: ({ children }) => (
-                                    //         <small>
-                                    //             {children}
-                                    //         </small>
-                                    //     ),
-                                    // }} 
-                                />}
+                                {item?.Beschreibung && <BlocksRenderer content={item?.Beschreibung} />}
 
 
 

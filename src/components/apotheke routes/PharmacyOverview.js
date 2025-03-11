@@ -20,15 +20,17 @@ const PharmacyOverview = () => {
     const [adData, setAdData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-overview?populate[banner_section][populate]=banner_image&populate[services_section][populate]=services_data.image&populate[services_section][populate]=services_data.link&populate[specials_section][populate]=image&populate[specials_section][populate]=accordion_data&populate[products_section][populate]=products.product_details.image&populate[products_section][populate]=products.extraDetails.link&populate[products_section][populate]=products.about.prices&populate[ad_section][populate]=partners.image`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-overview?populate[Bannerbereich][populate]=Banner_Bild&populate[Dienstleistungsbereich][populate]=Service_Daten.Bild&populate[Dienstleistungsbereich][populate]=Service_Daten.Link&populate[Sonderangebotsbereich][populate]=Bild&populate[Sonderangebotsbereich][populate]=erweiterbare_Daten&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=partners.Bild`)
+
+        
         const data = await response.json();
         console.log(data);
         if (data) {
-            setBannerData(data.data.banner_section);
-            setServicesData(data.data.services_section);
-            setSpecialsData(data.data.specials_section);
-            setProductsData(data.data.products_section);
-            setAdData(data.data.ad_section);
+            setBannerData(data.data.Bannerbereich);
+            setServicesData(data.data.Dienstleistungsbereich);
+            setSpecialsData(data.data.Sonderangebotsbereich);
+            setProductsData(data.data.Produktbereich);
+            setAdData(data.data.Anzeigenbereich);
         }
     }
 
@@ -47,7 +49,7 @@ const PharmacyOverview = () => {
                 <BannerSection bannerData={bannerData} color='green' />
             </div>
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton buttonText={bannerData?.title} activePage='Apotheke' color='green' />
+                <MyButton buttonText={bannerData?.Titel} activePage='Apotheke' color='green' />
             </section>
             <section className="wi_full py_3 dien_section">
                 <div className="container-xxl">

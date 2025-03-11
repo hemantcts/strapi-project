@@ -25,11 +25,15 @@ const Navbar = ({ activeLink }) => {
 
 
     const handleChange = (e) => {
+        
         setSearchKeyword(e.target.value);
         console.log(e.target.value)
     }
 
     const handleSubmit = (e) => {
+        if(searchKeyword == ''){
+            return;
+        }
         e.preventDefault();
         navigate(`/search-result?s=${searchKeyword}`);
     };

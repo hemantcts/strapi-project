@@ -18,12 +18,12 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
 
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/uebersicht-gesundheitsthemen?populate[banner_section][populate]=banner_image`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/uebersicht-gesundheitsthemen?populate[Bannerbereich][populate]=Banner_Bild`)
         const data = await response.json();
         console.log(data);
         if (data) {
-            setBannerData(data?.data?.banner_section);
-            setBlogTitle(data?.data?.blogs_title);
+            setBannerData(data?.data?.Bannerbereich);
+            setBlogTitle(data?.data?.Blog_Titel);
             //   setFounderSection(data?.data?.founder_section);
             //   setFounderData(data?.data?.founder_data);
             //   setTeamData(data?.data?.team_data);
@@ -36,10 +36,10 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
         console.log(data);
         if (data) {
             setBlogs(data.data);
-            const uniqueCategories = [...new Set(data.data.map(blog => blog.category))];
-            const formattedOptions = uniqueCategories.map(category => ({
-                value: category.toLowerCase(),
-                label: category,
+            const uniqueCategories = [...new Set(data.data.map(blog => blog.Kategorie))];
+            const formattedOptions = uniqueCategories.map(Kategorie => ({
+                value: Kategorie.toLowerCase(),
+                label: Kategorie,
             }));
 
             setCategories((prev) =>
@@ -59,9 +59,9 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
         getBlogs();
     }, [])
 
-    const handleChange = (event) => {
-        setSelectedCategory(event.target.value);
-    };
+    // const handleChange = (event) => {
+    //     setSelectedCategory(event.target.value);
+    // };
 
     return (
         <div className="ubersicht-gesundheitsthemen">
@@ -76,7 +76,7 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
             </section>
 
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton buttonText={bannerData?.title} />
+                <MyButton buttonText={bannerData?.Titel} />
             </section>
 
             <section className="wi_full py_3 blog_section">

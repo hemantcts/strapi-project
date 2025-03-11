@@ -8,18 +8,18 @@ export const Team1 = ({ data, color }) => {
             {data?.map((teamMember, index) => (
                 <div className="col-12 col-sm-6 col-md-4 col-lg-3 team_itm mt_col" key={index}>
                     <div class="item_inner">
-                        <img src={`https://medzentrum.entwicklung-loewenmut.ch${teamMember?.image?.url}`} class="item_img" alt="" />
+                        <img src={`https://medzentrum.entwicklung-loewenmut.ch${teamMember?.Bild?.url}`} class="item_img" alt="" />
                         <div class="item_body text-black">
-                            <h4 class={`font-volk`}>{teamMember?.name}</h4>
-                            <p>{teamMember?.designation}</p>
-                            <small>{teamMember?.skills}</small>
+                            <h4 class={`font-volk`}>{teamMember?.Name}</h4>
+                            <p>{teamMember?.Bezeichnung}</p>
+                            {/* <small>{teamMember?.Fahigkeiten}</small> */}
 
-                            {/* {teamMember?.skill && <BlocksRenderer content={teamMember?.skill} blocks={{
+                            {teamMember?.Fahigkeiten && <BlocksRenderer content={teamMember?.Fahigkeiten} blocks={{
                                 paragraph: ({ children }) => (
                                     <small>
                                         {children}
                                     </small>
-                                ), }} />} */}
+                                ), }} />}
                         </div>
                     </div>
                 </div>

@@ -20,13 +20,13 @@ const ProductsSection = ({ productsData, color }) => {
                                         <div className="row" >
                                             <div className="col-7">
                                                 <div className='product-item mb-4'>
-                                                    <h4>{product?.product_details?.Name}</h4>
-                                                    <p>{product?.product_details?.Beschreibung}</p>
-                                                    <small>{product?.product_details?.Ablaufdatum}</small>
+                                                    <h4>{product?.Produktdetail?.Name}</h4>
+                                                    <p>{product?.Produktdetail?.Beschreibung}</p>
+                                                    <small>{product?.Produktdetail?.Ablaufdatum}</small>
                                                 </div>
                                             </div>
                                             <div className="col-5" style={{ position: "relative" }}>
-                                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${product?.product_details?.Bild?.url}`} alt="" />
+                                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${product?.Produktdetail?.Bild?.url}`} alt="" />
                                                 <div className="discount">
                                                     <img src={discountImg} alt="" />
                                                 </div>
@@ -85,8 +85,8 @@ const ProductsSection = ({ productsData, color }) => {
                     )
                 })}
             </div>
-            {productsData?.button?.link_text && <div className="products_sec_btn text-center">
-                <a href={productsData?.button?.link_url} target='_blank' className="products-main-btn">{productsData?.button?.link_text} <i><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Vector_9_a374977eb9.svg' alt="" /></i></a>
+            {productsData?.Button?.link_text && <div className="products_sec_btn text-center">
+                <a href={productsData?.Button?.Link_URL} target='_blank' className="products-main-btn">{productsData?.Button?.link_text} <i><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Vector_9_a374977eb9.svg' alt="" /></i></a>
             </div>}
         </div>
     )

@@ -3,11 +3,12 @@ import React from "react";
 import arrowImg from '../images/white-arrow.svg'
 import MyLink from './mini_components/MyLink';
 import { Link } from "react-router-dom";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
 export const Blogs = ({ blogs, color, selectedCategory }) => {
 
     const filteredBlogs = selectedCategory
-        ? blogs?.filter(blog => blog?.category === selectedCategory)
+        ? blogs?.filter(blog => blog?.Kategorie === selectedCategory)
         : blogs; // Show all if no category selected
 
     return (
@@ -16,14 +17,15 @@ export const Blogs = ({ blogs, color, selectedCategory }) => {
                 <div key={index} className='col-sm-6 col-lg-4 mt_col blog_item '>
                     <div className='post_inner'>
                         <div className='post_img position-relative'>
-                            <Link to={`/${blog?.title}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.image?.url}`} alt='' /></Link>
-                            <div className='post_category'>{blog?.category}</div>
+                            <Link to={`/${blog?.Titel}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt='' /></Link>
+                            <div className='post_category'>{blog?.Kategorie}</div>
                         </div>
                         <div className='post_content text-black mt-3'>
-                            <h3><Link to={`/${blog?.title}`}>{blog?.title}</Link></h3>
-                            <p> {blog?.description}</p>
+                            <h3><Link to={`/${blog?.Titel}`}>{blog?.Titel}</Link></h3>
+                            {/* {blog?.Beschreibung && <BlocksRenderer content={blog?.Beschreibung} />} */}
+                            <p> {blog?.Beschreibung[0]?.children[0]?.text}</p>
                             <div className='btn_block'>
-                                <MyLink link={`/${blog?.title}`} text='Mehr erfahren' />
+                                <MyLink link={`/${blog?.Titel}`} text='Mehr erfahren' />
                             </div>
                         </div>
                     </div>

@@ -10,6 +10,7 @@ import imgBlog from '../../images/blog-img.png'
 import MyLink from '../mini_components/MyLink';
 import { Accordion } from '../Accordion'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 
 export const Blog = ({ data, color }) => {
 
@@ -31,7 +32,7 @@ export const Blog = ({ data, color }) => {
     // }
 
     const getBlogs = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate[image][populate]=*&populate[product_detail][populate]=image.image&populate[extra_details][populate]=accordion_data`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate[Bild][populate]=*&populate[Produktdetail][populate]=Bild.Bild&populate[zusatzliche_Details][populate]=erweiterbare_Daten`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -46,13 +47,13 @@ export const Blog = ({ data, color }) => {
 
     useEffect(() => {
         if (blogs?.length > 0 && title) {
-            const matchedBlog = blogs?.find((blog) => blog.title.toString() === title);
+            const matchedBlog = blogs?.find((blog) => blog.Titel.toString() === title);
             console.log(blog);
             // setBlog(matchedBlog);
             if (matchedBlog) {
                 setBlog(matchedBlog);
-                setProductDetails(matchedBlog?.product_detail);
-                setExtraDetails(matchedBlog?.extra_details);
+                setProductDetails(matchedBlog?.Produktdetail);
+                setExtraDetails(matchedBlog?.zusatzliche_Details);
             } else {
                 navigate("/error"); // Redirect to trigger the catch-all error route
             }
@@ -68,7 +69,7 @@ export const Blog = ({ data, color }) => {
             <Navbar />
 
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton buttonText={blog?.title} activePage={blog?.category} />
+                <MyButton buttonText={blog?.Titel} activePage={blog?.Kategorie} />
             </section>
             <section className='wi_full py_3 blog_detail'>
                 <div className='container-xxl'>
@@ -76,28 +77,30 @@ export const Blog = ({ data, color }) => {
                         <div className='col-lg-8 detail_col'>
                             <div className='post_data_wrapper text-black'>
                                 <h1>{blog?.title}</h1>
-                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.image?.url}`} alt="" className='w-100 my-3' />
-                                <h3>{blog?.title}</h3>
-                                <div dangerouslySetInnerHTML={{ __html: blog?.description }} />
+                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt="" className='w-100 my-3' />
+                                <h3>{blog?.Titel}</h3>
+                                {blog?.Beschreibung && <BlocksRenderer content={blog?.Beschreibung} />}
+                                {/* <div dangerouslySetInnerHTML={{ __html: blog?.description }} /> */}
 
                             </div>
 
                             <div className='post_data_wrapper text-black mt-5 pt-lg-5'>
-                                <h2>{productDetails?.title}</h2>
+                                <h2>{productDetails?.Titel}</h2>
                                 <div className='grey_box'>
-                                    {productDetails?.image?.map((img, index) => (
-                                        <img key={index} src={`https://medzentrum.entwicklung-loewenmut.ch${img?.image?.url}`} alt="" />
+                                    {productDetails?.Bild?.map((img, index) => (
+                                        <img key={index} src={`https://medzentrum.entwicklung-loewenmut.ch${img?.Bild?.url}`} alt="" />
                                     ))}
                                 </div>
-                                <div dangerouslySetInnerHTML={{ __html: productDetails?.description }} />
+                                {/* <div dangerouslySetInnerHTML={{ __html: productDetails?.description }} /> */}
+                                {productDetails?.Beschreibung && <BlocksRenderer content={productDetails?.Beschreibung} />}
                                 <div className='btn_block mt-5'>
                                     <a href='https://www.rotpunkt-apotheken.ch/aktionen' target='_blank' className="button fill_btn">ALLE AKTIONEN  <img src={arrowImg} alt="#" /></a>
                                 </div>
                             </div>
 
                             <div className='post_data_wrapper text-black mt-5 pt-lg-5'>
-                                <h1>{extraDetails?.heading}</h1>
-                                <Accordion data={extraDetails?.accordion_data} greyy={true} />
+                                <h1>{extraDetails?.Uberschrift}</h1>
+                                <Accordion data={extraDetails?.erweiterbare_Daten} greyy={true} />
                             </div>
 
                         </div>
@@ -108,20 +111,20 @@ export const Blog = ({ data, color }) => {
                                     {blogs
                                         ?.filter((b) => b.id !== blog.id) // Exclude the current blog
                                         ?.filter((b, _, arr) => {
-                                            const sameCategoryBlogs = arr.filter((item) => item.category === blog.category);
-                                            return sameCategoryBlogs.length > 0 ? b.category === blog.category : true;
+                                            const sameCategoryBlogs = arr.filter((item) => item.Kategorie === blog.Kategorie);
+                                            return sameCategoryBlogs.length > 0 ? b.Kategorie === blog.Kategorie : true;
                                         })
                                         ?.slice(0, 3) // Limit to 3 blogs
                                         .map((blog, index) => (
                                             <div key={index} className='rb_item'>
                                                 <div className='rb_itm_iner'>
                                                     <div className='rbitm_img'>
-                                                        <Link to={`/${blog?.title}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.image?.url}`} alt='' /></Link>
+                                                        <Link to={`/${blog?.Titel}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt='' /></Link>
                                                     </div>
                                                     <div className='rbitm_content text-black'>
-                                                        <h4><Link to={`/${blog?.title}`}>{blog?.title}</Link></h4>
+                                                        <h4><Link to={`/${blog?.Titel}`}>{blog?.Titel}</Link></h4>
                                                         <div className='btn_block'>
-                                                            <MyLink link={`/${blog?.title}`} text='Mehr erfahren ' />
+                                                            <MyLink link={`/${blog?.Titel}`} text='Mehr erfahren ' />
                                                         </div>
                                                     </div>
                                                 </div>

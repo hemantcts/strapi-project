@@ -5,6 +5,7 @@ import imgNotefall from '../images/notefall-2.png'
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 export const ShuffleComponent = ({ data, color }) => {
 
@@ -23,7 +24,7 @@ export const ShuffleComponent = ({ data, color }) => {
 
                             {/* <img src={`https://medzentrum.entwicklung-loewenmut.ch${services?.image?.url}`} alt='' /> */}
 
-                            {Array.isArray(services?.image) && services?.image?.length > 0 ? (
+                            {Array.isArray(services?.Bild) && services?.Bild?.length > 0 ? (
                                 <OwlCarousel
                                     className="owl-theme"
                                     loop
@@ -34,29 +35,29 @@ export const ShuffleComponent = ({ data, color }) => {
                                     autoplayTimeout={3000}
                                     items={1}
                                 >
-                                    {services?.image?.map((img, index) => (
+                                    {services?.Bild?.map((img, index) => (
                                         <div key={index} className="item">
-                                            <img src={`https://medzentrum.entwicklung-loewenmut.ch${img?.image?.url}`} alt={`Service ${index + 1}`} />
+                                            <img src={`https://medzentrum.entwicklung-loewenmut.ch${img?.Bild?.url}`} alt={`Service ${index + 1}`} />
                                         </div>
                                     ))}
                                 </OwlCarousel>
                             ) : (
-                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${services?.image?.url}`} alt="Service" />
+                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${services?.Bild?.url}`} alt="Service" />
                             )}
                         </div>
                         <div className='col-12 col-lg-6 content_col'>
                             <div className='content_box text-black'>
-                                <h2>{services?.title}</h2>
-                                {services?.description && (<div dangerouslySetInnerHTML={{ __html: services?.description }} />)}
+                                <h2>{services?.Titel}</h2>
+                                {services?.Beschreibung && <BlocksRenderer content={services?.Beschreibung} />}
                                 {services?.list_items && (
                                     <ul>
                                         {services?.list_items?.map((list_item, index) => (
                                             <li key={index}>
                                                 {/* {list_item?.title} */}
 
-                                                {list_item?.title?.includes("{info}") ? (
+                                                {list_item?.Titel?.includes("{info}") ? (
                                                     <>
-                                                        {list_item.title.replace("{info}", "")}
+                                                        {list_item.Titel.replace("{info}", "")}
                                                         <button onClick={changeShowInfo} className='info-icon ms-2'>
                                                             <img src="https://medzentrum.entwicklung-loewenmut.ch/uploads/Union_29_1667bd2206.svg" alt="" />
                                                             {showInfo && <div className='info-container'>
@@ -65,7 +66,7 @@ export const ShuffleComponent = ({ data, color }) => {
                                                         </button>
                                                     </>
                                                 ) : (
-                                                    list_item?.title
+                                                    list_item?.Titel
                                                 )}
                                             </li>
                                         ))}
