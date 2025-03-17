@@ -102,7 +102,7 @@ const ProductsSection = ({ productsData, color }) => {
                                                 </li>
                                             </ul>
 
-                                            <h6>{product?.zusatzliche_Details?.Title}</h6>
+                                            <h6>{product?.zusatzliche_Details?.Titel}</h6>
                                             <small>{product?.zusatzliche_Details?.Beschreibung}</small>
                                         </div>
                                     </div>

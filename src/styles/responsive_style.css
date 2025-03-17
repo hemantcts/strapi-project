@@ -305,7 +305,10 @@ header {
     .shuffle_row {
         align-items: center;
     }
-    .shuffle_item_wrap:nth-child(even) .shuffle_row {
+    .even.shuffle_item_wrap:nth-child(even) .shuffle_row {
+        flex-direction: row-reverse;
+    }
+    .odd.shuffle_item_wrap:nth-child(odd) .shuffle_row {
         flex-direction: row-reverse;
     }
     .img_col img {

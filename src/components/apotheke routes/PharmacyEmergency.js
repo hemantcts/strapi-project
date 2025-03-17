@@ -52,7 +52,7 @@ export const PharmacyEmergency = () => {
                         <EmergencyContact contactData={contactData} color='green' />
                     </div>
                     <div className='shuffle_container pt-5'>
-                        <ShuffleComponent data={pharmacyServicesData} color='green' />
+                        <ShuffleComponent data={pharmacyServicesData} color='green' shuffle={true} />
                     </div>
                 </div>
             </section>

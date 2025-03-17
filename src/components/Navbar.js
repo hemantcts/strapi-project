@@ -31,7 +31,7 @@ const Navbar = ({ activeLink }) => {
     }
 
     const handleSubmit = (e) => {
-        if(searchKeyword == ''){
+        if(searchKeyword === ''){
             return;
         }
         e.preventDefault();
@@ -115,7 +115,7 @@ const Navbar = ({ activeLink }) => {
                             <div className='header-menu-h ms-auto'>
                                 <ul className='navbar-nav main--menu'>
                                     <li className='nav-item megamenu-fw apotheke_menu'>
-                                        <Link className={`nav-link link1 ${(active.link1 || hover.link1) && 'active'}`} to="#" onClick={() => handleActive(1)}
+                                        <Link className={`nav-link link1 ${(active.link1 || hover.link1) && 'active'}`} to={`${isHoverEnabled ? '/ubersicht-apotheke' : '#'}`} onClick={() => handleActive(1)}
                                             onMouseEnter={() => handleMouseEnter(1)}
                                             onMouseLeave={(e) => {
                                                 if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.home_menu')) {
@@ -135,7 +135,7 @@ const Navbar = ({ activeLink }) => {
                                         </ul>}
                                     </li>
                                     <li className='nav-item megamenu-fw praxis_menu'>
-                                        <Link className={`nav-link link2 ${(active.link2 || hover.link2) && 'active'}`} to="#" onClick={() => handleActive(2)}
+                                        <Link className={`nav-link link2 ${(active.link2 || hover.link2) && 'active'}`} to={`${isHoverEnabled ? '/ubersicht-praxis' : '#'}`} onClick={() => handleActive(2)}
                                             onMouseEnter={() => handleMouseEnter(2)}
                                             onMouseLeave={(e) => {
                                                 if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget?.closest('.menu1')) {
@@ -155,7 +155,7 @@ const Navbar = ({ activeLink }) => {
                                         </ul>}
                                     </li>
                                     <li className='nav-item megamenu-fw ubersicth_menu'>
-                                        <Link className={`nav-link link3 ${(active.link3 || hover.link3) && 'active'}`} to="#" onClick={() => handleActive(3)}
+                                        <Link className={`nav-link link3 ${(active.link3 || hover.link3) && 'active'}`} to={`${isHoverEnabled ? '/ernahrungsdiagnostik' : '#'}`} onClick={() => handleActive(3)}
                                             onMouseEnter={() => handleMouseEnter(3)}
                                             onMouseLeave={(e) => {
                                                 if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.menu2')) {

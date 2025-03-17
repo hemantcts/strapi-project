@@ -7,7 +7,7 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
-export const ShuffleComponent = ({ data, color }) => {
+export const ShuffleComponent = ({ data, color, shuffle }) => {
 
     const [showInfo, setShowInfo] = useState(false)
 
@@ -18,7 +18,7 @@ export const ShuffleComponent = ({ data, color }) => {
     return (
         <div className={`${color}`}>
             {data?.map((services, index) => (
-                <div className='shuffle_item_wrap'>
+                <div className={`${shuffle ? 'odd' : 'even'} shuffle_item_wrap`}>
                     <div key={index} className='row shuffle_row'>
                         <div className='col-12 col-lg-6 img_col'>
 
@@ -53,20 +53,18 @@ export const ShuffleComponent = ({ data, color }) => {
                                     <ul>
                                         {services?.list_items?.map((list_item, index) => (
                                             <li key={index}>
-                                                {/* {list_item?.title} */}
+                                                {list_item?.Titel}
 
-                                                {list_item?.Titel?.includes("{info}") ? (
+                                                {list_item?.info && (
                                                     <>
-                                                        {list_item.Titel.replace("{info}", "")}
+                                                        {/* {list_item.Titel.replace("{info}", "")} */}
                                                         <button onClick={changeShowInfo} className='info-icon ms-2'>
                                                             <img src="https://medzentrum.entwicklung-loewenmut.ch/uploads/Union_29_1667bd2206.svg" alt="" />
                                                             {showInfo && <div className='info-container'>
-                                                                <p className='m-0'>(Blutdruckmessung plus Medikationscheck plus Messung von Bauchumfang, Body Mass Index BMI und Körperfett)</p>
+                                                                <p className='m-0'>{list_item?.info}</p>
                                                             </div>}
                                                         </button>
                                                     </>
-                                                ) : (
-                                                    list_item?.Titel
                                                 )}
                                             </li>
                                         ))}

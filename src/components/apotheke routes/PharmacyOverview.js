@@ -55,7 +55,7 @@ const PharmacyOverview = () => {
                 <div className="container-xxl">
                     <TwoContent data={servicesData} color='green' />
                     <div className="dien_list">
-                        <ServicesSection servicesData={servicesData?.services_data} color='green' />
+                        <ServicesSection servicesData={servicesData?.Service_Daten} color='green' />
                     </div>
                 </div>
             </section>
