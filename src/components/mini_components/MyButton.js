@@ -7,8 +7,16 @@ export const MyButton = ({ activePage, buttonText, color }) => {
     //     return text?.toLowerCase().replace(/\b\w/g, char => char.toUpperCase()); 
     // };
 
+    // const formatText = (text) => {
+    //     return text?.toLowerCase().replace(/(^|\s)(\p{L})/gu, (match, space, letter) => {
+    //         return match.trim() === "und" ? match : space + letter.toUpperCase();
+    //     });
+    // };
+
     const formatText = (text) => {
-        return text?.toLowerCase().replace(/(^|\s)(\p{L})/gu, (match) => match.toUpperCase());
+        return text?.toLowerCase().replace(/(^|\s)(\p{L}+)/gu, (match, space, word) => {
+            return word === "und" ? match : space + word.charAt(0).toUpperCase() + word.slice(1);
+        });
     };
     
 
