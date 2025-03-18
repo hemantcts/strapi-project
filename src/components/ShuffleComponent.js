@@ -26,7 +26,7 @@ export const ShuffleComponent = ({ data, color, shuffle }) => {
 
                             {/* <img src={`https://medzentrum.entwicklung-loewenmut.ch${services?.image?.url}`} alt='' /> */}
 
-                            {Array.isArray(services?.Bild) && services?.Bild?.length > 0 ? (
+                            {Array.isArray(services?.Bild) && services?.Bild?.length > 1 ? (
                                 <OwlCarousel
                                     className="owl-theme"
                                     loop
@@ -43,6 +43,8 @@ export const ShuffleComponent = ({ data, color, shuffle }) => {
                                         </div>
                                     ))}
                                 </OwlCarousel>
+                            ) : Array.isArray(services?.Bild) && services?.Bild?.length === 1 ? (
+                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${services?.Bild[0]?.Bild?.url}`} alt="Service" />
                             ) : (
                                 <img src={`https://medzentrum.entwicklung-loewenmut.ch${services?.Bild?.url}`} alt="Service" />
                             )}
