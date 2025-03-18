@@ -2,11 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../Navbar'
 import { MyButton } from '../mini_components/MyButton'
 import Footer from '../Footer'
-import postThumb from '../../images/post-thumbnail.png'
 import arrowImg from '../../images/white-arrow.svg'
-import productImg from '../../images/product-2.png'
-import productImg2 from '../../images/product-3.png'
-import imgBlog from '../../images/blog-img.png'
 import MyLink from '../mini_components/MyLink';
 import { Accordion } from '../Accordion'
 import { Link, useNavigate, useParams } from 'react-router-dom'
@@ -14,7 +10,7 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 
 export const Blog = ({ data, color }) => {
 
-    const { title } = useParams();
+    let { title } = useParams();
     const [productDetails, setProductDetails] = useState();
     const [extraDetails, setExtraDetails] = useState();
     const [blogs, setBlogs] = useState();
@@ -46,6 +42,7 @@ export const Blog = ({ data, color }) => {
     }, [])
 
     useEffect(() => {
+        title = title.replace(/-/g, ' ');
         if (blogs?.length > 0 && title) {
             const matchedBlog = blogs?.find((blog) => blog.Titel.toString() === title);
             console.log(blog);
@@ -94,7 +91,7 @@ export const Blog = ({ data, color }) => {
                                 {/* <div dangerouslySetInnerHTML={{ __html: productDetails?.description }} /> */}
                                 {productDetails?.Beschreibung && <BlocksRenderer content={productDetails?.Beschreibung} />}
                                 <div className='btn_block mt-5'>
-                                    <a href='https://www.rotpunkt-apotheken.ch/aktionen' target='_blank' className="button fill_btn">ALLE AKTIONEN  <img src={arrowImg} alt="#" /></a>
+                                    <a href='https://www.rotpunkt-apotheken.ch/aktionen' target='_blank' rel="noreferrer" className="button fill_btn">ALLE AKTIONEN  <img src={arrowImg} alt="#" /></a>
                                 </div>
                             </div>
 

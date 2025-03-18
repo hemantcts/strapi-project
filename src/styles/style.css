@@ -1591,3 +1591,10 @@ button.owl-dot.active span {
     }
     
 }
+
+.list_item_links.green:hover{
+    color: var(--bs-green);
+}
+.list_item_links.blue:hover{
+    color: var(--bs-blue);
+}

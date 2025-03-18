@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import imgNote from '../images/notefall-2.png'
-import imgNotefall from '../images/notefall-2.png'
-
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -13,6 +11,10 @@ export const ShuffleComponent = ({ data, color, shuffle }) => {
 
     const changeShowInfo = ()=>{
         setShowInfo(!showInfo);
+    }
+
+    const filterTitle = (title)=>{
+        return title.replace(/\s+/g, '-');
     }
 
     return (
@@ -53,7 +55,15 @@ export const ShuffleComponent = ({ data, color, shuffle }) => {
                                     <ul>
                                         {services?.list_items?.map((list_item, index) => (
                                             <li key={index}>
-                                                {list_item?.Titel}
+                                                {list_item?.link_url ? (
+                                                    <>
+                                                        <Link className={`${color} list_item_links`} to={filterTitle(list_item?.link_url)}>{list_item?.Titel}</Link>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        {list_item?.Titel}
+                                                    </>
+                                                )}
 
                                                 {list_item?.info && (
                                                     <>
