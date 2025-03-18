@@ -111,9 +111,16 @@ footer {
                 }
             }
             .tble_col_content ul {
+                li:first-child {
+                    padding-left: 32px;
+                    img {
+                        width: 20px;
+                        top: 5px;
+                    }
+                }
                 li {
                     margin: 5px 0;
-                    font-size: 15px;
+                    font-size: 18px;
                 }
             }
         }
@@ -167,7 +174,21 @@ ul.dropdown-menu.half {
         height: 100%;
     }
 }
-
+.team_section {
+    .team_list.blue {
+        h4 {
+            min-height: 62px;
+        }
+        p {
+            min-height: 86px;
+        }
+    }
+}
+.nuitrition_diagnos{
+    .content_col {
+        padding-right: 3rem;
+    }
+}
 }
     
 @media (min-width: 992px){
@@ -304,12 +325,9 @@ header {
 .shuffle_container {
     .shuffle_row {
         align-items: center;
-    }
-    .even.shuffle_item_wrap:nth-child(even) .shuffle_row {
-        flex-direction: row-reverse;
-    }
-    .odd.shuffle_item_wrap:nth-child(odd) .shuffle_row {
-        flex-direction: row-reverse;
+        .img_col {
+            align-self: flex-start;
+        }
     }
     .img_col img {
         left: -1px;
@@ -324,6 +342,34 @@ header {
     .shuffle_item_wrap:nth-child(even) .content_box {
         padding-left: 2rem;
         padding-right: 1.2rem;
+    } 
+    .even.shuffle_item_wrap:nth-child(odd) .shuffle_row {
+        img_col img, .img_col .owl-carousel {
+            left: -1px;
+        }
+    }
+    .even.shuffle_item_wrap:nth-child(even) .shuffle_row {
+        flex-direction: row-reverse;
+        .img_col img, .img_col .owl-carousel {
+            left: auto;
+            right: -1px;
+        }
+    }
+    .odd.shuffle_item_wrap:nth-child(even) .shuffle_row {
+        .img_col img {
+            left: -1px;
+        }
+    }
+    .odd.shuffle_item_wrap:nth-child(odd) .shuffle_row {
+        flex-direction: row-reverse;
+        .img_col img {
+            left: auto;
+            right: -1px;
+        }
+        .content_box {
+            padding-left: 2rem;
+            padding-right: 1.25rem;
+        }
     }
 }
 .nuitrition_diagnos{
@@ -351,6 +397,11 @@ header {
 .spezielles_section .img_col {
     padding-right: 2rem;
 }
+.dien_section {
+    .dien_list .dien_itm .item_img img {
+        height: 230px;
+    }
+}
 }
     
 @media (min-width: 1600px){
@@ -364,6 +415,7 @@ header {
     --bs-h4: 26px;
     --bs-h50: 50px;
     --bs-h40: 40px;
+    --bs-fs30: 28px;
     --bs-fs26: 26px;
     --bs-fs22: 22px;
     --bs-fs20: 20px;
@@ -468,6 +520,7 @@ footer .col-lg-3.ftr_block {
     }
     .card-header a {
         padding: 16px 22px;
+        padding-right: 50px;
     }
     .card-header a:before {
         right: 11px;
@@ -489,12 +542,28 @@ footer .col-lg-3.ftr_block {
         .table_col {
             .tble_col_content ul {
                 li:first-child {
+                    padding-left: 43px;
                     img {
-                        top: 11px;
+                        top: 10px;
+                        width: 28px;
                     }
+                }
+                li:not(:first-child) {
+                    padding: 0 70px;
                 }
             }
         }
+    }
+}
+.dien_section {
+    .dien_list .dien_itm .item_img img {
+        height: 270px !important;
+    }
+}
+.nuitrition_diagnos{
+    margin-top: 8rem;
+    .img_col {
+        padding: 0 4rem;
     }
 }
 }
@@ -583,6 +652,7 @@ footer {
     --bs-h4: 20px;
     --bs-h50: 35px;
     --bs-h40: 30px;
+    --bs-fs30: 20px;
     --bs-fs26: 20px;
     --bs-fs22: 18px;
     --bs-fs20: 16px;
@@ -826,8 +896,13 @@ footer {
     }
 }
 .shuffle_container {
-    .img_col img {
+    .img_col img, .owl-carousel {
         top: 0;
+        .owl-stage {
+            .item {
+                width: 101%;
+            }
+        }
     }
     .shuffle_item_wrap {
         margin-top: 2rem;
@@ -835,6 +910,7 @@ footer {
     .content_box {
         padding-bottom: 10px;
     }
+    
 }
 .error_sec {
     padding-top: 100px;
@@ -959,7 +1035,7 @@ footer {
                 ul {
                 li {
                     margin: 10px 0;
-                    font-size: 14px;
+                    font-size: 17px;
                     display: flex;
                     justify-content: space-between;
                     position: relative;
@@ -971,7 +1047,7 @@ footer {
                     content: '';
                     position: absolute;
                     left: 0;
-                    top: 1px;
+                    top: 3px;
                     width: 15px;
                     height: 15px;
                     background: url(../images/tick-icon.svg) no-repeat center;
@@ -991,6 +1067,12 @@ footer {
         }
     }
 }
+.nuitrition_diagnos {
+    .content_col {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
 }
 
 @media (max-width: 767px){
@@ -1001,6 +1083,7 @@ footer {
     --bs-h4: 20px;
     --bs-h50: 35px;
     --bs-h40: 30px;
+    --bs-fs30: 20px;
     --bs-fs26: 20px;
     --bs-fs22: 18px;
     --bs-fs20: 16px;
@@ -1114,6 +1197,24 @@ header {
     right: 80%;
     left: unset;
 }
+.angebot_table_container {
+.angbot_moble_card {
+    .card {
+        .card-body {
+            ul {
+            li {
+                font-size: 15px;
+                padding-left: 20px;
+            }
+            li:before {
+                top: 3.5px;
+                width: 12px;
+                height: 12px;
+            }
+        }
+        }
+    }
+} }
 }
 
 @media (max-width: 480px){
@@ -1124,6 +1225,7 @@ header {
     --bs-h4: 18px;
     --bs-h50: 30px;
     --bs-h40: 27px;
+    --bs-fs30: 18px;
     --bs-fs26: 20px;
     --bs-fs22: 16px;
     --bs-fs20: 15px;
