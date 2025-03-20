@@ -47,7 +47,7 @@ export const AppointmentBooking = () => {
           <TwoContent data={bookingData} color='green' />
 
           <div className='iframe mt-5'>
-            <Iframe />
+            <Iframe page='pt' />
           </div>
         </div>
 

@@ -47,7 +47,7 @@ export const TerminBuchenPraxis = () => {
           <TwoContent data={bookingData} color='blue' />
 
           <div className='iframe mt-5'>
-            <Iframe />
+            <Iframe page='pr' />
           </div>
         </div>
 
