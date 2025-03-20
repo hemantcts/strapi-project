@@ -152,8 +152,8 @@ img {
 .blue_btn, .green_btn {
     position: relative;
     font-weight: var(--bs-fw700);
-    font-size: var(--bs-fs22);
-    padding: 12px 18px;
+    font-size: var(--bs-fs18);
+    padding: 12px;
     transition: .3s all;
 }
 .blue_btn {
@@ -163,7 +163,7 @@ img {
     position: relative;
     width: 20px;
     top: -2px;
-    margin-left: 10px;
+    margin-left: 7px;
 }
 .blue_btn span, .green_btn span {
     position: relative;
@@ -630,6 +630,9 @@ ul.nav-tabs li.tab2 a.active {
     }
     .content_box {
         padding: 2rem 1.25rem;
+        a {
+            color: var(--bs-blue);
+        }
     }
     h3 {
         font-weight: var(--bs-fw400);
@@ -774,7 +777,7 @@ button.owl-dot.active span {
         display: block;
     }
 }
-.angebot_Sec, .dien_section {
+.angebot_Sec, .dien_section, .grunderinnen_sec, .dien_shuffle {
     .sec_title {
         p {
             font-size: var(--bs-fs30);
@@ -962,7 +965,7 @@ button.owl-dot.active span {
         content: ' ';
         position: absolute;
         right: 8px;
-        top: 10px;
+        top: 9px;
         width: 35px;
         height: 35px;
         background-image: url(../images/cross-blue.svg);
@@ -976,6 +979,9 @@ button.owl-dot.active span {
     .card-body {
         padding-top: 0;
         background-color: #F7F7F7;
+        a {
+            color: var(--bs-blue);
+        }
         ul li {
             position: relative;
             margin: 8px 0;
@@ -1008,6 +1014,17 @@ button.owl-dot.active span {
     border-left: 0;
 }
 }
+.daten_section .accordion {
+    .card-body {
+        ul{
+            padding-left: 20px;
+            li {
+                padding-left: 0;
+                list-style: disc;
+            }
+        }
+    }
+}
 
 
 .green {
@@ -1036,6 +1053,11 @@ button.owl-dot.active span {
     }
     .card {
         border-left: 3px solid var(--bs-green);
+        .card-body {
+            a {
+                color: var(--bs-green);
+            }
+        }
     }
     .card:has(.card-header > .collapsed) {
         border-left: 1px solid rgba(228, 228, 228, 1);
@@ -1086,6 +1108,16 @@ button.owl-dot.active span {
     span.icon_img {
         background: linear-gradient(to bottom, rgba(0, 158, 75, 1), rgba(37, 150, 169, 1));
     }
+}
+
+
+.shuffle_container {
+    .green {
+    .content_box {
+        a {
+            color: var(--bs-green);
+        }
+    } }
 }
 
 .kontkt_itm {

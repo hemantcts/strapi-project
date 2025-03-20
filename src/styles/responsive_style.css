@@ -22,6 +22,17 @@ header {
 }
 }
 
+@media (min-width: 992px) and (max-width: 1300px) {
+.blue_btn, .green_btn {
+    font-size: 12px;
+    padding: 12px 10px;
+}
+.blue_btn img, .green_btn img {
+    width: 16px;
+    margin-left: 5px;
+}
+}
+
 @media (min-width: 992px) and (max-width: 1199px) {
 .blue_btn, .green_btn {
     padding: 12px;
@@ -324,7 +335,7 @@ header {
 
 .shuffle_container {
     .shuffle_row {
-        align-items: center;
+        /* align-items: center; */
         .img_col {
             align-self: flex-start;
         }
@@ -435,6 +446,13 @@ header {
     padding-top: 5rem;
     padding-bottom: 5rem;
 }
+.blue_btn, .green_btn {
+    font-size: var(--bs-fs20);
+    padding: 14px 20px;
+}
+.blue_btn img, .green_btn img {
+    margin-left: 10px;
+}
 .fill_btn {
     padding: 16px 25px;
 }
@@ -524,7 +542,7 @@ footer .col-lg-3.ftr_block {
     }
     .card-header a:before {
         right: 11px;
-        top: 15px;
+        top: 12px;
         width: 40px;
         height: 40px;
         background-size: 40px;
@@ -564,6 +582,17 @@ footer .col-lg-3.ftr_block {
     margin-top: 8rem;
     .img_col {
         padding: 0 4rem;
+    }
+}
+.odd.shuffle_item_wrap:nth-child(odd) .shuffle_row {
+    .img_col img {
+        right: -2px !important;
+    }
+}
+.even.shuffle_item_wrap:nth-child(even) .shuffle_row {
+    .img_col img, .img_col .owl-carousel {
+        left: auto;
+        right: -2px !important;
     }
 }
 }
@@ -646,18 +675,18 @@ footer {
 
 @media (max-width: 1199px){
 :root {
-    --bs-h1: 38px;
-    --bs-h2: 36px;
+    --bs-h1: 35px;
+    --bs-h2: 30px;
     --bs-h3: 22px;
     --bs-h4: 20px;
     --bs-h50: 35px;
     --bs-h40: 30px;
-    --bs-fs30: 20px;
-    --bs-fs26: 20px;
-    --bs-fs22: 18px;
-    --bs-fs20: 16px;
+    --bs-fs30: 18px;
+    --bs-fs26: 17px;
+    --bs-fs22: 16px;
+    --bs-fs20: 15px;
     --bs-fs18: 14px;
-    --bs-fsbody: 18px;
+    --bs-fsbody: 16px;
 }
 .stickY_btn {
     width: 40px;
@@ -665,6 +694,14 @@ footer {
         padding: 11px 15px;
         font-size: 15px;
         top: 5px;
+    }
+}
+.accordion {
+    .card-header a:before {
+        top: 8px;
+        width: 28px;
+        height: 28px;
+        background-size: 28px;
     }
 }
 .emergeny_list {
