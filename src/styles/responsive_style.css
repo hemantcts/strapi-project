@@ -23,19 +23,23 @@ header {
 }
 
 @media (min-width: 992px) and (max-width: 1300px) {
-.blue_btn, .green_btn {
-    font-size: 12px;
-    padding: 12px 10px;
-}
-.blue_btn img, .green_btn img {
-    width: 16px;
-    margin-left: 5px;
+.dien_list {
+    .blue_btn, .green_btn {
+        font-size: 12px;
+        padding: 12px 10px;
+    }
+    .blue_btn img, .green_btn img {
+        width: 16px;
+        margin-left: 5px;
+    }
 }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-.blue_btn, .green_btn {
-    padding: 12px;
+.dien_list {
+    .blue_btn, .green_btn {
+        padding: 12px;
+    }
 }
 header {
     ul.navbar-nav.main--menu li.nav-item {
@@ -356,26 +360,26 @@ header {
     } 
     .even.shuffle_item_wrap:nth-child(odd) .shuffle_row {
         img_col img, .img_col .owl-carousel {
-            left: -1px;
+            left: -1.5px;
         }
     }
     .even.shuffle_item_wrap:nth-child(even) .shuffle_row {
         flex-direction: row-reverse;
         .img_col img, .img_col .owl-carousel {
             left: auto;
-            right: -1px;
+            right: -1.5px;
         }
     }
     .odd.shuffle_item_wrap:nth-child(even) .shuffle_row {
         .img_col img {
-            left: -1px;
+            left: -1.5px;
         }
     }
     .odd.shuffle_item_wrap:nth-child(odd) .shuffle_row {
         flex-direction: row-reverse;
         .img_col img {
             left: auto;
-            right: -1px;
+            right: -1.5px;
         }
         .content_box {
             padding-left: 2rem;
@@ -446,12 +450,14 @@ header {
     padding-top: 5rem;
     padding-bottom: 5rem;
 }
-.blue_btn, .green_btn {
-    font-size: var(--bs-fs20);
-    padding: 14px 20px;
-}
-.blue_btn img, .green_btn img {
-    margin-left: 10px;
+.dien_list {
+    .blue_btn, .green_btn {
+        font-size: var(--bs-fs20);
+        padding: 14px 20px;
+    }
+    .blue_btn img, .green_btn img {
+        margin-left: 10px;
+    }
 }
 .fill_btn {
     padding: 16px 25px;

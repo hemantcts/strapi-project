@@ -14,13 +14,13 @@ export const DienstleistungenPraxis = () => {
     const [pharmacyServicesData, setPharmacyServicesData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/dienstleistungen-praxis?populate[Bannerbereich][populate]=Banner_Bild&populate[Service_Daten][populate]=*&populate[Apotheken_Dienstleistungsdaten][populate]=Bild.Bild&populate[Apotheken_Dienstleistungsdaten][populate]=list_items`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/dienstleistungen-praxis?populate[Bannerbereich][populate]=Banner_Bild&populate[Service_Daten][populate]=*&populate[Praxis_Dienstleistungen][populate]=Bild.Bild&populate[Praxis_Dienstleistungen][populate]=list_items`)
         const data = await response.json();
         console.log(data);
         if (data) {
             setBannerData(data.data.Bannerbereich);
             setServicesData(data.data.Service_Daten);
-            setPharmacyServicesData(data.data.Apotheken_Dienstleistungsdaten);
+            setPharmacyServicesData(data.data.Praxis_Dienstleistungen);
             // setProductsData(data.data.products_section);
             // setAdData(data.data.ad_section);
         }
