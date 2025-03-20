@@ -68,8 +68,8 @@ header {
     }
 }
 .container-xxl {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
 }
 .banner_sec {
     .buttn_1 {
@@ -190,12 +190,20 @@ ul.dropdown-menu.half {
     }
 }
 .team_section {
-    .team_list.blue {
+    .team_list {
         h4 {
             min-height: 62px;
         }
         p {
             min-height: 86px;
+        }
+    }
+    .team_list.green {
+        h4 {
+            min-height: unset;
+        }
+        p {
+            min-height: 61px;
         }
     }
 }
@@ -601,6 +609,24 @@ footer .col-lg-3.ftr_block {
         right: -2px !important;
     }
 }
+.team_section {
+    .team_list {
+        h4 {
+            min-height: 72px;
+        }
+        p {
+            min-height: 66px;
+        }
+    }
+    .team_list.green {
+        h4 {
+            min-height: unset;
+        }
+        p {
+            min-height: 66px;
+        }
+    }
+}
 }
 
 
@@ -741,6 +767,27 @@ footer {
 }
 .search_page {
     margin-top: 100px;
+}
+.team_section {
+    .item_body {
+        padding: 1rem 0;
+    }
+    .team_list {
+        h4 {
+            min-height: 55px;
+        }
+        p {
+            min-height: 71px;
+        }
+    }
+    .team_list.green {
+        h4 {
+            min-height: unset;
+        }
+        p {
+            min-height: 51px;
+        }
+    }
 }
 }
 
@@ -1118,6 +1165,31 @@ footer {
 }
 }
 
+
+@media (min-width: 768px) and (max-width: 991px){
+.team_section {
+    .item_body {
+        padding: 1rem 0;
+    }
+    .team_list {
+        h4 {
+            min-height: 55px;
+        }
+        p {
+            min-height: 71px;
+        }
+    }
+    .team_list.green {
+        h4 {
+            min-height: unset;
+        }
+        p {
+            min-height: 51px;
+        }
+    }
+}
+}
+
 @media (max-width: 767px){
 :root {
     --bs-h1: 32px;
@@ -1145,8 +1217,22 @@ footer {
 }
 .team_section {
     .item_body {
+        padding: 1rem 0;
+    }
+    .team_list {
+        h4 {
+            min-height: 55px;
+        }
         p {
+            min-height: 80px;
+        }
+    }
+    .team_list.green {
+        h4 {
             min-height: unset;
+        }
+        p {
+            min-height: 56px;
         }
     }
 }
@@ -1258,6 +1344,19 @@ header {
         }
     }
 } }
+
+.team_section {
+    .team_list {
+        h4, p {
+            min-height: unset;
+        }
+    }
+    .team_list.green {
+        h4, p {
+            min-height: unset;
+        }
+    }
+}
 }
 
 @media (max-width: 480px){
