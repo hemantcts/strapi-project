@@ -38,7 +38,7 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
             setBlogs(data.data);
             const uniqueCategories = [...new Set(data.data.map(blog => blog.Kategorie))];
             const formattedOptions = uniqueCategories.map(Kategorie => ({
-                value: Kategorie.toLowerCase(),
+                value: Kategorie,
                 label: Kategorie,
             }));
 

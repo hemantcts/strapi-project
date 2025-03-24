@@ -963,7 +963,7 @@ button.owl-dot.active span {
         padding-right: 50px;
         position: relative;
         background: inherit;
-        background-color: #F7F7F7;
+        /* background-color: #F7F7F7; */
         font-weight: var(--bs-fw500);
         color: #161615;
         border-radius: 0;
@@ -987,13 +987,17 @@ button.owl-dot.active span {
     }
     .card-body {
         padding-top: 0;
-        background-color: #F7F7F7;
+        /* background-color: #F7F7F7; */
         a {
             color: var(--bs-blue);
         }
         ul li {
             position: relative;
             margin: 8px 0;
+            list-style: disc;
+            /* padding-left: 20px; */
+        }
+        ul{
             padding-left: 20px;
         }
         /* ul li:before {

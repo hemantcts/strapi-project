@@ -4,6 +4,8 @@ import svgMoon from '../images/icn-moon.svg'
 import svgSun from '../images/icn-sun.svg'
 
 export const EmergencyContact = ({ contactData, color }) => {
+    const removeSpace = (phone) => phone.replace(/\s+/g, '');
+    
     return (
         <div className={`${color}`}>
             <div className='row emergeny_list'>
@@ -13,7 +15,9 @@ export const EmergencyContact = ({ contactData, color }) => {
                             <span className='item_icon'><img src={`https://medzentrum.entwicklung-loewenmut.ch${contact?.icons?.url}`} alt='#' /></span>
                             <div className='itm_info'>
                                 <p>{contact?.info_title}</p>
-                                <h3>{contact?.phone}</h3>
+                                <h3>
+                                    <a href={`tel:${removeSpace(contact?.phone)}`}>{contact?.phone}</a>
+                                </h3>
                             </div>
                         </div>
                     </div>

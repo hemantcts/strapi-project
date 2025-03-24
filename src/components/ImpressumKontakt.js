@@ -28,7 +28,7 @@ export const ImpressumKontakt = ({ contactData, color }) => {
             {contactData?.map((contact, index) => (
                 <div key={index} className='col-lg-6 imp_itm'>
                     <div className='imp_shadow'>
-                        <h3 className='font-volk mb-4'>{contact?.title}</h3>
+                        <h3 className='font-volk mb-4'>{contact?.Titel}</h3>
                         <ul>
                             {contact?.Details?.map((innerDetails, index) => (
                                 <li key={index} className='pe-5'>

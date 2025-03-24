@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import imgBlog from '../images/blog-img.png'
 import arrowImg from '../images/white-arrow.svg'
 import MyLink from './mini_components/MyLink';
@@ -6,6 +6,12 @@ import { Link } from "react-router-dom";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
 export const Blogs = ({ blogs, color, selectedCategory }) => {
+
+
+    useEffect(() => {
+        console.log(selectedCategory)
+    }, [selectedCategory])
+    
 
     const filteredBlogs = selectedCategory
         ? blogs?.filter(blog => blog?.Kategorie === selectedCategory)
@@ -15,9 +21,29 @@ export const Blogs = ({ blogs, color, selectedCategory }) => {
         return title.replace(/\s+/g, '-');
     }
 
+    if (!Array.isArray(filteredBlogs)) {
+        return null; 
+    }
+
+    const sortByNummer = (arr) => {
+        for (let i = 0; i < arr.length - 1; i++) {
+            for (let j = i + 1; j < arr.length; j++) {
+                if (arr[i].post_id > arr[j].post_id) {
+                    // Swap elements
+                    let temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        return arr;
+    };
+
+    const sortedData = sortByNummer([...filteredBlogs]);
+
     return (
         <div className='row blog_Post_list'>
-            {filteredBlogs?.map((blog, index) => (
+            {sortedData?.map((blog, index) => (
                 <div key={index} className='col-sm-6 col-lg-4 mt_col blog_item '>
                     <div className='post_inner'>
                         <div className='post_img position-relative'>

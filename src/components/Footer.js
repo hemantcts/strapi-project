@@ -19,7 +19,7 @@ const Footer = () => {
                                 <h4>MedZentrum Pfungen</h4>
                                 <address>Riedäckerstrasse 5<br />CH-8422 Pfungen</address>
                                 <h4>Quick Links</h4>
-                                <ul>
+                                <ul style={{lineHeight: '1.3'}}>
                                     <li><Link to='/ubersicht-apotheke'>Apotheke</Link></li>
                                     <li><Link to='/ubersicht-praxis'>Praxis</Link></li>
                                     <li><Link to='/ernahrungsdiagnostik'>Ernährungsdiagnostik</Link></li>
@@ -33,7 +33,9 @@ const Footer = () => {
                                         <li><a href='tel: 0523050350'><img src={phoneicon} alt='#' /><span>052 305 03 50</span></a></li>
                                         <li><a href='mailto: apotheke@medzentrum.ch'><img src={envelopeicon} alt='#' /><span>apotheke@medzentrum.ch</span></a></li>
                                     </ul>
-                                    <p>Öffnungszeiten Apotheke:<br />Montag bis Freitag<br />8:00 – 12:15 | 13:00 – 18:30 <br />Samstag 8:00 – 13:00</p>
+                                    <p style={{lineHeight: '1.3'}}>
+                                        <span style={{fontWeight:'600'}}>Öffnungszeiten Apotheke:</span> <br />Montag bis Freitag<br />8:00 – 12:15 | 13:00 – 18:30 <br />Samstag 8:00 – 13:00
+                                    </p>
                                 </div>
                             </div>
                             <div className='col-12 col-sm-6 col-lg-3 ftr_block'>
@@ -43,8 +45,12 @@ const Footer = () => {
                                         <li><a href='tel: 0523050355'><img src={phoneicon} alt='#' /><span>052 305 03 55</span></a></li>
                                         <li><a href='mailto: praxis@medzentrum.ch'><img src={envelopeicon} alt='#' /><span>praxis@medzentrum.ch</span></a></li>
                                     </ul>
-                                    <p>Telefonzeiten:<br />Montag bis Freitag<br />8:00 – 12:00 | 14:00 – 17:30</p>
-                                    <p>Öffnungszeiten Praxis:<br />Montag bis Freitag<br />8:00 – 12:00 | 13:00 – 18:00<br />Samstag nach Vereinbarung</p>
+                                    <p style={{lineHeight: '1.3'}}>
+                                        <span style={{fontWeight:'600'}}>Telefonzeiten:</span> <br />Montag bis Freitag<br />8:00 – 12:00 | 14:00 – 17:30
+                                    </p>
+                                    <p style={{lineHeight: '1.3'}}>
+                                        <span style={{fontWeight:'600'}}>Öffnungszeiten Praxis:</span> <br />Montag bis Freitag<br />8:00 – 12:00 | 13:00 – 18:00<br />Samstag nach Vereinbarung
+                                    </p>
                                 </div>
                             </div>
                             <div className='col-12 col-sm-6 col-lg-2 ftr_block'>
@@ -54,7 +60,7 @@ const Footer = () => {
                                     <a href='#'><img src={linkedinicon} alt='#' /></a>
                                 </div>
                                 <h4>Rechtliches</h4>
-                                <ul>
+                                <ul style={{lineHeight: '1.3'}}>
                                     <li><Link to='/impressum'>Impressum</Link></li>
                                     <li><Link to='/datenschutz'>Datenschutzerklärung</Link></li>
                                 </ul>
