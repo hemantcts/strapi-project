@@ -23,6 +23,15 @@ export const ImpressumKontakt = ({ contactData, color }) => {
         return ''; // Default case (no href)
     };
 
+    const formatAddress = (address) => {
+        return address?.split(",").map((part, index) => (
+          <React.Fragment key={index}>
+            {part.trim()}
+            <br />
+          </React.Fragment>
+        ));
+      };
+
     return (
         <div className='row imp_address_row'>
             {contactData?.map((contact, index) => (
@@ -41,7 +50,7 @@ export const ImpressumKontakt = ({ contactData, color }) => {
                                             {innerDetails?.Details}
                                         </a>
                                     ) : (
-                                        <span>{innerDetails?.Details}</span>
+                                        <span>{formatAddress(innerDetails?.Details)}</span>
                                     )
                                     }
                                 </li>

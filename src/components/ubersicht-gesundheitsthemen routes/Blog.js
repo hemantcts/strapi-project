@@ -42,7 +42,7 @@ export const Blog = ({ data, color }) => {
     }, [])
 
     useEffect(() => {
-        title = title.replace(/-/g, ' ');
+        // title = title.replace(/-/g, ' ');
         if (blogs?.length > 0 && title) {
             const matchedBlog = blogs?.find((blog) => blog.Titel.toString() === title);
             console.log(blog);
@@ -52,7 +52,18 @@ export const Blog = ({ data, color }) => {
                 setProductDetails(matchedBlog?.Produktdetail);
                 setExtraDetails(matchedBlog?.zusatzliche_Details);
             } else {
-                navigate("/error"); // Redirect to trigger the catch-all error route
+                title = title.replace(/-/g, ' ');
+                const matchedBlog2 = blogs?.find((blog) => blog.Titel.toString() === title);
+                console.log(blog);
+                // setBlog(matchedBlog);
+                if (matchedBlog2) {
+                    setBlog(matchedBlog2);
+                    setProductDetails(matchedBlog2?.Produktdetail);
+                    setExtraDetails(matchedBlog2?.zusatzliche_Details);
+                }
+                else{
+                    navigate("/error"); // Redirect to trigger the catch-all error route
+                }
             }
         }
     }, [blogs, title]);

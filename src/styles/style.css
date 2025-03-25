@@ -651,12 +651,21 @@ ul.nav-tabs li.tab2 a.active {
         font-size: var(--bs-fs24);
         color: var(--bs-blue);
     }
+    .no_icons{ 
+        ul{
+            padding-left: 20px;
+        }
+        li{
+            list-style-type: disc;
+            padding-left: 0 !important;
+        }
+    }
     .content_box ul li {
         position: relative;
         padding-left: 30px;
         margin: 5px 0;
     }
-    .content_box ul li:before {
+    .content_box.icons ul li:before {
         content: '';
         position: absolute;
         left: 0;

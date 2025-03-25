@@ -50,7 +50,7 @@ export const ShuffleComponent = ({ data, color, shuffle }) => {
                             )}
                         </div>
                         <div className='col-12 col-lg-6 content_col'>
-                            <div className='content_box text-black'>
+                            <div className={`content_box text-black ${services?.icons ? 'icons' : 'no_icons'}`}>
                                 <h2>{services?.Titel}</h2>
                                 {services?.Beschreibung && <BlocksRenderer content={services?.Beschreibung} />}
                                 {services?.list_items && (
