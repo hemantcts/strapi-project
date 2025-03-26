@@ -50,7 +50,7 @@ export const PharmacyServices = () => {
                 <div className="container-xxl">
                     <TwoContent data={servicesData} color='green' />
                     <div className='shuffle_container pt-5'>
-                        <ShuffleComponent data={pharmacyServicesData} color='green' />
+                        <ShuffleComponent data={pharmacyServicesData} color='green' staticIcons={true} />
                     </div>
                 </div>
                 {/* <div className='shuffle_container mt-5'>

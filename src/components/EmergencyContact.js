@@ -12,7 +12,11 @@ export const EmergencyContact = ({ contactData, color }) => {
                 {contactData?.map((contact, index) => (
                     <div key={index} className="emergency_itm">
                         <div className='item_inner'>
-                            <span className='item_icon'><img src={`https://medzentrum.entwicklung-loewenmut.ch${contact?.icons?.url}`} alt='#' /></span>
+                            <span className='item_icon'>
+                                <a href={`tel:${removeSpace(contact?.phone)}`}>
+                                    <img src={`https://medzentrum.entwicklung-loewenmut.ch${contact?.icons?.url}`} alt='#' />
+                                </a>
+                            </span>
                             <div className='itm_info'>
                                 <p>{contact?.info_title}</p>
                                 <h3>

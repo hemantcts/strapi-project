@@ -28,7 +28,7 @@ export const Blog = ({ data, color }) => {
     // }
 
     const getBlogs = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate[Bild][populate]=*&populate[Produktdetail][populate]=Bild.Bild&populate[zusatzliche_Details][populate]=erweiterbare_Daten`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate[Bild][populate]=*&populate[Produktdetail][populate]=Bild.Bild&populate[Produktdetail][populate]=button&populate[zusatzliche_Details][populate]=erweiterbare_Daten`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -102,7 +102,9 @@ export const Blog = ({ data, color }) => {
                                 {/* <div dangerouslySetInnerHTML={{ __html: productDetails?.description }} /> */}
                                 {productDetails?.Beschreibung && <BlocksRenderer content={productDetails?.Beschreibung} />}
                                 <div className='btn_block mt-5'>
-                                    <a href='https://www.rotpunkt-apotheken.ch/aktionen' target='_blank' rel="noreferrer" className="button fill_btn">ALLE AKTIONEN  <img src={arrowImg} alt="#" /></a>
+                                    {productDetails?.button && <a href={productDetails?.button?.Link_URL} target='_blank' rel="noreferrer" className="button fill_btn">{productDetails?.button?.link_text} <img src={arrowImg} alt="#" /></a>}
+
+                                    {/* <a href='https://www.rotpunkt-apotheken.ch/aktionen' target='_blank' rel="noreferrer" className="button fill_btn">ALLE AKTIONEN  <img src={arrowImg} alt="#" /></a> */}
                                 </div>
                             </div>
 

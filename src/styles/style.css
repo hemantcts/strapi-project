@@ -675,6 +675,28 @@ ul.nav-tabs li.tab2 a.active {
         background: url(../images/list-icon.svg) no-repeat center;
         background-size: contain;
     }
+    .content_box.icons2.green ul li:before{
+        background: url(https://medzentrum.entwicklung-loewenmut.ch/uploads/green_a612f0ae3f.svg) no-repeat center;
+        background-size: contain;
+    }
+    .content_box.icons2.blue ul li:before{
+        background: url(https://medzentrum.entwicklung-loewenmut.ch/uploads/blue_335f10162a.svg) no-repeat center;
+        background-size: contain;
+    }
+
+    
+    .content_box.icons2.green ul li a:hover, .content_box.icons2.blue ul li a:hover{
+        text-decoration: underline;
+    }
+    .content_box.icons2.blue ul li.make_hover:before{
+        transform: rotate(-45deg);
+        transition: all .5s ease-in-out;
+    }
+    .content_box.icons2.green ul li.make_hover:before{
+        transform: rotate(-45deg);
+        transition: all .2s ease-in-out;
+    }
+    
     .owl-carousel {
         .owl-stage {
         display: flex;
@@ -1028,7 +1050,7 @@ button.owl-dot.active span {
 .accordion.greyy {
     .card {
     background: rgb(247, 247, 247);
-    border-color: rgb(247, 247, 247);
+    /* border-color: rgb(247, 247, 247); */
     border-radius: 30px;
     padding-left: 5px;
 }
