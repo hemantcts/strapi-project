@@ -576,7 +576,7 @@ ul {
         font-size: var(--bs-fs22);
         font-weight: var(--bs-fw400);
         margin-bottom: 10px;
-        min-height: 50px;
+        min-height: 62px;
         border-bottom: 1px solid rgba(226, 226, 226, 1);
         padding-bottom: 10px;
     } 
@@ -669,7 +669,8 @@ ul.nav-tabs li.tab2 a.active {
         content: '';
         position: absolute;
         left: 0;
-        top: 4px;
+        top: 50%;
+        transform: translateY(-50%);
         width: 22px;
         height: 22px;
         background: url(../images/list-icon.svg) no-repeat center;
@@ -685,17 +686,45 @@ ul.nav-tabs li.tab2 a.active {
     }
 
     
-    .content_box.icons2.green ul li a:hover, .content_box.icons2.blue ul li a:hover{
-        text-decoration: underline;
+    .content_box.icons2.green ul li a, .content_box.icons2.blue ul li a{
+        position: relative;
     }
+    .content_box.icons2.green ul li a::before, .content_box.icons2.blue ul li a::before{
+        content: '';
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        background-color: var(--bs-green);
+        position: absolute;
+        transition: all 0.2s ease-in-out;
+    }
+    .content_box.icons2.green ul li.no_hover a::before, .content_box.icons2.blue ul li.no_hover a::before{
+        width: 0%;
+    }
+    .content_box.icons2.green ul li.make_hover a::before, .content_box.icons2.blue ul li.make_hover a::before{
+        width: 100%;
+    }
+
     .content_box.icons2.blue ul li.make_hover:before{
-        transform: rotate(-45deg);
+        transform: translateY(-50%) rotate(-60deg);
         transition: all .5s ease-in-out;
     }
     .content_box.icons2.green ul li.make_hover:before{
-        transform: rotate(-45deg);
-        transition: all .2s ease-in-out;
+        transform: translateY(-50%) rotate(-60deg);
+        transition: all .3s ease-in-out;
     }
+
+    
+
+    .content_box.icons2.blue ul li.no_hover:before{
+        /* transform: rotate(0); */
+        transition: all .3s ease-in-out;
+    }
+    .content_box.icons2.green ul li.no_hover:before{
+        /* transform: rotate(0); */
+        transition: all .3s ease-in-out;
+    }
+    
     
     .owl-carousel {
         .owl-stage {
@@ -1678,5 +1707,12 @@ button.owl-dot.active span {
     color: var(--bs-green);
 }
 .list_item_links.blue:hover{
+    color: var(--bs-blue);
+}
+
+.content-box.green a{
+    color: var(--bs-green);
+}
+.content-box.blue a{
     color: var(--bs-blue);
 }

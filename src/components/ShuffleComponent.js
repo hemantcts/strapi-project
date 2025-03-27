@@ -14,6 +14,7 @@ export const ShuffleComponent = ({ data, color, shuffle, staticIcons }) => {
     // }
 
     const [visibleInfoIndex, setVisibleInfoIndex] = useState(null);
+    const [visibleInfoIndex2, setVisibleInfoIndex2] = useState(null);
 
     const changeShowInfo = (index) => {
         setVisibleInfoIndex(visibleInfoIndex === index ? null : index);
@@ -75,7 +76,7 @@ export const ShuffleComponent = ({ data, color, shuffle, staticIcons }) => {
                                 {services?.list_items && (
                                     <ul>
                                         {services?.list_items?.map((list_item, index) => (
-                                            <li className={`${hoveredIndex === index ? 'make_hover' : ''}`} key={index}>
+                                            <li className={`${hoveredIndex === index ? 'make_hover' : 'no_hover'}`} key={index}>
                                                 {list_item?.link_url ? (
                                                     <>
                                                         <Link onMouseEnter={() => handleMouseEnter(index)}
@@ -90,9 +91,9 @@ export const ShuffleComponent = ({ data, color, shuffle, staticIcons }) => {
                                                 {list_item?.info && (
                                                     <>
                                                         {/* {list_item.Titel.replace("{info}", "")} */}
-                                                        <button onClick={() => changeShowInfo(index)} className="info-icon ms-2">
+                                                        <button onClick={() => changeShowInfo(index)}onMouseEnter={() => setVisibleInfoIndex2(index)} onMouseLeave={() => setVisibleInfoIndex2(null)} className="info-icon ms-2 text-start">
                                                             <img src="https://medzentrum.entwicklung-loewenmut.ch/uploads/Union_29_1667bd2206.svg" alt="" />
-                                                            {visibleInfoIndex === index && (
+                                                            {(visibleInfoIndex === index || visibleInfoIndex2 === index) && (
                                                                 <div className="info-container">
                                                                     <p className="m-0">{list_item?.info}</p>
                                                                 </div>

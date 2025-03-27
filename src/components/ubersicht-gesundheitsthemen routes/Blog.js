@@ -87,7 +87,9 @@ export const Blog = ({ data, color }) => {
                                 <h1>{blog?.title}</h1>
                                 <img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt="" className='w-100 my-3' />
                                 <h3>{blog?.Titel}</h3>
-                                {blog?.Beschreibung && <BlocksRenderer content={blog?.Beschreibung} />}
+                                <div className={`content-box ${blog?.link_color}`}>
+                                    {blog?.Beschreibung && <BlocksRenderer content={blog?.Beschreibung} />}
+                                </div>
                                 {/* <div dangerouslySetInnerHTML={{ __html: blog?.description }} /> */}
 
                             </div>
