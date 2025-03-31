@@ -669,8 +669,8 @@ ul.nav-tabs li.tab2 a.active {
         content: '';
         position: absolute;
         left: 0;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 4px;
+        /* transform: translateY(-50%); */
         width: 22px;
         height: 22px;
         background: url(../images/list-icon.svg) no-repeat center;
@@ -686,10 +686,11 @@ ul.nav-tabs li.tab2 a.active {
     }
 
     
-    .content_box.icons2.green ul li a, .content_box.icons2.blue ul li a{
-        position: relative;
+    .content_box.icons2.green ul li a:hover, .content_box.icons2.blue ul li a:hover{
+        text-decoration: underline;
+        /* position: relative; */
     }
-    .content_box.icons2.green ul li a::before, .content_box.icons2.blue ul li a::before{
+    /* .content_box.icons2.green ul li a::before, .content_box.icons2.blue ul li a::before{
         content: '';
         bottom: 0;
         left: 0;
@@ -703,14 +704,14 @@ ul.nav-tabs li.tab2 a.active {
     }
     .content_box.icons2.green ul li.make_hover a::before, .content_box.icons2.blue ul li.make_hover a::before{
         width: 100%;
-    }
+    } */
 
     .content_box.icons2.blue ul li.make_hover:before{
-        transform: translateY(-50%) rotate(-60deg);
+        transform: rotate(-60deg);
         transition: all .5s ease-in-out;
     }
     .content_box.icons2.green ul li.make_hover:before{
-        transform: translateY(-50%) rotate(-60deg);
+        transform: rotate(-60deg);
         transition: all .3s ease-in-out;
     }
 
@@ -1200,7 +1201,8 @@ button.owl-dot.active span {
     .item_inner {
         width: 100%;
         height: 100%;
-        background: linear-gradient(to right, rgba(224, 243, 255, 1), rgba(233, 255, 243, 1));
+        /* background: linear-gradient(to right, rgba(224, 243, 255, 1), rgba(233, 255, 243, 1)); */
+        background: linear-gradient(to right, #F7FEFF, #CAEBFF);
         padding: 2rem;
         box-shadow: 0 2px 20px rgb(0 0 0 / 10%);
         font-weight: var(--bs-fw400);

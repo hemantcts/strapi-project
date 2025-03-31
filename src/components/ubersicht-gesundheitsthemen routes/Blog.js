@@ -68,6 +68,17 @@ export const Blog = ({ data, color }) => {
         }
     }, [blogs, title]);
 
+    useEffect(() => {
+        const contentBox = document.querySelector(".content-box");
+        if (contentBox) {
+            const links = contentBox.querySelectorAll("a");
+            links.forEach(link => {
+                link.setAttribute("target", "_blank");
+                link.setAttribute("rel", "noopener noreferrer"); // Security best practice
+            });
+        }
+    }, [blog?.Beschreibung]);
+
     if (!blog) return null;
 
 

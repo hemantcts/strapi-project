@@ -37,7 +37,7 @@ const Footer = () => {
                                 </div>
                                 <h4>Öffnungszeiten Apotheke:</h4>
                                 <p style={{ lineHeight: '1.3' }}>
-                                    Montag bis Freitag<br />8:00 – 12:15 | 13:00 – 18:30 <br />Samstag 8:00 – 13:00
+                                    Montag bis Freitag<br />8:00 – 12:15 | 13:00 – 18:30 <br />Samstag Montag - Freitag
                                 </p>
                             </div>
                             <div className='col-12 col-sm-6 col-lg-3 ftr_block'>
@@ -54,7 +54,7 @@ const Footer = () => {
                                 </p>
                                 <h4>Öffnungszeiten Praxis:</h4>
                                 <p style={{ lineHeight: '1.3' }}>
-                                    Montag bis Freitag<br />8:00 – 12:00 | 13:00 – 18:00<br />Samstag nach Vereinbarungs
+                                    Montag bis Freitag<br />8:00 – 12:00 | 13:00 – 18:00<br />Samstag nach Vereinbarung
                                 </p>
                             </div>
                             <div className='col-12 col-sm-6 col-lg-2 ftr_block'>
