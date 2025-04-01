@@ -5,7 +5,7 @@ import MyLink from './mini_components/MyLink';
 import { Link } from "react-router-dom";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
-export const Blogs = ({ blogs, color, selectedCategory }) => {
+export const Blogs = ({ blogs, colors, selectedCategory }) => {
 
 
     useEffect(() => {
@@ -48,7 +48,7 @@ export const Blogs = ({ blogs, color, selectedCategory }) => {
                     <div className='post_inner'>
                         <div className='post_img position-relative'>
                             <Link to={`/${filterTitle(blog?.Titel)}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt='' /></Link>
-                            <div className='post_category'>{blog?.Kategorie}</div>
+                            <div className='post_category' style={{backgroundColor: `${blog?.Kategorie=="Gesundheits-Checks" ? colors[0] : blog?.Kategorie=="Impfungen" ? colors[1] : colors[2]} `}}>{blog?.Kategorie}</div>
                         </div>
                         <div className='post_content text-black mt-3'>
                             <h3><Link to={`/${filterTitle(blog?.Titel)}`}>{blog?.Titel}</Link></h3>
@@ -61,9 +61,9 @@ export const Blogs = ({ blogs, color, selectedCategory }) => {
                     </div>
                 </div>
             ))}
-            <div className='btn_block justify-content-center mt-5'>
+            {/* <div className='btn_block justify-content-center mt-5'>
                 <button type="button" id="load_more" className="button fill_btn">MEHR LADEN <img src={arrowImg} alt="#" /></button>
-            </div>
+            </div> */}
         </div>
     )
 }

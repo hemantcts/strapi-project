@@ -21,7 +21,7 @@ const grayStyles = [
 
 const MapComponent = () => {
     const { isLoaded, loadError } = useLoadScript({
-        googleMapsApiKey: "AIzaSyDokEYXMXj7DGpIGMRcz387eaBg_ZARhQs", // Replace with your API key
+        googleMapsApiKey: "AIzaSyA0dT_ztojEL06D4NjVJpnz1E-a-pA4a-s", // Replace with your API key
         libraries: ["places"],
     });
 

@@ -15,6 +15,7 @@ export const Blog = ({ data, color }) => {
     const [extraDetails, setExtraDetails] = useState();
     const [blogs, setBlogs] = useState();
     const [blog, setBlog] = useState(null);
+    const [isImageUploaded, setImageUploaded] = useState(false);
     const navigate = useNavigate();
 
     // const getPageData = async () => {
@@ -28,7 +29,7 @@ export const Blog = ({ data, color }) => {
     // }
 
     const getBlogs = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate[Bild][populate]=*&populate[Produktdetail][populate]=Bild.Bild&populate[Produktdetail][populate]=button&populate[zusatzliche_Details][populate]=erweiterbare_Daten`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate[Bild][populate]=*&populate[Produktdetail][populate]=Bild.Bild&populate[Produktdetail][populate]=button&populate[zusatzliche_Details][populate]=erweiterbare_Daten&pagination[limit]=100&sort[0]=post_id`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -41,6 +42,22 @@ export const Blog = ({ data, color }) => {
         getBlogs();
     }, [])
 
+    const checkImageUploaded = (product) =>{
+        setImageUploaded(false);
+        let count = product?.Bild?.length;
+        console.log("count",count);
+        product?.Bild.forEach(element => {
+            if(element.Bild){
+                count--;
+            }
+            console.log("count",count);
+        });
+        if(count !== product?.Bild?.length){
+            console.log("true");
+            setImageUploaded(true);
+        }
+    }
+
     useEffect(() => {
         // title = title.replace(/-/g, ' ');
         if (blogs?.length > 0 && title) {
@@ -51,6 +68,8 @@ export const Blog = ({ data, color }) => {
                 setBlog(matchedBlog);
                 setProductDetails(matchedBlog?.Produktdetail);
                 setExtraDetails(matchedBlog?.zusatzliche_Details);
+
+                checkImageUploaded(matchedBlog?.Produktdetail);
             } else {
                 title = title.replace(/-/g, ' ');
                 const matchedBlog2 = blogs?.find((blog) => blog.Titel.toString() === title);
@@ -60,12 +79,16 @@ export const Blog = ({ data, color }) => {
                     setBlog(matchedBlog2);
                     setProductDetails(matchedBlog2?.Produktdetail);
                     setExtraDetails(matchedBlog2?.zusatzliche_Details);
+
+                    checkImageUploaded(matchedBlog2?.Produktdetail);
                 }
                 else{
                     navigate("/error"); // Redirect to trigger the catch-all error route
                 }
             }
         }
+
+        
     }, [blogs, title]);
 
     useEffect(() => {
@@ -88,17 +111,17 @@ export const Blog = ({ data, color }) => {
             <Navbar />
 
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton buttonText={blog?.Titel} activePage={blog?.Kategorie} />
+                <MyButton buttonText={blog?.Titel} activePage='Gesundheitsthemen' />
             </section>
             <section className='wi_full py_3 blog_detail'>
                 <div className='container-xxl'>
                     <div className='row'>
                         <div className='col-lg-8 detail_col'>
                             <div className='post_data_wrapper text-black'>
-                                <h1>{blog?.title}</h1>
-                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt="" className='w-100 my-3' />
+                                <h1>{blog?.Titel}</h1>
+                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt="" className='w-100 my-3 mb-lg-4' />
                                 <h3>{blog?.Titel}</h3>
-                                <div className={`content-box ${blog?.link_color}`}>
+                                <div className={`content-box ${blog?.link_farbe}`}>
                                     {blog?.Beschreibung && <BlocksRenderer content={blog?.Beschreibung} />}
                                 </div>
                                 {/* <div dangerouslySetInnerHTML={{ __html: blog?.description }} /> */}
@@ -106,16 +129,20 @@ export const Blog = ({ data, color }) => {
                             </div>
 
                             <div className='post_data_wrapper text-black mt-5 pt-lg-5'>
-                                <h2>{productDetails?.Titel}</h2>
-                                <div className='grey_box'>
+                                {productDetails?.Titel && <h2>{productDetails?.Titel}</h2>}
+                                {isImageUploaded && <div className={`grey_box`}>
                                     {productDetails?.Bild?.map((img, index) => (
-                                        <img key={index} src={`https://medzentrum.entwicklung-loewenmut.ch${img?.Bild?.url}`} alt="" />
+                                        img?.Bild ? <img key={index} src={`https://medzentrum.entwicklung-loewenmut.ch${img?.Bild?.url}`} alt="" />
+                                        :
+                                        <div className="col-4">
+                                            <p>{img?.Bildtitel}</p>
+                                        </div>
                                     ))}
-                                </div>
+                                </div>}
                                 {/* <div dangerouslySetInnerHTML={{ __html: productDetails?.description }} /> */}
                                 {productDetails?.Beschreibung && <BlocksRenderer content={productDetails?.Beschreibung} />}
                                 <div className='btn_block mt-5'>
-                                    {productDetails?.button && <a href={productDetails?.button?.Link_URL} target='_blank' rel="noreferrer" className="button fill_btn">{productDetails?.button?.link_text} <img src={arrowImg} alt="#" /></a>}
+                                    {productDetails?.button && <a href={productDetails?.button?.Link_URL} target='_blank' rel="noreferrer" className={`button fill_btn ${productDetails?.button_farbe}`}>{productDetails?.button?.link_text} <img src={arrowImg} alt="#" /></a>}
 
                                     {/* <a href='https://www.rotpunkt-apotheken.ch/aktionen' target='_blank' rel="noreferrer" className="button fill_btn">ALLE AKTIONEN  <img src={arrowImg} alt="#" /></a> */}
                                 </div>

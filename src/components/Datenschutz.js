@@ -43,7 +43,7 @@ const Datenschutz = () => {
                         <h2>{protectionData?.Uberschrift}</h2>
                     </div>
                     <div className='accordion_wrapper mt-4'>
-                        <Accordion data={protectionData?.erweiterbare_Daten} border={true} greyy={true} />
+                        <Accordion data={protectionData?.erweiterbare_Daten} border={false} greyy={true} />
                     </div>
                 </div>
             </section>

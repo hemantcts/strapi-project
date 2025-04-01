@@ -9,7 +9,7 @@ export const TwoContent = ({data, color}) => {
                     <h2>{data?.Titel}</h2>
                 </div>
                 <div className="col-lg-6">
-                    <div>
+                    <div className='two_content'>
                         {data?.Beschreibung && <BlocksRenderer content={data?.Beschreibung} />}
                         {/* <p>{data?.Beschreibung}</p> */}
                     </div>

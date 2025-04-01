@@ -212,6 +212,9 @@ img {
     text-transform: uppercase;
     background: linear-gradient(to left, var(--bs-blue), var(--bs-cgreen));
 }
+.fill_btn.green{
+    background: linear-gradient(to right, var(--bs-blue), var(--bs-green-two));
+}
 .fill_btn img {
     position: relative;
     width: 30px;
@@ -473,6 +476,9 @@ ul {
     width: calc(100% - 40px);
     margin-left: 40px;
     position: relative;
+    p{
+        line-height: 1.4;
+    }
     &:before {
         content: '';
         position: absolute;
@@ -707,11 +713,11 @@ ul.nav-tabs li.tab2 a.active {
     } */
 
     .content_box.icons2.blue ul li.make_hover:before{
-        transform: rotate(-60deg);
+        transform: rotate(-420deg);
         transition: all .5s ease-in-out;
     }
     .content_box.icons2.green ul li.make_hover:before{
-        transform: rotate(-60deg);
+        transform: rotate(-420deg);
         transition: all .3s ease-in-out;
     }
 
@@ -1250,6 +1256,9 @@ button.owl-dot.active span {
         font-size: var(--bs-h50);
         color: var(--bs-blue);
     }
+    h2 {
+        font-size: var(--bs-h40);
+    }
     h3 {
         font-weight: var(--bs-fw500);
     }
@@ -1717,4 +1726,11 @@ button.owl-dot.active span {
 }
 .content-box.blue a{
     color: var(--bs-blue);
+}
+
+.submenu_list li a{
+    font-weight: 500 !important;
+}
+.two_content{
+    line-height: 1.5;
 }

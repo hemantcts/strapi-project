@@ -290,7 +290,7 @@ header {
         right: 50px !important;
     }
     .navbar-nav .dropdown-menu ul li {
-        padding-right: 50px;
+        padding-right: 45px;
     }
     .navbar-nav .dropdown-menu ul li a {
         width: 100%;
@@ -891,6 +891,8 @@ header {
     .navbar .hdr_copygt {
         display: block;
         padding: 15px 20px 10px;
+        position: absolute;
+        bottom: 0;
     }
     .navbar .hdr_copygt p {
         margin: 0;
@@ -1373,7 +1375,16 @@ header {
     }
 }
 }
+@media (max-width:400px) {
+    .all_sec_button{
+        font-size: 14px;
+        padding: 5px 6px;
 
+        img{
+            width: 30px;
+        }
+    }
+}
 
 @media (max-width:360px) {
     :root {

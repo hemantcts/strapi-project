@@ -52,7 +52,7 @@ export const ShuffleComponent = ({ data, color, shuffle, staticIcons }) => {
                                     margin={10}
                                     nav={false}
                                     dots={true}
-                                    autoplay={true}
+                                    autoplay={false}
                                     autoplayTimeout={3000}
                                     smartSpeed={1000}
                                     items={1}
