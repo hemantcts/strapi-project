@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { PartnersSection } from './PartnersSection';
 import Skeleton from 'react-loading-skeleton';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import Iframe from './Iframe';
 
 const Home = () => {
 
@@ -17,7 +18,7 @@ const Home = () => {
 
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/homepage?populate[Bannerbereich][populate]=*&populate[Herz_Bereich][populate]=linke_Seite.Bild&populate[Herz_Bereich][populate]=linke_Seite.Link&populate[Herz_Bereich][populate]=rechte_Seite.Link&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=partners.Bild`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/homepage?populate[Bannerbereich][populate]=*&populate[Herz_Bereich][populate]=linke_Seite.Bild&populate[Herz_Bereich][populate]=linke_Seite.Link&populate[Herz_Bereich][populate]=rechte_Seite.Link&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=partners.patner_bild&populate[Anzeigenbereich][populate]=partners.farbige_Bild`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -117,6 +118,26 @@ const Home = () => {
             </section>
             <section className='wi_full py_3 aktionen_sec bg_light_blue products-sec'>
                 <ProductsSection productsData={productsData} />
+
+                {/* <iframe
+                    id="halfpage"
+                    name="halfpage"
+                    src="https://www.rotpunkt-apotheken.ch/iframes/halfpage-600.html"
+                    width="100%"
+                    height="900px"
+                    scrolling="no"
+                    frameBorder="0"
+                    style={{
+                        verticalAlign: "top",
+                        borderStyle: "hidden",
+                        border: "none",
+                        overflow: "hidden",
+                        margin: 0,
+                        padding: 0,
+                    }}
+                >
+                    Leider unterstützt Ihr Browser keine Inline Frames.
+                </iframe> */}
             </section>
             <section className='wi_full py_3 partner_sec bg_dark_grey'>
                 <PartnersSection adData={adData} />

@@ -134,7 +134,7 @@ footer {
                     }
                 }
                 li {
-                    margin: 5px 0;
+                    margin: 3px 0;
                     font-size: 18px;
                 }
             }
@@ -202,6 +202,21 @@ ul.dropdown-menu.half {
 .nuitrition_diagnos{
     .content_col {
         padding-right: 3rem;
+    }
+}
+.job_sec {
+    .job_content  {
+        h2 {
+            font-size: 48px;
+        }
+        h3 {
+            font-size: 28px;
+        }
+        .accordion {
+            .card-header a {
+                font-size: 22px;
+            }
+        }
     }
 }
 }
@@ -1079,6 +1094,9 @@ footer {
             .card-body {
                 ul {
                 li {
+                    img{
+                        width: 22px;
+                    }
                     margin: 10px 0;
                     font-size: 17px;
                     display: flex;
@@ -1260,6 +1278,30 @@ header {
         }
     }
 } }
+
+body {
+    padding-bottom: 35px;
+}
+.stickY_btn {
+    width: 100%;
+    top: auto;
+    .stick_btn_wrap {
+        width: 100%;    
+        position: unset;
+        -webkit-transform-origin: none;
+        -moz-transform-origin: none;
+        -webkit-transform: none;
+        -moz-transform: none;
+    }
+    a {
+        padding: 10px 30px;
+        font-size: 15px;
+        display: inline-block;
+        transform: none;
+        width: 100%;
+        text-align: center;
+    }
+}
 }
 
 @media (max-width: 480px){

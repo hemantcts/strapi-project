@@ -29,7 +29,7 @@ export const Blog = ({ data, color }) => {
     // }
 
     const getBlogs = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate[Bild][populate]=*&populate[Produktdetail][populate]=Bild.Bild&populate[Produktdetail][populate]=button&populate[zusatzliche_Details][populate]=erweiterbare_Daten&pagination[limit]=100&sort[0]=post_id`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate[Bild][populate]=*&populate[Produktdetail][populate]=Bild.Bild&populate[Produktdetail][populate]=preis_und_zeit.icon&populate[Produktdetail][populate]=button&populate[zusatzliche_Details][populate]=erweiterbare_Daten&pagination[limit]=100&sort[0]=post_id`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -92,14 +92,17 @@ export const Blog = ({ data, color }) => {
     }, [blogs, title]);
 
     useEffect(() => {
-        const contentBox = document.querySelector(".content-box");
-        if (contentBox) {
+        const contentBoxes = document.querySelectorAll(".content-box"); // Select all content-box divs
+        contentBoxes.forEach(contentBox => {
             const links = contentBox.querySelectorAll("a");
             links.forEach(link => {
-                link.setAttribute("target", "_blank");
-                link.setAttribute("rel", "noopener noreferrer"); // Security best practice
+                const href = link.getAttribute("href");
+                if(href?.startsWith("https")){
+                    link.setAttribute("target", "_blank");
+                    link.setAttribute("rel", "noopener noreferrer"); // Security best practice
+                }
             });
-        }
+        });
     }, [blog?.Beschreibung]);
 
     if (!blog) return null;
@@ -132,17 +135,27 @@ export const Blog = ({ data, color }) => {
                                 {productDetails?.Titel && <h2>{productDetails?.Titel}</h2>}
                                 {isImageUploaded && <div className={`grey_box`}>
                                     {productDetails?.Bild?.map((img, index) => (
-                                        img?.Bild ? <img key={index} src={`https://medzentrum.entwicklung-loewenmut.ch${img?.Bild?.url}`} alt="" />
-                                        :
-                                        <div className="col-4">
-                                            <p>{img?.Bildtitel}</p>
-                                        </div>
+                                        img?.Bild && <img key={index} src={`https://medzentrum.entwicklung-loewenmut.ch${img?.Bild?.url}`} alt="" />
                                     ))}
                                 </div>}
                                 {/* <div dangerouslySetInnerHTML={{ __html: productDetails?.description }} /> */}
-                                {productDetails?.Beschreibung && <BlocksRenderer content={productDetails?.Beschreibung} />}
+                                {<div className={`content-box ${blog?.link_farbe}`}>
+                                    {productDetails?.Beschreibung && <BlocksRenderer content={productDetails?.Beschreibung} />}
+                                </div>}
+                                {productDetails?.preis_und_zeit?.length>0 && <div className="list-items">
+                                    <ul>
+                                        {productDetails?.preis_und_zeit?.map((item, index)=>(
+                                            <li key={index} className='mb-3 d-flex align-items-center'>
+                                                {item?.icon && <img src={`https://medzentrum.entwicklung-loewenmut.ch${item?.icon?.url}`} alt="" /> }
+                                                <span>
+                                                    <h4 className='ms-3 mb-0' style={{display:'inline-block'}}>{item?.Titel && item?.Titel}</h4>
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>}
                                 <div className='btn_block mt-5'>
-                                    {productDetails?.button && <a href={productDetails?.button?.Link_URL} target='_blank' rel="noreferrer" className={`button fill_btn ${productDetails?.button_farbe}`}>{productDetails?.button?.link_text} <img src={arrowImg} alt="#" /></a>}
+                                    {productDetails?.button && <a href={productDetails?.button?.Link_URL} target={productDetails?.offnen_in_einem_neuen_Tab ? "_blank" : "_self"} rel={productDetails?.offnen_in_einem_neuen_Tab ? "noreferrer noopener" : undefined} className={`button fill_btn ${productDetails?.button_farbe}`}>{productDetails?.button?.link_text} <img src={arrowImg} alt="#" /></a>}
 
                                     {/* <a href='https://www.rotpunkt-apotheken.ch/aktionen' target='_blank' rel="noreferrer" className="button fill_btn">ALLE AKTIONEN  <img src={arrowImg} alt="#" /></a> */}
                                 </div>

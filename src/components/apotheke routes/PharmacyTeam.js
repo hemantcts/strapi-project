@@ -31,7 +31,7 @@ const PharmacyTeam = () => {
   }
 
   const getTeams = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/team-apothekes?populate=*`)
+    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/team-apothekes?populate=*&pagination[limit]=100&sort[0]=Nummer`)
     const data = await response.json();
     console.log(data);
     if (data) {
@@ -40,7 +40,7 @@ const PharmacyTeam = () => {
   }
 
   const getTeams2 = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/team-praxes?populate=*`)
+    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/team-praxes?populate=*&pagination[limit]=100&sort[0]=Nummer`)
     const data = await response.json();
     console.log(data);
     if (data) {

@@ -511,7 +511,7 @@ ul {
 }
 .dien_list .dien_itm .item_img img {
     width: 97%;
-    height: auto;
+    height: 100% !important;
     max-height: 100%;
     object-fit: cover;
     position: relative;
@@ -582,7 +582,7 @@ ul {
         font-size: var(--bs-fs22);
         font-weight: var(--bs-fw400);
         margin-bottom: 10px;
-        min-height: 62px;
+        /* min-height: 62px; */
         border-bottom: 1px solid rgba(226, 226, 226, 1);
         padding-bottom: 10px;
     } 
@@ -962,8 +962,11 @@ button.owl-dot.active span {
                     }
                 }
                 li:not(:first-child) {
+                    img{
+                        width: 21%;
+                    }
                     width: 21%;
-                    text-align: center;
+                    text-align: start;
                     padding: 0 45px;
                     justify-content: center;
                 }
@@ -1732,5 +1735,5 @@ button.owl-dot.active span {
     font-weight: 500 !important;
 }
 .two_content{
-    line-height: 1.5;
+    line-height: 1.4;
 }

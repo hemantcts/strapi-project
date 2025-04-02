@@ -37,7 +37,7 @@ const Footer = () => {
                                 </div>
                                 <h4>Öffnungszeiten Apotheke:</h4>
                                 <p style={{ lineHeight: '1.3' }}>
-                                    Montag bis Freitag<br />8:00 – 12:15 | 13:00 – 18:30 <br />Samstag Montag - Freitag
+                                    Montag bis Freitag<br />8:00 – 12:15 | 13:00 – 18:30 <br />Samstag <br /> 8:00 – 13:00
                                 </p>
                             </div>
                             <div className='col-12 col-sm-6 col-lg-3 ftr_block'>
