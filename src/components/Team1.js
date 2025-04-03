@@ -1,10 +1,11 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
-export const Team1 = ({ data, color }) => {
+export const Team1 = ({ data, color, change }) => {
 
     const containerRef = useRef(null);
+    const containerRefs = useRef([]);
     const [columns, setColumns] = useState(4);
 
     const getColumnCount = () => {
@@ -44,20 +45,81 @@ export const Team1 = ({ data, color }) => {
         adjustMiniHeights();
         window.addEventListener('resize', adjustMiniHeights);
         return () => window.removeEventListener('resize', adjustMiniHeights);
-    }, [data, columns]);
+    }, [data, columns, change]);
+    
+    useEffect(() => {
+        const adjustMiniHeights = () => {
+            if (!containerRef.current) return;
+
+            const items = Array.from(containerRef.current.getElementsByClassName('team_itm'));
+            const cols = getColumnCount();
+            setColumns(cols);
+            let rowIndex = 0;
+
+            while (rowIndex < items.length) {
+                let rowItems = items.slice(rowIndex, rowIndex + columns);
+                let miniHeights = rowItems.map(item => item.querySelector('.font-volk'));
+
+                // Reset height to auto to get natural height first
+                miniHeights.forEach(el => (el.style.height = 'auto'));
+
+                // Find max height
+                let maxHeight = Math.max(...miniHeights.map(el => el.scrollHeight));
+
+                // Apply max height
+                miniHeights.forEach(el => (el.style.height = `${maxHeight}px`));
+
+                rowIndex += columns;
+            }
+        };
+
+        adjustMiniHeights();
+        window.addEventListener('resize', adjustMiniHeights);
+        return () => window.removeEventListener('resize', adjustMiniHeights);
+    }, [data, columns, change]);
+    
+    // useEffect(() => {
+    //     const setEqualHeight = () => {
+    //         if (containerRefs.current.length) {
+    //             let maxHeight = 0;
+
+    //             // Find max height
+    //             containerRefs.current.forEach((el) => {
+    //                 if (el) {
+    //                     el.style.height = 'auto'; // Reset before getting height
+    //                     maxHeight = Math.max(maxHeight, el.offsetHeight);
+    //                 }
+    //             });
+
+    //             // Apply max height to all
+    //             containerRefs.current.forEach((el) => {
+    //                 if (el) el.style.height = `${maxHeight}px`;
+    //             });
+    //         }
+    //     };
+
+    //     setEqualHeight();
+    //     window.addEventListener('resize', setEqualHeight);
+    //     return () => window.removeEventListener('resize', setEqualHeight);
+    // }, [data, columns, change]);
+
+    useEffect(() => {
+        console.log('working', change, data)
+    }, [change])
+
 
     if (!Array.isArray(data)) {
-        return null; 
+        return null;
     }
 
     const hasValidText = (fahigkeiten) => {
         if (!Array.isArray(fahigkeiten)) return false;
-        
-        return fahigkeiten.some(block => 
+
+        return fahigkeiten.some(block =>
             block.children?.some(child => child.text.trim() !== '')
         );
     };
-    
+
 
     return (
         <div ref={containerRef} className={`row team_list ${color}`}>

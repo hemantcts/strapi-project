@@ -496,7 +496,7 @@ header {
     }
 
     .partner_wrap .img_item {
-        width: 30%;
+        width: 26%;
     }
 
     .partner_wrap .img_item img {
@@ -1381,6 +1381,15 @@ footer {
         }
     }
 
+    .button{
+        background-color: var(--bs-green) !important;
+    }
+
+}
+.blue {
+    .button{
+        background-color: var(--bs-blue) !important;
+    }
 }
 
 
@@ -2046,7 +2055,7 @@ footer {
 }
 
 .two_content {
-    line-height: 1.4;
+    line-height: 1.2;
 }
 
 .break-word {

@@ -104,10 +104,10 @@ const PharmacyTeam = () => {
             </ul>
             <div className='tab-content'>
               <div className='tab-pane active' id='Tab1' role='tabpanel'>
-                <Team1 data={teams} color={pageColor} />
+                <Team1 data={teams} color={pageColor} change={pageColor==='green' ? 'green' : 'blue'} />
               </div>
               <div className='tab-pane' id='Tab2' role='tabpanel'>
-                <Team1 data={teams2} color='blue' />
+                <Team1 data={teams2} color='blue' change={pageColor==='green' ? 'green' : 'blue'} />
               </div>
             </div>
 

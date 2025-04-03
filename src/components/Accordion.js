@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import MailchimpForm from './MailchimpForm';
 
 export const Accordion = ({ data, color, greyy, isHtml, border }) => {
     const isHtml2 = (str) => {
         const doc = new DOMParser().parseFromString(str, "text/html");
         return Array.from(doc.body.childNodes).some(node => node.nodeType === 1);
     };
+
+    useEffect(() => {
+            const contentBoxes = document.querySelectorAll(".card-body"); // Select all content-box divs
+            contentBoxes.forEach(contentBox => {
+                const links = contentBox.querySelectorAll("a");
+                links.forEach(link => {
+                    const href = link.getAttribute("href");
+                    if(href?.startsWith("https")){
+                        link.setAttribute("target", "_blank");
+                        link.setAttribute("rel", "noopener noreferrer"); // Security best practice
+                    }
+                });
+            });
+        }, [data]);
 
     return (
         <div className={`accordion_wrapper ${color}`}>
@@ -21,9 +36,7 @@ export const Accordion = ({ data, color, greyy, isHtml, border }) => {
                             <div className="card-body">
 
                                 {item?.Beschreibung && <BlocksRenderer content={item?.Beschreibung} />}
-
-
-
+                                {item?.aktivieren_newsletter && <MailchimpForm color={color} />}
                             </div>
                         </div>
                     </div>

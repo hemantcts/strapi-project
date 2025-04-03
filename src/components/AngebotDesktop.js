@@ -32,7 +32,8 @@ export const AngebotDesktop = ({ tableData, color }) => {
                                 <img src={tickIcon} alt="#" /> <p>{data.offer}</p>
                             </li>
                             {keys.map((key) => (
-                                <li key={key}>{data[key] ? data[key] : <img src="https://medzentrum.entwicklung-loewenmut.ch/uploads/check_1_e4073556d6.svg" alt="" /> }</li>
+                                <li key={key}>{data[key]==='inklusive' ? <img src="https://medzentrum.entwicklung-loewenmut.ch/uploads/check_1_e4073556d6.svg" alt="" /> : data[key] ? data[key] : '-' }</li>
+                                // <li key={key}>{data[key] ? data[key] : <img src="https://medzentrum.entwicklung-loewenmut.ch/uploads/check_1_e4073556d6.svg" alt="" /> }</li>
                             ))} 
                             {/* <li><img src={tickIcon} alt='#' /> <p>{data.offer}</p></li>
                             <li>{data?.MedBasic ? data?.MedBasic : '-'}</li>

@@ -62,8 +62,30 @@ const PharmacyOverview = () => {
                 <SpeziellesSection specialsData={specialsData} color='green' />
             </section>
 
-            <section className='products-sec'>
-                <ProductsSection productsData={productsData} color='green' />
+            <section className='products-sec p-0'>
+                {/* <ProductsSection productsData={productsData} color='green' /> */}
+
+                <div className="container">
+                    <iframe
+                        id="halfpage"
+                        name="halfpage"
+                        src="https://www.rotpunkt-apotheken.ch/iframes/halfpage-600.html"
+                        width="100%"
+                        // height="900px"
+                        scrolling="no"
+                        frameBorder="0"
+                        style={{
+                            verticalAlign: "top",
+                            borderStyle: "hidden",
+                            border: "none",
+                            overflow: "hidden",
+                            margin: 0,
+                            padding: 0,
+                        }}
+                    >
+                        Leider unterstützt Ihr Browser keine Inline Frames.
+                    </iframe>
+                </div>
             </section>
 
             <section className='wi_full py_3 partner_sec bg_dark_grey'>

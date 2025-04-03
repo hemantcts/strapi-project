@@ -70,7 +70,7 @@ function App() {
         
         {/* Catch-All Route for Undefined Paths */}
         <Route path="/error" element={<Error />} />
-        {/* <Route path="*" element={<Error />} /> */}
+        <Route path="*" element={<Error />} />
 
       </Routes>
     </div>
