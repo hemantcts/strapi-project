@@ -39,7 +39,7 @@ function App() {
         <Route path="/terminbuchung-apotheke" element={<AppointmentBooking />} />
         <Route path="/apotheke-team" element={<PharmacyTeam />} />
         <Route path="/apotheke-notfall" element={<PharmacyEmergency />} />
-        <Route path="/dienstleistungen-apotheke" element={<PharmacyServices />} />
+        <Route path="/serviceleistungen-apotheke" element={<PharmacyServices />} />
 
         {/* praxis routes */}
         <Route path="/ubersicht-praxis" element={<OverviewPractice />} />

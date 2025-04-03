@@ -1255,10 +1255,13 @@ header {
         }
     }
 }
+.info-icon{
+    position: static;
+}
 .info-container{
-    top: 50%;
-    right: 80%;
-    left: unset;
+    top: 75%;
+    right: 10%;
+    left: auto;
 }
 .angebot_table_container {
 .angbot_moble_card {

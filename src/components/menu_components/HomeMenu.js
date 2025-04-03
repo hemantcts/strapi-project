@@ -23,8 +23,8 @@ const HomeMenu = ({toggleMenu}) => {
                             <li className={location.pathname === '/apotheke-notfall' ? 'active' : 'list-items'}>
                                 <Link onClick={toggleMenu} to="/apotheke-notfall">Notfall</Link>
                             </li>
-                            <li className={location.pathname === '/dienstleistungen-apotheke' ? 'active' : 'list-items'}>
-                                <Link onClick={toggleMenu} to="/dienstleistungen-apotheke">Dienstleistungen Apotheke</Link>
+                            <li className={location.pathname === '/serviceleistungen-apotheke' ? 'active' : 'list-items'}>
+                                <Link onClick={toggleMenu} to="/serviceleistungen-apotheke">Serviceleistungen Apotheke</Link>
                             </li>
                             <li className={location.pathname === '/kontakt' ? 'active' : 'list-items'}>
                                 <Link onClick={toggleMenu} to="/kontakt">Öffnungszeiten und Kontakt</Link>
