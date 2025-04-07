@@ -29,7 +29,7 @@ export const Blog = ({ data, color }) => {
     // }
 
     const getBlogs = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate[Bild][populate]=*&populate[Produktdetail][populate]=Bild.Bild&populate[Produktdetail][populate]=preis_und_zeit.icon&populate[Produktdetail][populate]=button&populate[zusatzliche_Details][populate]=erweiterbare_Daten&pagination[limit]=100&sort[0]=post_id`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate[Bild][populate]=*&populate[preis_und_zeit][populate]=icon&populate[Produktdetail][populate]=Bild.Bild&populate[Produktdetail][populate]=button&populate[zusatzliche_Details][populate]=erweiterbare_Daten&pagination[limit]=100&sort[0]=post_id`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -42,17 +42,17 @@ export const Blog = ({ data, color }) => {
         getBlogs();
     }, [])
 
-    const checkImageUploaded = (product) =>{
+    const checkImageUploaded = (product) => {
         setImageUploaded(false);
         let count = product?.Bild?.length;
-        console.log("count",count);
+        console.log("count", count);
         product?.Bild.forEach(element => {
-            if(element.Bild){
+            if (element.Bild) {
                 count--;
             }
-            console.log("count",count);
+            console.log("count", count);
         });
-        if(count !== product?.Bild?.length){
+        if (count !== product?.Bild?.length) {
             console.log("true");
             setImageUploaded(true);
         }
@@ -82,13 +82,13 @@ export const Blog = ({ data, color }) => {
 
                     checkImageUploaded(matchedBlog2?.Produktdetail);
                 }
-                else{
+                else {
                     navigate("/error"); // Redirect to trigger the catch-all error route
                 }
             }
         }
 
-        
+
     }, [blogs, title]);
 
     useEffect(() => {
@@ -97,13 +97,23 @@ export const Blog = ({ data, color }) => {
             const links = contentBox.querySelectorAll("a");
             links.forEach(link => {
                 const href = link.getAttribute("href");
-                if(href?.startsWith("https")){
+                if (href?.startsWith("https")) {
                     link.setAttribute("target", "_blank");
                     link.setAttribute("rel", "noopener noreferrer"); // Security best practice
                 }
             });
         });
     }, [blog?.Beschreibung]);
+
+    function checkData(beschreibung) {
+        if (!Array.isArray(beschreibung)) return false;
+
+        return beschreibung.some(item =>
+            Array.isArray(item.children) &&
+            item.children.some(child => typeof child.text === 'string' && child.text.trim() !== '')
+        );
+    }
+
 
     if (!blog) return null;
 
@@ -129,9 +139,22 @@ export const Blog = ({ data, color }) => {
                                 </div>
                                 {/* <div dangerouslySetInnerHTML={{ __html: blog?.description }} /> */}
 
+                                {blog?.preis_und_zeit?.length>0 && <div className="list-items mt-4">
+                                    <ul>
+                                        {blog?.preis_und_zeit?.map((item, index)=>(
+                                            <li key={index} className='mb-3 d-flex align-items-center'>
+                                                {item?.icon && <img src={`https://medzentrum.entwicklung-loewenmut.ch${item?.icon?.url}`} alt="" /> }
+                                                <span>
+                                                    <h4 className='ms-3 mb-0' style={{display:'inline-block'}}>{item?.Titel && item?.Titel}</h4>
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>}
+
                             </div>
 
-                            <div className='post_data_wrapper text-black mt-5 pt-lg-5'>
+                            <div className={`post_data_wrapper text-black ${(checkData(productDetails?.Beschreibung) || productDetails?.Titel || isImageUploaded) ? 'mt-5 pt-lg-5' : ''} `}>
                                 {productDetails?.Titel && <h2>{productDetails?.Titel}</h2>}
                                 {isImageUploaded && <div className={`grey_box`}>
                                     {productDetails?.Bild?.map((img, index) => (
@@ -139,7 +162,7 @@ export const Blog = ({ data, color }) => {
                                     ))}
                                 </div>}
                                 {/* <div dangerouslySetInnerHTML={{ __html: productDetails?.description }} /> */}
-                                {<div className={`content-box ${blog?.link_farbe}`}>
+                                {checkData(productDetails?.Beschreibung) && <div className={`content-box ${blog?.link_farbe}`}>
                                     {productDetails?.Beschreibung && <BlocksRenderer content={productDetails?.Beschreibung} />}
                                 </div>}
                                 {productDetails?.preis_und_zeit?.length>0 && <div className="list-items">

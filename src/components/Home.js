@@ -47,7 +47,16 @@ const Home = () => {
                                     <h1>{bannerData?.Haupttitel}</h1>
                                     <p>{bannerData?.Beschreibung}</p>
                                     <p>{bannerData?.Kleine_Beschreibung}</p>
-                                    <div className='btn_block justify-content-center'>
+                                    <div className="banner_btns d-flex d-lg-none my-4">
+                                        {bannerData?.Links2?.map((roundLink, index) => (
+                                            <div key={index} className={`round_btn round_${index + 1}`}>
+                                                <Link to={roundLink?.Link_URL} className="text-uppercase">
+                                                    {roundLink?.link_text}
+                                                </Link>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className='btn_block link_btn justify-content-center'>
                                         {bannerData?.Links1.map((Link, index) => (
                                             <div className={`buttn_${index + 1}`} key={index}>
                                                 <MyLink link={Link?.Link_URL} text={Link?.link_text} color={index % 2 == 0 ? 'green' : ''} />
@@ -72,7 +81,7 @@ const Home = () => {
                             }
                         </div>
                         <div className="col-12 col-lg-6 align-self-end">
-                            <div className="banner_btns">
+                            <div className="banner_btns d-none d-lg-flex">
                                 {bannerData?.Links2?.map((roundLink, index) => (
                                     <div key={index} className={`round_btn round_${index + 1}`}>
                                         <Link to={roundLink?.Link_URL} className="text-uppercase">
@@ -126,7 +135,7 @@ const Home = () => {
                         name="halfpage"
                         src="https://www.rotpunkt-apotheken.ch/iframes/halfpage-600.html"
                         width="100%"
-                        // height="900px"
+                        height="900px"
                         scrolling="no"
                         frameBorder="0"
                         style={{

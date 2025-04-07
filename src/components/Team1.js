@@ -104,7 +104,7 @@ export const Team1 = ({ data, color, change }) => {
     // }, [data, columns, change]);
 
     useEffect(() => {
-        console.log('working', change, data)
+        console.log('working', change, columns, data )
     }, [change])
 
 

@@ -14,7 +14,7 @@ export const Accordion = ({ data, color, greyy, isHtml, border }) => {
                 const links = contentBox.querySelectorAll("a");
                 links.forEach(link => {
                     const href = link.getAttribute("href");
-                    if(href?.startsWith("https")){
+                    if(href?.startsWith("http")){
                         link.setAttribute("target", "_blank");
                         link.setAttribute("rel", "noopener noreferrer"); // Security best practice
                     }

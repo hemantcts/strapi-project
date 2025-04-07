@@ -77,6 +77,13 @@ export const ShuffleComponent = ({ data, color, shuffle, staticIcons, validPage 
         setHoveredIndex(null);
     };
 
+    const isTouchDevice = () => {
+        return (
+            typeof window !== 'undefined' &&
+            ('ontouchstart' in window || navigator.maxTouchPoints > 0)
+        );
+    };
+
 
     return (
         <div className={`${color}`}>
@@ -121,8 +128,8 @@ export const ShuffleComponent = ({ data, color, shuffle, staticIcons, validPage 
                                             <li className={`${hoveredIndex === index ? 'make_hover' : 'no_hover'}`} key={index}>
                                                 {list_item?.link_url ? (
                                                     <>
-                                                        <Link onMouseEnter={() => handleMouseEnter(index)}
-                                                            onMouseLeave={handleMouseLeave} className={`${color} list_item_links`} to={filterTitle(list_item?.link_url)}>{list_item?.Titel}</Link>
+                                                        <Link onMouseEnter={!isTouchDevice() ? () => handleMouseEnter(index) : undefined}
+                                                            onMouseLeave={!isTouchDevice() ? handleMouseLeave : undefined} className={`${color} list_item_links`} to={filterTitle(list_item?.link_url)}>{list_item?.Titel}</Link>
                                                     </>
                                                 ) : (
                                                     <>
@@ -134,14 +141,14 @@ export const ShuffleComponent = ({ data, color, shuffle, staticIcons, validPage 
                                                     <>
                                                         {/* {list_item.Titel.replace("{info}", "")} */}
                                                         <button
-                                                        ref={(el) => (infoButtonRefs.current[index] = el)}
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            changeShowInfo(index);
-                                                        }}
-                                                        onMouseEnter={() => setVisibleInfoIndex2(index)}
-                                                        onMouseLeave={() => setVisibleInfoIndex2(null)}
-                                                        className="info-icon ms-2 text-start">
+                                                            ref={(el) => (infoButtonRefs.current[index] = el)}
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                changeShowInfo(index);
+                                                            }}
+                                                            onMouseEnter={() => setVisibleInfoIndex2(index)}
+                                                            onMouseLeave={() => setVisibleInfoIndex2(null)}
+                                                            className="info-icon ms-2 text-start">
                                                             <img src="https://medzentrum.entwicklung-loewenmut.ch/uploads/Union_29_1667bd2206.svg" alt="" />
                                                             {(visibleInfoIndex === index || visibleInfoIndex2 === index) && (
                                                                 <div className="info-container">
