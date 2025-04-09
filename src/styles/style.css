@@ -1516,7 +1516,7 @@ footer {
         background: rgba(238, 241, 244, 1);
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: center;
         flex-wrap: wrap;
         margin: 1rem 0;
 
@@ -2058,6 +2058,15 @@ footer {
     color: var(--bs-blue);
 }
 
+.content-box{
+    ul{
+        padding-left: 20px;
+    }
+    li{
+        list-style: disc;
+    }
+}
+
 .submenu_list li a {
     font-weight: 500 !important;
 }
@@ -2078,4 +2087,8 @@ footer {
 
 .content{
     line-height: 1.2;
+}
+
+.products-iframe{
+    height: 1026px;
 }

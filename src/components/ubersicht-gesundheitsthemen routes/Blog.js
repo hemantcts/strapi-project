@@ -42,21 +42,21 @@ export const Blog = ({ data, color }) => {
         getBlogs();
     }, [])
 
-    const checkImageUploaded = (product) => {
-        setImageUploaded(false);
-        let count = product?.Bild?.length;
-        console.log("count", count);
-        product?.Bild.forEach(element => {
-            if (element.Bild) {
-                count--;
-            }
-            console.log("count", count);
-        });
-        if (count !== product?.Bild?.length) {
-            console.log("true");
-            setImageUploaded(true);
-        }
-    }
+    // const checkImageUploaded = (product) => {
+    //     setImageUploaded(false);
+    //     let count = product?.Bild?.length;
+    //     console.log("count", count);
+    //     product?.Bild.forEach(element => {
+    //         if (element.Bild) {
+    //             count--;
+    //         }
+    //         console.log("count", count);
+    //     });
+    //     if (count !== product?.Bild?.length) {
+    //         console.log("true");
+    //         setImageUploaded(true);
+    //     }
+    // }
 
     useEffect(() => {
         // title = title.replace(/-/g, ' ');
@@ -69,7 +69,7 @@ export const Blog = ({ data, color }) => {
                 setProductDetails(matchedBlog?.Produktdetail);
                 setExtraDetails(matchedBlog?.zusatzliche_Details);
 
-                checkImageUploaded(matchedBlog?.Produktdetail);
+                // checkImageUploaded(matchedBlog?.Produktdetail);
             } else {
                 title = title.replace(/-/g, ' ');
                 const matchedBlog2 = blogs?.find((blog) => blog.Titel.toString() === title);
@@ -80,7 +80,7 @@ export const Blog = ({ data, color }) => {
                     setProductDetails(matchedBlog2?.Produktdetail);
                     setExtraDetails(matchedBlog2?.zusatzliche_Details);
 
-                    checkImageUploaded(matchedBlog2?.Produktdetail);
+                    // checkImageUploaded(matchedBlog2?.Produktdetail);
                 }
                 else {
                     navigate("/error"); // Redirect to trigger the catch-all error route
@@ -124,7 +124,7 @@ export const Blog = ({ data, color }) => {
             <Navbar />
 
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton buttonText={blog?.Titel} activePage='Gesundheitsthemen' />
+                <MyButton buttonText={blog?.Titel} activePage='Gesundheitsthemen' change={true} />
             </section>
             <section className='wi_full py_3 blog_detail'>
                 <div className='container-xxl'>
@@ -154,13 +154,22 @@ export const Blog = ({ data, color }) => {
 
                             </div>
 
-                            <div className={`post_data_wrapper text-black ${(checkData(productDetails?.Beschreibung) || productDetails?.Titel || isImageUploaded) ? 'mt-5 pt-lg-5' : ''} `}>
+                            <div className={`post_data_wrapper text-black ${(checkData(productDetails?.Beschreibung) || productDetails?.Titel ) ? 'pt-lg-5' : ''} `}>
                                 {productDetails?.Titel && <h2>{productDetails?.Titel}</h2>}
-                                {isImageUploaded && <div className={`grey_box`}>
-                                    {productDetails?.Bild?.map((img, index) => (
-                                        img?.Bild && <img key={index} src={`https://medzentrum.entwicklung-loewenmut.ch${img?.Bild?.url}`} alt="" />
-                                    ))}
-                                </div>}
+                                    {productDetails?.Bild && 
+
+                                        <div className={`row grey_box`}>
+                                            {productDetails?.Bild?.Bild && <div className="col-md-6 text-center">
+                                                {productDetails?.Bild?.Bild && <img src={`https://medzentrum.entwicklung-loewenmut.ch${productDetails?.Bild?.Bild?.url}`} alt="" />}
+                                            </div>}
+
+                                            {productDetails?.Bild?.Bildtitel && <div className="col-md-5 text-start">
+                                                <p style={{color:'var(--bs-blue)', margin:'0'}}>{productDetails?.Bild?.Bildtitel}</p>
+                                            </div>}
+
+                                        </div>
+                                    
+                                    }
                                 {/* <div dangerouslySetInnerHTML={{ __html: productDetails?.description }} /> */}
                                 {checkData(productDetails?.Beschreibung) && <div className={`content-box ${blog?.link_farbe}`}>
                                     {productDetails?.Beschreibung && <BlocksRenderer content={productDetails?.Beschreibung} />}
