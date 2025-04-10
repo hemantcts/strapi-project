@@ -53,7 +53,7 @@ export const MyButton = ({ activePage, buttonText, color, change }) => {
         <div className="container-xxl">
             <div className='all_sec_button'>
                 <span className='icon-img me-2'><img src={iconImg} alt="" /></span>
-                <span className={`${color ? 'green' : 'blue'}-heading`}><Link to={linkGoTo(activePage)}>{activePage && `${!change ? formatText(activePage) : activePage} | `}</Link></span> &nbsp;{formatText(buttonText)}
+                <span className={`${color ? 'green' : 'blue'}-heading`}><Link to={linkGoTo(activePage)}>{activePage && `${formatText(activePage)} | `}</Link></span> &nbsp;{!change ? formatText(buttonText) : buttonText}
             </div>
         </div>
     )

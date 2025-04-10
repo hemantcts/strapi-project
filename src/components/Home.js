@@ -102,7 +102,7 @@ const Home = () => {
                                 <img className="heart_img" src={`https://medzentrum.entwicklung-loewenmut.ch${heartData?.linke_Seite?.Bild?.url}`} alt="" />
                                 <div className="content_wrap">
                                     <div className="sub_title">{heartData?.linke_Seite?.kleine_Uberschrift}</div>
-                                    <h2>{heartData?.linke_Seite?.grosse_Uberschrift}</h2>
+                                    <h2 style={{lineHeight:'1.1'}}>{heartData?.linke_Seite?.grosse_Uberschrift}</h2>
                                     {heartData?.linke_Seite?.Text && <BlocksRenderer content={heartData?.linke_Seite?.Text} />}
                                     {/* <p>{heartData?.linke_Seite?.Text}</p> */}
                                     <div className='btn_block'>
@@ -134,7 +134,7 @@ const Home = () => {
                         className='products-iframe'
                         id="halfpage"
                         name="halfpage"
-                        src="https://www.rotpunkt-apotheken.ch/iframes/halfpage-600.html"
+                        src="https://www.rotpunkt-apotheken.ch/aktionen-uebersicht?"
                         width="100%"
                         // height="900px"
                         scrolling="no"

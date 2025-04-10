@@ -44,6 +44,10 @@ export const AngebotDesktop = ({ tableData, color }) => {
                 </div>
             </div>
 
+            
+
         </div>
+
+        
     )
 }

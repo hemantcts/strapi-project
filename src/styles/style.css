@@ -73,6 +73,11 @@ h1 {
     font-size: var(--bs-h1);
     margin-bottom: 15px;
     line-height: 1.2;
+
+    hyphens: auto;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 h2 {
@@ -122,6 +127,10 @@ p {
     font-size: inherit;
     color: inherit;
     line-height: 1.2;
+}
+
+ul li{
+    line-height: 1.3;
 }
 
 a {
@@ -821,7 +830,7 @@ footer {
         content: '';
         position: absolute;
         left: 0;
-        top: 4px;
+        top: 2px;
         /* transform: translateY(-50%); */
         width: 22px;
         height: 22px;
@@ -2091,4 +2100,8 @@ footer {
 
 .products-iframe{
     height: 1026px;
+}
+
+.h-img{
+    width: 27px;
 }

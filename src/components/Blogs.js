@@ -12,7 +12,7 @@ export const Blogs = ({ blogs, colors, selectedCategory }) => {
         : blogs; // Show all if no category selected
 
     const filterTitle = (title)=>{
-        return title.replace(/\s+/g, '-');
+        return title.toLowerCase().replace(/\s+/g, '-');
     }
 
     if (!Array.isArray(filteredBlogs)) {

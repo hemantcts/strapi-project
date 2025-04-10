@@ -61,7 +61,7 @@ export const Blog = ({ data, color }) => {
     useEffect(() => {
         // title = title.replace(/-/g, ' ');
         if (blogs?.length > 0 && title) {
-            const matchedBlog = blogs?.find((blog) => blog.Titel.toString() === title);
+            const matchedBlog = blogs?.find((blog) => blog.Titel.toString().toLowerCase() === title);
             console.log(blog);
             // setBlog(matchedBlog);
             if (matchedBlog) {
@@ -72,7 +72,7 @@ export const Blog = ({ data, color }) => {
                 // checkImageUploaded(matchedBlog?.Produktdetail);
             } else {
                 title = title.replace(/-/g, ' ');
-                const matchedBlog2 = blogs?.find((blog) => blog.Titel.toString() === title);
+                const matchedBlog2 = blogs?.find((blog) => blog.Titel.toString().toLowerCase() === title);
                 console.log(blog);
                 // setBlog(matchedBlog);
                 if (matchedBlog2) {
@@ -112,6 +112,10 @@ export const Blog = ({ data, color }) => {
             Array.isArray(item.children) &&
             item.children.some(child => typeof child.text === 'string' && child.text.trim() !== '')
         );
+    }
+
+    const filterTitle = (title)=>{
+        return title.toLowerCase().replace(/\s+/g, '-');
     }
 
 
@@ -154,7 +158,7 @@ export const Blog = ({ data, color }) => {
 
                             </div>
 
-                            <div className={`post_data_wrapper text-black ${(checkData(productDetails?.Beschreibung) || productDetails?.Titel ) ? 'pt-lg-5' : ''} `}>
+                            <div className={`post_data_wrapper text-black ${(checkData(productDetails?.Beschreibung) || productDetails?.Titel ) ? 'pt-lg-4' : ''} `}>
                                 {productDetails?.Titel && <h2>{productDetails?.Titel}</h2>}
                                     {productDetails?.Bild && 
 
@@ -186,14 +190,14 @@ export const Blog = ({ data, color }) => {
                                         ))}
                                     </ul>
                                 </div>}
-                                <div className='btn_block mt-5'>
+                                <div className='btn_block mt-4'>
                                     {productDetails?.button && <a href={productDetails?.button?.Link_URL} target={productDetails?.offnen_in_einem_neuen_Tab ? "_blank" : "_self"} rel={productDetails?.offnen_in_einem_neuen_Tab ? "noreferrer noopener" : undefined} className={`button fill_btn ${productDetails?.button_farbe}`}>{productDetails?.button?.link_text} <img src={arrowImg} alt="#" /></a>}
 
                                     {/* <a href='https://www.rotpunkt-apotheken.ch/aktionen' target='_blank' rel="noreferrer" className="button fill_btn">ALLE AKTIONEN  <img src={arrowImg} alt="#" /></a> */}
                                 </div>
                             </div>
 
-                            <div className='post_data_wrapper text-black mt-5 pt-lg-5'>
+                            <div className='post_data_wrapper text-black pt-lg-4'>
                                 <h1>{extraDetails?.Uberschrift}</h1>
                                 <Accordion data={extraDetails?.erweiterbare_Daten} greyy={true} />
                             </div>
@@ -214,7 +218,7 @@ export const Blog = ({ data, color }) => {
                                             <div key={index} className='rb_item'>
                                                 <div className='rb_itm_iner'>
                                                     <div className='rbitm_img'>
-                                                        <Link to={`/${blog?.Titel}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt='' /></Link>
+                                                        <Link to={`/${filterTitle(blog?.Titel)}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt='' /></Link>
                                                     </div>
                                                     <div className='rbitm_content text-black'>
                                                         <h4><Link to={`/${blog?.Titel}`}>{blog?.Titel}</Link></h4>

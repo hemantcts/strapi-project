@@ -1140,6 +1140,9 @@ footer {
 .link_btn {
     margin-bottom: 0;
 }
+.h-img{
+    width: 22px;
+}
 }
 
 @media (max-width: 767px){
@@ -1439,6 +1442,24 @@ header {
     :root {
         --bs-h1: 25px;
     }
+}
+
+@media (min-width: 1400px) and (max-width: 1600px) {
+    .shuffle_container {
+        .content_box.icons ul li:before {
+            top: 2px;
+        }
+    }
+
+}
+
+@media (min-width: 1600px) {
+    .shuffle_container {
+        .content_box.icons ul li:before {
+            top: 6px;
+        }
+    }
+
 }
 
 

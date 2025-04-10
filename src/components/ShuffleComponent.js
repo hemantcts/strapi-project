@@ -18,6 +18,7 @@ export const ShuffleComponent = ({ data, color, shuffle, staticIcons, validPage 
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const containerRefs = useRef([]);
     const infoButtonRefs = useRef([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const setEqualHeight = () => {
@@ -42,7 +43,7 @@ export const ShuffleComponent = ({ data, color, shuffle, staticIcons, validPage 
         setEqualHeight();
         window.addEventListener('resize', setEqualHeight);
         return () => window.removeEventListener('resize', setEqualHeight);
-    }, [data]);
+    }, [data, loading]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -66,7 +67,7 @@ export const ShuffleComponent = ({ data, color, shuffle, staticIcons, validPage 
     };
 
     const filterTitle = (title) => {
-        return title.replace(/\s+/g, '-');
+        return title.toLowerCase().replace(/\s+/g, '-');
     }
 
     const handleMouseEnter = (index) => {
@@ -115,7 +116,7 @@ export const ShuffleComponent = ({ data, color, shuffle, staticIcons, validPage 
                             ) : Array.isArray(services?.Bild) && services?.Bild?.length === 1 ? (
                                 <img src={`https://medzentrum.entwicklung-loewenmut.ch${services?.Bild[0]?.Bild?.url}`} alt="Service" />
                             ) : (
-                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${services?.Bild?.url}`} alt="Service" />
+                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${services?.Bild?.url}`} alt="Service" onLoad={()=>setLoading(!loading)} />
                             )}
                         </div>
                         <div className='col-12 col-lg-6 content_col'>
