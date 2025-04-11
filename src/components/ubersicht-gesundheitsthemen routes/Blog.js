@@ -123,7 +123,7 @@ export const Blog = ({ data, color }) => {
 
 
     return (
-        <div className='single-blog'>
+        <div className='single-blog shuffle_container '>
 
             <Navbar />
 
@@ -138,7 +138,7 @@ export const Blog = ({ data, color }) => {
                                 <h1>{blog?.Titel}</h1>
                                 <img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt="" className='w-100 my-3 mb-lg-4' />
                                 <h3>{blog?.Titel}</h3>
-                                <div className={`content-box ${blog?.link_farbe}`}>
+                                <div className={`content-box ${blog?.link_farbe} ${blog?.icons ? 'icons' : 'no_icons'}`}>
                                     {blog?.Beschreibung && <BlocksRenderer content={blog?.Beschreibung} />}
                                 </div>
                                 {/* <div dangerouslySetInnerHTML={{ __html: blog?.description }} /> */}
@@ -175,7 +175,7 @@ export const Blog = ({ data, color }) => {
                                     
                                     }
                                 {/* <div dangerouslySetInnerHTML={{ __html: productDetails?.description }} /> */}
-                                {checkData(productDetails?.Beschreibung) && <div className={`content-box ${blog?.link_farbe}`}>
+                                {checkData(productDetails?.Beschreibung) && <div className={`content-box ${blog?.link_farbe} ${productDetails?.icons ? 'icons' : 'no_icons'}`}>
                                     {productDetails?.Beschreibung && <BlocksRenderer content={productDetails?.Beschreibung} />}
                                 </div>}
                                 {productDetails?.preis_und_zeit?.length>0 && <div className="list-items">
@@ -199,7 +199,7 @@ export const Blog = ({ data, color }) => {
 
                             <div className='post_data_wrapper text-black pt-lg-4'>
                                 <h1>{extraDetails?.Uberschrift}</h1>
-                                <Accordion data={extraDetails?.erweiterbare_Daten} greyy={true} />
+                                <Accordion data={extraDetails?.erweiterbare_Daten} greyy={true} customClass='content-box' icons={extraDetails?.icons}/>
                             </div>
 
                         </div>

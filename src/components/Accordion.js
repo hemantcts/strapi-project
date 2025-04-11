@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import MailchimpForm from './MailchimpForm';
 
-export const Accordion = ({ data, color, greyy, isHtml, border }) => {
+export const Accordion = ({ data, color, greyy, isHtml, border, customClass, icons }) => {
     const isHtml2 = (str) => {
         const doc = new DOMParser().parseFromString(str, "text/html");
         return Array.from(doc.body.childNodes).some(node => node.nodeType === 1);
@@ -23,7 +23,7 @@ export const Accordion = ({ data, color, greyy, isHtml, border }) => {
         }, [data]);
 
     return (
-        <div className={`accordion_wrapper ${color}`}>
+        <div className={`accordion_wrapper ${color} ${customClass} ${icons ? 'icons' : 'no_icons'}`}>
             <div className={`accordion ${greyy === true ? 'greyy' : ''}`} id="accordion" role='tablist' aria-multiselectable='true'>
                 {data?.map((item, index) => (
                     <div className={`${border ? 'border-0' : ''} card mb-3`} key={item?.id}>
