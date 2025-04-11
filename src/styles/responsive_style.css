@@ -436,7 +436,7 @@ header {
     
 @media (min-width: 1600px){
 .container-xxl {
-    max-width: 1560px;
+    max-width: 500vh;
 }
 :root {
     --bs-h1: 60px;

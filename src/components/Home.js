@@ -130,26 +130,29 @@ const Home = () => {
                 {/* <ProductsSection productsData={productsData} /> */}
 
                 <div className="container">
-                    <iframe
-                        className='products-iframe'
-                        id="halfpage"
-                        name="halfpage"
-                         src="https://www.rotpunkt-apotheken.ch/iframes/halfpage-600.html"
-                        width="100%"
-                        // height="900px"
-                        scrolling="no"
-                        frameBorder="0"
-                        style={{
-                            verticalAlign: "top",
-                            borderStyle: "hidden",
-                            border: "none",
-                            overflow: "hidden",
-                            margin: 0,
-                            padding: 0,
-                        }}
-                    >
-                        Leider unterstützt Ihr Browser keine Inline Frames.
-                    </iframe>
+                    <div className="test" style={{height:"100vh", overflow:"auto"}}>
+
+                        <iframe
+                            className='products-iframe'
+                            id="halfpage"
+                            name="halfpage"
+                            src="https://www.rotpunkt-apotheken.ch/iframes/halfpage-600.html"
+                            width="100%"
+                            // height="900px"
+                            scrolling="no"
+                            frameBorder="0"
+                            style={{
+                                verticalAlign: "top",
+                                borderStyle: "hidden",
+                                border: "none",
+                                overflow: "hidden",
+                                margin: 0,
+                                padding: 0,
+                            }}
+                        >
+                            Leider unterstützt Ihr Browser keine Inline Frames.
+                        </iframe>
+                    </div>
                 </div>
 
             </section>
