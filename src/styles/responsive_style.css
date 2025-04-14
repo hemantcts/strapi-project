@@ -1182,6 +1182,24 @@ footer {
         margin-top: 1.5rem;
     }
 }
+/* .post_content{
+    p{
+        margin-bottom: 0;
+    }
+} */
+
+.blue_btn:after, .green_btn:after {
+    height: 100%;
+    opacity: 1;
+}
+.blue_btn, .green_btn {
+    color: #fff;
+
+    img {
+        filter: brightness(0) invert(1);
+    }
+}
+
 }
 
 @media (max-width: 575px){

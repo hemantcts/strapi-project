@@ -130,7 +130,7 @@ const Home = () => {
                 {/* <ProductsSection productsData={productsData} /> */}
 
                 <div className="container">
-                    <div className="test" style={{height:"100vh", overflow:"auto"}}>
+                    <div className="test">
 
                         <iframe
                             className='products-iframe'
@@ -139,15 +139,15 @@ const Home = () => {
                             src="https://www.rotpunkt-apotheken.ch/iframes/halfpage-600.html"
                             width="100%"
                             // height="900px"
-                            scrolling="no"
+                            //scrolling="no"
                             frameBorder="0"
                             style={{
-                                verticalAlign: "top",
-                                borderStyle: "hidden",
-                                border: "none",
-                                overflow: "hidden",
-                                margin: 0,
-                                padding: 0,
+                                // verticalAlign: "top",
+                                // borderStyle: "hidden",
+                                // border: "none",
+                                // overflow: "hidden",
+                                // margin: 0,
+                                // padding: 0,
                             }}
                         >
                             Leider unterstützt Ihr Browser keine Inline Frames.

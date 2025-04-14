@@ -167,7 +167,7 @@ export const Blog = ({ data, color }) => {
                                                 {productDetails?.Bild?.Bild && <img src={`https://medzentrum.entwicklung-loewenmut.ch${productDetails?.Bild?.Bild?.url}`} alt="" />}
                                             </div>}
 
-                                            {productDetails?.Bild?.Bildtitel && <div className="col-md-5 text-start">
+                                            {productDetails?.Bild?.Bildtitel && <div className="col-md-5 mb-md-0 mb-4 text-start">
                                                 <p style={{color:'var(--bs-blue)', margin:'0'}}>{productDetails?.Bild?.Bildtitel}</p>
                                             </div>}
 
