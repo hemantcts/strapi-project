@@ -19,7 +19,7 @@ const PraxisTeam = () => {
   const [pageColor, setPageColor] = useState('blue');
 
   const getPageData = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/praxis-team?populate[Bannerbereich][populate]=Banner_Bild&populate[Grunderbreich][populate]=*&populate[Grunderdaten][populate]=Bild&populate[Teamdaten][populate]=Typen`)
+    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/praxis-team?populate[Bannerbereich][populate]=Banner_Bild&populate[Bannerbereich][populate]=Mobile_Banner_Bild&populate[Grunderbreich][populate]=*&populate[Grunderdaten][populate]=Bild&populate[Teamdaten][populate]=Typen`)
     const data = await response.json();
     console.log(data);
     if (data) {
@@ -72,7 +72,7 @@ const PraxisTeam = () => {
       <Navbar activeLink={activeLink} />
 
       <section className='inner_banner_Section'>
-        <BannerSection bannerData={bannerData} color={pageColor} />
+        <BannerSection bannerData={bannerData} color={pageColor} teamBanner={true} />
       </section>
 
       <section className='breadcrumb_sec wi_full mt_3'>
@@ -97,7 +97,7 @@ const PraxisTeam = () => {
             <ul className='nav nav-tabs' role='tablist'>
               {teamData?.Typen?.map((type, index) => (
                 <li key={index} className={`nav-item tab${index + 1}`}>
-                  <a className={`nav-link ${index === 1 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index + 1}`} role="tab" onClick={()=>{changeColor(index + 1)}}>{type?.link_text
+                  <a className={`nav-link ${index === 1 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index + 1}`} role="tab" onClick={()=>{changeColor(index + 1)}}>{type?.Link_Text
                   }</a>
                 </li>
               ))}

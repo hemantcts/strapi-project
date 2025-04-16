@@ -19,7 +19,7 @@ const Home = () => {
 
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/homepage?populate[Bannerbereich][populate]=*&populate[Herz_Bereich][populate]=linke_Seite.Bild&populate[Herz_Bereich][populate]=linke_Seite.Link&populate[Herz_Bereich][populate]=rechte_Seite.Link&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=partners.patner_bild&populate[Anzeigenbereich][populate]=partners.farbige_Bild`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/homepage?populate[Bannerbereich][populate]=*&populate[Herz_Bereich][populate]=linke_Seite.Bild&populate[Herz_Bereich][populate]=linke_Seite.Link&populate[Herz_Bereich][populate]=rechte_Seite.Link&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=Partners.patner_bild&populate[Anzeigenbereich][populate]=Partners.farbige_Bild`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -51,7 +51,7 @@ const Home = () => {
                                         {bannerData?.Links2?.map((roundLink, index) => (
                                             <div key={index} className={`round_btn round_${index + 1}`}>
                                                 <Link to={roundLink?.Link_URL} className="text-uppercase">
-                                                    {roundLink?.link_text}
+                                                    {roundLink?.Link_Text}
                                                 </Link>
                                             </div>
                                         ))}
@@ -59,7 +59,7 @@ const Home = () => {
                                     <div className='btn_block link_btn justify-content-center'>
                                         {bannerData?.Links1.map((Link, index) => (
                                             <div className={`buttn_${index + 1}`} key={index}>
-                                                <MyLink link={Link?.Link_URL} text={Link?.link_text} color={index % 2 == 0 ? 'green' : ''} />
+                                                <MyLink link={Link?.Link_URL} text={Link?.Link_Text} color={index % 2 == 0 ? 'green' : ''} />
                                             </div>
                                         ))}
                                     </div>
@@ -72,7 +72,7 @@ const Home = () => {
                                     <div className='btn_block justify-content-center'>
                                         {bannerData?.Links1.map((Link, index) => (
                                             <div className={`buttn_${index + 1}`} key={index}>
-                                                <MyLink link={Link?.Link_URL} text={Link?.link_text} color={index % 2 == 0 ? 'green' : ''} />
+                                                <MyLink link={Link?.Link_URL} text={Link?.Link_Text} color={index % 2 == 0 ? 'green' : ''} />
                                             </div>
                                         ))}
                                     </div>
@@ -85,7 +85,7 @@ const Home = () => {
                                 {bannerData?.Links2?.map((roundLink, index) => (
                                     <div key={index} className={`round_btn round_${index + 1}`}>
                                         <Link to={roundLink?.Link_URL} className="text-uppercase">
-                                            {roundLink?.link_text}
+                                            {roundLink?.Link_Text}
                                         </Link>
                                     </div>
                                 ))}
@@ -106,7 +106,7 @@ const Home = () => {
                                     {heartData?.linke_Seite?.Text && <BlocksRenderer content={heartData?.linke_Seite?.Text} />}
                                     {/* <p>{heartData?.linke_Seite?.Text}</p> */}
                                     <div className='btn_block'>
-                                        <MyLink link={heartData?.linke_Seite?.Link?.Link_URL} text={heartData?.linke_Seite?.Link?.link_text} />
+                                        <MyLink link={heartData?.linke_Seite?.Link?.Link_URL} text={heartData?.linke_Seite?.Link?.Link_Text} />
                                     </div>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@ const Home = () => {
                                     <h3 className='font-volk h3_large'>{item?.grosse_Uberschrift ?? "Default Large Heading"}</h3>
                                     {item?.Text && <BlocksRenderer content={item?.Text} />}
                                     <div className="btn_block">
-                                        <MyLink link={item?.Link?.Link_URL} text={item?.Link?.link_text} />
+                                        <MyLink link={item?.Link?.Link_URL} text={item?.Link?.Link_Text} />
                                     </div>
                                 </div>
                             ))}

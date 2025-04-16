@@ -74,7 +74,7 @@ const ServicesSection = ({ servicesData, color }) => {
                                     {service?.Beschreibung && <BlocksRenderer content={service?.Beschreibung} />}
                                 </div>
                                 <div class="btn_block">
-                                    <MyLink className="button blue_btn text-uppercase" link={service?.Link?.Link_URL} text={service?.Link?.link_text} color={color} />
+                                    <MyLink className="button blue_btn text-uppercase" link={service?.Link?.Link_URL} text={service?.Link?.Link_Text} color={color} />
                                 </div>
                             </div>
                         </div>

@@ -98,7 +98,7 @@ const ProductsSection = ({ productsData, color }) => {
                                             <ul className='p-0 mb-5'>
                                                 <li>
                                                     {/* <Link to='/' className='option-link'>BESTELLEN <i className="fa-solid fa-arrow-right option-link-icon" /></Link> */}
-                                                    <MyLink link={product?.zusatzliche_Details?.Link?.Link_URL} text={product?.zusatzliche_Details?.Link?.link_text} color={color} />
+                                                    <MyLink link={product?.zusatzliche_Details?.Link?.Link_URL} text={product?.zusatzliche_Details?.Link?.Link_Text} color={color} />
                                                 </li>
                                             </ul>
 
@@ -114,8 +114,8 @@ const ProductsSection = ({ productsData, color }) => {
                     )
                 })}
             </div>
-            {productsData?.Button?.link_text && <div className="products_sec_btn text-center">
-                <a href={productsData?.Button?.Link_URL} target='_blank' className="products-main-btn">{productsData?.Button?.link_text} <i><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Vector_9_a374977eb9.svg' alt="" /></i></a>
+            {productsData?.Button?.Link_Text && <div className="products_sec_btn text-center">
+                <a href={productsData?.Button?.Link_URL} target='_blank' className="products-main-btn">{productsData?.Button?.Link_Text} <i><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Vector_9_a374977eb9.svg' alt="" /></i></a>
             </div>}
         </div>
     )

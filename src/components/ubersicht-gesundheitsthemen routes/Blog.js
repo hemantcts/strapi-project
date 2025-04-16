@@ -159,7 +159,7 @@ export const Blog = ({ data, color }) => {
                             </div>
 
                             <div className='btn_block mt-4'>
-                                {productDetails?.button && <a href={productDetails?.button?.Link_URL} target={productDetails?.offnen_in_einem_neuen_Tab ? "_blank" : "_self"} rel={productDetails?.offnen_in_einem_neuen_Tab ? "noreferrer noopener" : undefined} className={`button fill_btn ${productDetails?.button_farbe}`}>{productDetails?.button?.link_text} <img src={arrowImg} alt="#" /></a>}
+                                {productDetails?.button && <a href={productDetails?.button?.Link_URL} target={productDetails?.offnen_in_einem_neuen_Tab ? "_blank" : "_self"} rel={productDetails?.offnen_in_einem_neuen_Tab ? "noreferrer noopener" : undefined} className={`button fill_btn ${productDetails?.button_farbe}`}>{productDetails?.button?.Link_Text} <img src={arrowImg} alt="#" /></a>}
 
                                 {/* <a href='https://www.rotpunkt-apotheken.ch/aktionen' target='_blank' rel="noreferrer" className="button fill_btn">ALLE AKTIONEN  <img src={arrowImg} alt="#" /></a> */}
                             </div>
@@ -168,20 +168,16 @@ export const Blog = ({ data, color }) => {
                                 {productDetails?.Titel && <h2>{productDetails?.Titel}</h2>}
                                 {productDetails?.Bild &&
 
-                                    (productDetails?.Bild?.Bild && <div className='wi_full nuitrition_diagnos'>
-                                        <div className='container-xxl'>
-                                            <div className='row align-items-center'>
-                                                <div className='col-lg-8 content_col'>
-                                                    {productDetails?.Bild?.Bildtitel && <div className="col-md-5 mb-md-0 mb-4 text-start">
-                                                        <p style={{ color: 'var(--bs-blue)', margin: '0' }}>{productDetails?.Bild?.Bildtitel}</p>
-                                                    </div>}
-                                                </div>
-                                                <div className='col-lg-4 img_col'>
-                                                    {productDetails?.Bild?.Bild && <img src={`https://medzentrum.entwicklung-loewenmut.ch${productDetails?.Bild?.Bild?.url}`} alt="" />}
-                                                </div>
+                                    <div className='nuitrition_diagnos'>
+                                        <div className='row align-items-center'>
+                                            {productDetails?.Bild?.Bildtitel && <div className="col-lg-8 content_col">
+                                                <p style={{color:'var(--bs-blue)', margin:'0'}}>{productDetails?.Bild?.Bildtitel}</p>
+                                            </div>}
+                                            <div className='col-lg-4 img_col'>
+                                                {productDetails?.Bild?.Bild && <img src={`https://medzentrum.entwicklung-loewenmut.ch${productDetails?.Bild?.Bild?.url}`} alt="" />}
                                             </div>
                                         </div>
-                                    </div>)
+                                    </div>
 
                                     // <div className={`row grey_box`}>
                                     //     {productDetails?.Bild?.Bild && <div className="col-md-6 text-center">

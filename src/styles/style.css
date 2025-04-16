@@ -503,6 +503,22 @@ footer {
         }
     }
 }
+.team_banner {
+    position: relative;
+    img.team_bnr_img {
+        width: 67%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .banner_content {
+        max-width: 420px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
 
 .max_title p {
     max-width: 1000px;
@@ -1780,6 +1796,22 @@ footer {
         }
         .nav-item a{
             font-size: var(--bs-fs18);
+        }
+    }
+}
+
+.post_data_wrapper {
+    .nuitrition_diagnos {
+        margin-top: 2rem;
+        padding: 0 1.5rem;
+        margin-bottom: 1rem;
+        .content_col {
+            padding-top: 1.25rem;
+            padding-bottom: 1.25rem;
+        }
+        .img_col img {
+            height: calc(100% + 3rem);
+            margin-top: 0;
         }
     }
 }

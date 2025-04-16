@@ -19,7 +19,7 @@ const Ernahrungsdiagnostik = () => {
     const [adData, setAdData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/ubersicht-ernaehrungsdiagnostik?populate[Bannerbereich][populate]=Banner_Bild&populate[Gesundheitsbereich][populate]=*&populate[Sonderangebotsbereich][populate]=Bild&populate[Sonderangebotsbereich][populate]=erweiterbare_Daten&populate[Autorenbereich][populate]=Bild&populate[Anzeigenbereich][populate]=partners.patner_bild&populate[Anzeigenbereich][populate]=partners.farbige_Bild`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/ubersicht-ernaehrungsdiagnostik?populate[Bannerbereich][populate]=Banner_Bild&populate[Gesundheitsbereich][populate]=*&populate[Sonderangebotsbereich][populate]=Bild&populate[Sonderangebotsbereich][populate]=erweiterbare_Daten&populate[Autorenbereich][populate]=Bild&populate[Anzeigenbereich][populate]=Partners.patner_bild&populate[Anzeigenbereich][populate]=Partners.farbige_Bild`)
         const data = await response.json();
         console.log(data);
         if (data) {

@@ -18,7 +18,7 @@ export const PartnersSection = ({ adData }) => {
                 <h2 className='text-white'>{adData?.Uberschrift}</h2>
             </div>
             <div className="partner_wrap row align-items-center justify-content-around">
-                {adData?.partners?.map((partner, index) => (
+                {adData?.Partners?.map((partner, index) => (
                     <div
                         key={index} className="img_item"
                         onMouseEnter={() => handleMouseEnter(index)}
