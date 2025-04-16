@@ -102,7 +102,10 @@ const Home = () => {
                                 <img className="heart_img" src={`https://medzentrum.entwicklung-loewenmut.ch${heartData?.linke_Seite?.Bild?.url}`} alt="" />
                                 <div className="content_wrap">
                                     <div className="sub_title">{heartData?.linke_Seite?.kleine_Uberschrift}</div>
-                                    <h2 style={{lineHeight:'1.1'}}>{heartData?.linke_Seite?.grosse_Uberschrift}</h2>
+                                    <h2 style={{lineHeight:'1.1'}}>
+                                        {heartData?.linke_Seite?.grosse_Uberschrift?.substring(0, heartData?.linke_Seite?.grosse_Uberschrift?.length-1)}
+                                        <sup>{heartData?.linke_Seite?.grosse_Uberschrift[heartData?.linke_Seite?.grosse_Uberschrift?.length-1]}</sup>
+                                    </h2>
                                     {heartData?.linke_Seite?.Text && <BlocksRenderer content={heartData?.linke_Seite?.Text} />}
                                     {/* <p>{heartData?.linke_Seite?.Text}</p> */}
                                     <div className='btn_block'>
