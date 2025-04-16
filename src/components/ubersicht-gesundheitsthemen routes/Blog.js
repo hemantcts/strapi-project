@@ -168,21 +168,16 @@ export const Blog = ({ data, color }) => {
                                 {productDetails?.Titel && <h2>{productDetails?.Titel}</h2>}
                                     {productDetails?.Bild && 
 
-                                    <div className='wi_full nuitrition_diagnos'>
-                                                    <div className='container-xxl'>
-                                                        <div className='row align-items-center'>
-                                                            <div className='col-lg-8 content_col'>
-                                                            {productDetails?.Bild?.Bildtitel && <div className="col-md-5 mb-md-0 mb-4 text-start">
+                                    <div className='nuitrition_diagnos'>
+                                        <div className='row align-items-center'>
+                                            {productDetails?.Bild?.Bildtitel && <div className="col-lg-8 content_col">
                                                 <p style={{color:'var(--bs-blue)', margin:'0'}}>{productDetails?.Bild?.Bildtitel}</p>
                                             </div>}
-                                                                {/* <blockquote dangerouslySetInnerHTML={{ __html: authorData?.Beschreibung}} /> */}
-                                                            </div>
-                                                            <div className='col-lg-4 img_col'>
-                                                            {productDetails?.Bild?.Bild && <img src={`https://medzentrum.entwicklung-loewenmut.ch${productDetails?.Bild?.Bild?.url}`} alt="" />}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div className='col-lg-4 img_col'>
+                                                {productDetails?.Bild?.Bild && <img src={`https://medzentrum.entwicklung-loewenmut.ch${productDetails?.Bild?.Bild?.url}`} alt="" />}
+                                            </div>
+                                        </div>
+                                    </div>
 
                                         // <div className={`row grey_box`}>
                                         //     {productDetails?.Bild?.Bild && <div className="col-md-6 text-center">

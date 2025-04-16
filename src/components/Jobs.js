@@ -15,7 +15,7 @@ export const Jobs = () => {
     const [jobsData, setJobsData] = useState([]);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/job?populate[Bannerbereich][populate]=Banner_Bild&populate[Jobbereich]=*&populate[Kein_Job]=*`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/job?populate[Bannerbereich][populate]=Banner_Bild&populate[Bannerbereich][populate]=Mobile_Banner_Bild&populate[Jobbereich]=*&populate[Kein_Job]=*`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -50,7 +50,7 @@ export const Jobs = () => {
             <Navbar activeLink={activeLink} />
             
             <section className='inner_banner_Section'>
-                <BannerSection bannerData={bannerData} color='blue' />
+                <BannerSection bannerData={bannerData} color='blue' teamBanner={true} />
             </section>
             <section className='breadcrumb_sec wi_full mt_3'>
                 <MyButton buttonText={bannerData?.Titel} />

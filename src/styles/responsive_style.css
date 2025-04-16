@@ -503,14 +503,22 @@ header {
 }
 }
 .inner_banner {
-.banner_content {
-    width: calc(100% - 60px);
-    margin-left: 60px;
-    &:before {
-        left: -60px;
-        width: 60px;
+    height: 650px;
+    padding-bottom: 4rem !important;
+    .banner_content {
+        width: calc(100% - 60px);
+        margin-left: 60px;
+        max-width: 900px;
+        &:before {
+            left: -60px;
+            width: 60px;
+        }
     }
 }
+.team_banner {
+    .banner_content {
+        max-width: 500px;
+    }
 }
 .heart_sec {
     .heart_block .content_wrap {
@@ -556,13 +564,6 @@ footer .col-lg-3.ftr_block {
         .button {
             padding: 10px 12px !important;
         }
-    }
-}
-.inner_banner {
-    height: 650px;
-    padding-bottom: 4rem !important;
-    .banner_content {
-        max-width: 900px;
     }
 }
 .products-sec {
@@ -629,6 +630,13 @@ footer .col-lg-3.ftr_block {
         padding: 0 4rem;
     }
 }
+.post_data_wrapper {
+    .nuitrition_diagnos {
+        .img_col {
+            padding: 0 .75rem;
+        }
+    }
+}
 .odd.shuffle_item_wrap:nth-child(odd) .shuffle_row {
     .img_col img {
         right: -2px !important;
@@ -686,55 +694,30 @@ header {
     padding: 2rem;
 }
 }
+.team_banner img.team_bnr_img {
+    width: 63%;
+}
 }
 
-/* @media (min-width: 2000px) {
-:root {
-    --bs-h1: 60px;
-    --bs-h2: 60px;
-    --bs-h3: 30px;
-    --bs-h4: 26px;
-    --bs-h50: 50px;
-    --bs-h40: 40px;
-    --bs-fs26: 28px;
-    --bs-fs22: 24px;
-    --bs-fs20: 22px;
-    --bs-fs18: 20px;
-    --bs-fsbody: 27px;
-}
-} */
-
-/* @media (min-width: 2501px) {
-header {
-.navbar-nav .dropdown-menu ul li a {
-    font-size: 28px !important;
-    padding: 28px 0 !important;
-}
-.navbar-nav .dropdown-menu ul li a.termin_praxis img, .navbar-nav .dropdown-menu ul li a.termin_aproke img {
-    width: 40px !important;
-}
-.navbar-nav .dropdown-menu ul li .termin_praxis, .navbar-nav .dropdown-menu ul li .termin_aproke {
-    padding: 23px 35px !important;
-}
-.navbar-nav .dropdown-menu { 
-    padding: 2.25rem;
-}
-ul.navbar-nav.main--menu li.nav-item .nav-link {
-    padding: 12px 0 22px;
-    font-size: 24px;
-}
-ul.navbar-nav.top_menu li .nav-link {
-    font-size: 24px;
-}
-}
-footer {
-    .footer_copyright {
-        p {
-            font-size: var(--bs-fs20);
-        }
+@media (max-width: 1200px){
+.team_banner {
+    height: 450px;
+    img.team_bnr_img {
+        width: 63%;
+    }
+    .banner_content {
+        max-width: 380px;
     }
 }
-} */
+}
+
+@media (max-width: 1024px){
+.team_banner {
+    .banner_content {
+        max-width: 340px;
+    }
+}
+}
 
 @media (max-width: 1199px){
 :root {
@@ -1030,9 +1013,14 @@ footer {
     }
     .shuffle_item_wrap {
         margin-top: 2rem;
+        height: auto !important;
     }
     .content_box {
         padding-bottom: 10px;
+    }
+    .content_box.icons ul li:before {
+        width: 20px;
+        height: 18px;
     }
     
 }
@@ -1076,6 +1064,11 @@ footer {
             width: 20px;
             left: -20px;
         }
+    }
+}
+.team_banner {
+    .banner_content {
+        max-width: 360px;
     }
 }
 .pharmacy_services .shuffle_container {
@@ -1207,6 +1200,28 @@ footer {
 .h-img{
     width: 22px;
 }
+.post_data_wrapper {
+    .nuitrition_diagnos {
+        .content_col {
+            padding: 1.25rem 0 1rem;
+        }
+        .img_col {
+            padding: 0 0 1rem;
+        }
+    }
+}
+}
+
+
+@media (min-width: 768px) {
+    .inner_banner {
+        .mobile_bnr_img {
+            display: none;
+        }
+        .visible_mobile {
+            display: none;
+        }
+    }
 }
 
 
@@ -1285,12 +1300,6 @@ footer {
         margin-top: 1.5rem;
     }
 }
-/* .post_content{
-    p{
-        margin-bottom: 0;
-    }
-} */
-
 .blue_btn:after, .green_btn:after {
     height: 100%;
     opacity: 1;
@@ -1302,7 +1311,38 @@ footer {
         filter: brightness(0) invert(1);
     }
 }
-
+.team_banner {
+    padding: 0 !important;
+    height: auto;
+    display: block;
+    img.team_bnr_img {
+        position: unset;
+        width: 100%;
+        min-height: 215px;
+        object-fit: cover;
+    }
+    .banner_content {
+        max-width: 100%;
+        margin-top: -60px;
+    }
+    .visible_desktop {
+        display: none !important;
+    }
+}
+.inner_banner {
+    background: none !important;
+    padding: 0 !important;
+    height: auto !important;
+    display: block;
+    img.mobile_bnr_img {
+        min-height: 215px;
+        object-fit: cover;
+    }
+    .banner_content {
+        max-width: 100%;
+        margin-top: -70px;
+    }
+}
 }
 
 @media (max-width: 575px){
@@ -1431,6 +1471,14 @@ body {
         transform: none;
         width: 100%;
         text-align: center;
+    }
+}
+.team_section {
+    .team_list {
+        h4, p {
+            min-height: unset;
+            height: auto !important;
+        }
     }
 }
 }

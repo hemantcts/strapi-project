@@ -19,7 +19,7 @@ const PharmacyTeam = () => {
   const [pageColor, setPageColor] = useState('green');
 
   const getPageData = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[Bannerbereich][populate]=Banner_Bild&populate[Grunderbreich][populate]=*&populate[Grunderdaten][populate]=Bild&populate[Teamdaten][populate]=Typen`)
+    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[Bannerbereich][populate]=Banner_Bild&populate[Bannerbereich][populate]=Mobile_Banner_Bild&populate[Grunderbreich][populate]=*&populate[Grunderdaten][populate]=Bild&populate[Teamdaten][populate]=Typen`)
     const data = await response.json();
     console.log(data);
     if (data) {
