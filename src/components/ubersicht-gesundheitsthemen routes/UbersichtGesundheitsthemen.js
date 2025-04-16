@@ -61,9 +61,9 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
         getBlogs();
     }, [])
 
-    // const handleChange = (event) => {
-    //     setSelectedCategory(event.target.value);
-    // };
+    const handleChange = (type) => {
+        setSelectedCategory(type);
+    };
 
     return (
         <div className="ubersicht-gesundheitsthemen">
@@ -86,8 +86,29 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
                     <div className='sec_title text-center'>
                         <h2>{blogTitle}</h2>
                     </div>
-                    <div className='health_topic text-center mt-3'>
+                    
+                    {/* <div className='health_topic text-center mt-3'>
                         <Select className='filter_select' options={categories} value={selectedCategory} onChange={setSelectedCategory} isSearchable={false} />
+                    </div> */}
+
+                    <div className='health_topic tab_container'>
+                        <ul className='nav nav-tabs' role='tablist'>
+                            {categories?.map((type, index) => (
+                                <li key={index} className={`nav-item tab${index + 1}`}>
+                                    <a className={`nav-link ${index === 0 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index + 1}`} role="tab" onClick={() => { handleChange(type) }} >{type?.label
+                                    }</a>
+                                </li>
+                            ))}
+                        </ul>
+                        {/* <div className='tab-content'>
+                            <div className='tab-pane active' id='Tab1' role='tabpanel'>
+                                <Team1 data={teams} color={pageColor} change={pageColor === 'green' ? 'green' : 'blue'} />
+                            </div>
+                            <div className='tab-pane' id='Tab2' role='tabpanel'>
+                                <Team1 data={teams2} color='blue' change={pageColor === 'green' ? 'green' : 'blue'} />
+                            </div>
+                        </div> */}
+
                     </div>
                     <div className='blog_container mt-4'>
                         <Blogs blogs={blogs} selectedCategory={selectedCategory?.value} colors={colors} />

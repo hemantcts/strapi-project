@@ -46,7 +46,9 @@ export const SearchResult = ({ data, color }) => {
 
         "https://medzentrum.entwicklung-loewenmut.ch/api/impressum?populate[Bannerbereich][populate]=Banner_Bild&populate[Kontaktbereich][populate]=Details.icon&populate[Datenbereich][populate]=*",
 
-        "https://medzentrum.entwicklung-loewenmut.ch/api/datenschutzerklaerung?populate[Bannerbereich][populate]=Banner_Bild&populate[Datenschutzbereich][populate]=erweiterbare_Daten"
+        "https://medzentrum.entwicklung-loewenmut.ch/api/datenschutzerklaerung?populate[Bannerbereich][populate]=Banner_Bild&populate[Datenschutzbereich][populate]=erweiterbare_Daten",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*&pagination[limit]=100&sort[0]=post_id"
     ];
 
     const allRoutes = [
@@ -67,6 +69,7 @@ export const SearchResult = ({ data, color }) => {
         "/jobs",
         "/impressum",
         "/datenschutz",
+        "/ubersicht-gesundheitsthemen",
     ]
 
     const [pageData, setPageData] = useState([]);
@@ -96,19 +99,39 @@ export const SearchResult = ({ data, color }) => {
     };
 
 
+    // const findMatchingKeys = (data, keyword, parentKey = "") => {
+    //     let matches = [];
+
+    //     for (const key in data) {
+    //         if (typeof data[key] === "object" && data[key] !== null) {
+    //             matches = matches.concat(findMatchingKeys(data[key], keyword, key)); // Recursive search
+    //         } else if (typeof data[key] === "string" && data[key].toLowerCase().includes(keyword)) {
+    //             matches.push(parentKey ? `${parentKey}.${key}` : key); // Store matched key path
+    //         }
+    //     }
+
+    //     return matches;
+    // };
+
     const findMatchingKeys = (data, keyword, parentKey = "") => {
         let matches = [];
-
-        for (const key in data) {
-            if (typeof data[key] === "object" && data[key] !== null) {
-                matches = matches.concat(findMatchingKeys(data[key], keyword, key)); // Recursive search
-            } else if (typeof data[key] === "string" && data[key].toLowerCase().includes(keyword)) {
-                matches.push(parentKey ? `${parentKey}.${key}` : key); // Store matched key path
+    
+        if (Array.isArray(data)) {
+            data.forEach((item, index) => {
+                const newParentKey = `${parentKey}[${index}]`;
+                matches = matches.concat(findMatchingKeys(item, keyword, newParentKey));
+            });
+        } else if (typeof data === "object" && data !== null) {
+            for (const key in data) {
+                const fullKey = parentKey ? `${parentKey}.${key}` : key;
+                matches = matches.concat(findMatchingKeys(data[key], keyword, fullKey));
             }
+        } else if (typeof data === "string" && data.toLowerCase().includes(keyword)) {
+            matches.push(parentKey);
         }
-
+    
         return matches;
-    };
+    };    
 
     const getPageData = async () => {
         setLoading(true);
@@ -132,6 +155,9 @@ export const SearchResult = ({ data, color }) => {
             newData.forEach((data, index) => {
                 const matches = findMatchingKeys(data, keyword);
                 if (matches.length > 0) {
+                    if(index === 17){
+                        index = 11;
+                    }
                     matchedUrls.push(index); // Get URL from the same index in the urls array
                     setMatchedIndices(matchedUrls);
                     console.log("index", index);
