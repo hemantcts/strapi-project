@@ -16,6 +16,8 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
     const [categories, setCategories] = useState([{ value: "", label: "Alle Themen" }]);
     const [selectedCategory, setSelectedCategory] = useState({ value: "", label: "Alle Themen" });
 
+    const [colors, setColors] = useState(['#0D659B', '#009E4B', '#1C99AA', '#039E4E'])
+
 
     const getPageData = async () => {
         const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/uebersicht-gesundheitsthemen?populate[Bannerbereich][populate]=Banner_Bild`)
@@ -31,14 +33,14 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
     }
 
     const getBlogs = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*&pagination[limit]=100&sort[0]=post_id`)
         const data = await response.json();
         console.log(data);
         if (data) {
             setBlogs(data.data);
             const uniqueCategories = [...new Set(data.data.map(blog => blog.Kategorie))];
             const formattedOptions = uniqueCategories.map(Kategorie => ({
-                value: Kategorie.toLowerCase(),
+                value: Kategorie,
                 label: Kategorie,
             }));
 
@@ -85,10 +87,10 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
                         <h2>{blogTitle}</h2>
                     </div>
                     <div className='health_topic text-center mt-3'>
-                        <Select className='filter_select' options={categories} value={selectedCategory} onChange={setSelectedCategory} />
+                        <Select className='filter_select' options={categories} value={selectedCategory} onChange={setSelectedCategory} isSearchable={false} />
                     </div>
                     <div className='blog_container mt-4'>
-                        <Blogs blogs={blogs} selectedCategory={selectedCategory?.value} />
+                        <Blogs blogs={blogs} selectedCategory={selectedCategory?.value} colors={colors} />
                     </div>
                 </div>
             </section>

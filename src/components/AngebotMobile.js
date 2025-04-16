@@ -19,7 +19,7 @@ export const AngebotMobile = ({ tableData, color }) => {
                             <div className="card-body">
                                 {tableData?.map((data, i)=>(
                                     <ul key={i}>
-                                        <li><span>{data?.offer}</span>{data[key]}</li>
+                                        <li><span>{data?.offer}</span>{data[key] ? data[key] : <img src="https://medzentrum.entwicklung-loewenmut.ch/uploads/check_1_e4073556d6.svg" alt="" />}</li>
                                     </ul>
                                 ))}
                             </div>

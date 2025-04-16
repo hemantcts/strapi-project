@@ -31,7 +31,7 @@ const PraxisTeam = () => {
   }
 
   const getTeams = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/team-apothekes?populate=*`)
+    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/team-apothekes?populate=*&pagination[limit]=100&sort[0]=Nummer`)
     const data = await response.json();
     console.log(data);
     if (data) {
@@ -40,7 +40,7 @@ const PraxisTeam = () => {
   }
 
   const getTeams2 = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/team-praxes?populate=*`)
+    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/team-praxes?populate=*&pagination[limit]=100&sort[0]=Nummer`)
     const data = await response.json();
     console.log(data);
     if (data) {
@@ -104,10 +104,10 @@ const PraxisTeam = () => {
             </ul>
             <div className='tab-content'>
               <div className='tab-pane' id='Tab1' role='tabpanel'>
-                <Team1 data={teams} color='green' />
+                <Team1 data={teams} color='green' change={pageColor==='green' ? 'green' : 'blue'} />
               </div>
               <div className='tab-pane active' id='Tab2' role='tabpanel'>
-                <Team1 data={teams2} color={pageColor} />
+                <Team1 data={teams2} color={pageColor} change={pageColor==='green' ? 'green' : 'blue'} />
               </div>
             </div>
 

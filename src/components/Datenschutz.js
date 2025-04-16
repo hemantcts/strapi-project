@@ -39,11 +39,11 @@ const Datenschutz = () => {
             </section>
             <section className='wi_full py_3 daten_section'>
                 <div className='container-xxl'>
-                    <div className='sec_title text-center'>
+                    <div className='sec_title text-center mb-5'>
                         <h2>{protectionData?.Uberschrift}</h2>
                     </div>
                     <div className='accordion_wrapper mt-4'>
-                        <Accordion data={protectionData?.erweiterbare_Daten} border={true} />
+                        <Accordion data={protectionData?.erweiterbare_Daten} border={false} greyy={true} />
                     </div>
                 </div>
             </section>

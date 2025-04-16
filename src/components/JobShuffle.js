@@ -32,7 +32,7 @@ export const JobShuffle = ({ data, color }) => {
                                         </li>
                                     ))}
                                 </ul>
-                                <a href={`https://medzentrum.entwicklung-loewenmut.ch${job?.PDF_Link?.url}`} target='_blank' className='button fill_btn pdf_btn'>pdf download <img src={pdfIcon} alt='#' /></a>
+                                {job?.PDF_Link && <a href={`https://medzentrum.entwicklung-loewenmut.ch${job?.PDF_Link?.url}`} target='_blank' className='button fill_btn pdf_btn'>pdf download <img src={pdfIcon} alt='#' /></a>}
                             </div>
                         </div>
                     </div>

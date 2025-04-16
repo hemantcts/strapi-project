@@ -134,7 +134,7 @@ footer {
                     }
                 }
                 li {
-                    margin: 5px 0;
+                    margin: 3px 0;
                     font-size: 18px;
                 }
             }
@@ -189,13 +189,18 @@ ul.dropdown-menu.half {
         height: 100%;
     }
 }
+.related_blogs {
+    .rel_blog_list {
+        margin-top: 40px;
+    }
+}
 .team_section {
     .team_list {
         h4 {
-            min-height: 62px;
+            /* min-height: 62px; */
         }
         p {
-            min-height: 86px;
+            /* min-height: 86px; */
         }
     }
     .team_list.green {
@@ -210,6 +215,21 @@ ul.dropdown-menu.half {
 .nuitrition_diagnos{
     .content_col {
         padding-right: 3rem;
+    }
+}
+.job_sec {
+    .job_content  {
+        h2 {
+            font-size: 48px;
+        }
+        h3 {
+            font-size: 28px;
+        }
+        .accordion {
+            .card-header a {
+                font-size: 22px;
+            }
+        }
     }
 }
 }
@@ -298,7 +318,7 @@ header {
         right: 50px !important;
     }
     .navbar-nav .dropdown-menu ul li {
-        padding-right: 50px;
+        padding-right: 45px;
     }
     .navbar-nav .dropdown-menu ul li a {
         width: 100%;
@@ -344,7 +364,6 @@ header {
         margin-top: 3rem;
     }
 }
-
 .shuffle_container {
     .shuffle_row {
         /* align-items: center; */
@@ -429,7 +448,7 @@ header {
     
 @media (min-width: 1600px){
 .container-xxl {
-    max-width: 1560px;
+    max-width: 500vh;
 }
 :root {
     --bs-h1: 60px;
@@ -537,6 +556,7 @@ footer .col-lg-3.ftr_block {
 }
 .inner_banner {
     height: 650px;
+    padding-bottom: 4rem !important;
     .banner_content {
         max-width: 900px;
     }
@@ -880,7 +900,7 @@ header {
     }
     #mainNavbar .header-menu-h {
         height: 100%;
-        max-height: calc(100vh - 180px);
+        max-height: calc(100vh - 175px);
         overflow-x: hidden;
         overflow-y: auto;
         padding: 60px 0 10px;
@@ -936,12 +956,15 @@ header {
         background: url(../images/caret-up.svg) no-repeat center;
     }
     .navbar .hdr_copygt {
+        background-color: #f8f8f8;
         display: block;
-        padding: 15px 20px 10px;
+        padding: 10px 20px 0 10px;
+        position: absolute;
+        bottom: 0;
     }
     .navbar .hdr_copygt p {
         margin: 0;
-        font-size: 15px;
+        font-size: 13px;
         color: #000;
     }
     .navbar .hdr_copygt p img {
@@ -1124,6 +1147,9 @@ footer {
             .card-body {
                 ul {
                 li {
+                    img{
+                        width: 22px;
+                    }
                     margin: 10px 0;
                     font-size: 17px;
                     display: flex;
@@ -1162,6 +1188,12 @@ footer {
         padding-top: 2rem;
         padding-bottom: 2rem;
     }
+}
+.link_btn {
+    margin-bottom: 0;
+}
+.h-img{
+    width: 22px;
 }
 }
 
@@ -1241,6 +1273,24 @@ footer {
         margin-top: 1.5rem;
     }
 }
+/* .post_content{
+    p{
+        margin-bottom: 0;
+    }
+} */
+
+.blue_btn:after, .green_btn:after {
+    height: 100%;
+    opacity: 1;
+}
+.blue_btn, .green_btn {
+    color: #fff;
+
+    img {
+        filter: brightness(0) invert(1);
+    }
+}
+
 }
 
 @media (max-width: 575px){
@@ -1321,10 +1371,13 @@ header {
         }
     }
 }
+.info-icon{
+    position: static;
+}
 .info-container{
-    top: 50%;
-    right: 80%;
-    left: unset;
+    top: 75%;
+    right: 10%;
+    left: auto;
 }
 .angebot_table_container {
 .angbot_moble_card {
@@ -1345,16 +1398,27 @@ header {
     }
 } }
 
-.team_section {
-    .team_list {
-        h4, p {
-            min-height: unset;
-        }
+body {
+    padding-bottom: 35px;
+}
+.stickY_btn {
+    width: 100%;
+    top: auto;
+    .stick_btn_wrap {
+        width: 100%;    
+        position: unset;
+        -webkit-transform-origin: none;
+        -moz-transform-origin: none;
+        -webkit-transform: none;
+        -moz-transform: none;
     }
-    .team_list.green {
-        h4, p {
-            min-height: unset;
-        }
+    a {
+        padding: 10px 30px;
+        font-size: 15px;
+        display: inline-block;
+        transform: none;
+        width: 100%;
+        text-align: center;
     }
 }
 }
@@ -1373,6 +1437,12 @@ header {
     --bs-fs20: 15px;
     --bs-fs18: 14px;
     --bs-fsbody: 17px;
+}
+h1 {
+    hyphens: auto;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 .container-xxl {
     padding-right: calc(var(--bs-gutter-x)* .5);
@@ -1472,12 +1542,39 @@ header {
     }
 }
 }
+@media (max-width:400px) {
+    .all_sec_button{
+        font-size: 14px;
+        padding: 5px 6px;
 
+        img{
+            width: 30px;
+        }
+    }
+}
 
 @media (max-width:360px) {
     :root {
         --bs-h1: 25px;
     }
+}
+
+@media (min-width: 1400px) and (max-width: 1600px) {
+    .shuffle_container {
+        .content_box.icons ul li:before {
+            top: 2px;
+        }
+    }
+
+}
+
+@media (min-width: 1600px) {
+    .shuffle_container {
+        .content_box.icons ul li:before {
+            top: 6px;
+        }
+    }
+
 }
 
 
@@ -1510,6 +1607,10 @@ header {
             font-size: 24px;
         }
     }
+
+    .products-iframe{
+        height: 822px;
+    }
 }
 
 @media (max-width:1200px) {
@@ -1532,6 +1633,10 @@ header {
         .product-info p {
             font-size: 16px;
         }
+    }
+
+    .products-iframe{
+        height: 1082px;
     }
 
 }
@@ -1571,6 +1676,10 @@ header {
             }
         }
     }
+
+    .products-iframe{
+        height: 1760px;
+    }
 }
 
 @media (max-width:767px) {
@@ -1596,6 +1705,10 @@ header {
             padding: 10px;
         }
     }
+
+    .products-iframe{
+        height: 1850px;
+    }
 }
 
 @media (max-width:576px) {
@@ -1616,6 +1729,10 @@ header {
             font-size: 14px;
         }
     }
+
+    /* .products-iframe{
+        height: 1805px;
+    } */
 }
 
 @media (max-width:480px) {
@@ -1632,5 +1749,22 @@ header {
         .discount {
             width: 3.2rem;
         }
+    }
+
+    .products-iframe{
+        height: 1880px;
+    }
+}
+
+@media (max-width:465px) {
+
+    .products-iframe{
+        height: 1910px;
+    }
+}
+@media (max-width:376px) {
+
+    .products-iframe{
+        height: 1940px;
     }
 }

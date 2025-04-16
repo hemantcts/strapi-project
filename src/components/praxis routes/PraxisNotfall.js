@@ -52,7 +52,7 @@ export const PraxisNotfall = () => {
                         <EmergencyContact contactData={contactData} color='blue' />
                     </div>
                     <div className='shuffle_container pt-5'>
-                        <ShuffleComponent data={pharmacyServicesData} color='blue' shuffle={true} />
+                        <ShuffleComponent data={pharmacyServicesData} color='blue' shuffle={true} validPage={true} />
                     </div>
                 </div>
             </section>

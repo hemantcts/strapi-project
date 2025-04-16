@@ -10,7 +10,7 @@ export const KontaktDetails = ({ contactData, color }) => {
             {contactData?.map((data, index) => (
                 <div className={`col-lg-6 kontkt_itm ${index === 0 ? 'green' : ''}`}>
                     <div className={`item_inner`}>
-                        <h2 className='h3_large'>{data?.main_title}</h2>
+                        <h2 className='h3_large'>{data?.Haupttitel}</h2>
                         <ul>
                             {data?.Details?.map((detail, i) => {
                                 const cleanDetail = detail?.Details?.replace(/\s+/g, ""); // Remove spaces

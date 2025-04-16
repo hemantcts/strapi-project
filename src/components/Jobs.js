@@ -26,7 +26,7 @@ export const Jobs = () => {
     }
 
     const getJobsData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/jobs-data?populate[Job_Informationen][populate]=Bild&populate[Job_Informationen][populate]=erweiterbare_Daten&populate[Kontaktdaten][populate]=Details.icon&populate[PDF_Link][populate]=*`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/jobs-data?populate[Job_Informationen][populate]=Bild&populate[Job_Informationen][populate]=erweiterbare_Daten&populate[Kontaktdaten][populate]=Details.icon&populate[PDF_Link][populate]=*&pagination[limit]=100&sort[0]=job_id`)
         const data = await response.json();
         console.log(data);
         if (data) {

@@ -21,7 +21,7 @@ const OverviewPractice = () => {
     const [adData, setAdData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/overview-practice?populate[Bannerbereich][populate]=Banner_Bild&populate[Dienstleistungsbereich][populate]=Service_Daten.Bild&populate[Dienstleistungsbereich][populate]=Service_Daten.Link&populate[Sonderangebotsbereich][populate]=Bild&populate[Sonderangebotsbereich][populate]=erweiterbare_Daten&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=partners.Bild`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/overview-practice?populate[Bannerbereich][populate]=Banner_Bild&populate[Dienstleistungsbereich][populate]=Service_Daten.Bild&populate[Dienstleistungsbereich][populate]=Service_Daten.Link&populate[Sonderangebotsbereich][populate]=Bild&populate[Sonderangebotsbereich][populate]=erweiterbare_Daten&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=partners.patner_bild&populate[Anzeigenbereich][populate]=partners.farbige_Bild`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -66,8 +66,35 @@ const OverviewPractice = () => {
                 <SpeziellesSection specialsData={specialsData} color='blue' />
             </section>
 
-            <section className='products-sec'>
-                <ProductsSection productsData={productsData} color='blue' />
+            <section className='products-sec p-0'>
+                {/* <ProductsSection productsData={productsData} /> */}
+
+                <div className="container">
+                    <div className="test">
+
+                        <iframe
+                            className='products-iframe'
+                            id="halfpage"
+                            name="halfpage"
+                            src="https://www.rotpunkt-apotheken.ch/iframes/halfpage-600.html"
+                            width="100%"
+                            // height="900px"
+                            //scrolling="no"
+                            frameBorder="0"
+                            style={{
+                                // verticalAlign: "top",
+                                // borderStyle: "hidden",
+                                // border: "none",
+                                // overflow: "hidden",
+                                // margin: 0,
+                                // padding: 0,
+                            }}
+                        >
+                            Leider unterstützt Ihr Browser keine Inline Frames.
+                        </iframe>
+                    </div>
+                </div>
+
             </section>
 
             <section className='wi_full py_3 partner_sec bg_dark_grey'>

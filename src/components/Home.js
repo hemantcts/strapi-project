@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { PartnersSection } from './PartnersSection';
 import Skeleton from 'react-loading-skeleton';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import Iframe from './Iframe';
+import MailchimpForm from './MailchimpForm';
 
 const Home = () => {
 
@@ -17,7 +19,7 @@ const Home = () => {
 
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/homepage?populate[Bannerbereich][populate]=*&populate[Herz_Bereich][populate]=linke_Seite.Bild&populate[Herz_Bereich][populate]=linke_Seite.Link&populate[Herz_Bereich][populate]=rechte_Seite.Link&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=partners.Bild`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/homepage?populate[Bannerbereich][populate]=*&populate[Herz_Bereich][populate]=linke_Seite.Bild&populate[Herz_Bereich][populate]=linke_Seite.Link&populate[Herz_Bereich][populate]=rechte_Seite.Link&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=partners.patner_bild&populate[Anzeigenbereich][populate]=partners.farbige_Bild`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -45,7 +47,16 @@ const Home = () => {
                                     <h1>{bannerData?.Haupttitel}</h1>
                                     <p>{bannerData?.Beschreibung}</p>
                                     <p>{bannerData?.Kleine_Beschreibung}</p>
-                                    <div className='btn_block justify-content-center'>
+                                    <div className="banner_btns d-flex d-lg-none my-4">
+                                        {bannerData?.Links2?.map((roundLink, index) => (
+                                            <div key={index} className={`round_btn round_${index + 1}`}>
+                                                <Link to={roundLink?.Link_URL} className="text-uppercase">
+                                                    {roundLink?.link_text}
+                                                </Link>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className='btn_block link_btn justify-content-center'>
                                         {bannerData?.Links1.map((Link, index) => (
                                             <div className={`buttn_${index + 1}`} key={index}>
                                                 <MyLink link={Link?.Link_URL} text={Link?.link_text} color={index % 2 == 0 ? 'green' : ''} />
@@ -70,7 +81,7 @@ const Home = () => {
                             }
                         </div>
                         <div className="col-12 col-lg-6 align-self-end">
-                            <div className="banner_btns">
+                            <div className="banner_btns d-none d-lg-flex">
                                 {bannerData?.Links2?.map((roundLink, index) => (
                                     <div key={index} className={`round_btn round_${index + 1}`}>
                                         <Link to={roundLink?.Link_URL} className="text-uppercase">
@@ -91,7 +102,7 @@ const Home = () => {
                                 <img className="heart_img" src={`https://medzentrum.entwicklung-loewenmut.ch${heartData?.linke_Seite?.Bild?.url}`} alt="" />
                                 <div className="content_wrap">
                                     <div className="sub_title">{heartData?.linke_Seite?.kleine_Uberschrift}</div>
-                                    <h2>{heartData?.linke_Seite?.grosse_Uberschrift}</h2>
+                                    <h2 style={{lineHeight:'1.1'}}>{heartData?.linke_Seite?.grosse_Uberschrift}</h2>
                                     {heartData?.linke_Seite?.Text && <BlocksRenderer content={heartData?.linke_Seite?.Text} />}
                                     {/* <p>{heartData?.linke_Seite?.Text}</p> */}
                                     <div className='btn_block'>
@@ -115,8 +126,35 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <section className='wi_full py_3 aktionen_sec bg_light_blue products-sec'>
-                <ProductsSection productsData={productsData} />
+            <section className='wi_full py_3 aktionen_sec bg_light_blue products-sec p-0'>
+                {/* <ProductsSection productsData={productsData} /> */}
+
+                <div className="container">
+                    <div className="test">
+
+                        <iframe
+                            className='products-iframe'
+                            id="halfpage"
+                            name="halfpage"
+                            src="https://www.rotpunkt-apotheken.ch/iframes/halfpage-600.html"
+                            width="100%"
+                            // height="900px"
+                            //scrolling="no"
+                            frameBorder="0"
+                            style={{
+                                // verticalAlign: "top",
+                                // borderStyle: "hidden",
+                                // border: "none",
+                                // overflow: "hidden",
+                                // margin: 0,
+                                // padding: 0,
+                            }}
+                        >
+                            Leider unterstützt Ihr Browser keine Inline Frames.
+                        </iframe>
+                    </div>
+                </div>
+
             </section>
             <section className='wi_full py_3 partner_sec bg_dark_grey'>
                 <PartnersSection adData={adData} />

@@ -72,6 +72,13 @@ export const Angebot = ({ data, color }) => {
                         </div>
                     </div>
                 </div>
+                <div className="test mt-1">
+                    <div className="container-xxl">
+                            <h4 className='ps-lg-0 ps-3' style={{color:'#0D659B', fontWeight:'500', display:'flex'}}>
+                                <img className='h-img' src="https://medzentrum.entwicklung-loewenmut.ch/uploads/check_1_e4073556d6.svg" alt=""/> = inklusiv
+                            </h4>
+                    </div>
+                </div>
             </section>
             <Footer />
         </div>

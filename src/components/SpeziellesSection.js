@@ -12,7 +12,7 @@ export const SpeziellesSection = ({specialsData, color}) => {
                     <div className={`sec_title ${color}`}>
                         <h2>{specialsData?.Uberschrift}</h2>
                     </div>
-                    <Accordion data={specialsData?.erweiterbare_Daten} color={color} />
+                    <Accordion data={specialsData?.erweiterbare_Daten} color={color} greyy={true} />
                 </div>
             </div>
         </div>

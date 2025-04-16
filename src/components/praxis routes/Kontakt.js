@@ -6,18 +6,21 @@ import { MyButton } from '../mini_components/MyButton'
 import { KontaktDetails } from '../KontaktDetails'
 import { StickyButton } from '../mini_components/StickyButton'
 import MapComponent from '../MapComponent'
+import { TwoContent } from '../mini_components/TwoContent'
 
 const Kontakt = () => {
     const activeLink = { link1: false, link2: false, link3: false, link4: false, link5: false, link6: true }
     const [bannerData, setBannerData] = useState(null);
     const [contactData, setContactData] = useState(null);
+    const [contactSection, setContactSection] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/oeffnungszeiten-und-kontakt?populate[Bannerbereich][populate]=Banner_Bild&populate[Kontaktdaten][populate]=Details.icon&populate[Kontaktdaten][populate]=time_details`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/oeffnungszeiten-und-kontakt?populate[Bannerbereich][populate]=Banner_Bild&populate[Kontaktbereich]=*&populate[Kontaktdaten][populate]=Details.icon&populate[Kontaktdaten][populate]=time_details`)
         const data = await response.json();
         console.log(data);
         if (data) {
             setBannerData(data.data.Bannerbereich);
+            setContactSection(data.data.Kontaktbereich);
             setContactData(data.data.Kontaktdaten);
         }
     }
@@ -40,7 +43,11 @@ const Kontakt = () => {
             </section>
             <section className='wi_full py_3 kontakt_section'>
                 <div className='container-xxl text-black'>
-                    <KontaktDetails contactData={contactData} />
+                    <TwoContent data={contactSection} color='blue' />
+
+                    <div className="mt-5">
+                        <KontaktDetails contactData={contactData} />
+                    </div>
                 </div>
             </section>
 

@@ -204,8 +204,8 @@ const Navbar = ({ activeLink }) => {
                                     </li>
                                 </ul>
                             </div>
-                            <div className='hdr_copygt'>
-                                <p>© Copyright 2025 | MedZentrum AG, Pfungen | Design by <a href='https://www.loewenmut.ch/' target='_blank' rel="noreferrer">Loewenmut. <img src={loewenmutlogo} alt='loewenmut' /></a></p>
+                            <div className='hdr_copygt py-0'>
+                                <p>© Copyright 2025 | MedZentrum AG, Pfungen | <Link to='/datenschutz' onClick={toggleMenu}>Datenschutzerklärung</Link> | <Link to='/impressum' onClick={toggleMenu}>Impressum</Link> <br />Design by <a href='https://www.loewenmut.ch/' target='_blank' rel="noreferrer">Loewenmut. <img src={loewenmutlogo} alt='loewenmut' /></a></p>
                             </div>
                         </div>
                     </div>
