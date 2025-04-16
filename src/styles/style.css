@@ -1047,7 +1047,7 @@ footer {
         content: ' ';
         position: absolute;
         right: 8px;
-        top: 9px;
+        top: 7px;
         width: 35px;
         height: 35px;
         background-image: url(../images/cross-blue.svg);
@@ -1356,6 +1356,9 @@ footer {
 }
 .job_sec {
     .job_content {
+        .job_contact {
+            margin-top: 1.35rem;
+        }
         h2 {
             line-height: 1.15;
         }
@@ -1765,4 +1768,7 @@ footer {
 }
 .content_wrap p{
     margin-bottom: 0;
+}
+.post_data_wrapper.pt_lg {
+    padding-top: 4rem;
 }
