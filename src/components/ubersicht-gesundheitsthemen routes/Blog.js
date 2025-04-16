@@ -221,9 +221,9 @@ export const Blog = ({ data, color }) => {
                                                         <Link to={`/${filterTitle(blog?.Titel)}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt='' /></Link>
                                                     </div>
                                                     <div className='rbitm_content text-black'>
-                                                        <h4><Link to={`/${blog?.Titel}`}>{blog?.Titel}</Link></h4>
+                                                        <h4><Link to={`/${filterTitle(blog?.Titel)}`}>{blog?.Titel}</Link></h4>
                                                         <div className='btn_block'>
-                                                            <MyLink link={`/${blog?.Titel}`} text='Mehr erfahren ' />
+                                                            <MyLink link={`/${filterTitle(blog?.Titel)}`} text='Mehr erfahren ' />
                                                         </div>
                                                     </div>
                                                 </div>

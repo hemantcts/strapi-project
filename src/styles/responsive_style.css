@@ -572,7 +572,14 @@ footer .col-lg-3.ftr_block {
         padding-left: 22px;
         padding-right: 22px;
         ul li:before {
-            top: 16px;
+            top: 4px;
+        }
+    }
+}
+.daten_section .accordion {
+    & .card-body {
+        ul {
+            padding-left: 22px;
         }
     }
 }
