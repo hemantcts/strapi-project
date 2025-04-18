@@ -31,16 +31,16 @@ export const MyButton = ({ activePage, buttonText, color, change }) => {
         let url = '';
         switch (page){
             case 'Apotheke':
-                url = '/ubersicht-apotheke';
+                url = '/uebersicht-apotheke';
                 break
             case 'Praxis':
-                url = '/ubersicht-praxis';
+                url = '/uebersicht-praxis';
                 break
             case 'Ernährungsdiagnostik':
-                url = '/ernahrungsdiagnostik';
+                url = '/uebersicht-ernahrungsdiagnostik';
                 break
             case 'Gesundheitsthemen':
-                url = '/ubersicht-gesundheitsthemen';
+                url = '/uebersicht-gesundheitsthemen';
                 break
         }
         

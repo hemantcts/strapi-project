@@ -129,9 +129,9 @@ export const Team1 = ({ data, color, change }) => {
                         <img src={`https://medzentrum.entwicklung-loewenmut.ch${teamMember?.Bild?.url}`} class="item_img" alt="" />
                         <div class="item_body text-black">
                             <h4 class={`font-volk`}>{teamMember?.Name}</h4>
-                            <p className={`${!hasValidText(teamMember?.Fahigkeiten) ? 'border-0' : ''} mini_height`}>{teamMember?.Bezeichnung}</p>
+                            <p className={`${!hasValidText(teamMember?.Faehigkeiten) ? 'border-0' : ''} mini_height`}>{teamMember?.Bezeichnung}</p>
 
-                            {hasValidText(teamMember?.Fahigkeiten) && <BlocksRenderer content={teamMember?.Fahigkeiten} blocks={{
+                            {hasValidText(teamMember?.Faehigkeiten) && <BlocksRenderer content={teamMember?.Faehigkeiten} blocks={{
                                 paragraph: ({ children }) => (
                                     <small>
                                         {children}

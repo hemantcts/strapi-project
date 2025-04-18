@@ -29,7 +29,7 @@ export const Blog = ({ data, color }) => {
     // }
 
     const getBlogs = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate[Bild][populate]=*&populate[preis_und_zeit][populate]=icon&populate[Produktdetail][populate]=Bild.Bild&populate[Produktdetail][populate]=button&populate[zusatzliche_Details][populate]=erweiterbare_Daten&pagination[limit]=100&sort[0]=post_id`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate[Bild][populate]=*&populate[preis_und_zeit][populate]=Icon&populate[Produktdetail][populate]=Bild.Bild&populate[Produktdetail][populate]=Button&populate[zusaetzliche_Details][populate]=erweiterbare_Daten&pagination[limit]=100&sort[0]=Post_id`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -67,7 +67,7 @@ export const Blog = ({ data, color }) => {
             if (matchedBlog) {
                 setBlog(matchedBlog);
                 setProductDetails(matchedBlog?.Produktdetail);
-                setExtraDetails(matchedBlog?.zusatzliche_Details);
+                setExtraDetails(matchedBlog?.zusaetzliche_Details);
 
                 // checkImageUploaded(matchedBlog?.Produktdetail);
             } else {
@@ -78,7 +78,7 @@ export const Blog = ({ data, color }) => {
                 if (matchedBlog2) {
                     setBlog(matchedBlog2);
                     setProductDetails(matchedBlog2?.Produktdetail);
-                    setExtraDetails(matchedBlog2?.zusatzliche_Details);
+                    setExtraDetails(matchedBlog2?.zusaetzliche_Details);
 
                     // checkImageUploaded(matchedBlog2?.Produktdetail);
                 }
@@ -138,7 +138,7 @@ export const Blog = ({ data, color }) => {
                                 <h1>{blog?.Titel}</h1>
                                 <img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt="" className='w-100 my-3 mb-lg-4' />
                                 <h3>{blog?.Titel}</h3>
-                                <div className={`content-box ${blog?.link_farbe} ${blog?.icons ? 'icons' : 'no_icons'}`}>
+                                <div className={`content-box ${blog?.Link_farbe} ${blog?.Icons ? 'icons' : 'no_icons'}`}>
                                     {blog?.Beschreibung && <BlocksRenderer content={blog?.Beschreibung} />}
                                 </div>
                                 {/* <div dangerouslySetInnerHTML={{ __html: blog?.description }} /> */}
@@ -147,7 +147,7 @@ export const Blog = ({ data, color }) => {
                                     <ul>
                                         {blog?.preis_und_zeit?.map((item, index) => (
                                             <li key={index} className='mb-3 d-flex align-items-center'>
-                                                {item?.icon && <img src={`https://medzentrum.entwicklung-loewenmut.ch${item?.icon?.url}`} alt="" />}
+                                                {item?.Icon && <img src={`https://medzentrum.entwicklung-loewenmut.ch${item?.Icon?.url}`} alt="" />}
                                                 <span>
                                                     <h4 className='ms-3 mb-0' style={{ display: 'inline-block' }}>{item?.Titel && item?.Titel}</h4>
                                                 </span>
@@ -159,7 +159,7 @@ export const Blog = ({ data, color }) => {
                             </div>
 
                             <div className='btn_block mt-4'>
-                                {productDetails?.button && <a href={productDetails?.button?.Link_URL} target={productDetails?.offnen_in_einem_neuen_Tab ? "_blank" : "_self"} rel={productDetails?.offnen_in_einem_neuen_Tab ? "noreferrer noopener" : undefined} className={`button fill_btn ${productDetails?.button_farbe}`}>{productDetails?.button?.Link_Text} <img src={arrowImg} alt="#" /></a>}
+                                {productDetails?.Button && <a href={productDetails?.Button?.Link_URL} target={productDetails?.oeffnen_in_einem_neuen_Tab ? "_blank" : "_self"} rel={productDetails?.oeffnen_in_einem_neuen_Tab ? "noreferrer noopener" : undefined} className={`button fill_btn ${productDetails?.Button_farbe}`}>{productDetails?.Button?.Link_Text} <img src={arrowImg} alt="#" /></a>}
 
                                 {/* <a href='https://www.rotpunkt-apotheken.ch/aktionen' target='_blank' rel="noreferrer" className="button fill_btn">ALLE AKTIONEN  <img src={arrowImg} alt="#" /></a> */}
                             </div>
@@ -192,14 +192,14 @@ export const Blog = ({ data, color }) => {
 
                                 }
                                 {/* <div dangerouslySetInnerHTML={{ __html: productDetails?.description }} /> */}
-                                {checkData(productDetails?.Beschreibung) && <div className={`content-box ${blog?.link_farbe} ${productDetails?.icons ? 'icons' : 'no_icons'}`}>
+                                {checkData(productDetails?.Beschreibung) && <div className={`content-box ${blog?.Link_farbe} ${productDetails?.Icons ? 'icons' : 'no_icons'}`}>
                                     {productDetails?.Beschreibung && <BlocksRenderer content={productDetails?.Beschreibung} />}
                                 </div>}
                                 {productDetails?.preis_und_zeit?.length > 0 && <div className="list-items">
                                     <ul>
                                         {productDetails?.preis_und_zeit?.map((item, index) => (
                                             <li key={index} className='mb-3 d-flex align-items-center'>
-                                                {item?.icon && <img src={`https://medzentrum.entwicklung-loewenmut.ch${item?.icon?.url}`} alt="" />}
+                                                {item?.Icon && <img src={`https://medzentrum.entwicklung-loewenmut.ch${item?.Icon?.url}`} alt="" />}
                                                 <span>
                                                     <h4 className='ms-3 mb-0' style={{ display: 'inline-block' }}>{item?.Titel && item?.Titel}</h4>
                                                 </span>
@@ -210,8 +210,8 @@ export const Blog = ({ data, color }) => {
                             </div>
 
                             <div className='post_data_wrapper text-black pt_lg '>
-                                <h1>{extraDetails?.Uberschrift}</h1>
-                                <Accordion data={extraDetails?.erweiterbare_Daten} greyy={true} customClass='content-box' icons={extraDetails?.icons} />
+                                <h1>{extraDetails?.Ueberschrift}</h1>
+                                <Accordion data={extraDetails?.erweiterbare_Daten} greyy={true} customClass='content-box' icons={extraDetails?.Icons} />
                             </div>
 
                         </div>

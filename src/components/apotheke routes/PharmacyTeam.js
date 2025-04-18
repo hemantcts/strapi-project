@@ -19,13 +19,13 @@ const PharmacyTeam = () => {
   const [pageColor, setPageColor] = useState('green');
 
   const getPageData = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[Bannerbereich][populate]=Banner_Bild&populate[Bannerbereich][populate]=Mobile_Banner_Bild&populate[Grunderbreich][populate]=*&populate[Grunderdaten][populate]=Bild&populate[Teamdaten][populate]=Typen`)
+    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[Bannerbereich][populate]=Banner_Bild&populate[Bannerbereich][populate]=Mobile_Banner_Bild&populate[Gruenderbereich][populate]=*&populate[Gruenderdaten][populate]=Bild&populate[Teamdaten][populate]=Typen`)
     const data = await response.json();
     console.log(data);
     if (data) {
       setBannerData(data?.data?.Bannerbereich);
-      setFounderSection(data?.data?.Grunderbreich);
-      setFounderData(data?.data?.Grunderdaten);
+      setFounderSection(data?.data?.Gruenderbereich);
+      setFounderData(data?.data?.Gruenderdaten);
       setTeamData(data?.data?.Teamdaten);
     }
   }
@@ -91,7 +91,7 @@ const PharmacyTeam = () => {
       <section className='wi_full py_3 pt-0 team_section'>
         <div className="container-xxl">
           <div className={`sec_title text-center ${pageColor}`}>
-            <h2>{teamData?.Uberschrift}</h2>
+            <h2>{teamData?.Ueberschrift}</h2>
           </div>
           <div className='tab_container'>
             <ul className='nav nav-tabs' role='tablist'>

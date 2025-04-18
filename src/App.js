@@ -35,14 +35,15 @@ function App() {
         <Route path="/" element={<Home />} />
 
         {/* apotheke routes */}
-        <Route path="/ubersicht-apotheke" element={<PharmacyOverview />} />
+        <Route path="/uebersicht-apotheke" element={<PharmacyOverview />} />
         <Route path="/terminbuchung-apotheke" element={<AppointmentBooking />} />
         <Route path="/apotheke-team" element={<PharmacyTeam />} />
         <Route path="/apotheke-notfall" element={<PharmacyEmergency />} />
         <Route path="/serviceleistungen-apotheke" element={<PharmacyServices />} />
 
-        {/* praxis routes */}
-        <Route path="/ubersicht-praxis" element={<OverviewPractice />} />
+        {/* praxis routes 
+        uebersicht-praxis*/}
+        <Route path="/uebersicht-praxis" element={<OverviewPractice />} />
         <Route path="/terminbuchung-praxis" element={<TerminBuchenPraxis />} />
         <Route path="/praxis-team" element={<PraxisTeam />} />
         <Route path="/praxis-notfall" element={<PraxisNotfall />} />
@@ -51,11 +52,11 @@ function App() {
 
 
         {/* Ernährungsdiagnostik routes */}
-        <Route path="/ernahrungsdiagnostik" element={<Ernahrungsdiagnostik />} />
+        <Route path="/uebersicht-ernahrungsdiagnostik" element={<Ernahrungsdiagnostik />} />
         <Route path="/angebot" element={<Angebot />} />
 
         {/* ubersicht-gesundheitsthemen routes */}
-        <Route path="/ubersicht-gesundheitsthemen" element={<UbersichtGesundheitsthemen />} />
+        <Route path="/uebersicht-gesundheitsthemen" element={<UbersichtGesundheitsthemen />} />
         <Route path="/:title" element={<Blog />} />
 
         {/* extra routes */}

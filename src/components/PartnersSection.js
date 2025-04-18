@@ -15,7 +15,7 @@ export const PartnersSection = ({ adData }) => {
     return (
         <div className="container-xxl">
             <div className='sec_title text-center'>
-                <h2 className='text-white'>{adData?.Uberschrift}</h2>
+                <h2 className='text-white'>{adData?.Ueberschrift}</h2>
             </div>
             <div className="partner_wrap row align-items-center justify-content-around">
                 {adData?.Partners?.map((partner, index) => (

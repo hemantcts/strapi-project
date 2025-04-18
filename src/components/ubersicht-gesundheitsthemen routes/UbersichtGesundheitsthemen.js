@@ -33,7 +33,7 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
     }
 
     const getBlogs = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*&pagination[limit]=100&sort[0]=post_id`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*&pagination[limit]=100&sort[0]=Titel`)
         const data = await response.json();
         console.log(data);
         if (data) {

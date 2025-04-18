@@ -11,8 +11,8 @@ const HomeMenu = ({toggleMenu}) => {
                 <div className="col-lg-6">
                     <div className='menu_links'>
                         <ul className="submenu_list">
-                            <li className={location.pathname === '/ubersicht-apotheke' ? 'active' : 'list-items'}>
-                                <Link onClick={toggleMenu} to="/ubersicht-apotheke">Übersicht Apotheke</Link>
+                            <li className={location.pathname === '/uebersicht-apotheke' ? 'active' : 'list-items'}>
+                                <Link onClick={toggleMenu} to="/uebersicht-apotheke">Übersicht Apotheke</Link>
                             </li>
                             <li className={location.pathname === '/terminbuchung-apotheke' ? 'active' : 'list-items'}>
                                 <Link onClick={toggleMenu} to="/terminbuchung-apotheke">Termin buchen Apotheke</Link>

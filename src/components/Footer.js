@@ -20,10 +20,10 @@ const Footer = () => {
                                 <address>Riedäckerstrasse 5<br />CH-8422 Pfungen</address>
                                 <h4>Quick Links</h4>
                                 <ul style={{ lineHeight: '1.3' }}>
-                                    <li><Link to='/ubersicht-apotheke'>Apotheke</Link></li>
-                                    <li><Link to='/ubersicht-praxis'>Praxis</Link></li>
-                                    <li><Link to='/ernahrungsdiagnostik'>Ernährungsdiagnostik</Link></li>
-                                    <li><Link to='/ubersicht-gesundheitsthemen'>Gesundheitsthemen</Link></li>
+                                    <li><Link to='/uebersicht-apotheke'>Apotheke</Link></li>
+                                    <li><Link to='/uebersicht-praxis'>Praxis</Link></li>
+                                    <li><Link to='/uebersicht-ernahrungsdiagnostik'>Ernährungsdiagnostik</Link></li>
+                                    <li><Link to='/uebersicht-gesundheitsthemen'>Gesundheitsthemen</Link></li>
                                 </ul>
                             </div>
                             <div className='col-12 col-sm-6 col-lg-4 ftr_block'>
