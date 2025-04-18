@@ -155,7 +155,7 @@ const Navbar = ({ activeLink }) => {
                                         </ul>}
                                     </li>
                                     <li className='nav-item megamenu-fw ubersicth_menu'>
-                                        <Link className={`nav-link link3 ${(active.link3 || hover.link3) && 'active'}`} to={`${isHoverEnabled ? '/uebersicht-ernahrungsdiagnostik' : '#'}`} onClick={() => handleActive(3)}
+                                        <Link className={`nav-link link3 ${(active.link3 || hover.link3) && 'active'}`} to={`${isHoverEnabled ? '/uebersicht-ernaehrungsdiagnostik' : '#'}`} onClick={() => handleActive(3)}
                                             onMouseEnter={() => handleMouseEnter(3)}
                                             onMouseLeave={(e) => {
                                                 if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.menu2')) {

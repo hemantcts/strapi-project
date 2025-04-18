@@ -12,8 +12,8 @@ const Menu3 = ({toggleMenu}) => {
         <div className="col-lg-6">
           <div className="menu_links">
             <ul className="submenu_list">
-              <li className={location.pathname === '/uebersicht-ernahrungsdiagnostik' ? 'active' : 'list-items border-0'}>
-                <Link onClick={toggleMenu} to="/uebersicht-ernahrungsdiagnostik">Übersicht Ernährungsdiagnostik</Link>
+              <li className={location.pathname === '/uebersicht-ernaehrungsdiagnostik' ? 'active' : 'list-items border-0'}>
+                <Link onClick={toggleMenu} to="/uebersicht-ernaehrungsdiagnostik">Übersicht Ernährungsdiagnostik</Link>
               </li>
               <li className={location.pathname === '/angebot' ? 'active' : 'list-items'}>
                 <Link onClick={toggleMenu} to="/angebot">Angebote</Link>

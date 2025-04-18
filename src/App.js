@@ -1,7 +1,7 @@
 
 import './styles/style.css';
 import './styles/responsive_style.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from './components/Home';
 import PharmacyOverview from './components/apotheke routes/PharmacyOverview';
 import { AppointmentBooking } from './components/apotheke routes/AppointmentBooking';
@@ -35,6 +35,7 @@ function App() {
         <Route path="/" element={<Home />} />
 
         {/* apotheke routes */}
+        <Route path="/ubersicht-apotheke" element={<Navigate to="/uebersicht-apotheke" replace />} />
         <Route path="/uebersicht-apotheke" element={<PharmacyOverview />} />
         <Route path="/terminbuchung-apotheke" element={<AppointmentBooking />} />
         <Route path="/apotheke-team" element={<PharmacyTeam />} />
@@ -43,6 +44,7 @@ function App() {
 
         {/* praxis routes 
         uebersicht-praxis*/}
+        <Route path="/ubersicht-praxis" element={<Navigate to="/uebersicht-praxis" replace />} />
         <Route path="/uebersicht-praxis" element={<OverviewPractice />} />
         <Route path="/terminbuchung-praxis" element={<TerminBuchenPraxis />} />
         <Route path="/praxis-team" element={<PraxisTeam />} />
@@ -52,10 +54,14 @@ function App() {
 
 
         {/* Ernährungsdiagnostik routes */}
-        <Route path="/uebersicht-ernahrungsdiagnostik" element={<Ernahrungsdiagnostik />} />
+        <Route path="/ernahrungsdiagnostik" element={<Navigate to="/uebersicht-ernaehrungsdiagnostik" replace />} />
+        <Route path="/uebersicht-ernahrungsdiagnostik" element={<Navigate to="/uebersicht-ernaehrungsdiagnostik" replace />} />
+        <Route path="/uebersicht-ernaehrungsdiagnostik" element={<Ernahrungsdiagnostik />} />
         <Route path="/angebot" element={<Angebot />} />
 
         {/* ubersicht-gesundheitsthemen routes */}
+        {/* uebersicht-ernaehrungsdiagnostik */}
+        <Route path="/ubersicht-gesundheitsthemen" element={<Navigate to="/uebersicht-gesundheitsthemen" replace />} />
         <Route path="/uebersicht-gesundheitsthemen" element={<UbersichtGesundheitsthemen />} />
         <Route path="/:title" element={<Blog />} />
 

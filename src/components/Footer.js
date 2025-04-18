@@ -22,7 +22,7 @@ const Footer = () => {
                                 <ul style={{ lineHeight: '1.3' }}>
                                     <li><Link to='/uebersicht-apotheke'>Apotheke</Link></li>
                                     <li><Link to='/uebersicht-praxis'>Praxis</Link></li>
-                                    <li><Link to='/uebersicht-ernahrungsdiagnostik'>Ernährungsdiagnostik</Link></li>
+                                    <li><Link to='/uebersicht-ernaehrungsdiagnostik'>Ernährungsdiagnostik</Link></li>
                                     <li><Link to='/uebersicht-gesundheitsthemen'>Gesundheitsthemen</Link></li>
                                 </ul>
                             </div>
@@ -59,9 +59,9 @@ const Footer = () => {
                             </div>
                             <div className='col-12 col-sm-6 col-lg-2 ftr_block'>
                                 <div className='ftr_scl d-flex'>
-                                    <a href='#'><img src={facebookicon} alt='#' /></a>
-                                    <a href='#'><img src={instagramicon} alt='#' /></a>
-                                    <a href='#'><img src={linkedinicon} alt='#' /></a>
+                                    <a href='https://www.facebook.com/medzentrum'><img src={facebookicon} alt='' /></a>
+                                    <a href='https://www.instagram.com/medzentrumpfungen'><img src={instagramicon} alt='' /></a>
+                                    {/* <a href='#'><img src={linkedinicon} alt='#' /></a> */}
                                 </div>
                                 <h4>Rechtliches</h4>
                                 <ul style={{ lineHeight: '1.3' }}>
