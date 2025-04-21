@@ -23,8 +23,8 @@ export const Accordion = ({ data, color, greyy, isHtml, border, customClass, ico
         }, [data]);
 
     return (
-        <div className={`accordion_wrapper ${color} ${customClass} ${icons ? 'icons' : 'no_icons'}`}>
-            <div className={`accordion ${greyy === true ? 'greyy' : ''}`} id="accordion" role='tablist' aria-multiselectable='true'>
+        <div className={`accordion_wrapper ${customClass} ${icons ? 'icons' : 'no_icons'}`}>
+            <div className={`accordion ${color} ${greyy === true ? 'greyy' : ''}`} id="accordion" role='tablist' aria-multiselectable='true'>
                 {data?.map((item, index) => (
                     <div className={`${border ? 'border-0' : ''} card mb-3`} key={item?.id}>
                         <div className="card-header">

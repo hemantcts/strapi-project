@@ -359,7 +359,7 @@ header {
         height: 190px;
         border-radius: 50%;
         font-weight: var(--bs-fw700);
-        font-size: var(--bs-h3);
+        font-size: var(--bs-h4);
         line-height: 1.15;
         animation: pulse-animation 2s infinite;
     }
@@ -648,11 +648,11 @@ footer {
         border: 0;
         border-bottom: 3px solid rgba(217, 217, 217, 1);
     }
-    ul.nav-tabs li a.active {
+    ul.nav-tabs.team li a.active {
         border-bottom-color: var(--bs-green) !important;
         color: #000;
     }
-    ul.nav-tabs li.tab2 a.active {
+    ul.nav-tabs.team li.tab2 a.active {
         border-bottom-color: var(--bs-blue) !important;
     }
 }
@@ -664,8 +664,9 @@ footer {
         margin-top: 6rem;
     }
     .img_col img, .owl-carousel {
-        height: 100%;
-        object-fit: cover;
+        /* height: 100%; */
+        /* object-fit: cover; */
+        object-fit: contain;
         top: -3.5rem;
         position: relative;
     }
@@ -1123,7 +1124,7 @@ footer {
             padding-left: 20px;
 
             li {
-                padding-left: 0;
+                /* padding-left: 0; */
                 list-style: disc;
             }
         }
@@ -1304,6 +1305,7 @@ footer {
     .related_blogs {
         h3 {
             font-weight: var(--bs-fw600);
+            margin-top: 10px;
         }
         .rb_item {
             margin-top: 1.25rem;
@@ -1410,7 +1412,7 @@ footer {
                 li {
                     list-style: disc;
                     color: #000;
-                    padding-left: 0;
+                    /* padding-left: 0; */
                 }
                 li::marker {
                     color: var(--bs-blue) !important;
@@ -1743,8 +1745,8 @@ footer {
         list-style: none !important;
     }
 }
-.content-box ul li {
-    margin: 5px 0;
+.content-box.icons ul li {
+    /* margin: 5px 0; */
     padding-left: 30px;
     position: relative;
 }
@@ -1777,7 +1779,7 @@ footer {
     line-height: 1.2;
 }
 .products-iframe{
-    height: 900px !important;
+    height: 900px;
 }
 .h-img{
     width: 27px;
@@ -1792,10 +1794,11 @@ footer {
 .health_topic {
     .nav-tabs{
         .nav-item a.active{
-            border-bottom-color: var(--bs-blue) !important;
+            /* border-bottom-color: var(--bs-blue) ; */
+            border-bottom-color: #000 ;
         }
         .nav-item a{
-            font-size: var(--bs-fs18);
+            font-size: var(--bs-fs20);
         }
     }
 }
@@ -1808,10 +1811,15 @@ footer {
         .content_col {
             padding-top: 1.25rem;
             padding-bottom: 1.25rem;
+
+            h3{
+                color: var(--bs-blue);
+            }
         }
         .img_col img {
-            height: calc(100% + 3rem);
+            /* height: calc(100% + 3rem); */
             margin-top: 0;
+            object-fit: contain;
         }
     }
 }

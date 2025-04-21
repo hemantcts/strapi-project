@@ -75,7 +75,7 @@ const PharmacyOverview = () => {
                             src="https://www.rotpunkt-apotheken.ch/iframes/halfpage-600.html"
                             width="100%"
                             // height="900px"
-                            //scrolling="no"
+                            scrolling="no"
                             frameBorder="0"
                             style={{
                                 // verticalAlign: "top",

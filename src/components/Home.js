@@ -56,7 +56,7 @@ const Home = () => {
                                             </div>
                                         ))}
                                     </div>
-                                    <div className='btn_block link_btn justify-content-center'>
+                                    <div className='btn_block link_btn justify-content-center d-none d-sm-flex'>
                                         {bannerData?.Links1.map((Link, index) => (
                                             <div className={`buttn_${index + 1}`} key={index}>
                                                 <MyLink link={Link?.Link_URL} text={Link?.Link_Text} color={index % 2 == 0 ? 'green' : ''} />
@@ -80,7 +80,7 @@ const Home = () => {
                             )
                             }
                         </div>
-                        <div className="col-12 col-lg-6 align-self-end">
+                        <div className="col-12 col-lg-6 align-self-end space-left">
                             <div className="banner_btns d-none d-lg-flex">
                                 {bannerData?.Links2?.map((roundLink, index) => (
                                     <div key={index} className={`round_btn round_${index + 1}`}>
@@ -99,8 +99,8 @@ const Home = () => {
                     <div className="row align-items-center">
                         <div className="col-12 col-lg-7 content_box">
                             <div className="heart_block">
-                                <img className="heart_img" src={`https://medzentrum.entwicklung-loewenmut.ch${heartData?.linke_Seite?.Bild?.url}`} alt="" />
-                                <div className="content_wrap">
+                                <img className="heart_img order-2 order-sm-1" src={`https://medzentrum.entwicklung-loewenmut.ch${heartData?.linke_Seite?.Bild?.url}`} alt="" />
+                                <div className="content_wrap order-1 order-sm-2">
                                     <div className="sub_title">{heartData?.linke_Seite?.kleine_Uberschrift}</div>
                                     <h2 style={{lineHeight:'1.1'}}>
                                         {heartData?.linke_Seite?.grosse_Uberschrift?.substring(0, heartData?.linke_Seite?.grosse_Uberschrift?.length-1)}
@@ -116,7 +116,7 @@ const Home = () => {
                         </div>
                         <div className="col-12 col-lg-5 content_box">
                             {heartData?.rechte_Seite?.map((item, index) => (
-                                <div key={item?.id ?? index} className={`item-${index + 1} content_wrap`}>
+                                <div key={item?.id ?? index} className={`item-${index + 1} content_wrap mt-4 mb-lg-0`}>
                                     <div className="sub_title">{item?.kleine_Uberschrift ?? "Default Small Heading"}</div>
                                     <h3 className='font-volk h3_large'>{item?.grosse_Uberschrift ?? "Default Large Heading"}</h3>
                                     {item?.Text && <BlocksRenderer content={item?.Text} />}

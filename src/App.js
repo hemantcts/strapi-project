@@ -42,8 +42,7 @@ function App() {
         <Route path="/apotheke-notfall" element={<PharmacyEmergency />} />
         <Route path="/serviceleistungen-apotheke" element={<PharmacyServices />} />
 
-        {/* praxis routes 
-        uebersicht-praxis*/}
+        {/* praxis routes */}
         <Route path="/ubersicht-praxis" element={<Navigate to="/uebersicht-praxis" replace />} />
         <Route path="/uebersicht-praxis" element={<OverviewPractice />} />
         <Route path="/terminbuchung-praxis" element={<TerminBuchenPraxis />} />

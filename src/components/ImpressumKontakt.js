@@ -1,36 +1,41 @@
-import React from 'react'
-import iconPhone from '../images/call-blue.svg'
-import iconLocation from '../images/location-blue.svg'
-import iconEnvelope from '../images/envelope-blue.svg'
-import { BlocksRenderer } from '@strapi/blocks-react-renderer'
+import React from 'react';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 export const ImpressumKontakt = ({ contactData, color }) => {
     const getHref = (details) => {
-        if (!details) return ''; // If empty, return blank href
+        if (!details) return { href: '', target: '' };
 
-        // Phone number regex (basic)
+        const trimmed = details.trim();
+
+        // Phone number regex
         const phoneRegex = /^\+?[0-9\s\-()]{7,20}$/;
-        if (phoneRegex.test(details.trim())) {
-            return `tel:${details.replace(/\s/g, '')}`; // Remove spaces
+        if (phoneRegex.test(trimmed)) {
+            return { href: `tel:${trimmed.replace(/\s/g, '')}`, target: '' };
         }
 
         // Email regex
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (emailRegex.test(details.trim())) {
-            return `mailto:${details.trim()}`;
+        if (emailRegex.test(trimmed)) {
+            return { href: `mailto:${trimmed}`, target: '' };
         }
 
-        return ''; // Default case (no href)
+        // URL regex
+        const urlRegex = /^https?:\/\/[^\s$.?#].[^\s]*$/i;
+        if (urlRegex.test(trimmed)) {
+            return { href: trimmed, target: '_blank' };
+        }
+
+        return { href: '', target: '' }; // No match
     };
 
     const formatAddress = (address) => {
-        return address?.split(",").map((part, index) => (
-          <React.Fragment key={index}>
-            {part.trim()}
-            <br />
-          </React.Fragment>
+        return address?.split(',').map((part, index) => (
+            <React.Fragment key={index}>
+                {part.trim()}
+                <br />
+            </React.Fragment>
         ));
-      };
+    };
 
     return (
         <div className='row imp_address_row'>
@@ -39,26 +44,35 @@ export const ImpressumKontakt = ({ contactData, color }) => {
                     <div className='imp_shadow'>
                         <h3 className='font-volk mb-4'>{contact?.Titel}</h3>
                         <ul>
-                            {contact?.Details?.map((innerDetails, index) => (
-                                <li key={index} className='pe-5'>
-                                    <img
-                                        src={`https://medzentrum.entwicklung-loewenmut.ch${innerDetails?.icon?.url}`}
-                                        alt=''
-                                    />
-                                    {getHref(innerDetails?.Details) !== '' ? (
-                                        <a className='pe-5' href={getHref(innerDetails?.Details)}>
-                                            {innerDetails?.Details}
-                                        </a>
-                                    ) : (
-                                        <span>{formatAddress(innerDetails?.Details)}</span>
-                                    )
-                                    }
-                                </li>
-                            ))}
+                            {contact?.Details?.map((innerDetails, idx) => {
+                                const { href, target } = getHref(innerDetails?.Details);
+
+                                return (
+                                    <li key={idx} >
+                                        {innerDetails?.icon?.url && (
+                                            <img
+                                                src={`https://medzentrum.entwicklung-loewenmut.ch${innerDetails.icon.url}`}
+                                                alt=''
+                                            />
+                                        )}
+                                        {href ? (
+                                            <a
+                                                href={href}
+                                                target={target}
+                                                rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+                                            >
+                                                {innerDetails?.Details}
+                                            </a>
+                                        ) : (
+                                            <span>{formatAddress(innerDetails?.Details)}</span>
+                                        )}
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </div>
                 </div>
             ))}
         </div>
-    )
-}
+    );
+};

@@ -1,5 +1,5 @@
 import React from 'react';
-import copyrightImg from '../images/copyright_img.png';
+import copyrightImg from '../images/copyright_img.svg';
 import phoneicon from '../images/icon-phone.svg'
 import envelopeicon from '../images/icon-envelope.svg'
 import facebookicon from '../images/icon-facebook.svg'

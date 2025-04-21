@@ -94,7 +94,7 @@ const PharmacyTeam = () => {
             <h2>{teamData?.Ueberschrift}</h2>
           </div>
           <div className='tab_container'>
-            <ul className='nav nav-tabs' role='tablist'>
+            <ul className='nav nav-tabs team' role='tablist'>
               {teamData?.Typen?.map((type, index) => (
                 <li key={index} className={`nav-item tab${index + 1}`}>
                   <a className={`nav-link ${index === 0 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index + 1}`} role="tab" onClick={()=>{changeColor(index + 1)}} >{type?.Link_Text

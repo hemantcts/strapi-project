@@ -1,7 +1,7 @@
 import React from 'react'
 import { Accordion } from './Accordion'
 
-export const SpeziellesSection = ({specialsData, color}) => {
+export const SpeziellesSection = ({specialsData, color, icons}) => {
     return (
         <div className="container-xxl">
             <div className="row">
@@ -12,7 +12,7 @@ export const SpeziellesSection = ({specialsData, color}) => {
                     <div className={`sec_title ${color}`}>
                         <h2>{specialsData?.Uberschrift}</h2>
                     </div>
-                    <Accordion data={specialsData?.erweiterbare_Daten} color={color} greyy={true} />
+                    <Accordion data={specialsData?.erweiterbare_Daten} color={color} greyy={true} customClass='content-box' icons={specialsData?.Icons} />
                 </div>
             </div>
         </div>

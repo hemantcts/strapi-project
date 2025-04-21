@@ -166,16 +166,37 @@ export const Blog = ({ data, color }) => {
 
                             <div className={`post_data_wrapper text-black ${(checkData(productDetails?.Beschreibung) || productDetails?.Titel) ? 'pt_lg' : ''} `}>
                                 {productDetails?.Titel && <h2>{productDetails?.Titel}</h2>}
-                                {productDetails?.Bild &&
+                                {(productDetails?.Bild?.Bild || productDetails?.Bild?.Bildtitel) &&
 
                                     <div className='nuitrition_diagnos'>
                                         <div className='row align-items-center'>
-                                            {productDetails?.Bild?.Bildtitel && <div className="col-lg-8 content_col">
-                                                <p style={{color:'var(--bs-blue)', margin:'0'}}>{productDetails?.Bild?.Bildtitel}</p>
-                                            </div>}
+                                            {productDetails?.Bild?.Bildtitel && (
+                                                <div className="col-lg-8 content_col">
+                                                    {(() => {
+                                                        const original = productDetails.Bild.Bildtitel;
+                                                        const words = original.split(" ");
+                                                        const firstPart = words.slice(0, 2).join(" ");
+                                                        const secondPart = words.slice(2).join(" ");
+
+                                                        return (
+                                                            <>
+                                                                <p style={{ color: 'var(--bs-blue)', margin: '0' }}>«{secondPart}»</p>
+                                                                <br />
+                                                                <h3>{firstPart}</h3>
+                                                            </>
+                                                        );
+                                                    })()}
+                                                </div>
+                                            )}
                                             <div className='col-lg-4 img_col'>
-                                                {productDetails?.Bild?.Bild && <img src={`https://medzentrum.entwicklung-loewenmut.ch${productDetails?.Bild?.Bild?.url}`} alt="" />}
+                                                {productDetails?.Bild?.Bild && (
+                                                    <img
+                                                        src={`https://medzentrum.entwicklung-loewenmut.ch${productDetails.Bild.Bild.url}`}
+                                                        alt=""
+                                                    />
+                                                )}
                                             </div>
+
                                         </div>
                                     </div>
 
@@ -209,7 +230,7 @@ export const Blog = ({ data, color }) => {
                                 </div>}
                             </div>
 
-                            <div className='post_data_wrapper text-black pt_lg '>
+                            <div className='post_data_wrapper text-black pt-3 pt-sm-5 '>
                                 <h1>{extraDetails?.Ueberschrift}</h1>
                                 <Accordion data={extraDetails?.erweiterbare_Daten} greyy={true} customClass='content-box' icons={extraDetails?.Icons} />
                             </div>

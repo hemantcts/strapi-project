@@ -33,7 +33,7 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
     }
 
     const getBlogs = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*&pagination[limit]=100&sort[0]=Post_id`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*&pagination[limit]=100&sort[0]=Titel`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -65,6 +65,9 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
         setSelectedCategory(type);
     };
 
+    const [activeIndex, setActiveIndex] = useState(0);
+
+
     return (
         <div className="ubersicht-gesundheitsthemen">
             <div className='stickY_btn'>
@@ -86,19 +89,51 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
                     <div className='sec_title text-center'>
                         <h2>{blogTitle}</h2>
                     </div>
-                    
+
                     {/* <div className='health_topic text-center mt-3'>
                         <Select className='filter_select' options={categories} value={selectedCategory} onChange={setSelectedCategory} isSearchable={false} />
                     </div> */}
 
                     <div className='health_topic tab_container'>
                         <ul className='nav nav-tabs' role='tablist'>
-                            {categories?.map((type, index) => (
-                                <li key={index} className={`nav-item tab${index + 1}`}>
-                                    <a className={`nav-link ${index === 0 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index + 1}`} role="tab" onClick={() => { handleChange(type) }} >{type?.label
-                                    }</a>
-                                </li>
-                            ))}
+                        {categories?.map((type, index) => {
+    const isActive = index === activeIndex;
+
+    // Only assign color if active AND index > 0
+    const applyColor = isActive && index > 0;
+    const color =
+        type?.label === "Gesundheits-Checks"
+            ? colors[0]
+            : type?.label === "Impfungen"
+            ? colors[1]
+            : colors[2];
+
+    return (
+        <li key={index} className={`nav-item tab${index + 1}`}>
+            <a
+                className={`nav-link ${isActive ? 'active' : ''}`}
+                data-bs-toggle="tab"
+                href={`#Tab${index + 1}`}
+                role="tab"
+                onClick={() => {
+                    setActiveIndex(index);
+                    handleChange(type);
+                }}
+                style={
+                    applyColor
+                        ? {
+                              color: color,
+                              borderBottomColor: color
+                          }
+                        : {}
+                }
+            >
+                {type?.label}
+            </a>
+        </li>
+    );
+})}
+
                         </ul>
                         {/* <div className='tab-content'>
                             <div className='tab-pane active' id='Tab1' role='tabpanel'>

@@ -101,7 +101,8 @@ const Navbar = ({ activeLink }) => {
                 <nav className={`navbar navbar-expand-lg ${sticky ? 'sticky' : ''}`}>
                     <div className={`nav_overlay ${menuOpen ? 'show' : ''}`}></div>
                     <div className='container-xxl'>
-                        <Link className='navbar-brand' to='/'><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Frame_8cd1fd56fd.svg' alt='logo' /></Link>
+                        {/* <Link className='navbar-brand' to='/'><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Frame_8cd1fd56fd.svg' alt='logo' /></Link> */}
+                        <Link className='navbar-brand' to='/'><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Medzentrum_Pfungen_klein_faed4cabf7.png' alt='logo' /></Link>
                         <button className='navbar-toggler' onClick={toggleMenu} type='button' data-bs-target='#mainNavbar' aria-expanded='false'>
                             <img src={burgermenu} alt='menu' />
                         </button>
@@ -204,9 +205,9 @@ const Navbar = ({ activeLink }) => {
                                     </li>
                                 </ul>
                             </div>
-                            <div className='hdr_copygt py-0'>
+                            {/* <div className='hdr_copygt py-0'>
                                 <p>© Copyright 2025 | MedZentrum AG, Pfungen | <Link to='/datenschutz' onClick={toggleMenu}>Datenschutzerklärung</Link> | <Link to='/impressum' onClick={toggleMenu}>Impressum</Link> <br />Design by <a href='https://www.loewenmut.ch/' target='_blank' rel="noreferrer">Loewenmut. <img src={loewenmutlogo} alt='loewenmut' /></a></p>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </nav>
