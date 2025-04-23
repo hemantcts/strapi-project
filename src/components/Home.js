@@ -9,6 +9,7 @@ import Skeleton from 'react-loading-skeleton';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import Iframe from './Iframe';
 import MailchimpForm from './MailchimpForm';
+import { Popup } from './Popup';
 
 const Home = () => {
 
@@ -19,7 +20,7 @@ const Home = () => {
 
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/homepage?populate[Bannerbereich][populate]=*&populate[Herz_Bereich][populate]=linke_Seite.Bild&populate[Herz_Bereich][populate]=linke_Seite.Link&populate[Herz_Bereich][populate]=rechte_Seite.Link&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=Partners.patner_bild&populate[Anzeigenbereich][populate]=Partners.farbige_Bild`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/homepage?populate[Bannerbereich][populate]=*&populate[Herz_Bereich][populate]=linke_Seite.Bild&populate[Herz_Bereich][populate]=linke_Seite.Link&populate[Herz_Bereich][populate]=rechte_Seite.Link&populate[Herz_Bereich][populate]=rechte_Seite.Bild&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=Partners.patner_bild&populate[Anzeigenbereich][populate]=Partners.farbige_Bild`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -35,10 +36,25 @@ const Home = () => {
         getPageData();
     }, [])
 
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsMobile(window.innerWidth < 992);
+        };
+
+        checkScreenSize(); // Initial check
+        window.addEventListener('resize', checkScreenSize); // Listen for resize
+
+        return () => {
+            window.removeEventListener('resize', checkScreenSize); // Cleanup on unmount
+        };
+    }, []);
+
     return (
         <div>
             <Navbar />
-            <section className='wi_full py_3 banner_sec main_banner' style={{ background: `url('https://medzentrum.entwicklung-loewenmut.ch${bannerData?.Banner_Bild?.url}')` }}>
+            <section className='wi_full py_3 banner_sec main_banner' style={{ background: `url('https://medzentrum.entwicklung-loewenmut.ch${!isMobile ? bannerData?.Banner_Bild?.url : bannerData?.Mobile_Banner_Bild?.url}')` }}>
                 <div className="container-xxl">
                     <div className="row">
                         <div className="col-12 col-lg-6">
@@ -48,11 +64,19 @@ const Home = () => {
                                     <p>{bannerData?.Beschreibung}</p>
                                     <p>{bannerData?.Kleine_Beschreibung}</p>
                                     <div className="banner_btns d-flex d-lg-none my-4">
-                                        {bannerData?.Links2?.map((roundLink, index) => (
+                                        {/* {bannerData?.Links2?.map((roundLink, index) => (
                                             <div key={index} className={`round_btn round_${index + 1}`}>
                                                 <Link to={roundLink?.Link_URL} className="text-uppercase">
                                                     {roundLink?.Link_Text}
                                                 </Link>
+                                            </div>
+                                        ))} */}
+
+                                        {bannerData?.Mobile_Links?.map((roundLink, index) => (
+                                            <div key={index} className={`round_btn round_${index + 1}`}>
+                                                <a href={`tel:${roundLink?.Link_URL}`} className="text-uppercase">
+                                                    {roundLink?.Link_Text}
+                                                </a>
                                             </div>
                                         ))}
                                     </div>
@@ -89,6 +113,8 @@ const Home = () => {
                                         </Link>
                                     </div>
                                 ))}
+
+
                             </div>
                         </div>
                     </div>
@@ -97,14 +123,14 @@ const Home = () => {
             <section className="wi_full py_3 heart_sec">
                 <div className="container-xxl">
                     <div className="row align-items-center">
-                        <div className="col-12 col-lg-7 content_box">
+                        <div className="col-12 col-lg-6 content_box">
                             <div className="heart_block">
                                 <img className="heart_img order-2 order-sm-1" src={`https://medzentrum.entwicklung-loewenmut.ch${heartData?.linke_Seite?.Bild?.url}`} alt="" />
                                 <div className="content_wrap order-1 order-sm-2">
                                     <div className="sub_title">{heartData?.linke_Seite?.kleine_Uberschrift}</div>
-                                    <h2 style={{lineHeight:'1.1'}}>
-                                        {heartData?.linke_Seite?.grosse_Uberschrift?.substring(0, heartData?.linke_Seite?.grosse_Uberschrift?.length-1)}
-                                        <sup>{heartData?.linke_Seite?.grosse_Uberschrift[heartData?.linke_Seite?.grosse_Uberschrift?.length-1]}</sup>
+                                    <h2 style={{ lineHeight: '1.1' }}>
+                                        {heartData?.linke_Seite?.grosse_Uberschrift?.substring(0, heartData?.linke_Seite?.grosse_Uberschrift?.length - 1)}
+                                        <sup>{heartData?.linke_Seite?.grosse_Uberschrift[heartData?.linke_Seite?.grosse_Uberschrift?.length - 1]}</sup>
                                     </h2>
                                     {heartData?.linke_Seite?.Text && <BlocksRenderer content={heartData?.linke_Seite?.Text} />}
                                     {/* <p>{heartData?.linke_Seite?.Text}</p> */}
@@ -114,14 +140,23 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-12 col-lg-5 content_box">
+                        <div className="col-12 col-lg-6 content_box">
                             {heartData?.rechte_Seite?.map((item, index) => (
                                 <div key={item?.id ?? index} className={`item-${index + 1} content_wrap mt-4 mb-lg-0`}>
-                                    <div className="sub_title">{item?.kleine_Uberschrift ?? "Default Small Heading"}</div>
-                                    <h3 className='font-volk h3_large'>{item?.grosse_Uberschrift ?? "Default Large Heading"}</h3>
-                                    {item?.Text && <BlocksRenderer content={item?.Text} />}
-                                    <div className="btn_block">
-                                        <MyLink link={item?.Link?.Link_URL} text={item?.Link?.Link_Text} />
+                                    <div className="row">
+                                        <div className="col-4 pt-2">
+                                            <Link to={item?.Link?.Link_URL} >
+                                                <img className='item-img' src={`https://medzentrum.entwicklung-loewenmut.ch${item?.Bild?.url}`} alt="" />
+                                            </Link>
+                                        </div>
+                                        <div className="col-8">
+                                            <div className="sub_title">{item?.kleine_Uberschrift ?? "Default Small Heading"}</div>
+                                            <h3 className='font-volk h3_large'>{item?.grosse_Uberschrift ?? "Default Large Heading"}</h3>
+                                            {item?.Text && <BlocksRenderer content={item?.Text} />}
+                                            <div className="btn_block">
+                                                <MyLink link={item?.Link?.Link_URL} text={item?.Link?.Link_Text} />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
@@ -142,7 +177,7 @@ const Home = () => {
                             src="https://www.rotpunkt-apotheken.ch/iframes/halfpage-600.html"
                             width="100%"
                             // height="900px"
-                            //scrolling="no"
+                            scrolling="no"
                             frameBorder="0"
                             style={{
                                 // verticalAlign: "top",
@@ -163,6 +198,8 @@ const Home = () => {
                 <PartnersSection adData={adData} />
             </section>
             <Footer />
+
+            <Popup />
         </div>
     )
 }

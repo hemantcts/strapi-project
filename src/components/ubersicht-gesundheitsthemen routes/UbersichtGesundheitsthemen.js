@@ -123,7 +123,8 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
                     applyColor
                         ? {
                               color: color,
-                              borderBottomColor: color
+                              borderBottomColor: color,
+                              backgroundColor: 'transparent'
                           }
                         : {}
                 }

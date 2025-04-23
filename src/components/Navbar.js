@@ -109,7 +109,7 @@ const Navbar = ({ activeLink }) => {
                         <div className={`collapse navbar-collapse ${menuOpen ? 'show' : ''}`} id='mainNavbar'>
                             <div className='open--menu--header'>
                                 <Link to='/'>
-                                    <img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Frame_8cd1fd56fd.svg' alt='menu' className='open-menu-logo' />
+                                    <img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Medzentrum_Pfungen_klein_faed4cabf7.png' alt='menu' className='open-menu-logo' />
                                 </Link>
                                 <img src={closemenu} alt='menu' className='close_navbtn' onClick={toggleMenu} />
                             </div>

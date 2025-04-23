@@ -25,7 +25,7 @@ export const BannerSection = ({ bannerData, color, teamBanner }) => {
                         <div className="container-xxl">
                             <div className="row">
                                 <div className="col-12">
-                                    <div className="banner_content text-center">
+                                    <div className="banner_content text-center mt-5">
                                         <h1 className='text-uppercase'><Skeleton /></h1>
                                         <p className='mb-0'><Skeleton count={2} /></p>
                                     </div>
@@ -54,8 +54,8 @@ export const BannerSection = ({ bannerData, color, teamBanner }) => {
                         ) : (
                             <div className="container-xxl">
                                 <div className="row">
-                                    <div className="col-12">
-                                        <div className="banner_content text-center">
+                                    <div className="col-12 mt-5">
+                                        <div className="banner_content text-center mt-5">
                                             <h1 className='text-uppercase'><Skeleton /></h1>
                                             <p className='mb-0'><Skeleton count={2} /></p>
                                         </div>

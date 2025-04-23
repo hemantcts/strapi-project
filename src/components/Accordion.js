@@ -7,6 +7,8 @@ export const Accordion = ({ data, color, greyy, isHtml, border, customClass, ico
         const doc = new DOMParser().parseFromString(str, "text/html");
         return Array.from(doc.body.childNodes).some(node => node.nodeType === 1);
     };
+    
+    const accordionId = `accordion-${Math.random().toString(36).substr(2, 9)}`;
 
     useEffect(() => {
             const contentBoxes = document.querySelectorAll(".card-body"); // Select all content-box divs
@@ -24,7 +26,7 @@ export const Accordion = ({ data, color, greyy, isHtml, border, customClass, ico
 
     return (
         <div className={`accordion_wrapper ${customClass} ${icons ? 'icons' : 'no_icons'}`}>
-            <div className={`accordion ${color} ${greyy === true ? 'greyy' : ''}`} id="accordion" role='tablist' aria-multiselectable='true'>
+            <div className={`accordion ${color} ${greyy === true ? 'greyy' : ''}`} id={accordionId} role='tablist' aria-multiselectable='true'>
                 {data?.map((item, index) => (
                     <div className={`${border ? 'border-0' : ''} card mb-3`} key={item?.id}>
                         <div className="card-header">
@@ -32,7 +34,7 @@ export const Accordion = ({ data, color, greyy, isHtml, border, customClass, ico
                                 {item?.Titel}
                             </a>
                         </div>
-                        <div id={`collapse${item?.id}`} className="collapse" data-bs-parent="#accordion">
+                        <div id={`collapse${item?.id}`} className="collapse" data-bs-parent={`#${accordionId}`}>
                             <div className="card-body">
 
                                 {item?.Beschreibung && <BlocksRenderer content={item?.Beschreibung} />}

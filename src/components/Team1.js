@@ -22,7 +22,6 @@ export const Team1 = ({ data, color, change }) => {
 
             const items = Array.from(containerRef.current.getElementsByClassName('team_itm'));
             const cols = getColumnCount();
-            console.log(">>>",cols);
             setColumns(cols);
             let rowIndex = 0;
 
