@@ -18,8 +18,8 @@ const Menu3 = ({toggleMenu}) => {
               <li className={location.pathname === '/angebot' ? 'active' : 'list-items'}>
                 <Link onClick={toggleMenu} to="/angebot">Angebote</Link>
               </li>
-              <li className={location.pathname === '/terminbuchung-beratung' ? 'active' : 'list-items'}>
-                <Link onClick={toggleMenu} to="/terminbuchung-beratung" className="termin_praxis">
+              <li className={location.pathname === '/terminbuchung-praxis' ? 'active' : 'list-items'}>
+                <Link onClick={toggleMenu} to="/terminbuchung-praxis" className="termin_praxis">
                   Termin buchen Beratung <i><img src={svgIcon} alt="" /></i>
                 </Link>
               </li>

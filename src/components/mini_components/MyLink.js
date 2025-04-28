@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import svgIcon from '../../images/option-link-icon.svg';
 
-const MyLink = ({ link, text, color }) => {
+const MyLink = ({ link, text, color, fullBtn }) => {
     const [isAnimated, setAnimated] = useState(false);
 
     const handleMouseEnter = () => setAnimated(true);
     const handleMouseLeave = () => setAnimated(false);
 
     const commonProps = {
-        className: `button blue_btn text-uppercase ${isAnimated ? 'option-link-animate' : ''} ${color ? color : ''}`,
+        className: `button blue_btn text-uppercase ${fullBtn ? 'full_btn' : ''} ${isAnimated ? 'option-link-animate' : ''} ${color ? color : ''}`,
         onMouseEnter: handleMouseEnter,
         onMouseLeave: handleMouseLeave
     };

@@ -25,6 +25,12 @@ export const ImpressumKontakt = ({ contactData, color }) => {
             return { href: trimmed, target: '_blank' };
         }
 
+        // Check for domain-like strings (e.g. medzentrum.ch or www.loewenmut.ch)
+        const domainLikeRegex = /^[^\s]+\.[^\s]+$/;
+        if (domainLikeRegex.test(trimmed)) {
+            return { href: `https://${trimmed}`, target: '_blank' };
+        }
+
         return { href: '', target: '' }; // No match
     };
 

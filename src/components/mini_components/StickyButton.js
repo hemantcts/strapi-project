@@ -34,14 +34,15 @@ export const StickyButton = ({ btntext, color, btnLink }) => {
     useEffect(() => {
         if (isHidden) {
             document.body.style.paddingBottom = '0px';
-        } else {
+        } 
+        if(!isHidden && windowWidth < 576) {
             document.body.style.paddingBottom = '35px'; // Adjust height if needed
         }
 
         return () => {
             document.body.style.paddingBottom = '0px';
         };
-    }, [isHidden]);
+    }, [isHidden, windowWidth]);
 
     if (isHidden) return null;
 

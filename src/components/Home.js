@@ -164,7 +164,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <section className='wi_full py_3 aktionen_sec bg_light_blue products-sec p-0'>
+            <section className='wi_full py_3 aktionen_sec bg_light_blue products-sec'>
                 {/* <ProductsSection productsData={productsData} /> */}
 
                 <div className="container">
@@ -190,6 +190,9 @@ const Home = () => {
                         >
                             Leider unterstützt Ihr Browser keine Inline Frames.
                         </iframe>
+                    </div>
+                    <div className='text-center pt-4'>
+                        <MyLink text='zu allen Aktionen' link='https://www.rotpunkt-apotheken.ch/aktionen' fullBtn={true} />
                     </div>
                 </div>
 

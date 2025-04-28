@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../Navbar'
 import ProductsSection from '../ProductsSection'
 import Footer from '../Footer'
@@ -10,6 +10,7 @@ import { MyButton } from '../mini_components/MyButton'
 import { TwoContent } from '../mini_components/TwoContent'
 import { SpeziellesSection } from '../SpeziellesSection'
 import { StickyButton } from '../mini_components/StickyButton'
+import MyLink from '../mini_components/MyLink'
 
 const PharmacyOverview = () => {
     const activeLink = { link1: true, link2: false, link3: false, link4: false, link5: false, link6: false }
@@ -62,7 +63,7 @@ const PharmacyOverview = () => {
                 <SpeziellesSection specialsData={specialsData} color='green' />
             </section>
 
-            <section className='products-sec p-0'>
+            <section className='products-sec py-4'>
                 {/* <ProductsSection productsData={productsData} /> */}
 
                 <div className="container">
@@ -88,6 +89,9 @@ const PharmacyOverview = () => {
                         >
                             Leider unterstützt Ihr Browser keine Inline Frames.
                         </iframe>
+                    </div>
+                    <div className='text-center pt-4'>
+                        <MyLink text='zu allen Aktionen' link='https://www.rotpunkt-apotheken.ch/aktionen' fullBtn={true} color='green' />
                     </div>
                 </div>
 

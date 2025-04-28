@@ -38,7 +38,7 @@ export const SearchResult = ({ data, color }) => {
 
         "https://medzentrum.entwicklung-loewenmut.ch/api/uebersicht-gesundheitsthemen?populate[Bannerbereich][populate]=Banner_Bild",
 
-        "https://medzentrum.entwicklung-loewenmut.ch/api/ubersicht-ernaehrungsdiagnostik?populate[Bannerbereich][populate]=Banner_Bild&populate[Gesundheitsbereich][populate]=*&populate[Sonderangebotsbereich][populate]=Bild&populate[Sonderangebotsbereich][populate]=erweiterbare_Daten&populate[Autorenbereich][populate]=Bild&populate[Anzeigenbereich][populate]=Partners.patner_bild&populate[Anzeigenbereich][populate]=Partners.farbige_Bild",
+        "https://medzentrum.entwicklung-loewenmut.ch/api/ubersicht-ernaehrungsdiagnostik?populate[Bannerbereich][populate]=Banner_Bild&populate[Gesundheitsbereich][populate]=*&populate[Sonderangebotsbereich][populate]=Bild&populate[Sonderangebotsbereich][populate]=erweiterbare_Daten&populate[Sonderangebotsbereich][populate]=Button&populate[Autorenbereich][populate]=Bild&populate[Anzeigenbereich][populate]=Partners.patner_bild&populate[Anzeigenbereich][populate]=Partners.farbige_Bild",
 
         "https://medzentrum.entwicklung-loewenmut.ch/api/ernaehrungsdiagnostik-angebote?populate[Bannerbereich][populate]=Banner_Bild&populate[Angebotsbereich][populate]=*&populate[Tabellenbereich][populate]=*",
 
@@ -48,7 +48,11 @@ export const SearchResult = ({ data, color }) => {
 
         "https://medzentrum.entwicklung-loewenmut.ch/api/datenschutzerklaerung?populate[Bannerbereich][populate]=Banner_Bild&populate[Datenschutzbereich][populate]=erweiterbare_Daten",
 
-        "https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*&pagination[limit]=100&sort[0]=Post_id"
+        "https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*&pagination[limit]=100&sort[0]=Post_id",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/team-apothekes?populate=*&pagination[limit]=100&sort[0]=Nummer",
+
+        "https://medzentrum.entwicklung-loewenmut.ch/api/team-praxes?populate=*&pagination[limit]=100&sort[0]=Nummer"
     ];
 
     const allRoutes = [
@@ -70,11 +74,19 @@ export const SearchResult = ({ data, color }) => {
         "/impressum",
         "/datenschutz",
         "/uebersicht-gesundheitsthemen",
+        "/apotheke-team",
+        "/praxis-team",
     ]
 
     const [pageData, setPageData] = useState([]);
     const [matchedKeys, setMatchedKeys] = useState([]);
     const [matchedIndices, setMatchedIndices] = useState([]);
+    const [mainIndex, setMainIndex] = useState([]);
+    const [mainIndex2, setMainIndex2] = useState([]);
+    const [mainIndex3, setMainIndex3] = useState([]);
+    const [blogIndices, setBlogIndices] = useState([]);
+    const [teamIndices, setTeamIndices] = useState([]);
+    const [teamIndices2, setTeamIndices2] = useState([]);
     const [isLoading, setLoading] = useState(true);
 
     const handleClick = () => {
@@ -113,9 +125,10 @@ export const SearchResult = ({ data, color }) => {
     //     return matches;
     // };
 
+
     const findMatchingKeys = (data, keyword, parentKey = "") => {
         let matches = [];
-    
+
         if (Array.isArray(data)) {
             data.forEach((item, index) => {
                 const newParentKey = `${parentKey}[${index}]`;
@@ -129,13 +142,16 @@ export const SearchResult = ({ data, color }) => {
         } else if (typeof data === "string" && data.toLowerCase().includes(keyword)) {
             matches.push(parentKey);
         }
-    
+
         return matches;
-    };    
+    };
 
     const getPageData = async () => {
         setLoading(true);
         setMatchedIndices([]);
+        setBlogIndices([]);
+        setTeamIndices([]);
+        setTeamIndices2([]);
         try {
             const urls = allUrls;
 
@@ -151,21 +167,75 @@ export const SearchResult = ({ data, color }) => {
 
             const keyword = searchKeyword.toLowerCase();
             let matchedUrls = [];
+            let matchedUrls2 = [];
+            let matchedUrls3 = [];
+            let matchedUrls4 = [];
 
             newData.forEach((data, index) => {
+                if (index === allUrls.length - 3 && Array.isArray(data)) {
+                    data.forEach((blog, blogIndex) => {
+                        const matches = findMatchingKeys(blog, keyword);
+                        if (matches.length > 0) {
+                            console.log(`Keyword matched in blog post at index: ${blogIndex} and ${index}`);
+                            // You can collect blogIndex here in a separate array if needed
+                            setMainIndex(index);
+                            matchedUrls2.push(blogIndex);
+                            setBlogIndices(matchedUrls2);
+
+                            console.log("data here", matchedUrls2)
+                        }
+                    });
+                }
+                if (index === allUrls.length - 2 && Array.isArray(data)) {
+                    data.forEach((team, teamIndex) => {
+                        const matches = findMatchingKeys(team, keyword);
+                        if (matches.length > 0) {
+                            console.log(`Keyword matched in team post at index: ${teamIndex} and ${index}`);
+                            // You can collect teamIndex here in a separate array if needed
+                            setMainIndex2(index);
+                            matchedUrls3.push(teamIndex);
+                            setTeamIndices(matchedUrls3);
+
+                            console.log("data here", matchedUrls3)
+                        }
+                    });
+                }
+                if (index === allUrls.length - 1 && Array.isArray(data)) {
+                    data.forEach((team, teamIndex) => {
+                        const matches = findMatchingKeys(team, keyword);
+                        if (matches.length > 0) {
+                            console.log(`Keyword matched in team post at index: ${teamIndex} and ${index}`);
+                            // You can collect teamIndex here in a separate array if needed
+                            setMainIndex3(index);
+                            matchedUrls4.push(teamIndex);
+                            setTeamIndices2(matchedUrls4);
+
+                            console.log("data here", matchedUrls4)
+                        }
+                    });
+                }
                 const matches = findMatchingKeys(data, keyword);
                 if (matches.length > 0) {
-                    if(index === 17){
+                    if (index === 17) {
                         index = 11;
+                    }
+                    if (index === 18) {
+                        index = 4;
+                    }
+                    if (index === 19) {
+                        index = 9;
                     }
                     matchedUrls.push(index); // Get URL from the same index in the urls array
                     setMatchedIndices(matchedUrls);
-                    console.log("index", index);
+                    console.log("index", index, matchedUrls);
                 }
+
+
+
             });
             setLoading(false);
         } catch (error) {
-            console.error("Error fetching page data:", error);
+            // console.error("Error fetching page data:", error);
         } finally {
             setLoading(false);
         }
@@ -176,21 +246,103 @@ export const SearchResult = ({ data, color }) => {
         getPageData();
     }, [searchKeyword])
 
+    const filterTitle = (title) => {
+        return title.toLowerCase().replace(/\s+/g, '-');
+    }
+
 
     return (
         <div className='search_page'>
             <Navbar />
-            <section className='wi_full py_3 search_result'>
+            <section className='wi_full py_3 search_result' style={{ minHeight: '70vh' }}>
                 <div className='container-xxl'>
                     <div className='sec_title text-black'>
                         <h1 className='text-blue'>Suchergebnisse für „{searchKeyword}“</h1>
                         {!isLoading ? (
-                            <p>Es gibt {matchedIndices.length} Ergebnisse für deine Suche.</p>
+                            <p>Es gibt {matchedIndices.length + blogIndices.length + teamIndices.length + teamIndices2.length} Ergebnisse für deine Suche.</p>
                         ) : (
                             <Skeleton />
                         )}
                     </div>
                     <div className='search_list_row'>
+                        {(!isLoading && blogIndices.length > 0) && (
+                            blogIndices.map((index, i) => (
+                                <Link key={i} to={`/${filterTitle(pageData[mainIndex][index]?.Titel)}`}>
+                                    <div className="srch_li_item text-black">
+                                        {pageData[mainIndex][index]?.Bild && (
+                                            <img
+                                                src={`https://medzentrum.entwicklung-loewenmut.ch${pageData[mainIndex][index]?.Bild?.url}`}
+                                                alt=""
+                                                className="src_post_img"
+                                            />
+                                        )}
+
+                                        <div className="src_post_content">
+                                            {pageData[mainIndex][index]?.Titel &&
+                                                <h3>
+                                                    {pageData[mainIndex][index]?.Titel || <Skeleton width={180} height={20} />}
+                                                </h3>
+                                            }
+                                            {pageData[mainIndex][index]?.Beschreibung[0]?.children[0]?.text &&
+                                                <p>{pageData[mainIndex][index]?.Beschreibung[0]?.children[0]?.text || <Skeleton count={2} />}</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))
+                        )}
+                        {(!isLoading && teamIndices.length > 0) && (
+                            teamIndices.map((index, i) => (
+                                <Link key={i} to={`/apotheke-team`}>
+                                    <div className="srch_li_item text-black">
+                                        {pageData[mainIndex2][index]?.Bild && (
+                                            <img
+                                                src={`https://medzentrum.entwicklung-loewenmut.ch${pageData[mainIndex2][index]?.Bild?.url}`}
+                                                alt=""
+                                                className="src_post_img"
+                                            />
+                                        )}
+
+                                        <div className="src_post_content">
+                                            {pageData[mainIndex2][index]?.Name &&
+                                                <h3>
+                                                    {pageData[mainIndex2][index]?.Name || <Skeleton width={180} height={20} />}
+                                                </h3>
+                                            }
+                                            {pageData[mainIndex2][index]?.Bezeichnung &&
+                                                <p>{pageData[mainIndex2][index]?.Bezeichnung || <Skeleton count={2} />}</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))
+                        )}
+                        {(!isLoading && teamIndices2.length > 0) && (
+                            teamIndices2.map((index, i) => (
+                                <Link key={i} to={`/praxis-team`}>
+                                    <div className="srch_li_item text-black">
+                                        {pageData[mainIndex3][index]?.Bild && (
+                                            <img
+                                                src={`https://medzentrum.entwicklung-loewenmut.ch${pageData[mainIndex3][index]?.Bild?.url}`}
+                                                alt=""
+                                                className="src_post_img"
+                                            />
+                                        )}
+
+                                        <div className="src_post_content">
+                                            {pageData[mainIndex3][index]?.Name &&
+                                                <h3>
+                                                    {pageData[mainIndex3][index]?.Name || <Skeleton width={180} height={20} />}
+                                                </h3>
+                                            }
+                                            {pageData[mainIndex3][index]?.Bezeichnung &&
+                                                <p>{pageData[mainIndex3][index]?.Bezeichnung || <Skeleton count={2} />}</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))
+                        )}
                         {!isLoading ? (
                             matchedIndices.map((index, i) => (
                                 <Link key={i} to={allRoutes[index]}>
@@ -204,10 +356,10 @@ export const SearchResult = ({ data, color }) => {
                                         )}
 
                                         <div className="src_post_content">
-                                            <h3>
+                                            {pageData[index]?.Bannerbereich?.Titel && <h3>
                                                 {pageData[index]?.Bannerbereich?.Titel || <Skeleton width={180} height={20} />}
-                                            </h3>
-                                            <p>{<BlocksRenderer content={pageData[index]?.Bannerbereich?.Beschreibung} />  || <Skeleton count={2} />}</p>
+                                            </h3>}
+                                            {pageData[index]?.Bannerbereich?.Beschreibung && <p>{<BlocksRenderer content={pageData[index]?.Bannerbereich?.Beschreibung} /> || <Skeleton count={2} />}</p>}
                                         </div>
                                     </div>
                                 </Link>

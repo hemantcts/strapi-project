@@ -1,15 +1,36 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import pdfIcon from '../images/dwnload-arrow.svg'
 
 export const Popup = () => {
     const openBtnRef = useRef(null);
-    const [popupData, setPopupData] = useState(null)
+    const [popupData, setPopupData] = useState(null);
+    const [mobileWidth, setMobileWidth] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 350) {
+                setMobileWidth(true);
+            } else {
+                setMobileWidth(false);
+            }
+        };
+    
+        // Check on mount
+        handleResize();
+    
+        // Add event listener
+        window.addEventListener('resize', handleResize);
+    
+        // Cleanup on unmount
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         const hasSeenPopup = localStorage.getItem('hasSeenPopup');
 
-        if (!hasSeenPopup) {
-        // if (true) {
+        // if (!hasSeenPopup) {
+        if (true) {
             openBtnRef.current?.click(); // trigger modal via hidden button
             localStorage.setItem('hasSeenPopup', 'true');
         }
@@ -54,25 +75,23 @@ export const Popup = () => {
                 tabIndex="-1"
                 aria-hidden="true"
             >
-                <div className="modal-dialog modal-dialog-centered" style={{ maxWidth: 'calc(100% - 1rem)', width: '560px' }}>
+                <div className="modal-dialog modal-dialog-centered popup-container">
                     <div
                         className="modal-content d-flex flex-row overflow-hidden popup"
                     >
                         {/* Left Side: Text */}
-                        <div
-                            className="d-flex flex-column justify-content-center align-items-center popup-box"
-                        >
-                            {popupData?.Ueberschrift && (
+                        <div className={`d-flex flex-column justify-content-center align-items-center popup-box ${mobileWidth ? 'order-2' : ''}`} style={{ backgroundColor: popupData?.Hintergrund_Farbe }}>
+                            {popupData?.Titel && (
                                 <div className="block">
-                                    <div className="popup-heading">
-                                        {popupData?.Ueberschrift}
+                                    <div className="popup-heading" style={{ color: popupData?.Titel_Farbe }}>
+                                        {popupData?.Titel}
                                     </div>
                                 </div>
                             )}
-                            {popupData?.Rabatt && (
+                            {popupData?.Subtitel && (
                                 <div className="block">
-                                    <div className="popup-discount">
-                                        {popupData?.Rabatt}
+                                    <div className="popup-discount" style={{ color: popupData?.Titel_Farbe }}>
+                                        {popupData?.Subtitel}
                                     </div>
                                 </div>
                             )}
@@ -83,18 +102,26 @@ export const Popup = () => {
                                     </div>
                                 </div>
                             )}
-                            {popupData?.Button && (
-                                <Link
-                                    to={popupData?.Button?.Link_URL}
+                            {(popupData?.Button?.Link_Text && popupData?.Button?.Link_URL) && (
+                                <a
+                                    href={popupData?.Button?.Link_URL}
+                                    target='_blank'
+                                    rel="noopener noreferrer"
                                     className="btn btn-primary popup-btn"
+                                    style={{ backgroundColor: popupData?.Button_Farbe }}
                                 >
                                     {popupData?.Button?.Link_Text}
-                                </Link>
+                                </a>
                             )}
+
+                            {popupData?.PDF_Link &&
+                                <a href={`https://medzentrum.entwicklung-loewenmut.ch${popupData?.PDF_Link?.url}`} target='_blank' className='button fill_btn pdf_btn px-2 py-3 w-100'>pdf download <img src={pdfIcon} alt='#' /></a>
+                            }
                         </div>
 
                         {/* Right Side: Image */}
                         <div
+                            className={`popup-img ${mobileWidth ? 'order-1' : ''}`}
                             style={{
                                 width: '50%',
                                 backgroundImage: `url(https://medzentrum.entwicklung-loewenmut.ch${popupData?.Bild?.url})`,

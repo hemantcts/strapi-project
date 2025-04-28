@@ -264,6 +264,19 @@ img {
     filter: brightness(0) invert(1);
 }
 
+.full_btn:after {
+    height: 100%;
+    opacity: 1;
+}
+
+.full_btn {
+    color: #fff !important;
+
+    img {
+        filter: brightness(0) invert(1);
+    }
+}
+
 .fill_btn {
     position: relative;
     font-weight: var(--bs-fw700);
@@ -404,7 +417,8 @@ header {
 }
 
 .mt_col {
-    margin-top: 1.5rem;
+    /* margin-top: 1.5rem; */
+    margin-top: 2.5rem;
 }
 
 .bg_dark_grey {
@@ -416,7 +430,8 @@ header {
 }
 
 .banner_sec {
-    padding-top: 6rem !important;
+    /* padding-top: 6rem !important; */
+    padding-top: 6rem ;
     padding-bottom: 2rem !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
@@ -990,6 +1005,7 @@ footer {
         top: -30px;
         position: relative;
         margin-bottom: -10px;
+        animation: pulse-animation2 2s infinite;
     }
 
     .itm_info {
@@ -1382,6 +1398,7 @@ footer {
 
         span.item_icon {
             background-image: linear-gradient(to bottom, rgba(0, 158, 75, 1), rgba(37, 150, 169, 1)) !important;
+            animation: pulse-animation 2s infinite;
         }
 
         p,
@@ -1766,7 +1783,7 @@ footer {
 }
 
 .products-sec {
-    background-color: #EEF1F4;
+    background-color: #f6f6f6;
     padding: 4rem 0;
     color: #1C99AA;
 
@@ -2141,7 +2158,7 @@ footer {
 }
 
 .products-iframe {
-    height: 1024px;
+    height: 1010px;
 }
 
 .h-img {
@@ -2192,6 +2209,10 @@ footer {
     }
 }
 
+.popup-container {
+    width: 560px;
+    max-width: calc(100% - 1rem);
+}
 
 .popup {
     border-radius: 10px;
@@ -2215,7 +2236,7 @@ footer {
     .popup-heading {
         font-weight: bold;
         font-style: normal;
-        font-size: var(--bs-h4);
+        font-size: var(--bs-h3);
 
         line-height: 1.32;
         color: rgb(13, 101, 155);
@@ -2224,10 +2245,12 @@ footer {
     .popup-discount {
         font-weight: bold;
         font-style: normal;
-        font-size: var(--bs-h2);
+        /* font-size: var(--bs-h2); */
+        font-size: var(--bs-h3);
 
         line-height: 1.32;
-        color: rgb(0, 0, 0);
+        /* color: rgb(0, 0, 0); */
+        color: rgb(13, 101, 155);
     }
 
     .popup-description {
@@ -2260,6 +2283,7 @@ footer {
         margin: 20px 0 0;
 
         padding: 11px 26px;
+        text-transform: uppercase;
     }
 
 
@@ -2270,6 +2294,15 @@ footer {
         width: 16px;
         height: 16px;
         color: rgba(17, 17, 17, 0.7);
+    }
+
+    .pdf_btn {
+        font-size: var(--bs-fs20);
+        margin: 20px 0 0;
+
+        img {
+            width: 14px;
+        }
     }
 
 }

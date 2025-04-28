@@ -10,6 +10,7 @@ import { MyButton } from '../mini_components/MyButton'
 import { TwoContent } from '../mini_components/TwoContent'
 import { SpeziellesSection } from '../SpeziellesSection'
 import { StickyButton } from '../mini_components/StickyButton'
+import MyLink from '../mini_components/MyLink'
 
 const OverviewPractice = () => {
     const activeLink = { link1: false, link2: true, link3: false, link4: false, link5: false, link6: false }
@@ -66,7 +67,7 @@ const OverviewPractice = () => {
                 <SpeziellesSection specialsData={specialsData} color='blue' />
             </section>
 
-            <section className='products-sec p-0'>
+            <section className='products-sec py-4'>
                 {/* <ProductsSection productsData={productsData} /> */}
 
                 <div className="container">
@@ -92,6 +93,9 @@ const OverviewPractice = () => {
                         >
                             Leider unterstützt Ihr Browser keine Inline Frames.
                         </iframe>
+                    </div>
+                    <div className='text-center pt-4'>
+                        <MyLink text='zu allen Aktionen' link='https://www.rotpunkt-apotheken.ch/aktionen' fullBtn={true} />
                     </div>
                 </div>
 

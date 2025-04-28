@@ -29,7 +29,7 @@ export const Blog = ({ data, color }) => {
     // }
 
     const getBlogs = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate[Bild][populate]=*&populate[preis_und_zeit][populate]=Icon&populate[Produktdetail][populate]=Bild.Bild&populate[Produktdetail][populate]=Button&populate[zusaetzliche_Details][populate]=erweiterbare_Daten&pagination[limit]=100&sort[0]=Post_id`)
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate[Bild][populate]=*&populate[preis_und_zeit][populate]=Icon&populate[Produktdetail][populate]=Quotes_Details.Bild&populate[Produktdetail][populate]=Button&populate[zusaetzliche_Details][populate]=erweiterbare_Daten&pagination[limit]=100&sort[0]=Post_id`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -59,6 +59,9 @@ export const Blog = ({ data, color }) => {
     // }
 
     useEffect(() => {
+        if(title !== title.toString().toLowerCase()){
+            navigate(`/${title.toString().toLowerCase()}`)
+        }
         // title = title.replace(/-/g, ' ');
         if (blogs?.length > 0 && title) {
             const matchedBlog = blogs?.find((blog) => blog.Titel.toString().toLowerCase() === title);
@@ -166,32 +169,22 @@ export const Blog = ({ data, color }) => {
 
                             <div className={`post_data_wrapper text-black ${(checkData(productDetails?.Beschreibung) || productDetails?.Titel) ? 'pt_lg' : ''} `}>
                                 {productDetails?.Titel && <h2>{productDetails?.Titel}</h2>}
-                                {(productDetails?.Bild?.Bild || productDetails?.Bild?.Bildtitel) &&
+                                {(productDetails?.Quotes_Details) &&
 
                                     <div className='nuitrition_diagnos'>
                                         <div className='row align-items-center'>
-                                            {productDetails?.Bild?.Bildtitel && (
+                                            {productDetails?.Quotes_Details?.Quote && (
                                                 <div className="col-lg-8 content_col">
-                                                    {(() => {
-                                                        const original = productDetails.Bild.Bildtitel;
-                                                        const words = original.split(" ");
-                                                        const firstPart = words.slice(0, 2).join(" ");
-                                                        const secondPart = words.slice(2).join(" ");
-
-                                                        return (
-                                                            <>
-                                                                <p style={{ color: 'var(--bs-blue)', margin: '0' }}>«{secondPart}»</p>
-                                                                <br />
-                                                                <h3>{firstPart}</h3>
-                                                            </>
-                                                        );
-                                                    })()}
+                                                    <p style={{ color: 'var(--bs-blue)', margin: '0' }}>«{productDetails?.Quotes_Details?.Quote}»</p>
+                                                    <br />
+                                                    <h3 className='m-0'>{productDetails?.Quotes_Details?.Name}</h3>
+                                                    <p style={{ color: 'var(--bs-blue)', margin: '0' }}>{productDetails?.Quotes_Details?.Funktion}</p>
                                                 </div>
                                             )}
                                             <div className='col-lg-4 img_col'>
-                                                {productDetails?.Bild?.Bild && (
+                                                {productDetails?.Quotes_Details?.Bild && (
                                                     <img
-                                                        src={`https://medzentrum.entwicklung-loewenmut.ch${productDetails.Bild.Bild.url}`}
+                                                        src={`https://medzentrum.entwicklung-loewenmut.ch${productDetails.Quotes_Details.Bild.url}`}
                                                         alt=""
                                                     />
                                                 )}

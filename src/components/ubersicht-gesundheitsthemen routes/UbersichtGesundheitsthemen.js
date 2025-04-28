@@ -96,44 +96,44 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
 
                     <div className='health_topic tab_container'>
                         <ul className='nav nav-tabs' role='tablist'>
-                        {categories?.map((type, index) => {
-    const isActive = index === activeIndex;
+                            {categories?.map((type, index) => {
+                                const isActive = index === activeIndex;
 
-    // Only assign color if active AND index > 0
-    const applyColor = isActive && index > 0;
-    const color =
-        type?.label === "Gesundheits-Checks"
-            ? colors[0]
-            : type?.label === "Impfungen"
-            ? colors[1]
-            : colors[2];
+                                // Only assign color if active AND index > 0
+                                const applyColor = isActive && index > 0;
+                                const color =
+                                    type?.label === "Gesundheits-Checks"
+                                        ? colors[0]
+                                        : type?.label === "Impfungen"
+                                            ? colors[1]
+                                            : colors[2];
 
-    return (
-        <li key={index} className={`nav-item tab${index + 1}`}>
-            <a
-                className={`nav-link ${isActive ? 'active' : ''}`}
-                data-bs-toggle="tab"
-                href={`#Tab${index + 1}`}
-                role="tab"
-                onClick={() => {
-                    setActiveIndex(index);
-                    handleChange(type);
-                }}
-                style={
-                    applyColor
-                        ? {
-                              color: color,
-                              borderBottomColor: color,
-                              backgroundColor: 'transparent'
-                          }
-                        : {}
-                }
-            >
-                {type?.label}
-            </a>
-        </li>
-    );
-})}
+                                return (
+                                    <li key={index} className={`nav-item tab${index + 1}`}>
+                                        <a
+                                            className={`nav-link ${isActive ? 'active' : ''}`}
+                                            data-bs-toggle="tab"
+                                            href={`#Tab${index + 1}`}
+                                            role="tab"
+                                            onClick={() => {
+                                                setActiveIndex(index);
+                                                handleChange(type);
+                                            }}
+                                            style={
+                                                applyColor
+                                                    ? {
+                                                        color: color,
+                                                        borderBottomColor: color,
+                                                        backgroundColor: 'transparent'
+                                                    }
+                                                    : {}
+                                            }
+                                        >
+                                            {type?.label}
+                                        </a>
+                                    </li>
+                                );
+                            })}
 
                         </ul>
                         {/* <div className='tab-content'>
@@ -146,7 +146,7 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
                         </div> */}
 
                     </div>
-                    <div className='blog_container mt-4'>
+                    <div className='blog_container'>
                         <Blogs blogs={blogs} selectedCategory={selectedCategory?.value} colors={colors} />
                     </div>
                 </div>
