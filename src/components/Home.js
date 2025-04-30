@@ -10,6 +10,7 @@ import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import Iframe from './Iframe';
 import MailchimpForm from './MailchimpForm';
 import { Popup } from './Popup';
+import SEO from './Seo';
 
 const Home = () => {
 
@@ -53,6 +54,7 @@ const Home = () => {
 
     return (
         <div>
+            {/* <SEO slug="home" /> */}
             <Navbar />
             <section className='wi_full py_3 banner_sec main_banner' style={{ background: `url('https://medzentrum.entwicklung-loewenmut.ch${!isMobile ? bannerData?.Banner_Bild?.url : bannerData?.Mobile_Banner_Bild?.url}')` }}>
                 <div className="container-xxl">

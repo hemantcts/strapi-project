@@ -225,8 +225,10 @@ export const SearchResult = ({ data, color }) => {
                     if (index === 19) {
                         index = 9;
                     }
-                    matchedUrls.push(index); // Get URL from the same index in the urls array
-                    setMatchedIndices(matchedUrls);
+                    if (!matchedUrls.includes(index)) {
+                        matchedUrls.push(index);
+                        setMatchedIndices(matchedUrls);
+                    }
                     console.log("index", index, matchedUrls);
                 }
 
