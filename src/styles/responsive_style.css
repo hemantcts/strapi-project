@@ -1471,9 +1471,9 @@ header {
     }
 } }
 
-body {
+/* body {
     padding-bottom: 35px;
-}
+} */
 .stickY_btn {
     width: 100%;
     top: auto;

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import pdfIcon from '../images/dwnload-arrow.svg'
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 export const Popup = () => {
     const openBtnRef = useRef(null);
@@ -98,8 +99,10 @@ export const Popup = () => {
                             {popupData?.Beschreibung && (
                                 <div className="block">
                                     <div className="popup-description">
-                                        {popupData?.Beschreibung}
+                                        {/* {popupData?.Beschreibung} */}
+                                        <BlocksRenderer content={popupData?.Beschreibung} />
                                     </div>
+                                    
                                 </div>
                             )}
                             {(popupData?.Button?.Link_Text && popupData?.Button?.Link_URL) && (

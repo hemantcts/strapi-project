@@ -28,6 +28,8 @@ import { useState } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import SEO from './components/Seo';
 
+import LandingPage from './components/landingPage/LandingPage';
+
 function App() {
 
   return (
@@ -85,6 +87,9 @@ function App() {
         </Routes>
       </div>
     </HelmetProvider>
+    // <div>
+    //   <LandingPage />
+    // </div>
   );
 }
 
