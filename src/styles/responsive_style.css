@@ -468,6 +468,14 @@ header {
     --bs-fs18: 18px;
     --bs-fsbody: 25px;
 }
+.landing-page{
+    .banner_sec {
+        padding-top: 10rem !important;
+    }
+    .space-left{
+        position: static !important;
+    }
+}
 .banner_sec {
     padding-top: 12rem !important;
     padding-bottom: 6rem !important;
@@ -1519,6 +1527,11 @@ header {
     --bs-fs18: 14px;
     --bs-fsbody: 17px;
 }
+.landing-page{
+    h1{
+        margin-bottom: 25px;
+    }
+}
 h1 {
     /* hyphens: auto; */
     /* overflow-wrap: break-word; */
@@ -1639,6 +1652,11 @@ header {
 @media (max-width:360px) {
     :root {
         --bs-h1: 22px;
+    }
+    .landing-page{
+        h1{
+            margin-bottom: 20px;
+        }
     }
     h1{
         margin-bottom: 20px;

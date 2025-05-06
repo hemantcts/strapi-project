@@ -69,6 +69,22 @@ h2 {
     font-family: var(--bs-fontvolkhov);
 }
 
+.landing-page{
+    h1{
+        margin-bottom: 35px;
+    }
+
+    .nav-item.tab1 .nav-link.active{
+        color: var(--bs-green);
+        border-bottom-color:  var(--bs-green) !important;
+    }
+
+    .nav-item.tab2 .nav-link.active{
+        color: var(--bs-blue);
+        border-bottom-color:  var(--bs-blue) !important;
+    }
+}
+
 h1 {
     font-size: var(--bs-h1);
     margin-bottom: 15px;

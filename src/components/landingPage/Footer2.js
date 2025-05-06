@@ -25,7 +25,7 @@ const Footer2 = () => {
                         <div className='row'>
                             <div className='col-12 col-sm-6 col-lg-3 ftr_block'>
                                 <h4>MedZentrum Pfungen</h4>
-                                <address>Riedäckerstrasse 5<br />CH-8422 Pfungen</address>
+                                <address className='mb-0'>Riedäckerstrasse 5<br />CH-8422 Pfungen</address>
 
                             </div>
                             <div className='col-12 col-sm-6 col-lg-4 ftr_block'>

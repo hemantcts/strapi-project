@@ -47,7 +47,7 @@ const LandingPage = () => {
 
 
   return (
-    <div>
+    <div className='landing-page'>
       <Navbar2 />
       <section className='wi_full py_3 banner_sec main_banner' style={{ background: `url('https://medzentrum.entwicklung-loewenmut.ch${!isMobile ? bannerData?.Banner_Bild?.url : bannerData?.Mobile_Banner_Bild?.url}')` }}>
         <div className="container-xxl">
@@ -57,7 +57,7 @@ const LandingPage = () => {
                 <div className="banner_content text-center">
                   <h1>Unsere neue Website geht bald live…</h1>
                   <p style={{ fontWeight: '250' }}>Wir überarbeiten derzeit unsere Website, um Ihnen künftig noch schneller und einfacher Zugang zu wichtigen Informationen rund um Ihre Gesundheit zu bieten – von unseren Apotheken Serviceleistungen bis hin zu unseren Praxis Dienstleistungen.</p>
-                  <p style={{ fontWeight: '250' }}>Natürlich sind wir weiterhin für Sie da – vor Ort und telefonisch:</p>
+                  <p style={{ fontWeight: '250' }}>Natürlich sind wir weiterhin für Sie da – vor Ort und telefonisch.</p>
                   <div className="banner_btns d-flex d-lg-none my-4">
                     <div className={`round_btn round_1`}>
                       <a href={`tel:052 305 03 50`} className="text-uppercase">
@@ -126,10 +126,10 @@ const LandingPage = () => {
           <div className='tab_container health_topic'>
             <ul className='nav nav-tabs' role='tablist'>
               <li className={`nav-item tab1`}>
-                <a className={`nav-link active`} style={{ color: `${isActive ? 'var(--bs-green) !important' : ''}`, borderColor: `${isActive ? 'var(--bs-green) !important' : ''}` }} data-bs-toggle="tab" onClick={() => setActive(true)} href={`#Tab1`} role="tab">Termin Apotheke buchen</a>
+                <a className={`nav-link active`} data-bs-toggle="tab" onClick={() => setActive(true)} href={`#Tab1`} role="tab">Termin Apotheke buchen</a>
               </li>
               <li className={`nav-item tab2`}>
-                <a className={`nav-link`} style={{ color: `${!isActive ? 'var(--bs-blue) !important' : ''}`, borderColor: `${!isActive ? 'var(--bs-blue) !important' : ''}` }} data-bs-toggle="tab" onClick={() => setActive(false)} href={`#Tab2`} role="tab">Termin Praxis buchen</a>
+                <a className={`nav-link`} data-bs-toggle="tab" onClick={() => setActive(false)} href={`#Tab2`} role="tab">Termin Praxis buchen</a>
               </li>
             </ul>
             <div className='tab-content'>
