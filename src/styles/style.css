@@ -1045,7 +1045,8 @@ footer {
 
 .nuitrition_diagnos {
     margin-top: 5rem;
-    background: var(--bs-bgblue) url(../images/Graphic_Elements.png) no-repeat right bottom;
+    /* background: var(--bs-bgblue) url(../images/Graphic_Elements.png) no-repeat right bottom; */
+    background: var(--bs-bgblue) no-repeat right bottom;
     background-size: contain;
 
     .content_col {
