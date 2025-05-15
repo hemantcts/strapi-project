@@ -25,15 +25,15 @@ export const Blogs = ({ blogs, colors, selectedCategory }) => {
                 <div key={index} className='col-sm-6 col-lg-4 mt_col blog_item '>
                     <div className='post_inner'>
                         <div className='post_img position-relative'>
-                            <Link to={`/${filterTitle(blog?.Titel)}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt='' /></Link>
+                            <Link to={`/${blog?.slug}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt='' /></Link>
                             <div className='post_category' style={{backgroundColor: `${blog?.Kategorie=="Gesundheits-Checks" ? colors[0] : blog?.Kategorie=="Impfungen" ? colors[1] : colors[2]} `}}>{blog?.Kategorie}</div>
                         </div>
                         <div className='post_content text-black mt-3'>
-                            <h3><Link to={`/${filterTitle(blog?.Titel)}`}>{blog?.Titel}</Link></h3>
+                            <h3><Link to={`/${blog?.slug}`}>{blog?.Titel}</Link></h3>
                             {/* {blog?.Beschreibung && <BlocksRenderer content={blog?.Beschreibung} />} */}
-                            <p> {blog?.Beschreibung[0]?.children[0]?.text}</p>
+                            {blog?.Beschreibung && <p> {blog?.Beschreibung[0]?.children[0]?.text}</p>}
                             <div className='btn_block'>
-                                <MyLink link={`/${filterTitle(blog?.Titel)}`} text='Mehr erfahren' />
+                                <MyLink link={`/${blog?.slug}`} text='Mehr erfahren' />
                             </div>
                         </div>
                     </div>

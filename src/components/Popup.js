@@ -127,12 +127,13 @@ export const Popup = () => {
                             className={`popup-img ${mobileWidth ? 'order-1' : ''}`}
                             style={{
                                 width: '50%',
-                                backgroundImage: `url(https://medzentrum.entwicklung-loewenmut.ch${popupData?.Bild?.url})`,
+                                backgroundColor: `#dcf3ff`,
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center',
                                 position: 'relative'
                             }}
                         >
+                            {popupData?.Bild && <img style={{objectFit:'contain', height:'100%', width:'100%'}} src={`https://medzentrum.entwicklung-loewenmut.ch${popupData?.Bild?.url}`} alt="" />}
                             {/* Custom Close Button */}
                             <button
                                 type="button"

@@ -59,14 +59,13 @@ export const Blog = ({ data, color }) => {
     // }
 
     useEffect(() => {
-        if(title !== title.toString().toLowerCase()){
-            navigate(`/${title.toString().toLowerCase()}`)
-        }
-        // title = title.replace(/-/g, ' ');
+        // if(title !== title.toString().toLowerCase()){
+        //     navigate(`/${title.toString().toLowerCase()}`)
+        // }
+
         if (blogs?.length > 0 && title) {
-            const matchedBlog = blogs?.find((blog) => blog.Titel.toString().toLowerCase() === title);
+            const matchedBlog = blogs?.find((blog) => blog.slug === title);
             console.log(blog);
-            // setBlog(matchedBlog);
             if (matchedBlog) {
                 setBlog(matchedBlog);
                 setProductDetails(matchedBlog?.Produktdetail);
@@ -74,20 +73,7 @@ export const Blog = ({ data, color }) => {
 
                 // checkImageUploaded(matchedBlog?.Produktdetail);
             } else {
-                title = title.replace(/-/g, ' ');
-                const matchedBlog2 = blogs?.find((blog) => blog.Titel.toString().toLowerCase() === title);
-                console.log(blog);
-                // setBlog(matchedBlog);
-                if (matchedBlog2) {
-                    setBlog(matchedBlog2);
-                    setProductDetails(matchedBlog2?.Produktdetail);
-                    setExtraDetails(matchedBlog2?.zusaetzliche_Details);
-
-                    // checkImageUploaded(matchedBlog2?.Produktdetail);
-                }
-                else {
-                    navigate("/error"); // Redirect to trigger the catch-all error route
-                }
+                navigate("/error"); // Redirect to trigger the catch-all error route
             }
         }
 
@@ -116,11 +102,6 @@ export const Blog = ({ data, color }) => {
             item.children.some(child => typeof child.text === 'string' && child.text.trim() !== '')
         );
     }
-
-    const filterTitle = (title) => {
-        return title.toLowerCase().replace(/\s+/g, '-');
-    }
-
 
     if (!blog) return null;
 
@@ -231,7 +212,9 @@ export const Blog = ({ data, color }) => {
                         </div>
                         <div className='col-lg-4 sticky_col'>
                             <div className='related_blogs'>
-                                <h3>Alle Gesundheitsthemen </h3>
+                                <h3>
+                                    <Link to='/uebersicht-gesundheitsthemen'>Alle Gesundheitsthemen</Link>
+                                </h3>
                                 <div className='rel_blog_list'>
                                     {blogs
                                         ?.filter((b) => b.id !== blog.id) // Exclude the current blog
@@ -244,12 +227,12 @@ export const Blog = ({ data, color }) => {
                                             <div key={index} className='rb_item'>
                                                 <div className='rb_itm_iner'>
                                                     <div className='rbitm_img'>
-                                                        <Link to={`/${filterTitle(blog?.Titel)}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt='' /></Link>
+                                                        <Link to={`/${blog?.slug}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt='' /></Link>
                                                     </div>
                                                     <div className='rbitm_content text-black'>
-                                                        <h4><Link to={`/${filterTitle(blog?.Titel)}`}>{blog?.Titel}</Link></h4>
+                                                        <h4><Link to={`/${blog?.slug}`}>{blog?.Titel}</Link></h4>
                                                         <div className='btn_block'>
-                                                            <MyLink link={`/${filterTitle(blog?.Titel)}`} text='Mehr erfahren ' />
+                                                            <MyLink link={`/${blog?.slug}`} text='Mehr erfahren ' />
                                                         </div>
                                                     </div>
                                                 </div>
