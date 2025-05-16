@@ -11,7 +11,7 @@ export const NoJobs = () => {
     const [vacancyData, setVacancyData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/no-job?populate[banner_section][populate]=banner_image&populate[vacancy_section][populate]=*`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/no-job?populate[banner_section][populate]=banner_image&populate[vacancy_section][populate]=*`)
         const data = await response.json();
         console.log(data);
         if (data) {

@@ -14,7 +14,7 @@ export const Impressum = () => {
     const [pharmacyServicesData, setPharmacyServicesData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/impressum?populate[Bannerbereich][populate]=Banner_Bild&populate[Kontaktbereich][populate]=Details.icon&populate[Datenbereich][populate]=*`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/impressum?populate[Bannerbereich][populate]=Banner_Bild&populate[Kontaktbereich][populate]=Details.icon&populate[Datenbereich][populate]=*`)
         const data = await response.json();
         console.log(data);
         if (data) {

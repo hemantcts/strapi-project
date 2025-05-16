@@ -15,7 +15,7 @@ export const Jobs = () => {
     const [jobsData, setJobsData] = useState([]);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/job?populate[Bannerbereich][populate]=Banner_Bild&populate[Bannerbereich][populate]=Mobile_Banner_Bild&populate[Jobbereich]=*&populate[Kein_Job]=*`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/job?populate[Bannerbereich][populate]=Banner_Bild&populate[Bannerbereich][populate]=Mobile_Banner_Bild&populate[Jobbereich]=*&populate[Kein_Job]=*`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -26,7 +26,7 @@ export const Jobs = () => {
     }
 
     const getJobsData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/jobs-data?populate[Job_Informationen][populate]=Bild&populate[Job_Informationen][populate]=erweiterbare_Daten&populate[Kontaktdaten][populate]=Details.icon&populate[PDF_Link][populate]=*&pagination[limit]=100&sort[0]=job_id`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/jobs-data?populate[Job_Informationen][populate]=Bild&populate[Job_Informationen][populate]=erweiterbare_Daten&populate[Kontaktdaten][populate]=Details.icon&populate[PDF_Link][populate]=*&pagination[limit]=100&sort[0]=job_id`)
         const data = await response.json();
         console.log(data);
         if (data) {

@@ -21,7 +21,7 @@ const Home = () => {
 
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/homepage?populate[Bannerbereich][populate]=*&populate[Herz_Bereich][populate]=linke_Seite.Bild&populate[Herz_Bereich][populate]=linke_Seite.Link&populate[Herz_Bereich][populate]=rechte_Seite.Link&populate[Herz_Bereich][populate]=rechte_Seite.Bild&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=Partners.patner_bild&populate[Anzeigenbereich][populate]=Partners.farbige_Bild`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/homepage?populate[Bannerbereich][populate]=*&populate[Herz_Bereich][populate]=linke_Seite.Bild&populate[Herz_Bereich][populate]=linke_Seite.Link&populate[Herz_Bereich][populate]=rechte_Seite.Link&populate[Herz_Bereich][populate]=rechte_Seite.Bild&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=Partners.patner_bild&populate[Anzeigenbereich][populate]=Partners.farbige_Bild`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -56,7 +56,7 @@ const Home = () => {
         <div>
             {/* <SEO slug="home" /> */}
             <Navbar />
-            <section className='wi_full py_3 banner_sec main_banner' style={{ background: `url('https://medzentrum.entwicklung-loewenmut.ch${!isMobile ? bannerData?.Banner_Bild?.url : bannerData?.Mobile_Banner_Bild?.url}')` }}>
+            <section className='wi_full py_3 banner_sec main_banner' style={{ background: `url('https://backend.medzentrum.ch${!isMobile ? bannerData?.Banner_Bild?.url : bannerData?.Mobile_Banner_Bild?.url}')` }}>
                 <div className="container-xxl">
                     <div className="row">
                         <div className="col-12 col-lg-6">
@@ -127,7 +127,7 @@ const Home = () => {
                     <div className="row align-items-center">
                         <div className="col-12 col-lg-6 content_box">
                             <div className="heart_block">
-                                <img className="heart_img order-2 order-sm-1" src={`https://medzentrum.entwicklung-loewenmut.ch${heartData?.linke_Seite?.Bild?.url}`} alt="" />
+                                <img className="heart_img order-2 order-sm-1" src={`https://backend.medzentrum.ch${heartData?.linke_Seite?.Bild?.url}`} alt="" />
                                 <div className="content_wrap order-1 order-sm-2">
                                     <div className="sub_title">{heartData?.linke_Seite?.kleine_Uberschrift}</div>
                                     <h2 style={{ lineHeight: '1.1' }}>
@@ -148,7 +148,7 @@ const Home = () => {
                                     <div className="row">
                                         <div className="col-4 pt-2">
                                             <Link to={item?.Link?.Link_URL} >
-                                                <img className='item-img' src={`https://medzentrum.entwicklung-loewenmut.ch${item?.Bild?.url}`} alt="" />
+                                                <img className='item-img' src={`https://backend.medzentrum.ch${item?.Bild?.url}`} alt="" />
                                             </Link>
                                         </div>
                                         <div className="col-8">

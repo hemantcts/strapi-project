@@ -14,7 +14,7 @@ export const PraxisNotfall = () => {
     const [pharmacyServicesData, setPharmacyServicesData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/praxis-notfall?populate[Bannerbereich][populate]=Banner_Bild&populate[Informationsbereich][populate]=icons&populate[Apotheken_Dienstleistungen][populate]=Bild`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/praxis-notfall?populate[Bannerbereich][populate]=Banner_Bild&populate[Informationsbereich][populate]=icons&populate[Apotheken_Dienstleistungen][populate]=Bild`)
         const data = await response.json();
         console.log(data);
         if (data) {

@@ -126,7 +126,7 @@ export const Team1 = ({ data, color, change }) => {
             {data?.map((teamMember, index) => (
                 <div className="col-12 col-sm-6 col-md-4 col-lg-3 team_itm mt_col" key={index}>
                     <div class="item_inner">
-                        <img src={`https://medzentrum.entwicklung-loewenmut.ch${teamMember?.Bild?.url}`} class="item_img" alt="" />
+                        <img src={`https://backend.medzentrum.ch${teamMember?.Bild?.url}`} class="item_img" alt="" />
                         <div class="item_body text-black">
                             <h4 class={`font-volk`}>{teamMember?.Name}</h4>
                             <p className={`${!hasValidText(teamMember?.Faehigkeiten) ? 'border-0' : ''} mini_height`}>{teamMember?.Bezeichnung}</p>

@@ -55,7 +55,7 @@ const ProductsSection = ({ productsData, color }) => {
                                                 </div>
                                             </div>
                                             <div className="col-5" style={{ position: "relative" }}>
-                                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${product?.Produktdetail?.Bild?.url}`} alt="" />
+                                                <img src={`https://backend.medzentrum.ch${product?.Produktdetail?.Bild?.url}`} alt="" />
                                                 <div className="discount">
                                                     <img src={discountImg} alt="" />
                                                 </div>
@@ -115,7 +115,7 @@ const ProductsSection = ({ productsData, color }) => {
                 })}
             </div>
             {productsData?.Button?.Link_Text && <div className="products_sec_btn text-center">
-                <a href={productsData?.Button?.Link_URL} target='_blank' className="products-main-btn">{productsData?.Button?.Link_Text} <i><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Vector_9_a374977eb9.svg' alt="" /></i></a>
+                <a href={productsData?.Button?.Link_URL} target='_blank' className="products-main-btn">{productsData?.Button?.Link_Text} <i><img src='https://backend.medzentrum.ch/uploads/Vector_9_a374977eb9.svg' alt="" /></i></a>
             </div>}
         </div>
     )

@@ -27,28 +27,41 @@ export const Popup = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    useEffect(() => {
-        const hasSeenPopup = localStorage.getItem('hasSeenPopup');
+    // useEffect(() => {
+    //     const hasSeenPopup = localStorage.getItem('hasSeenPopup');
 
-        // if (!hasSeenPopup) {
-        if (true) {
+    //     // if (!hasSeenPopup) {
+    //     if (true && popupData !== null) {
+    //         openBtnRef.current?.click(); // trigger modal via hidden button
+    //         localStorage.setItem('hasSeenPopup', 'true');
+    //     }
+    // }, []);
+
+    const openPopup = (data)=>{
+        if (data) {
+            console.log('data got', data);
             openBtnRef.current?.click(); // trigger modal via hidden button
             localStorage.setItem('hasSeenPopup', 'true');
         }
-    }, []);
+    }
 
     const getPopups = async () => {
-        const response = await fetch('https://medzentrum.entwicklung-loewenmut.ch/api/popups?populate=*')
+        const response = await fetch('https://backend.medzentrum.ch/api/popups?populate=*')
         const data = await response.json();
         console.log(data);
+
+        let popup ;
 
         if (data?.data?.length) {
             for (const element of data.data) {
                 if (element?.Aktiv) {
                     setPopupData(element);
+                    popup = element;
                     break;
                 }
             }
+
+            openPopup(popup);
         }
     }
 
@@ -118,7 +131,7 @@ export const Popup = () => {
                             )}
 
                             {popupData?.PDF_Link &&
-                                <a href={`https://medzentrum.entwicklung-loewenmut.ch${popupData?.PDF_Link?.url}`} target='_blank' className='button fill_btn pdf_btn px-2 py-3 w-100'>pdf download <img src={pdfIcon} alt='#' /></a>
+                                <a href={`https://backend.medzentrum.ch${popupData?.PDF_Link?.url}`} target='_blank' className='button fill_btn pdf_btn px-2 py-3 w-100'>pdf download <img src={pdfIcon} alt='#' /></a>
                             }
                         </div>
 
@@ -133,7 +146,7 @@ export const Popup = () => {
                                 position: 'relative'
                             }}
                         >
-                            {popupData?.Bild && <img style={{objectFit:'contain', height:'100%', width:'100%'}} src={`https://medzentrum.entwicklung-loewenmut.ch${popupData?.Bild?.url}`} alt="" />}
+                            {popupData?.Bild && <img style={{objectFit:'contain', height:'100%', width:'100%'}} src={`https://backend.medzentrum.ch${popupData?.Bild?.url}`} alt="" />}
                             {/* Custom Close Button */}
                             <button
                                 type="button"

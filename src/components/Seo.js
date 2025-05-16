@@ -18,7 +18,7 @@ const SEO = () => {
       if (fetchAgain) {
         mainslug = 'home';
       }
-      const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pages?filters[Slug][$eq]=${mainslug}&populate[Seo][populate]=shareImage`);
+      const response = await fetch(`https://backend.medzentrum.ch/api/pages?filters[Slug][$eq]=${mainslug}&populate[Seo][populate]=shareImage`);
       const data = await response.json();
       const pageData = data.data[0];
 
@@ -42,7 +42,7 @@ const SEO = () => {
 
   const { metaTitle, metaDescription, shareImage } = seoData;
   const imageUrl = shareImage?.url
-    ? `https://medzentrum.entwicklung-loewenmut.ch${shareImage.url}`
+    ? `https://backend.medzentrum.ch${shareImage.url}`
     : '';
 
   return (

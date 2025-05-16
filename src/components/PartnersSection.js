@@ -27,7 +27,7 @@ export const PartnersSection = ({ adData }) => {
                     >
                         <a href={partner?.Link_URl} target='_blank' rel='noopener noreferrer'>
                             <img
-                                src={`https://medzentrum.entwicklung-loewenmut.ch${hoveredIndex === index
+                                src={`https://backend.medzentrum.ch${hoveredIndex === index
                                         ? partner?.farbige_Bild?.url
                                         : partner?.patner_bild?.url
                                     }`}

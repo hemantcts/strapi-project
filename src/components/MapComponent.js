@@ -42,7 +42,7 @@ const MapComponent = () => {
     useEffect(() => {
         if (isLoaded && window.google) {
             setIcon({
-                url: "https://medzentrum.entwicklung-loewenmut.ch/uploads/Group_1597880067_7fea8e3a67.svg",
+                url: "https://backend.medzentrum.ch/uploads/Group_1597880067_7fea8e3a67.svg",
                 scaledSize: new window.google.maps.Size(80, 110),
             });
         }

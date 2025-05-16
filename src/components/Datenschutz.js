@@ -12,7 +12,7 @@ const Datenschutz = () => {
     const [protectionData, setProtectionData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/datenschutzerklaerung?populate[Bannerbereich][populate]=Banner_Bild&populate[Datenschutzbereich][populate]=erweiterbare_Daten`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/datenschutzerklaerung?populate[Bannerbereich][populate]=Banner_Bild&populate[Datenschutzbereich][populate]=erweiterbare_Daten`)
         const data = await response.json();
         console.log(data);
         if (data) {

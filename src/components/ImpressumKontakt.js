@@ -57,7 +57,7 @@ export const ImpressumKontakt = ({ contactData, color }) => {
                                     <li key={idx} >
                                         {innerDetails?.icon?.url && (
                                             <img
-                                                src={`https://medzentrum.entwicklung-loewenmut.ch${innerDetails.icon.url}`}
+                                                src={`https://backend.medzentrum.ch${innerDetails.icon.url}`}
                                                 alt=''
                                             />
                                         )}

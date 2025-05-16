@@ -14,7 +14,7 @@ export const EmergencyContact = ({ contactData, color }) => {
                         <div className='item_inner'>
                             <span className='item_icon'>
                                 <a href={`tel:${removeSpace(contact?.phone)}`}>
-                                    <img src={`https://medzentrum.entwicklung-loewenmut.ch${contact?.icons?.url}`} alt='#' />
+                                    <img src={`https://backend.medzentrum.ch${contact?.icons?.url}`} alt='#' />
                                 </a>
                             </span>
                             <div className='itm_info'>

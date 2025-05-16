@@ -20,7 +20,7 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
 
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/uebersicht-gesundheitsthemen?populate[Bannerbereich][populate]=Banner_Bild`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/uebersicht-gesundheitsthemen?populate[Bannerbereich][populate]=Banner_Bild`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -33,7 +33,7 @@ export const UbersichtGesundheitsthemen = ({ data, color }) => {
     }
 
     const getBlogs = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*&pagination[limit]=100&sort[0]=Titel`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/blogs?populate=*&pagination[limit]=100&sort[0]=Titel`)
         const data = await response.json();
         console.log(data);
         if (data) {

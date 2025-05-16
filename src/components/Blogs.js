@@ -25,7 +25,7 @@ export const Blogs = ({ blogs, colors, selectedCategory }) => {
                 <div key={index} className='col-sm-6 col-lg-4 mt_col blog_item '>
                     <div className='post_inner'>
                         <div className='post_img position-relative'>
-                            <Link to={`/${blog?.slug}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt='' /></Link>
+                            <Link to={`/${blog?.slug}`}><img src={`https://backend.medzentrum.ch${blog?.Bild?.url}`} alt='' /></Link>
                             <div className='post_category' style={{backgroundColor: `${blog?.Kategorie=="Gesundheits-Checks" ? colors[0] : blog?.Kategorie=="Impfungen" ? colors[1] : colors[2]} `}}>{blog?.Kategorie}</div>
                         </div>
                         <div className='post_content text-black mt-3'>

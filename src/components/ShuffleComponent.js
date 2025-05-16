@@ -93,7 +93,7 @@ export const ShuffleComponent = ({ data, color, shuffle, staticIcons, validPage 
                     <div className='row shuffle_row'>
                         <div className='col-12 col-lg-6 img_col'>
 
-                            {/* <img src={`https://medzentrum.entwicklung-loewenmut.ch${services?.image?.url}`} alt='' /> */}
+                            {/* <img src={`https://backend.medzentrum.ch${services?.image?.url}`} alt='' /> */}
 
                             {Array.isArray(services?.Bild) && services?.Bild?.length > 1 ? (
                                 <OwlCarousel
@@ -109,14 +109,14 @@ export const ShuffleComponent = ({ data, color, shuffle, staticIcons, validPage 
                                 >
                                     {services?.Bild?.map((img, index) => (
                                         <div key={index} className="item">
-                                            <img src={`https://medzentrum.entwicklung-loewenmut.ch${img?.Bild?.url}`} alt={`Service ${index + 1}`} />
+                                            <img src={`https://backend.medzentrum.ch${img?.Bild?.url}`} alt={`Service ${index + 1}`} />
                                         </div>
                                     ))}
                                 </OwlCarousel>
                             ) : Array.isArray(services?.Bild) && services?.Bild?.length === 1 ? (
-                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${services?.Bild[0]?.Bild?.url}`} alt="Service" />
+                                <img src={`https://backend.medzentrum.ch${services?.Bild[0]?.Bild?.url}`} alt="Service" />
                             ) : (
-                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${services?.Bild?.url}`} alt="Service" onLoad={()=>setLoading(!loading)} />
+                                <img src={`https://backend.medzentrum.ch${services?.Bild?.url}`} alt="Service" onLoad={()=>setLoading(!loading)} />
                             )}
                         </div>
                         <div className='col-12 col-lg-6 content_col'>
@@ -150,7 +150,7 @@ export const ShuffleComponent = ({ data, color, shuffle, staticIcons, validPage 
                                                             onMouseEnter={() => setVisibleInfoIndex2(index)}
                                                             onMouseLeave={() => setVisibleInfoIndex2(null)}
                                                             className="info-icon ms-2 text-start">
-                                                            <img src="https://medzentrum.entwicklung-loewenmut.ch/uploads/Union_29_1667bd2206.svg" alt="" />
+                                                            <img src="https://backend.medzentrum.ch/uploads/Union_29_1667bd2206.svg" alt="" />
                                                             {(visibleInfoIndex === index || visibleInfoIndex2 === index) && (
                                                                 <div className="info-container">
                                                                     <p className="m-0">{list_item?.info}</p>

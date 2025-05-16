@@ -7,8 +7,8 @@ export const BannerSection = ({ bannerData, color, teamBanner }) => {
         <>
             {!teamBanner ?
 
-                (<section className={`wi_full py_3 banner_sec inner_banner ${color}`} style={{ background: `url('https://medzentrum.entwicklung-loewenmut.ch${bannerData?.Banner_Bild?.url}')` }}>
-                   {bannerData?.Banner_Bild && <img className='mobile_bnr_img' src={`https://medzentrum.entwicklung-loewenmut.ch${bannerData?.Banner_Bild?.url}`} />}
+                (<section className={`wi_full py_3 banner_sec inner_banner ${color}`} style={{ background: `url('https://backend.medzentrum.ch${bannerData?.Banner_Bild?.url}')` }}>
+                   {bannerData?.Banner_Bild && <img className='mobile_bnr_img' src={`https://backend.medzentrum.ch${bannerData?.Banner_Bild?.url}`} />}
                     {bannerData ? (
                         <div className="container-xxl">
                             <div className="row">
@@ -37,8 +37,8 @@ export const BannerSection = ({ bannerData, color, teamBanner }) => {
                 </section>
                 ) : (
                     <section className={`wi_full py_3 banner_sec inner_banner team_banner ${color}`}>
-                        {bannerData?.Banner_Bild && <img className='team_bnr_img visible_desktop' src={`https://medzentrum.entwicklung-loewenmut.ch${bannerData?.Banner_Bild?.url}`} />}
-                        {bannerData?.Mobile_Banner_Bild && <img className='team_bnr_img visible_mobile' src={`https://medzentrum.entwicklung-loewenmut.ch${bannerData?.Mobile_Banner_Bild?.url}`} />}
+                        {bannerData?.Banner_Bild && <img className='team_bnr_img visible_desktop' src={`https://backend.medzentrum.ch${bannerData?.Banner_Bild?.url}`} />}
+                        {bannerData?.Mobile_Banner_Bild && <img className='team_bnr_img visible_mobile' src={`https://backend.medzentrum.ch${bannerData?.Mobile_Banner_Bild?.url}`} />}
                         {bannerData ? (
                             <div className="container-xxl">
                                 <div className="row">

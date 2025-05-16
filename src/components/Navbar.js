@@ -101,15 +101,15 @@ const Navbar = ({ activeLink }) => {
                 <nav className={`navbar navbar-expand-lg ${sticky ? 'sticky' : ''}`}>
                     <div className={`nav_overlay ${menuOpen ? 'show' : ''}`}></div>
                     <div className='container-xxl'>
-                        {/* <Link className='navbar-brand' to='/'><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Frame_8cd1fd56fd.svg' alt='logo' /></Link> */}
-                        <Link className='navbar-brand' to='/'><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Medzentrum_logo_2_4f77ba4953.svg' alt='logo' /></Link>
+                        {/* <Link className='navbar-brand' to='/'><img src='https://backend.medzentrum.ch/uploads/Frame_8cd1fd56fd.svg' alt='logo' /></Link> */}
+                        <Link className='navbar-brand' to='/'><img src='https://backend.medzentrum.ch/uploads/Medzentrum_logo_2_4f77ba4953.svg' alt='logo' /></Link>
                         <button className='navbar-toggler' onClick={toggleMenu} type='button' data-bs-target='#mainNavbar' aria-expanded='false'>
                             <img src={burgermenu} alt='menu' />
                         </button>
                         <div className={`collapse navbar-collapse ${menuOpen ? 'show' : ''}`} id='mainNavbar'>
                             <div className='open--menu--header'>
                                 <Link to='/'>
-                                    <img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Medzentrum_logo_2_4f77ba4953.svg' alt='menu' className='open-menu-logo' />
+                                    <img src='https://backend.medzentrum.ch/uploads/Medzentrum_logo_2_4f77ba4953.svg' alt='menu' className='open-menu-logo' />
                                 </Link>
                                 <img src={closemenu} alt='menu' className='close_navbtn' onClick={toggleMenu} />
                             </div>

@@ -13,7 +13,7 @@ export const TerminBuchenPraxis = () => {
   const [bookingData, setBookingData] = useState();
 
   const getPageData = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/terminbuchung-praxis?populate[Bannerbereich][populate]=Banner_Bild&populate[Buchungsbereich][populate]`)
+    const response = await fetch(`https://backend.medzentrum.ch/api/terminbuchung-praxis?populate[Bannerbereich][populate]=Banner_Bild&populate[Buchungsbereich][populate]`)
     const data = await response.json();
     console.log(data);
     if (data) {

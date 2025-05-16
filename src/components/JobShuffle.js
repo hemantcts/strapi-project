@@ -13,7 +13,7 @@ export const JobShuffle = ({ data, color }) => {
             {data?.map((job, index) => (
                 <div className='row job_row'>
                     <div className='col-lg-6 job_img'>
-                        <img src={`https://medzentrum.entwicklung-loewenmut.ch${job?.Job_Informationen?.Bild?.url}`} alt='' className='w-100' />
+                        <img src={`https://backend.medzentrum.ch${job?.Job_Informationen?.Bild?.url}`} alt='' className='w-100' />
                     </div>
                     <div className='col-lg-6 job_col'>
                         <div className='job_content text-black'>
@@ -26,13 +26,23 @@ export const JobShuffle = ({ data, color }) => {
                             <div className='job_contact'>
                                 <p>{job?.Kontaktdaten?.Titel}</p>
                                 <ul>
-                                    {job?.Kontaktdaten?.Details?.map((contact)=>(
-                                        <li key={index}>
-                                            <img src={`https://medzentrum.entwicklung-loewenmut.ch${contact?.icon?.url}`} /><a href='#'>{contact?.Details}</a>
-                                        </li>
-                                    ))}
+                                    {job?.Kontaktdaten?.Details?.map((contact) => {
+                                        const cleanDetail = contact?.Details?.replace(/\s+/g, ""); // Remove spaces
+                                        const isEmail = cleanDetail.includes("@");
+                                        const isPhone = /^\+?\d+$/.test(cleanDetail);
+                                        const href = isEmail
+                                            ? `mailto:${cleanDetail}`
+                                            : isPhone
+                                                ? `tel:${cleanDetail}`
+                                                : "#";
+                                        return (
+                                            <li key={index}>
+                                                <img src={`https://backend.medzentrum.ch${contact?.icon?.url}`} /><a href={href}>{contact?.Details}</a>
+                                            </li>
+                                        )
+                                    })}
                                 </ul>
-                                {job?.PDF_Link && <a href={`https://medzentrum.entwicklung-loewenmut.ch${job?.PDF_Link?.url}`} target='_blank' className='button fill_btn pdf_btn'>pdf download <img src={pdfIcon} alt='#' /></a>}
+                                {job?.PDF_Link && <a href={`https://backend.medzentrum.ch${job?.PDF_Link?.url}`} target='_blank' className='button fill_btn pdf_btn'>pdf download <img src={pdfIcon} alt='' /></a>}
                             </div>
                         </div>
                     </div>

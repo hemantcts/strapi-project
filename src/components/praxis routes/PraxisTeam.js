@@ -19,7 +19,7 @@ const PraxisTeam = () => {
   const [pageColor, setPageColor] = useState('blue');
 
   const getPageData = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/praxis-team?populate[Bannerbereich][populate]=Banner_Bild&populate[Bannerbereich][populate]=Mobile_Banner_Bild&populate[Gruenderbereich][populate]=*&populate[Gruenderdaten][populate]=Bild&populate[Teamdaten][populate]=Typen`)
+    const response = await fetch(`https://backend.medzentrum.ch/api/praxis-team?populate[Bannerbereich][populate]=Banner_Bild&populate[Bannerbereich][populate]=Mobile_Banner_Bild&populate[Gruenderbereich][populate]=*&populate[Gruenderdaten][populate]=Bild&populate[Teamdaten][populate]=Typen`)
     const data = await response.json();
     console.log(data);
     if (data) {
@@ -31,7 +31,7 @@ const PraxisTeam = () => {
   }
 
   const getTeams = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/team-apothekes?populate=*&pagination[limit]=100&sort[0]=Nummer`)
+    const response = await fetch(`https://backend.medzentrum.ch/api/team-apothekes?populate=*&pagination[limit]=100&sort[0]=Nummer`)
     const data = await response.json();
     console.log(data);
     if (data) {
@@ -40,7 +40,7 @@ const PraxisTeam = () => {
   }
 
   const getTeams2 = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/team-praxes?populate=*&pagination[limit]=100&sort[0]=Nummer`)
+    const response = await fetch(`https://backend.medzentrum.ch/api/team-praxes?populate=*&pagination[limit]=100&sort[0]=Nummer`)
     const data = await response.json();
     console.log(data);
     if (data) {

@@ -65,7 +65,7 @@ const ServicesSection = ({ servicesData, color }) => {
                     <div className='item_inner'>
                         <div className='row'>
                             <div className="item_img">
-                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${service?.Bild?.url}`} alt="" onLoad={()=>setLoading(!loading)} />
+                                <img src={`https://backend.medzentrum.ch${service?.Bild?.url}`} alt="" onLoad={()=>setLoading(!loading)} />
                             </div>
 
                             <div className="item_text">

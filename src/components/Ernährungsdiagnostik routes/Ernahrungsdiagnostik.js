@@ -19,7 +19,7 @@ const Ernahrungsdiagnostik = () => {
     const [adData, setAdData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/ubersicht-ernaehrungsdiagnostik?populate[Bannerbereich][populate]=Banner_Bild&populate[Gesundheitsbereich][populate]=*&populate[Sonderangebotsbereich][populate]=Bild&populate[Sonderangebotsbereich][populate]=erweiterbare_Daten&populate[Sonderangebotsbereich][populate]=Button&populate[Autorenbereich][populate]=Bild&populate[Anzeigenbereich][populate]=Partners.patner_bild&populate[Anzeigenbereich][populate]=Partners.farbige_Bild`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/ubersicht-ernaehrungsdiagnostik?populate[Bannerbereich][populate]=Banner_Bild&populate[Gesundheitsbereich][populate]=*&populate[Sonderangebotsbereich][populate]=Bild&populate[Sonderangebotsbereich][populate]=erweiterbare_Daten&populate[Sonderangebotsbereich][populate]=Button&populate[Autorenbereich][populate]=Bild&populate[Anzeigenbereich][populate]=Partners.patner_bild&populate[Anzeigenbereich][populate]=Partners.farbige_Bild`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -63,7 +63,7 @@ const Ernahrungsdiagnostik = () => {
                             {/* <blockquote dangerouslySetInnerHTML={{ __html: authorData?.Beschreibung}} /> */}
                         </div>
                         <div className='col-lg-4 img_col'>
-                            <img src={`https://medzentrum.entwicklung-loewenmut.ch${authorData?.Bild?.url}`} alt='' />
+                            <img src={`https://backend.medzentrum.ch${authorData?.Bild?.url}`} alt='' />
                         </div>
                     </div>
                 </div>

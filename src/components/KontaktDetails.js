@@ -25,7 +25,7 @@ export const KontaktDetails = ({ contactData, color }) => {
                                 return (
                                     <li key={i}>
                                         <span className='icon_img'>
-                                            <img src={`https://medzentrum.entwicklung-loewenmut.ch${detail?.icon?.url}`} alt='' />
+                                            <img src={`https://backend.medzentrum.ch${detail?.icon?.url}`} alt='' />
                                         </span>
                                         <a href={href}>{detail?.Details}</a>
                                     </li>

@@ -19,7 +19,7 @@ export const Blog = ({ data, color }) => {
     const navigate = useNavigate();
 
     // const getPageData = async () => {
-    //     const response = await fetch('https://medzentrum.entwicklung-loewenmut.ch/api/single-blog?populate[product_details][populate]=image&populate[extra_details][populate]=accordion_data')
+    //     const response = await fetch('https://backend.medzentrum.ch/api/single-blog?populate[product_details][populate]=image&populate[extra_details][populate]=accordion_data')
     //     const data = await response.json();
     //     console.log(data);
     //     if (data) {
@@ -29,7 +29,7 @@ export const Blog = ({ data, color }) => {
     // }
 
     const getBlogs = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate[Bild][populate]=*&populate[preis_und_zeit][populate]=Icon&populate[Produktdetail][populate]=Quotes_Details.Bild&populate[Produktdetail][populate]=Button&populate[zusaetzliche_Details][populate]=erweiterbare_Daten&pagination[limit]=100&sort[0]=Post_id`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/blogs?populate[Bild][populate]=*&populate[preis_und_zeit][populate]=Icon&populate[Produktdetail][populate]=Quotes_Details.Bild&populate[Produktdetail][populate]=Button&populate[zusaetzliche_Details][populate]=erweiterbare_Daten&pagination[limit]=100&sort[0]=Post_id`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -120,7 +120,7 @@ export const Blog = ({ data, color }) => {
                         <div className='col-lg-8 detail_col'>
                             <div className='post_data_wrapper text-black'>
                                 <h1>{blog?.Titel}</h1>
-                                <img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt="" className='w-100 my-3 mb-lg-4' />
+                                <img src={`https://backend.medzentrum.ch${blog?.Bild?.url}`} alt="" className='w-100 my-3 mb-lg-4' />
                                 <h3>{blog?.Titel}</h3>
                                 <div className={`content-box ${blog?.Link_farbe} ${blog?.Icons ? 'icons' : 'no_icons'}`}>
                                     {blog?.Beschreibung && <BlocksRenderer content={blog?.Beschreibung} />}
@@ -131,7 +131,7 @@ export const Blog = ({ data, color }) => {
                                     <ul>
                                         {blog?.preis_und_zeit?.map((item, index) => (
                                             <li key={index} className='mb-3 d-flex align-items-center'>
-                                                {item?.Icon && <img src={`https://medzentrum.entwicklung-loewenmut.ch${item?.Icon?.url}`} alt="" />}
+                                                {item?.Icon && <img src={`https://backend.medzentrum.ch${item?.Icon?.url}`} alt="" />}
                                                 <span>
                                                     <h4 className='ms-3 mb-0' style={{ display: 'inline-block' }}>{item?.Titel && item?.Titel}</h4>
                                                 </span>
@@ -165,7 +165,7 @@ export const Blog = ({ data, color }) => {
                                             <div className='col-lg-4 img_col'>
                                                 {productDetails?.Quotes_Details?.Bild && (
                                                     <img
-                                                        src={`https://medzentrum.entwicklung-loewenmut.ch${productDetails.Quotes_Details.Bild.url}`}
+                                                        src={`https://backend.medzentrum.ch${productDetails.Quotes_Details.Bild.url}`}
                                                         alt=""
                                                     />
                                                 )}
@@ -176,7 +176,7 @@ export const Blog = ({ data, color }) => {
 
                                     // <div className={`row grey_box`}>
                                     //     {productDetails?.Bild?.Bild && <div className="col-md-6 text-center">
-                                    //         {productDetails?.Bild?.Bild && <img src={`https://medzentrum.entwicklung-loewenmut.ch${productDetails?.Bild?.Bild?.url}`} alt="" />}
+                                    //         {productDetails?.Bild?.Bild && <img src={`https://backend.medzentrum.ch${productDetails?.Bild?.Bild?.url}`} alt="" />}
                                     //     </div>}
 
                                     //     {productDetails?.Bild?.Bildtitel && <div className="col-md-5 mb-md-0 mb-4 text-start">
@@ -194,7 +194,7 @@ export const Blog = ({ data, color }) => {
                                     <ul>
                                         {productDetails?.preis_und_zeit?.map((item, index) => (
                                             <li key={index} className='mb-3 d-flex align-items-center'>
-                                                {item?.Icon && <img src={`https://medzentrum.entwicklung-loewenmut.ch${item?.Icon?.url}`} alt="" />}
+                                                {item?.Icon && <img src={`https://backend.medzentrum.ch${item?.Icon?.url}`} alt="" />}
                                                 <span>
                                                     <h4 className='ms-3 mb-0' style={{ display: 'inline-block' }}>{item?.Titel && item?.Titel}</h4>
                                                 </span>
@@ -227,7 +227,7 @@ export const Blog = ({ data, color }) => {
                                             <div key={index} className='rb_item'>
                                                 <div className='rb_itm_iner'>
                                                     <div className='rbitm_img'>
-                                                        <Link to={`/${blog?.slug}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.Bild?.url}`} alt='' /></Link>
+                                                        <Link to={`/${blog?.slug}`}><img src={`https://backend.medzentrum.ch${blog?.Bild?.url}`} alt='' /></Link>
                                                     </div>
                                                     <div className='rbitm_content text-black'>
                                                         <h4><Link to={`/${blog?.slug}`}>{blog?.Titel}</Link></h4>

@@ -15,7 +15,7 @@ export const Angebot = ({ data, color }) => {
     const [tableData, setTableData] = useState([]);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/ernaehrungsdiagnostik-angebote?populate[Bannerbereich][populate]=Banner_Bild&populate[Angebotsbereich][populate]=*&populate[Tabellenbereich][populate]=*`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/ernaehrungsdiagnostik-angebote?populate[Bannerbereich][populate]=Banner_Bild&populate[Angebotsbereich][populate]=*&populate[Tabellenbereich][populate]=*`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -29,7 +29,7 @@ export const Angebot = ({ data, color }) => {
     }
 
     //   const getBlogs = async () => {
-    //     const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*`)
+    //     const response = await fetch(`https://backend.medzentrum.ch/api/blogs?populate=*`)
     //     const data = await response.json();
     //     console.log(data);
     //     if (data) {
@@ -75,7 +75,7 @@ export const Angebot = ({ data, color }) => {
                 <div className="test mt-1">
                     <div className="container-xxl">
                             <h4 className='ps-lg-0 ps-3' style={{color:'#0D659B', fontWeight:'500', display:'flex'}}>
-                                <img className='h-img' src="https://medzentrum.entwicklung-loewenmut.ch/uploads/check_1_e4073556d6.svg" alt=""/> = inklusiv
+                                <img className='h-img' src="https://backend.medzentrum.ch/uploads/check_1_e4073556d6.svg" alt=""/> = inklusiv
                             </h4>
                     </div>
                 </div>

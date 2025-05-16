@@ -72,13 +72,15 @@ const Footer = () => {
                                         <li><a href='mailto: praxis@medzentrum.ch'><img src={envelopeicon} alt='#' /><span>praxis@medzentrum.ch</span></a></li>
                                     </ul>
                                 </div>
-                                <h4>Telefonzeiten:</h4>
-                                <p style={{ lineHeight: '1.3' }}>
-                                    Montag bis Freitag<br />8:00 – 12:00 | 14:00 – 17:30
-                                </p>
+                                
                                 <h4>Öffnungszeiten Praxis:</h4>
-                                <p style={{ lineHeight: '1.3', marginBottom: '0' }}>
+                                <p style={{ lineHeight: '1.3'}}>
                                     Montag bis Freitag<br />8:00 – 12:00 | 13:00 – 18:00<br />Samstag nach Vereinbarung
+                                </p>
+
+                                <h4>Telefonzeiten:</h4>
+                                <p style={{ lineHeight: '1.3', marginBottom: '0'  }}>
+                                    Montag bis Freitag<br />8:00 – 12:00 | 14:00 – 17:30
                                 </p>
                             </div>
                             <div className='col-12 col-sm-6 col-lg-2 ftr_block'>
