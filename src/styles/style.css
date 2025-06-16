@@ -2229,7 +2229,7 @@ footer {
 }
 
 .popup-container {
-    width: 560px;
+    width: 760px;
     max-width: calc(100% - 1rem);
 }
 
@@ -2349,3 +2349,21 @@ footer {
 .post_img a img {
     aspect-ratio: 3 / 2;
 }
+
+.second_div{
+    ul{
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    ul li{
+        width: 50%;
+        flex-grow: unset !important;
+        flex-basis: unset !important;
+        /* font-size: 17px; */
+    }
+}
+
+/* .offen_detail ul li{
+    font-size: 19px;
+} */

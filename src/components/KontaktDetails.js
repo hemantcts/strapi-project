@@ -8,7 +8,7 @@ export const KontaktDetails = ({ contactData, color }) => {
     return (
         <div className={`row kontakt_row  ${color}`}>
             {contactData?.map((data, index) => (
-                <div className={`col-lg-6 kontkt_itm ${index === 0 ? 'green' : ''}`}>
+                <div className={`col-lg-6 kontkt_itm ${index === 0 ? 'green' : 'second_div'}`}>
                     <div className={`item_inner`}>
                         <h2 className='h3_large'>{data?.Haupttitel}</h2>
                         <ul>
@@ -28,6 +28,8 @@ export const KontaktDetails = ({ contactData, color }) => {
                                             <img src={`https://backend.medzentrum.ch${detail?.icon?.url}`} alt='' />
                                         </span>
                                         <a href={href}>{detail?.Details}</a>
+                                        <br />
+                                        <small><em>{detail?.Details === 'arztpraxis-pfungen@hin.ch' ? '*geschützte E-Mail Adresse' : ''}</em></small>
                                     </li>
                                 );
                             })}
