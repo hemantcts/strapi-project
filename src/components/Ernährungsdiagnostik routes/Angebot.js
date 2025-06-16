@@ -11,6 +11,7 @@ import { StickyButton } from '../mini_components/StickyButton'
 export const Angebot = ({ data, color }) => {
     const activeLink = { link1: false, link2: false, link3: true, link4: false, link5: false, link6: false }
     const [bannerData, setBannerData] = useState();
+    const [offersData, setOffersData] = useState();
     // const [blogTitle, setBlogTitle] = useState();
     // const [blogs, setBlogs] = useState();
 
@@ -27,19 +28,20 @@ export const Angebot = ({ data, color }) => {
     //     }
     //   }
     
-    //   const getBlogs = async () => {
-    //     const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/blogs?populate=*`)
-    //     const data = await response.json();
-    //     console.log(data);
-    //     if (data) {
-    //       setBlogs(data.data);
-    //     }
-    //   }
+      const getPageData = async () => {
+        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/ernaehrungsdiagnostik-angebote?populate[banner_section][populate]=banner_image&populate[offers_section][populate]=*`)
+        const data = await response.json();
+        console.log(data);
+        if (data) {
+            setBannerData(data.data.banner_section);
+            setOffersData(data.data.offers_section);
+        }
+      }
     
-    //   useEffect(() => {
-    //     getPageData();
-    //     getBlogs();
-    //   }, [])
+      useEffect(() => {
+        getPageData();
+        // getBlogs();
+      }, [])
 
     return (
         <div className="angebot-page">
@@ -56,10 +58,11 @@ export const Angebot = ({ data, color }) => {
                 <MyButton buttonText={bannerData?.title} activePage='Ernährungsdiagnostik' />
             </section>
             <section className='wi_full py_3 angebot_Sec'>
-                <div className='container-xxl'>
-                    <TwoContent />
+                <div className='container-xxl pb-5'>
+                    <TwoContent data={offersData} />
                 </div>
-                <div className='angebot_table_container'>
+
+                <div className='angebot_table_container mt-5'>
                     <div className='container-xxl'>
                         <div className='sec_title d-lg-none'>
                             <h2>Angebote</h2>
