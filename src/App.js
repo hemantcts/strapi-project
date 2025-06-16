@@ -1,7 +1,7 @@
 
 import './styles/style.css';
 import './styles/responsive_style.css';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from './components/Home';
 import PharmacyOverview from './components/apotheke routes/PharmacyOverview';
 import { AppointmentBooking } from './components/apotheke routes/AppointmentBooking';
@@ -25,54 +25,71 @@ import { Error } from './components/Error';
 import { SearchResult } from './components/SearchResult';
 import { Angebot } from './components/Ernährungsdiagnostik routes/Angebot';
 import { useState } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
+import SEO from './components/Seo';
+
+import LandingPage from './components/landingPage/LandingPage';
 
 function App() {
 
   return (
-    <div >
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
+    <HelmetProvider>
+      <div >
+        <ScrollToTop />
+        <SEO />
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-        {/* apotheke routes */}
-        <Route path="/ubersicht-apotheke" element={<PharmacyOverview />} />
-        <Route path="/terminbuchung-apotheke" element={<AppointmentBooking />} />
-        <Route path="/apotheke-team" element={<PharmacyTeam />} />
-        <Route path="/apotheke-notfall" element={<PharmacyEmergency />} />
-        <Route path="/dienstleistungen-apotheke" element={<PharmacyServices />} />
+          {/* apotheke routes */}
+          <Route path="/ubersicht-apotheke" element={<Navigate to="/uebersicht-apotheke" replace />} />
+          <Route path="/uebersicht-apotheke" element={<PharmacyOverview />} />
+          <Route path="/terminbuchung-apotheke" element={<AppointmentBooking />} />
+          <Route path="/apotheke-team" element={<PharmacyTeam />} />
+          <Route path="/apotheke-notfall" element={<PharmacyEmergency />} />
+          <Route path="/serviceleistungen-apotheke" element={<PharmacyServices />} />
 
-        {/* praxis routes */}
-        <Route path="/ubersicht-praxis" element={<OverviewPractice />} />
-        <Route path="/terminbuchung-praxis" element={<TerminBuchenPraxis />} />
-        <Route path="/praxis-team" element={<PraxisTeam />} />
-        <Route path="/praxis-notfall" element={<PraxisNotfall />} />
-        <Route path="/dienstleistungen-praxis" element={<DienstleistungenPraxis />} />
-        <Route path="/kontakt" element={<Kontakt />} />
+          {/* praxis routes */}
+          <Route path="/ubersicht-praxis" element={<Navigate to="/uebersicht-praxis" replace />} />
+          <Route path="/uebersicht-praxis" element={<OverviewPractice />} />
+          <Route path="/terminbuchung-praxis" element={<TerminBuchenPraxis />} />
+          <Route path="/praxis-team" element={<PraxisTeam />} />
+          <Route path="/praxis-notfall" element={<PraxisNotfall />} />
+          <Route path="/dienstleistungen-praxis" element={<DienstleistungenPraxis />} />
+          <Route path="/kontakt" element={<Kontakt />} />
 
 
-        {/* Ernährungsdiagnostik routes */}
-        <Route path="/ernahrungsdiagnostik" element={<Ernahrungsdiagnostik />} />
-        <Route path="/angebot" element={<Angebot />} />
+          {/* Ernährungsdiagnostik routes */}
+          <Route path="/ernahrungsdiagnostik" element={<Navigate to="/uebersicht-ernaehrungsdiagnostik" replace />} />
+          <Route path="/uebersicht-ernahrungsdiagnostik" element={<Navigate to="/uebersicht-ernaehrungsdiagnostik" replace />} />
+          <Route path="/uebersicht-ernaehrungsdiagnostik" element={<Ernahrungsdiagnostik />} />
+          <Route path="/angebot" element={<Angebot />} />
 
-        {/* ubersicht-gesundheitsthemen routes */}
-        <Route path="/ubersicht-gesundheitsthemen" element={<UbersichtGesundheitsthemen />} />
-        <Route path="/:title" element={<Blog />} />
+          {/* ubersicht-gesundheitsthemen routes */}
+          {/* uebersicht-ernaehrungsdiagnostik */}
+          <Route path="/ubersicht-gesundheitsthemen" element={<Navigate to="/uebersicht-gesundheitsthemen" replace />} />
+          <Route path="/uebersicht-gesundheitsthemen" element={<UbersichtGesundheitsthemen />} />
+          <Route path="/:title" element={<Blog />} />
 
-        {/* extra routes */}
-        <Route path="/datenschutz" element={<Datenschutz />} />
-        <Route path="/impressum" element={<Impressum />} />
+          {/* extra routes */}
+          <Route path="/datenschutz" element={<Datenschutz />} />
+          <Route path="/impressum" element={<Impressum />} />
 
-        {/* jobs routes */}
-        <Route path="/jobs" element={<Jobs />} />
+          {/* jobs routes */}
+          <Route path="/jobs" element={<Jobs />} />
 
-        {/* search routes */}
-        <Route path="/search-result" element={<SearchResult />} />
-        
-        {/* Catch-All Route for Undefined Paths */}
-        <Route path="/error" element={<Error />} />
+          {/* search routes */}
+          <Route path="/search-result" element={<SearchResult />} />
 
-      </Routes>
-    </div>
+          {/* Catch-All Route for Undefined Paths */}
+          <Route path="/error" element={<Error />} />
+          <Route path="*" element={<Error />} />
+
+        </Routes>
+      </div>
+    </HelmetProvider>
+    // <div>
+    //   <LandingPage />
+    // </div>
   );
 }
 

@@ -1,17 +1,25 @@
 import React from 'react';
-import copyrightImg from '../images/copyright_img.png';
+import copyrightImg from '../images/copyright_img.svg';
 import phoneicon from '../images/icon-phone.svg'
 import envelopeicon from '../images/icon-envelope.svg'
 import facebookicon from '../images/icon-facebook.svg'
 import instagramicon from '../images/icon-instagram.svg'
 import linkedinicon from '../images/icon-linkedin.svg'
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 const Footer = () => {
+    const location = useLocation();
+
+    const handleSamePageClick = (path) => {
+        if (location.pathname === path) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    };
+
     return (
         <div>
-            <footer className='wi_full bg_light_blue'>
+            <footer className='wi_full'>
                 <div className='container-xxl'>
                     <div className='upper_footer'>
                         <div className='row'>
@@ -19,50 +27,78 @@ const Footer = () => {
                                 <h4>MedZentrum Pfungen</h4>
                                 <address>Riedäckerstrasse 5<br />CH-8422 Pfungen</address>
                                 <h4>Quick Links</h4>
-                                <ul>
-                                    <li><Link to='/ubersicht-apotheke'>Apotheke</Link></li>
-                                    <li><Link to='/ubersicht-praxis'>Praxis</Link></li>
-                                    <li><Link to='/ernahrungsdiagnostik'>Ernährungsdiagnostik</Link></li>
-                                    <li><Link to='/ubersicht-gesundheitsthemen'>Gesundheitsthemen</Link></li>
+                                <ul style={{ lineHeight: '1.3' }}>
+                                    <li>
+                                        <Link to='/uebersicht-apotheke' onClick={() => handleSamePageClick('/uebersicht-apotheke')}>
+                                            Apotheke
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/uebersicht-praxis' onClick={() => handleSamePageClick('/uebersicht-praxis')}>
+                                            Praxis
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/uebersicht-ernaehrungsdiagnostik' onClick={() => handleSamePageClick('/uebersicht-ernaehrungsdiagnostik')}>
+                                            Ernährungsdiagnostik
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to='/uebersicht-gesundheitsthemen' onClick={() => handleSamePageClick('/uebersicht-gesundheitsthemen')}>
+                                            Gesundheitsthemen
+                                        </Link>
+                                    </li>
                                 </ul>
                             </div>
                             <div className='col-12 col-sm-6 col-lg-4 ftr_block'>
                                 <h4>Apotheke</h4>
+
                                 <div className='offen_detail'>
-                                    <ul className='mb-3'>
-                                        <li><a href='tel: 052 305 03 50'><img src={phoneicon} alt='#' /><span>052 305 03 50</span></a></li>
+                                    <ul className='mb-3' style={{ padding: '0.1rem 0' }}>
+                                        <li><a href='tel: 0523050350'><img src={phoneicon} alt='#' /><span>052 305 03 50</span></a></li>
                                         <li><a href='mailto: apotheke@medzentrum.ch'><img src={envelopeicon} alt='#' /><span>apotheke@medzentrum.ch</span></a></li>
                                     </ul>
-                                    <p>Öffnungszeiten Apotheke:<br />Montag bis Freitag<br />8:00 – 12:15 | 13:00 – 18:30 <br />Samstag 8:00 – 13:00</p>
                                 </div>
+                                <h4>Öffnungszeiten Apotheke:</h4>
+                                <p style={{ lineHeight: '1.3', marginBottom: '0' }}>
+                                    Montag bis Freitag<br />8:00 – 12:15 | 13:00 – 18:30 <br />Samstag <br /> 8:00 – 13:00
+                                </p>
                             </div>
                             <div className='col-12 col-sm-6 col-lg-3 ftr_block'>
                                 <h4>Praxis</h4>
                                 <div className='offen_detail'>
-                                    <ul className='mb-3'>
-                                        <li><a href='tel: 052 305 03 55'><img src={phoneicon} alt='#' /><span>052 305 03 55</span></a></li>
+                                    <ul className='mb-3' style={{ padding: '0.1rem 0' }}>
+                                        <li><a href='tel: 0523050355'><img src={phoneicon} alt='#' /><span>052 305 03 55</span></a></li>
                                         <li><a href='mailto: praxis@medzentrum.ch'><img src={envelopeicon} alt='#' /><span>praxis@medzentrum.ch</span></a></li>
                                     </ul>
-                                    <p>Telefonzeiten:<br />Montag bis Freitag<br />8:00 – 12:00 | 14:00 – 17:30</p>
-                                    <p>Öffnungszeiten Praxis:<br />Montag bis Freitag<br />8:00 – 12:00 | 13:00 – 18:00<br />Samstag nach Vereinbarung</p>
                                 </div>
+                                
+                                <h4>Öffnungszeiten Praxis:</h4>
+                                <p style={{ lineHeight: '1.3'}}>
+                                    Montag bis Freitag<br />8:00 – 12:00 | 13:00 – 18:00<br />Samstag nach Vereinbarung
+                                </p>
+
+                                <h4>Telefonzeiten:</h4>
+                                <p style={{ lineHeight: '1.3', marginBottom: '0'  }}>
+                                    Montag bis Freitag<br />8:00 – 12:00 | 14:00 – 17:30
+                                </p>
                             </div>
                             <div className='col-12 col-sm-6 col-lg-2 ftr_block'>
                                 <div className='ftr_scl d-flex'>
-                                    <a href='#'><img src={facebookicon} alt='#' /></a>
-                                    <a href='#'><img src={instagramicon} alt='#' /></a>
-                                    <a href='#'><img src={linkedinicon} alt='#' /></a>
+                                    <a href='https://www.facebook.com/medzentrum' target='_blank' rel="noopener noreferrer"><img src={facebookicon} alt='' /></a>
+                                    <a href='https://www.instagram.com/medzentrumpfungen' target='_blank' rel="noopener noreferrer"><img src={instagramicon} alt='' /></a>
+                                    {/* <a href='#'><img src={linkedinicon} alt='#' /></a> */}
                                 </div>
                                 <h4>Rechtliches</h4>
-                                <ul>
-                                    <li><Link to='/impressum'>Impressum</Link></li>
-                                    <li><Link to='/datenschutz'>Datenschutzerklärung</Link></li>
+                                <ul style={{ lineHeight: '1.3' }}>
+                                    <li><Link to='/impressum' onClick={() => handleSamePageClick('/impressum')}>Impressum</Link></li>
+                                    <li><Link to='/datenschutz' onClick={() => handleSamePageClick('/datenschutz')}>Datenschutzerklärung</Link></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div className='footer_copyright text-center'>
-                        <p>© Copyright 2025 | MedZentrum AG, Pfungen | Design by <a href="https://www.loewenmut.ch/" target="_blank">Loewenmut. <img src={copyrightImg} alt='loewenmut' /></a></p>
+                        <p>© Copyright 2025 | MedZentrum AG, Pfungen | Design by <a href="https://www.loewenmut.ch/" target="_blank" rel="noopener noreferrer">Loewenmut. <img src={copyrightImg} alt='loewenmut' /></a></p>
                     </div>
                 </div>
             </footer>

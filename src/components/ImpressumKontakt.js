@@ -1,33 +1,84 @@
-import React from 'react'
-import iconPhone from '../images/call-blue.svg'
-import iconLocation from '../images/location-blue.svg'
-import iconEnvelope from '../images/envelope-blue.svg'
+import React from 'react';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 export const ImpressumKontakt = ({ contactData, color }) => {
+    const getHref = (details) => {
+        if (!details) return { href: '', target: '' };
+
+        const trimmed = details.trim();
+
+        // Phone number regex
+        const phoneRegex = /^\+?[0-9\s\-()]{7,20}$/;
+        if (phoneRegex.test(trimmed)) {
+            return { href: `tel:${trimmed.replace(/\s/g, '')}`, target: '' };
+        }
+
+        // Email regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailRegex.test(trimmed)) {
+            return { href: `mailto:${trimmed}`, target: '' };
+        }
+
+        // URL regex
+        const urlRegex = /^https?:\/\/[^\s$.?#].[^\s]*$/i;
+        if (urlRegex.test(trimmed)) {
+            return { href: trimmed, target: '_blank' };
+        }
+
+        // Check for domain-like strings (e.g. medzentrum.ch or www.loewenmut.ch)
+        const domainLikeRegex = /^[^\s]+\.[^\s]+$/;
+        if (domainLikeRegex.test(trimmed)) {
+            return { href: `https://${trimmed}`, target: '_blank' };
+        }
+
+        return { href: '', target: '' }; // No match
+    };
+
+    const formatAddress = (address) => {
+        return address?.split(',').map((part, index) => (
+            <React.Fragment key={index}>
+                {part.trim()}
+                <br />
+            </React.Fragment>
+        ));
+    };
+
     return (
         <div className='row imp_address_row'>
-            {contactData?.map((contact, index)=>(
+            {contactData?.map((contact, index) => (
                 <div key={index} className='col-lg-6 imp_itm'>
                     <div className='imp_shadow'>
-                        <h3 className='font-volk mb-4'>{contact?.title}</h3>
+                        <h3 className='font-volk mb-4'>{contact?.Titel}</h3>
                         <ul>
-                            {contact?.details?.map((innerDetails, index)=>(
-                                <li key={index} className='pe-5'><img src={`https://medzentrum.entwicklung-loewenmut.ch${innerDetails?.icon?.url}`} alt='' /><a className='pe-5'>{innerDetails?.details}</a></li>
-                            ))}
+                            {contact?.Details?.map((innerDetails, idx) => {
+                                const { href, target } = getHref(innerDetails?.Details);
+
+                                return (
+                                    <li key={idx} >
+                                        {innerDetails?.icon?.url && (
+                                            <img
+                                                src={`https://backend.medzentrum.ch${innerDetails.icon.url}`}
+                                                alt=''
+                                            />
+                                        )}
+                                        {href ? (
+                                            <a
+                                                href={href}
+                                                target={target}
+                                                rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+                                            >
+                                                {innerDetails?.Details}
+                                            </a>
+                                        ) : (
+                                            <span>{formatAddress(innerDetails?.Details)}</span>
+                                        )}
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </div>
                 </div>
             ))}
-            {/* <div className='col-lg-6 imp_itm'>
-                <div className='imp_shadow'>
-                    <h3 className='font-volk mb-4'>Konzeption und Realisation</h3>
-                    <ul>
-                        <li><img src={iconLocation} alt='' /><a>Loewenmut Punkt GmbH<br />Ida-Sträuli-Strasse 95<br />CH-8404 Winterthur</a></li>
-                        <li><img src={iconPhone} alt='' /><a href='tel: 0522247788'>052 224 77 88</a></li>
-                        <li><img src={iconEnvelope} alt='' /><a href='mailto: info@loewenmut.ch'>info@loewenmut.ch</a></li>
-                    </ul>
-                </div>
-            </div> */}
         </div>
-    )
-}
+    );
+};

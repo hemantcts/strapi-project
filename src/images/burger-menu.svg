@@ -1,3 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="45.858" height="36.687" viewBox="0 0 45.858 36.687">
-  <path id="burger-menu" d="M162.528,97.918H116.67V93.332h45.858Zm0,11.465H116.67v4.586h45.858Zm0,16.05H116.67v4.586h45.858Z" transform="translate(-116.67 -93.332)" fill="#5C606E"/>
+<svg width="95" height="76" viewBox="0 0 95 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M94.9026 22.5923H0V30.1845H94.9026V22.5923Z" fill="#0D659B"/>
+<path d="M94.9026 45.1846H0V52.7769H94.9026V45.1846Z" fill="#009E4B"/>
+<path d="M94.9026 0H0V7.5923H94.9026V0Z" fill="#009E4B"/>
+<path d="M94.9026 67.7769H0V75.3692H94.9026V67.7769Z" fill="#0D659B"/>
 </svg>

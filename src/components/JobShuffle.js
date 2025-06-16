@@ -12,29 +12,39 @@ export const JobShuffle = ({ data, color }) => {
         <div className='job_list_wrapper'>
             {data?.map((job, index) => (
                 <div className='row job_row'>
+                    <div className='col-lg-6 job_img'>
+                        <img src={`https://backend.medzentrum.ch${job?.Job_Informationen?.Bild?.url}`} alt='' className='w-100' />
+                    </div>
                     <div className='col-lg-6 job_col'>
                         <div className='job_content text-black'>
-                            <h2>{job?.jobs_info?.heading}</h2>
-                            <p>Zur Ergänzung unseres Teams suchen wir ein/e</p>
-                            <h3>Arzt/Ärztin Allgemeine Innere Medizin</h3>
+                            <h2>{job?.Job_Informationen?.Uberschrift}</h2>
+                            <p>{job?.Job_Informationen?.Beschreibung}</p>
+                            <h3>{job?.Job_Informationen?.Titel}</h3>
                             <div className='job_accordion'>
-                                <Accordion data={job?.jobs_info?.accordion_data} greyy={true} isHtml={true} />
+                                <Accordion data={job?.Job_Informationen?.erweiterbare_Daten} greyy={true} isHtml={true} icons={job?.Job_Informationen?.Icons} customClass='content-box' />
                             </div>
                             <div className='job_contact'>
-                                <p>{job?.contact_details?.title}</p>
+                                <p>{job?.Kontaktdaten?.Titel}</p>
                                 <ul>
-                                    {job?.contact_details?.details?.map((contact)=>(
-                                        <li key={index}>
-                                            <img src={`https://medzentrum.entwicklung-loewenmut.ch${contact?.icon?.url}`} /><a href='#'>{contact?.details}</a>
-                                        </li>
-                                    ))}
+                                    {job?.Kontaktdaten?.Details?.map((contact) => {
+                                        const cleanDetail = contact?.Details?.replace(/\s+/g, ""); // Remove spaces
+                                        const isEmail = cleanDetail.includes("@");
+                                        const isPhone = /^\+?\d+$/.test(cleanDetail);
+                                        const href = isEmail
+                                            ? `mailto:${cleanDetail}`
+                                            : isPhone
+                                                ? `tel:${cleanDetail}`
+                                                : "#";
+                                        return (
+                                            <li key={index}>
+                                                <img src={`https://backend.medzentrum.ch${contact?.icon?.url}`} /><a href={href}>{contact?.Details}</a>
+                                            </li>
+                                        )
+                                    })}
                                 </ul>
-                                <a href='' className='button fill_btn pdf_btn'>pdf download <img src={pdfIcon} alt='#' /></a>
+                                {job?.PDF_Link && <a href={`https://backend.medzentrum.ch${job?.PDF_Link?.url}`} target='_blank' className='button fill_btn pdf_btn'>pdf download <img src={pdfIcon} alt='' /></a>}
                             </div>
                         </div>
-                    </div>
-                    <div className='col-lg-6 job_img'>
-                        <img src={`https://medzentrum.entwicklung-loewenmut.ch${job?.jobs_info?.image?.url}`} alt='' className='w-100' />
                     </div>
                 </div>
             ))}

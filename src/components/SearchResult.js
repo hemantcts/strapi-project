@@ -5,6 +5,7 @@ import postThumb from '../images/post-thumbnail.png'
 import { Link, useLocation } from 'react-router-dom'
 import Skeleton from 'react-loading-skeleton';
 import "react-loading-skeleton/dist/skeleton.css";
+import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 
 
 
@@ -13,46 +14,79 @@ export const SearchResult = ({ data, color }) => {
     const searchKeyword = new URLSearchParams(location.search).get("s");
 
     const allUrls = [
-        "https://medzentrum.entwicklung-loewenmut.ch/api/appointment-booking?populate[banner_section][populate]=banner_image&populate[booking_section][populate]",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-overview?populate[banner_section][populate]=banner_image&populate[services_section][populate]=services_data.image&populate[services_section][populate]=services_data.link&populate[specials_section][populate]=image&populate[specials_section][populate]=accordion_data&populate[products_section][populate]=products.product_details.image&populate[products_section][populate]=products.extraDetails.link&populate[products_section][populate]=products.about.prices&populate[ad_section][populate]=partners.image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-emergency?populate[banner_section][populate]=banner_image&populate[info_section][populate]=icons&populate[pharmacy_services][populate]=image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-service?populate[banner_section][populate]=banner_image&populate[services_data][populate]=*&populate[pharmacy_services_data][populate]=image&populate[pharmacy_services_data][populate]=list_items",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[banner_section][populate]=banner_image&populate[founder_section][populate]=*&populate[founder_data][populate]=image&populate[team_data][populate]=types",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/dienstleistungen-praxis?populate[banner_section][populate]=banner_image&populate[services_data][populate]=*&populate[pharmacy_services_data][populate]=image&populate[pharmacy_services_data][populate]=list_items",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/oeffnungszeiten-und-kontakt?populate[banner_section][populate]=banner_image&populate[contact_details][populate]=details.icon&populate[contact_details][populate]=time_details",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/overview-practice?populate[banner_section][populate]=banner_image&populate[services_section][populate]=services_data.image&populate[services_section][populate]=services_data.link&populate[specials_section][populate]=image&populate[specials_section][populate]=accordion_data&populate[products_section][populate]=products.product_details.image&populate[products_section][populate]=products.extraDetails.link&populate[products_section][populate]=products.about.prices&populate[ad_section][populate]=partners.image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/praxis-notfall?populate[banner_section][populate]=banner_image&populate[info_section][populate]=icons&populate[pharmacy_services][populate]=image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/praxis-team?populate[banner_section][populate]=banner_image&populate[founder_section][populate]=*&populate[founder_data][populate]=image&populate[team_data][populate]=types",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/terminbuchung-praxis?populate[banner_section][populate]=banner_image&populate[booking_section][populate]",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/uebersicht-gesundheitsthemen?populate[banner_section][populate]=banner_image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/ubersicht-ernaehrungsdiagnostik?populate[banner_section][populate]=banner_image&populate[health_section][populate]=*&populate[specials_section][populate]=image&populate[specials_section][populate]=accordion_data&populate[author_section][populate]=image&populate[ad_section][populate]=partners.image",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/job?populate[banner_section][populate]=banner_image&populate[jobs_section]=*&populate[no_jobs_section]=*",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/impressum?populate[banner_section][populate]=banner_image&populate[contact_section][populate]=details.icon&populate[data_section][populate]=*",
-        "https://medzentrum.entwicklung-loewenmut.ch/api/datenschutzerklaerung?populate[banner_section][populate]=banner_image&populate[data_protection_section][populate]=accordion_data"
+        "https://backend.medzentrum.ch/api/appointment-booking?populate[Bannerbereich][populate]=Banner_Bild&populate[Buchungsbereich][populate]",
+
+        "https://backend.medzentrum.ch/api/pharmacy-overview?populate[Bannerbereich][populate]=Banner_Bild&populate[Dienstleistungsbereich][populate]=Service_Daten.Bild&populate[Dienstleistungsbereich][populate]=Service_Daten.Link&populate[Sonderangebotsbereich][populate]=Bild&populate[Sonderangebotsbereich][populate]=erweiterbare_Daten&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=Partners.patner_bild&populate[Anzeigenbereich][populate]=Partners.farbige_Bild",
+
+        "https://backend.medzentrum.ch/api/pharmacy-emergency?populate[Bannerbereich][populate]=Banner_Bild&populate[Informationsbereich][populate]=icons&populate[Apotheken_Dienstleistungen][populate]=Bild",
+
+        "https://backend.medzentrum.ch/api/pharmacy-service?populate[Bannerbereich][populate]=Banner_Bild&populate[Service_Daten][populate]=*&populate[Apotheken_Dienstleistungsdaten][populate]=Bild.Bild&populate[Apotheken_Dienstleistungsdaten][populate]=list_items",
+
+        "https://backend.medzentrum.ch/api/pharmacy-team?populate[Bannerbereich][populate]=Banner_Bild&populate[Bannerbereich][populate]=Mobile_Banner_Bild&populate[Gruenderbereich][populate]=*&populate[Gruenderdaten][populate]=Bild&populate[Teamdaten][populate]=Typen",
+
+        "https://backend.medzentrum.ch/api/dienstleistungen-praxis?populate[Bannerbereich][populate]=Banner_Bild&populate[Service_Daten][populate]=*&populate[Praxis_Dienstleistungen][populate]=Bild.Bild&populate[Praxis_Dienstleistungen][populate]=list_items",
+
+        "https://backend.medzentrum.ch/api/oeffnungszeiten-und-kontakt?populate[Bannerbereich][populate]=Banner_Bild&populate[Kontaktbereich]=*&populate[Kontaktdaten][populate]=Details.icon&populate[Kontaktdaten][populate]=time_details",
+
+        "https://backend.medzentrum.ch/api/overview-practice?populate[Bannerbereich][populate]=Banner_Bild&populate[Dienstleistungsbereich][populate]=Service_Daten.Bild&populate[Dienstleistungsbereich][populate]=Service_Daten.Link&populate[Sonderangebotsbereich][populate]=Bild&populate[Sonderangebotsbereich][populate]=erweiterbare_Daten&populate[Produktbereich][populate]=Produkte.Produktdetail.Bild&populate[Produktbereich][populate]=Produkte.zusatzliche_Details.Link&populate[Produktbereich][populate]=Produkte.Uber_uns.Preise&populate[Produktbereich][populate]=Button&populate[Anzeigenbereich][populate]=Partners.patner_bild&populate[Anzeigenbereich][populate]=Partners.farbige_Bild",
+
+        "https://backend.medzentrum.ch/api/praxis-notfall?populate[Bannerbereich][populate]=Banner_Bild&populate[Informationsbereich][populate]=icons&populate[Apotheken_Dienstleistungen][populate]=Bild",
+
+        "https://backend.medzentrum.ch/api/praxis-team?populate[Bannerbereich][populate]=Banner_Bild&populate[Bannerbereich][populate]=Mobile_Banner_Bild&populate[Gruenderbereich][populate]=*&populate[Gruenderdaten][populate]=Bild&populate[Teamdaten][populate]=Typen",
+
+        "https://backend.medzentrum.ch/api/terminbuchung-praxis?populate[Bannerbereich][populate]=Banner_Bild&populate[Buchungsbereich][populate]",
+
+        "https://backend.medzentrum.ch/api/uebersicht-gesundheitsthemen?populate[Bannerbereich][populate]=Banner_Bild",
+
+        "https://backend.medzentrum.ch/api/ubersicht-ernaehrungsdiagnostik?populate[Bannerbereich][populate]=Banner_Bild&populate[Gesundheitsbereich][populate]=*&populate[Sonderangebotsbereich][populate]=Bild&populate[Sonderangebotsbereich][populate]=erweiterbare_Daten&populate[Sonderangebotsbereich][populate]=Button&populate[Autorenbereich][populate]=Bild&populate[Anzeigenbereich][populate]=Partners.patner_bild&populate[Anzeigenbereich][populate]=Partners.farbige_Bild",
+
+        "https://backend.medzentrum.ch/api/ernaehrungsdiagnostik-angebote?populate[Bannerbereich][populate]=Banner_Bild&populate[Angebotsbereich][populate]=*&populate[Tabellenbereich][populate]=*",
+
+        "https://backend.medzentrum.ch/api/job?populate[Bannerbereich][populate]=Banner_Bild&populate[Bannerbereich][populate]=Mobile_Banner_Bild&populate[Jobbereich]=*&populate[Kein_Job]=*",
+
+        "https://backend.medzentrum.ch/api/impressum?populate[Bannerbereich][populate]=Banner_Bild&populate[Kontaktbereich][populate]=Details.icon&populate[Datenbereich][populate]=*",
+
+        "https://backend.medzentrum.ch/api/datenschutzerklaerung?populate[Bannerbereich][populate]=Banner_Bild&populate[Datenschutzbereich][populate]=erweiterbare_Daten",
+
+        "https://backend.medzentrum.ch/api/blogs?populate=*&pagination[limit]=100&sort[0]=Post_id",
+
+        "https://backend.medzentrum.ch/api/team-apothekes?populate=*&pagination[limit]=100&sort[0]=Nummer",
+
+        "https://backend.medzentrum.ch/api/team-praxes?populate=*&pagination[limit]=100&sort[0]=Nummer"
     ];
 
     const allRoutes = [
         "/terminbuchung-apotheke",
-        "/ubersicht-apotheke",
+        "/uebersicht-apotheke",
         "/apotheke-notfall",
-        "/dienstleistungen-apotheke",
+        "/serviceleistungen-apotheke",
         "/apotheke-team",
         "/dienstleistungen-praxis",
         "/kontakt",
-        "/ubersicht-praxis",
+        "/uebersicht-praxis",
         "/praxis-notfall",
         "/praxis-team",
         "/terminbuchung-praxis",
-        "/ubersicht-gesundheitsthemen",
-        "/ernahrungsdiagnostik",
+        "/uebersicht-gesundheitsthemen",
+        "/uebersicht-ernaehrungsdiagnostik",
+        "/angebot",
         "/jobs",
         "/impressum",
         "/datenschutz",
+        "/uebersicht-gesundheitsthemen",
+        "/apotheke-team",
+        "/praxis-team",
     ]
 
     const [pageData, setPageData] = useState([]);
     const [matchedKeys, setMatchedKeys] = useState([]);
     const [matchedIndices, setMatchedIndices] = useState([]);
+    const [mainIndex, setMainIndex] = useState([]);
+    const [mainIndex2, setMainIndex2] = useState([]);
+    const [mainIndex3, setMainIndex3] = useState([]);
+    const [blogIndices, setBlogIndices] = useState([]);
+    const [teamIndices, setTeamIndices] = useState([]);
+    const [teamIndices2, setTeamIndices2] = useState([]);
     const [isLoading, setLoading] = useState(true);
 
     const handleClick = () => {
@@ -77,15 +111,36 @@ export const SearchResult = ({ data, color }) => {
     };
 
 
+    // const findMatchingKeys = (data, keyword, parentKey = "") => {
+    //     let matches = [];
+
+    //     for (const key in data) {
+    //         if (typeof data[key] === "object" && data[key] !== null) {
+    //             matches = matches.concat(findMatchingKeys(data[key], keyword, key)); // Recursive search
+    //         } else if (typeof data[key] === "string" && data[key].toLowerCase().includes(keyword)) {
+    //             matches.push(parentKey ? `${parentKey}.${key}` : key); // Store matched key path
+    //         }
+    //     }
+
+    //     return matches;
+    // };
+
+
     const findMatchingKeys = (data, keyword, parentKey = "") => {
         let matches = [];
 
-        for (const key in data) {
-            if (typeof data[key] === "object" && data[key] !== null) {
-                matches = matches.concat(findMatchingKeys(data[key], keyword, key)); // Recursive search
-            } else if (typeof data[key] === "string" && data[key].toLowerCase().includes(keyword)) {
-                matches.push(parentKey ? `${parentKey}.${key}` : key); // Store matched key path
+        if (Array.isArray(data)) {
+            data.forEach((item, index) => {
+                const newParentKey = `${parentKey}[${index}]`;
+                matches = matches.concat(findMatchingKeys(item, keyword, newParentKey));
+            });
+        } else if (typeof data === "object" && data !== null) {
+            for (const key in data) {
+                const fullKey = parentKey ? `${parentKey}.${key}` : key;
+                matches = matches.concat(findMatchingKeys(data[key], keyword, fullKey));
             }
+        } else if (typeof data === "string" && data.toLowerCase().includes(keyword)) {
+            matches.push(parentKey);
         }
 
         return matches;
@@ -94,6 +149,9 @@ export const SearchResult = ({ data, color }) => {
     const getPageData = async () => {
         setLoading(true);
         setMatchedIndices([]);
+        setBlogIndices([]);
+        setTeamIndices([]);
+        setTeamIndices2([]);
         try {
             const urls = allUrls;
 
@@ -109,18 +167,77 @@ export const SearchResult = ({ data, color }) => {
 
             const keyword = searchKeyword.toLowerCase();
             let matchedUrls = [];
+            let matchedUrls2 = [];
+            let matchedUrls3 = [];
+            let matchedUrls4 = [];
 
             newData.forEach((data, index) => {
+                if (index === allUrls.length - 3 && Array.isArray(data)) {
+                    data.forEach((blog, blogIndex) => {
+                        const matches = findMatchingKeys(blog, keyword);
+                        if (matches.length > 0) {
+                            console.log(`Keyword matched in blog post at index: ${blogIndex} and ${index}`);
+                            // You can collect blogIndex here in a separate array if needed
+                            setMainIndex(index);
+                            matchedUrls2.push(blogIndex);
+                            setBlogIndices(matchedUrls2);
+
+                            console.log("data here", matchedUrls2)
+                        }
+                    });
+                }
+                if (index === allUrls.length - 2 && Array.isArray(data)) {
+                    data.forEach((team, teamIndex) => {
+                        const matches = findMatchingKeys(team, keyword);
+                        if (matches.length > 0) {
+                            console.log(`Keyword matched in team post at index: ${teamIndex} and ${index}`);
+                            // You can collect teamIndex here in a separate array if needed
+                            setMainIndex2(index);
+                            matchedUrls3.push(teamIndex);
+                            setTeamIndices(matchedUrls3);
+
+                            console.log("data here", matchedUrls3)
+                        }
+                    });
+                }
+                if (index === allUrls.length - 1 && Array.isArray(data)) {
+                    data.forEach((team, teamIndex) => {
+                        const matches = findMatchingKeys(team, keyword);
+                        if (matches.length > 0) {
+                            console.log(`Keyword matched in team post at index: ${teamIndex} and ${index}`);
+                            // You can collect teamIndex here in a separate array if needed
+                            setMainIndex3(index);
+                            matchedUrls4.push(teamIndex);
+                            setTeamIndices2(matchedUrls4);
+
+                            console.log("data here", matchedUrls4)
+                        }
+                    });
+                }
                 const matches = findMatchingKeys(data, keyword);
                 if (matches.length > 0) {
-                    matchedUrls.push(index); // Get URL from the same index in the urls array
-                    setMatchedIndices(matchedUrls);
-                    console.log("index", index);
+                    if (index === 17) {
+                        index = 11;
+                    }
+                    if (index === 18) {
+                        index = 4;
+                    }
+                    if (index === 19) {
+                        index = 9;
+                    }
+                    if (!matchedUrls.includes(index)) {
+                        matchedUrls.push(index);
+                        setMatchedIndices(matchedUrls);
+                    }
+                    console.log("index", index, matchedUrls);
                 }
+
+
+
             });
             setLoading(false);
         } catch (error) {
-            console.error("Error fetching page data:", error);
+            // console.error("Error fetching page data:", error);
         } finally {
             setLoading(false);
         }
@@ -131,40 +248,120 @@ export const SearchResult = ({ data, color }) => {
         getPageData();
     }, [searchKeyword])
 
+    const filterTitle = (title) => {
+        return title.toLowerCase().replace(/\s+/g, '-');
+    }
+
 
     return (
         <div className='search_page'>
-            <header>
-                <Navbar />
-            </header>
-            <section className='wi_full py_3 search_result'>
+            <Navbar />
+            <section className='wi_full py_3 search_result' style={{ minHeight: '70vh' }}>
                 <div className='container-xxl'>
                     <div className='sec_title text-black'>
                         <h1 className='text-blue'>Suchergebnisse für „{searchKeyword}“</h1>
                         {!isLoading ? (
-                            <p>Es gibt {matchedIndices.length} Ergebnisse für deine Suche.</p>
+                            <p>Es gibt {matchedIndices.length + blogIndices.length + teamIndices.length + teamIndices2.length} Ergebnisse für deine Suche.</p>
                         ) : (
                             <Skeleton />
                         )}
                     </div>
                     <div className='search_list_row'>
-                        {!isLoading ? (
-                            matchedIndices.map((index, i) => (
-                                <Link key={i} to={allRoutes[index]}>
+                        {(!isLoading && blogIndices.length > 0) && (
+                            blogIndices.map((index, i) => (
+                                <Link key={i} to={`/${filterTitle(pageData[mainIndex][index]?.Titel)}`}>
                                     <div className="srch_li_item text-black">
-                                        {pageData[index]?.banner_section?.banner_image && (
+                                        {pageData[mainIndex][index]?.Bild && (
                                             <img
-                                                src={`https://medzentrum.entwicklung-loewenmut.ch${pageData[index]?.banner_section?.banner_image?.url}`}
+                                                src={`https://backend.medzentrum.ch${pageData[mainIndex][index]?.Bild?.url}`}
                                                 alt=""
                                                 className="src_post_img"
                                             />
                                         )}
 
                                         <div className="src_post_content">
-                                            <h3>
-                                                {pageData[index]?.banner_section?.title || <Skeleton width={180} height={20} />}
-                                            </h3>
-                                            <p>{pageData[index]?.banner_section?.description || <Skeleton count={2} />}</p>
+                                            {pageData[mainIndex][index]?.Titel &&
+                                                <h3>
+                                                    {pageData[mainIndex][index]?.Titel || <Skeleton width={180} height={20} />}
+                                                </h3>
+                                            }
+                                            {pageData[mainIndex][index]?.Beschreibung[0]?.children[0]?.text &&
+                                                <p>{pageData[mainIndex][index]?.Beschreibung[0]?.children[0]?.text || <Skeleton count={2} />}</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))
+                        )}
+                        {(!isLoading && teamIndices.length > 0) && (
+                            teamIndices.map((index, i) => (
+                                <Link key={i} to={`/apotheke-team`}>
+                                    <div className="srch_li_item text-black">
+                                        {pageData[mainIndex2][index]?.Bild && (
+                                            <img
+                                                src={`https://backend.medzentrum.ch${pageData[mainIndex2][index]?.Bild?.url}`}
+                                                alt=""
+                                                className="src_post_img"
+                                            />
+                                        )}
+
+                                        <div className="src_post_content">
+                                            {pageData[mainIndex2][index]?.Name &&
+                                                <h3>
+                                                    {pageData[mainIndex2][index]?.Name || <Skeleton width={180} height={20} />}
+                                                </h3>
+                                            }
+                                            {pageData[mainIndex2][index]?.Bezeichnung &&
+                                                <p>{pageData[mainIndex2][index]?.Bezeichnung || <Skeleton count={2} />}</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))
+                        )}
+                        {(!isLoading && teamIndices2.length > 0) && (
+                            teamIndices2.map((index, i) => (
+                                <Link key={i} to={`/praxis-team`}>
+                                    <div className="srch_li_item text-black">
+                                        {pageData[mainIndex3][index]?.Bild && (
+                                            <img
+                                                src={`https://backend.medzentrum.ch${pageData[mainIndex3][index]?.Bild?.url}`}
+                                                alt=""
+                                                className="src_post_img"
+                                            />
+                                        )}
+
+                                        <div className="src_post_content">
+                                            {pageData[mainIndex3][index]?.Name &&
+                                                <h3>
+                                                    {pageData[mainIndex3][index]?.Name || <Skeleton width={180} height={20} />}
+                                                </h3>
+                                            }
+                                            {pageData[mainIndex3][index]?.Bezeichnung &&
+                                                <p>{pageData[mainIndex3][index]?.Bezeichnung || <Skeleton count={2} />}</p>
+                                            }
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))
+                        )}
+                        {!isLoading ? (
+                            matchedIndices.map((index, i) => (
+                                <Link key={i} to={allRoutes[index]}>
+                                    <div className="srch_li_item text-black">
+                                        {pageData[index]?.Bannerbereich?.Banner_Bild && (
+                                            <img
+                                                src={`https://backend.medzentrum.ch${pageData[index]?.Bannerbereich?.Banner_Bild?.url}`}
+                                                alt=""
+                                                className="src_post_img"
+                                            />
+                                        )}
+
+                                        <div className="src_post_content">
+                                            {pageData[index]?.Bannerbereich?.Titel && <h3>
+                                                {pageData[index]?.Bannerbereich?.Titel || <Skeleton width={180} height={20} />}
+                                            </h3>}
+                                            {pageData[index]?.Bannerbereich?.Beschreibung && <p>{<BlocksRenderer content={pageData[index]?.Bannerbereich?.Beschreibung} /> || <Skeleton count={2} />}</p>}
                                         </div>
                                     </div>
                                 </Link>

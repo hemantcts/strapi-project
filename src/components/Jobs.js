@@ -5,6 +5,7 @@ import { MyButton } from './mini_components/MyButton'
 import { TwoContent } from './mini_components/TwoContent'
 import Footer from './Footer';
 import { JobShuffle } from './JobShuffle';
+import { StickyButton } from './mini_components/StickyButton';
 
 export const Jobs = () => {
     const activeLink = { link1: false, link2: false, link3: false, link4: false, link5: true, link6: false }
@@ -14,18 +15,18 @@ export const Jobs = () => {
     const [jobsData, setJobsData] = useState([]);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/job?populate[banner_section][populate]=banner_image&populate[jobs_section]=*&populate[no_jobs_section]=*`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/job?populate[Bannerbereich][populate]=Banner_Bild&populate[Bannerbereich][populate]=Mobile_Banner_Bild&populate[Jobbereich]=*&populate[Kein_Job]=*`)
         const data = await response.json();
         console.log(data);
         if (data) {
-            setBannerData(data.data.banner_section);
-            setJobSection(data.data.jobs_section);
-            setNoJobSection(data.data.no_jobs_section);
+            setBannerData(data.data.Bannerbereich);
+            setJobSection(data.data.Jobbereich);
+            setNoJobSection(data.data.Kein_Job);
         }
     }
 
     const getJobsData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/jobs-data?populate[jobs_info][populate]=image&populate[jobs_info][populate]=accordion_data&populate[contact_details][populate]=details.icon`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/jobs-data?populate[Job_Informationen][populate]=Bild&populate[Job_Informationen][populate]=erweiterbare_Daten&populate[Kontaktdaten][populate]=Details.icon&populate[PDF_Link][populate]=*&pagination[limit]=100&sort[0]=job_id`)
         const data = await response.json();
         console.log(data);
         if (data) {
@@ -33,7 +34,7 @@ export const Jobs = () => {
         }
     }
 
-    
+
 
     useEffect(() => {
         getPageData();
@@ -42,14 +43,17 @@ export const Jobs = () => {
 
     return (
         <div className='jobs'>
-            <header>
-                <Navbar activeLink={activeLink} />
-            </header>
+            <div className='stickY_btn'>
+                <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
+            </div>
+
+            <Navbar activeLink={activeLink} />
+            
             <section className='inner_banner_Section'>
-                <BannerSection bannerData={bannerData} color='blue' />
+                <BannerSection bannerData={bannerData} color='blue' teamBanner={true} />
             </section>
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton buttonText={bannerData?.title} />
+                <MyButton buttonText={bannerData?.Titel} />
             </section>
             <section className="wi_full py_3 job_sec">
                 <div className="container-xxl">

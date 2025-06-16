@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const Iframe = () => {
+const Iframe = ({page}) => {
     useEffect(() => {
         // Function to resolve offset
         window.medicosearchWidgetOffsetResolver = () => {
@@ -10,9 +10,17 @@ const Iframe = () => {
         // Load the script dynamically
         const script = document.createElement('script');
         script.type = 'text/javascript';
-        script.src = 'https://www.medicosearch.ch/widget/api/js?key=cf6e81d5-aba8-4a96-a958-aa77691762b3&version=2.0.0&offsetYResolver=medicosearchWidgetOffsetResolver&container=%23medicosearchWidget';
+        if(page==='pr'){
+            script.src = 'https://www.medicosearch.ch/widget/api/js?key=cf6e81d5-aba8-4a96-a958-aa77691762b3&version=2.0.0&offsetYResolver=medicosearchWidgetOffsetResolver&container=%23medicosearchWidget';
+        }
+        else{
+            script.src = "https://www.medicosearch.ch/widget/api/js?key=406d3a9d-94ba-4454-8cdf-e81b3f7a4305&version=2.0.0&container=%23medicosearchWidget&lang=de"
+        }
+        // script.scr = src
         script.async = true;
+
         
+
         document.body.appendChild(script);
     }, []);
 

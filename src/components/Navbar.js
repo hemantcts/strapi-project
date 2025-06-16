@@ -25,11 +25,15 @@ const Navbar = ({ activeLink }) => {
 
 
     const handleChange = (e) => {
+        
         setSearchKeyword(e.target.value);
         console.log(e.target.value)
     }
 
     const handleSubmit = (e) => {
+        if(searchKeyword === ''){
+            return;
+        }
         e.preventDefault();
         navigate(`/search-result?s=${searchKeyword}`);
     };
@@ -58,8 +62,10 @@ const Navbar = ({ activeLink }) => {
     }, []);
 
     const toggleMenu = () => {
-        setMenuOpen(!menuOpen);
-        document.body.classList.toggle('body_overflow', !menuOpen);
+        if (!isHoverEnabled) {
+            setMenuOpen(!menuOpen);
+            document.body.classList.toggle('body_overflow', !menuOpen);
+        }
     };
 
     const handleActive = (link) => {
@@ -93,23 +99,24 @@ const Navbar = ({ activeLink }) => {
         <div>
             <header>
                 <nav className={`navbar navbar-expand-lg ${sticky ? 'sticky' : ''}`}>
-                    <div className='nav_overlay'></div>
+                    <div className={`nav_overlay ${menuOpen ? 'show' : ''}`}></div>
                     <div className='container-xxl'>
-                        <Link className='navbar-brand' to='/'><img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Frame_8cd1fd56fd.svg' alt='logo' /></Link>
+                        {/* <Link className='navbar-brand' to='/'><img src='https://backend.medzentrum.ch/uploads/Frame_8cd1fd56fd.svg' alt='logo' /></Link> */}
+                        <Link className='navbar-brand' to='/'><img src='https://backend.medzentrum.ch/uploads/Medzentrum_logo_2_4f77ba4953.svg' alt='logo' /></Link>
                         <button className='navbar-toggler' onClick={toggleMenu} type='button' data-bs-target='#mainNavbar' aria-expanded='false'>
                             <img src={burgermenu} alt='menu' />
                         </button>
                         <div className={`collapse navbar-collapse ${menuOpen ? 'show' : ''}`} id='mainNavbar'>
                             <div className='open--menu--header'>
                                 <Link to='/'>
-                                    <img src='https://medzentrum.entwicklung-loewenmut.ch/uploads/Frame_8cd1fd56fd.svg' alt='menu' className='open-menu-logo' />
+                                    <img src='https://backend.medzentrum.ch/uploads/Medzentrum_logo_2_4f77ba4953.svg' alt='menu' className='open-menu-logo' />
                                 </Link>
                                 <img src={closemenu} alt='menu' className='close_navbtn' onClick={toggleMenu} />
                             </div>
                             <div className='header-menu-h ms-auto'>
                                 <ul className='navbar-nav main--menu'>
                                     <li className='nav-item megamenu-fw apotheke_menu'>
-                                        <Link className={`nav-link link1 ${(active.link1 || hover.link1) && 'active'}`} to="#" onClick={() => handleActive(1)}
+                                        <Link className={`nav-link link1 ${(active.link1 || hover.link1) && 'active'}`} to={`${isHoverEnabled ? '/uebersicht-apotheke' : '#'}`} onClick={() => handleActive(1)}
                                             onMouseEnter={() => handleMouseEnter(1)}
                                             onMouseLeave={(e) => {
                                                 if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.home_menu')) {
@@ -125,11 +132,11 @@ const Navbar = ({ activeLink }) => {
                                                 }
                                             }}
                                             className="dropdown-menu d-block half menu home_menu">
-                                            <HomeMenu />
+                                            <HomeMenu toggleMenu={toggleMenu} />
                                         </ul>}
                                     </li>
                                     <li className='nav-item megamenu-fw praxis_menu'>
-                                        <Link className={`nav-link link2 ${(active.link2 || hover.link2) && 'active'}`} to="#" onClick={() => handleActive(2)}
+                                        <Link className={`nav-link link2 ${(active.link2 || hover.link2) && 'active'}`} to={`${isHoverEnabled ? '/uebersicht-praxis' : '#'}`} onClick={() => handleActive(2)}
                                             onMouseEnter={() => handleMouseEnter(2)}
                                             onMouseLeave={(e) => {
                                                 if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget?.closest('.menu1')) {
@@ -145,11 +152,11 @@ const Navbar = ({ activeLink }) => {
                                                 }
                                             }}
                                             className="dropdown-menu d-block half menu1">
-                                            <Menu2 />
+                                            <Menu2 toggleMenu={toggleMenu} />
                                         </ul>}
                                     </li>
                                     <li className='nav-item megamenu-fw ubersicth_menu'>
-                                        <Link className={`nav-link link3 ${(active.link3 || hover.link3) && 'active'}`} to="#" onClick={() => handleActive(3)}
+                                        <Link className={`nav-link link3 ${(active.link3 || hover.link3) && 'active'}`} to={`${isHoverEnabled ? '/uebersicht-ernaehrungsdiagnostik' : '#'}`} onClick={() => handleActive(3)}
                                             onMouseEnter={() => handleMouseEnter(3)}
                                             onMouseLeave={(e) => {
                                                 if (!e.relatedTarget || !(e.relatedTarget instanceof Element) || !e.relatedTarget.closest('.menu2')) {
@@ -165,11 +172,11 @@ const Navbar = ({ activeLink }) => {
                                                 }
                                             }}
                                             className="dropdown-menu d-block half menu2">
-                                            <Menu3 />
+                                            <Menu3 toggleMenu={toggleMenu} />
                                         </ul>}
                                     </li>
                                     <li className='nav-item'>
-                                        <Link className={`nav-link link4 ${(active.link4 || hover.link4) && 'active'}`} to='/ubersicht-gesundheitsthemen' onClick={() => handleActive(4)}
+                                        <Link className={`nav-link link4 ${(active.link4 || hover.link4) && 'active'}`} to='/uebersicht-gesundheitsthemen' onClick={toggleMenu}
                                             onMouseEnter={() => handleMouseEnter(4)}
                                             onMouseLeave={() => handleMouseLeave(4)}
                                         >Gesundheitsthemen</Link>
@@ -185,22 +192,22 @@ const Navbar = ({ activeLink }) => {
                                         </div>
                                     </li>
                                     <li className='nav-item'>
-                                        <Link className={`extra-nav-link nav-link link5 ${(active.link5 || hover.link5) && 'active'}`} to="/jobs" onClick={() => handleActive(5)}
+                                        <Link className={`extra-nav-link nav-link link5 ${(active.link5 || hover.link5) && 'active'}`} to="/jobs" onClick={toggleMenu}
                                             onMouseEnter={() => handleMouseEnter(5)}
                                             onMouseLeave={() => handleMouseLeave(5)}
                                         >Jobs</Link>
                                     </li>
                                     <li className='nav-item'>
-                                        <Link className={`extra-nav-link nav-link link6 ${(active.link6 || hover.link6) && 'active'}`} to='/kontakt' onClick={() => handleActive(6)}
+                                        <Link className={`extra-nav-link nav-link link6 ${(active.link6 || hover.link6) && 'active'}`} to='/kontakt' onClick={toggleMenu}
                                             onMouseEnter={() => handleMouseEnter(6)}
                                             onMouseLeave={() => handleMouseLeave(6)}
                                         >Kontakte</Link>
                                     </li>
                                 </ul>
                             </div>
-                            <div className='hdr_copygt'>
-                                <p>© Copyright 2025 | MedZentrum AG, Pfungen | Design by <a href='https://www.loewenmut.ch/' target='_blank' rel="noreferrer">Loewenmut. <img src={loewenmutlogo} alt='loewenmut' /></a></p>
-                            </div>
+                            {/* <div className='hdr_copygt py-0'>
+                                <p>© Copyright 2025 | MedZentrum AG, Pfungen | <Link to='/datenschutz' onClick={toggleMenu}>Datenschutzerklärung</Link> | <Link to='/impressum' onClick={toggleMenu}>Impressum</Link> <br />Design by <a href='https://www.loewenmut.ch/' target='_blank' rel="noreferrer">Loewenmut. <img src={loewenmutlogo} alt='loewenmut' /></a></p>
+                            </div> */}
                         </div>
                     </div>
                 </nav>

@@ -14,13 +14,13 @@ export const DienstleistungenPraxis = () => {
     const [pharmacyServicesData, setPharmacyServicesData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/dienstleistungen-praxis?populate[banner_section][populate]=banner_image&populate[services_data][populate]=*&populate[pharmacy_services_data][populate]=image&populate[pharmacy_services_data][populate]=list_items`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/dienstleistungen-praxis?populate[Bannerbereich][populate]=Banner_Bild&populate[Service_Daten][populate]=*&populate[Praxis_Dienstleistungen][populate]=Bild.Bild&populate[Praxis_Dienstleistungen][populate]=list_items`)
         const data = await response.json();
         console.log(data);
         if (data) {
-            setBannerData(data.data.banner_section);
-            setServicesData(data.data.services_data);
-            setPharmacyServicesData(data.data.pharmacy_services_data);
+            setBannerData(data.data.Bannerbereich);
+            setServicesData(data.data.Service_Daten);
+            setPharmacyServicesData(data.data.Praxis_Dienstleistungen);
             // setProductsData(data.data.products_section);
             // setAdData(data.data.ad_section);
         }
@@ -35,23 +35,22 @@ export const DienstleistungenPraxis = () => {
             <div className='stickY_btn'>
                 <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
             </div>
-            <header>
-                <Navbar activeLink={activeLink} />
-            </header>
+
+            <Navbar activeLink={activeLink} />
 
             <section className='inner_banner_Section'>
                 <BannerSection bannerData={bannerData} color='blue' />
             </section>
 
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton buttonText={bannerData?.title} activePage='Praxis' />
+                <MyButton buttonText={bannerData?.Titel} activePage='Praxis' />
             </section>
 
             <section className="wi_full py_3 dien_shuffle">
                 <div className="container-xxl">
                     <TwoContent data={servicesData} color='blue' />
                     <div className='shuffle_container pt-5'>
-                        <ShuffleComponent data={pharmacyServicesData} color='blue' />
+                        <ShuffleComponent data={pharmacyServicesData} color='blue' staticIcons={true} />
                     </div>
                 </div>
                 {/* <div className='shuffle_container mt-5'>

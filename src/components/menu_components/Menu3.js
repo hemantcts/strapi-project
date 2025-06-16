@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import MenuImg from '../../images/menu_img3.png';
 import svgIcon from '../../images/link_icon.svg';
 
-const Menu3 = () => {
+const Menu3 = ({toggleMenu}) => {
   const location = useLocation();
 
   return (
@@ -12,14 +12,14 @@ const Menu3 = () => {
         <div className="col-lg-6">
           <div className="menu_links">
             <ul className="submenu_list">
-              <li className={location.pathname === '/ernahrungsdiagnostik' ? 'active' : 'list-items border-0'}>
-                <Link to="/ernahrungsdiagnostik">Übersicht Ernährungsdiagnostik</Link>
+              <li className={location.pathname === '/uebersicht-ernaehrungsdiagnostik' ? 'active' : 'list-items border-0'}>
+                <Link onClick={toggleMenu} to="/uebersicht-ernaehrungsdiagnostik">Übersicht Ernährungsdiagnostik</Link>
               </li>
               <li className={location.pathname === '/angebot' ? 'active' : 'list-items'}>
-                <Link to="/angebot">Angebote</Link>
+                <Link onClick={toggleMenu} to="/angebot">Angebote</Link>
               </li>
-              <li className={location.pathname === '/terminbuchung-beratung' ? 'active' : 'list-items'}>
-                <Link to="/terminbuchung-beratung" className="termin_praxis">
+              <li className={location.pathname === '/terminbuchung-praxis' ? 'active' : 'list-items'}>
+                <Link onClick={toggleMenu} to="/terminbuchung-praxis" className="termin_praxis">
                   Termin buchen Beratung <i><img src={svgIcon} alt="" /></i>
                 </Link>
               </li>

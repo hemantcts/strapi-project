@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import imgBlog from '../images/blog-img.png'
 import arrowImg from '../images/white-arrow.svg'
 import MyLink from './mini_components/MyLink';
 import { Link } from "react-router-dom";
+import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 
-export const Blogs = ({ blogs, color, selectedCategory }) => {
+export const Blogs = ({ blogs, colors, selectedCategory }) => {
 
     const filteredBlogs = selectedCategory
-        ? blogs?.filter(blog => blog?.category === selectedCategory)
+        ? blogs?.filter(blog => blog?.Kategorie === selectedCategory)
         : blogs; // Show all if no category selected
+
+    const filterTitle = (title)=>{
+        return title.toLowerCase().replace(/\s+/g, '-');
+    }
+
+    if (!Array.isArray(filteredBlogs)) {
+        return null; 
+    }
 
     return (
         <div className='row blog_Post_list'>
@@ -16,22 +25,23 @@ export const Blogs = ({ blogs, color, selectedCategory }) => {
                 <div key={index} className='col-sm-6 col-lg-4 mt_col blog_item '>
                     <div className='post_inner'>
                         <div className='post_img position-relative'>
-                            <Link to={`/${blog?.title}`}><img src={`https://medzentrum.entwicklung-loewenmut.ch${blog?.image?.url}`} alt='' /></Link>
-                            <div className='post_category'>{blog?.category}</div>
+                            <Link to={`/${blog?.slug}`}><img src={`https://backend.medzentrum.ch${blog?.Bild?.url}`} alt='' /></Link>
+                            <div className='post_category' style={{backgroundColor: `${blog?.Kategorie=="Gesundheits-Checks" ? colors[0] : blog?.Kategorie=="Impfungen" ? colors[1] : colors[2]} `}}>{blog?.Kategorie}</div>
                         </div>
                         <div className='post_content text-black mt-3'>
-                            <h3><Link to={`/${blog?.title}`}>{blog?.title}</Link></h3>
-                            <p> {blog?.description}</p>
+                            <h3><Link to={`/${blog?.slug}`}>{blog?.Titel}</Link></h3>
+                            {/* {blog?.Beschreibung && <BlocksRenderer content={blog?.Beschreibung} />} */}
+                            {blog?.Beschreibung && <p> {blog?.Beschreibung[0]?.children[0]?.text}</p>}
                             <div className='btn_block'>
-                                <MyLink link={`/${blog?.title}`} text='Mehr erfahren' />
+                                <MyLink link={`/${blog?.slug}`} text='Mehr erfahren' />
                             </div>
                         </div>
                     </div>
                 </div>
             ))}
-            <div className='btn_block justify-content-center mt-5'>
+            {/* <div className='btn_block justify-content-center mt-5'>
                 <button type="button" id="load_more" className="button fill_btn">MEHR LADEN <img src={arrowImg} alt="#" /></button>
-            </div>
+            </div> */}
         </div>
     )
 }

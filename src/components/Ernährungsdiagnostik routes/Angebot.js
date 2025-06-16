@@ -12,67 +12,71 @@ export const Angebot = ({ data, color }) => {
     const activeLink = { link1: false, link2: false, link3: true, link4: false, link5: false, link6: false }
     const [bannerData, setBannerData] = useState();
     const [offersData, setOffersData] = useState();
-    // const [blogTitle, setBlogTitle] = useState();
-    // const [blogs, setBlogs] = useState();
+    const [tableData, setTableData] = useState([]);
 
-    // const getPageData = async () => {
-    //     const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/uebersicht-gesundheitsthemen?populate[banner_section][populate]=banner_image`)
-    //     const data = await response.json();
-    //     console.log(data);
-    //     if (data) {
-    //       setBannerData(data?.data?.banner_section);
-    //       setBlogTitle(data?.data?.blogs_title);
-    //     //   setFounderSection(data?.data?.founder_section);
-    //     //   setFounderData(data?.data?.founder_data);
-    //     //   setTeamData(data?.data?.team_data);
-    //     }
-    //   }
-    
-      const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/ernaehrungsdiagnostik-angebote?populate[banner_section][populate]=banner_image&populate[offers_section][populate]=*`)
+    const getPageData = async () => {
+        const response = await fetch(`https://backend.medzentrum.ch/api/ernaehrungsdiagnostik-angebote?populate[Bannerbereich][populate]=Banner_Bild&populate[Angebotsbereich][populate]=*&populate[Tabellenbereich][populate]=*`)
         const data = await response.json();
         console.log(data);
         if (data) {
-            setBannerData(data.data.banner_section);
-            setOffersData(data.data.offers_section);
+            setBannerData(data?.data?.Bannerbereich);
+            setOffersData(data?.data?.Angebotsbereich);
+            setTableData(data?.data?.Tabellenbereich);
+            //   setFounderSection(data?.data?.founder_section);
+            //   setFounderData(data?.data?.founder_data);
+            //   setTeamData(data?.data?.team_data);
         }
-      }
-    
-      useEffect(() => {
+    }
+
+    //   const getBlogs = async () => {
+    //     const response = await fetch(`https://backend.medzentrum.ch/api/blogs?populate=*`)
+    //     const data = await response.json();
+    //     console.log(data);
+    //     if (data) {
+    //       setBlogs(data.data);
+    //     }
+    //   }
+
+    useEffect(() => {
         getPageData();
-        // getBlogs();
-      }, [])
+    }, [])
 
     return (
         <div className="angebot-page">
             <div className='stickY_btn'>
                 <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
             </div>
-            <header>
-                <Navbar activeLink={activeLink} />
-            </header>
+
+            <Navbar activeLink={activeLink} />
+
             <section className='inner_banner_Section'>
                 <BannerSection bannerData={bannerData} color='blue' />
             </section>
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton buttonText={bannerData?.title} activePage='Ernährungsdiagnostik' />
+                <MyButton buttonText={bannerData?.Titel} activePage='Ernährungsdiagnostik' />
             </section>
             <section className='wi_full py_3 angebot_Sec'>
-                <div className='container-xxl pb-5'>
+                <div className='container-xxl pb-lg-5'>
                     <TwoContent data={offersData} />
                 </div>
-
                 <div className='angebot_table_container mt-5'>
                     <div className='container-xxl'>
                         <div className='sec_title d-lg-none'>
-                            <h2>Angebote</h2>
+                            <h2 className='mb-4'>Angebote</h2>
                         </div>
                         <div className='dektop_angebot_table'>
-                            <AngebotDesktop />
+                            <AngebotDesktop tableData={tableData} />
                         </div>
                         <div className='mobile_angebot_table'>
-                            <AngebotMobile />
+                            <AngebotMobile tableData={tableData} />
                         </div>
+                    </div>
+                </div>
+                <div className="test mt-1">
+                    <div className="container-xxl">
+                            <h4 className='ps-lg-0 ps-3' style={{color:'#0D659B', fontWeight:'500', display:'flex'}}>
+                                <img className='h-img' src="https://backend.medzentrum.ch/uploads/check_1_e4073556d6.svg" alt=""/> = inklusiv
+                            </h4>
                     </div>
                 </div>
             </section>

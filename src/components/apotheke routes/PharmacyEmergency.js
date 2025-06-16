@@ -14,13 +14,13 @@ export const PharmacyEmergency = () => {
     const [pharmacyServicesData, setPharmacyServicesData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-emergency?populate[banner_section][populate]=banner_image&populate[info_section][populate]=icons&populate[pharmacy_services][populate]=image`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/pharmacy-emergency?populate[Bannerbereich][populate]=Banner_Bild&populate[Informationsbereich][populate]=icons&populate[Apotheken_Dienstleistungen][populate]=Bild`)
         const data = await response.json();
         console.log(data);
         if (data) {
-            setBannerData(data.data.banner_section);
-            setContactData(data.data.info_section);
-            setPharmacyServicesData(data.data.pharmacy_services);
+            setBannerData(data.data.Bannerbereich);
+            setContactData(data.data.Informationsbereich);
+            setPharmacyServicesData(data.data.Apotheken_Dienstleistungen);
             // setProductsData(data.data.products_section);
             // setAdData(data.data.ad_section);
         }
@@ -35,16 +35,15 @@ export const PharmacyEmergency = () => {
             <div className='stickY_btn'>
                 <StickyButton btntext='Termin Buchen Apotheke' btnLink='/terminbuchung-apotheke' color='green' />
             </div>
-            <header>
-                <Navbar activeLink={activeLink} />
-            </header>
+
+            <Navbar activeLink={activeLink} />
 
             <section className='inner_banner_Section'>
                 <BannerSection bannerData={bannerData} color='green' />
             </section>
 
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton buttonText={bannerData?.title} activePage='Apotheke' color='green' />
+                <MyButton buttonText={bannerData?.Titel} activePage='Apotheke' color='green' />
             </section>
 
             <section className='wi_full py_3 notefall_section'>
@@ -53,7 +52,7 @@ export const PharmacyEmergency = () => {
                         <EmergencyContact contactData={contactData} color='green' />
                     </div>
                     <div className='shuffle_container pt-5'>
-                        <ShuffleComponent data={pharmacyServicesData} color='green' />
+                        <ShuffleComponent data={pharmacyServicesData} color='green' shuffle={true} validPage={true} />
                     </div>
                 </div>
             </section>

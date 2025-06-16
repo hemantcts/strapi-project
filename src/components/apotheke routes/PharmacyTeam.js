@@ -16,21 +16,22 @@ const PharmacyTeam = () => {
   const [teamData, setTeamData] = useState();
   const [teams, setTeams] = useState();
   const [teams2, setTeams2] = useState();
+  const [pageColor, setPageColor] = useState('green');
 
   const getPageData = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/pharmacy-team?populate[banner_section][populate]=banner_image&populate[founder_section][populate]=*&populate[founder_data][populate]=image&populate[team_data][populate]=types`)
+    const response = await fetch(`https://backend.medzentrum.ch/api/pharmacy-team?populate[Bannerbereich][populate]=Banner_Bild&populate[Bannerbereich][populate]=Mobile_Banner_Bild&populate[Gruenderbereich][populate]=*&populate[Gruenderdaten][populate]=Bild&populate[Teamdaten][populate]=Typen`)
     const data = await response.json();
     console.log(data);
     if (data) {
-      setBannerData(data?.data?.banner_section);
-      setFounderSection(data?.data?.founder_section);
-      setFounderData(data?.data?.founder_data);
-      setTeamData(data?.data?.team_data);
+      setBannerData(data?.data?.Bannerbereich);
+      setFounderSection(data?.data?.Gruenderbereich);
+      setFounderData(data?.data?.Gruenderdaten);
+      setTeamData(data?.data?.Teamdaten);
     }
   }
 
   const getTeams = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/team-apothekes?populate=*`)
+    const response = await fetch(`https://backend.medzentrum.ch/api/team-apothekes?populate=*&pagination[limit]=100&sort[0]=Nummer`)
     const data = await response.json();
     console.log(data);
     if (data) {
@@ -39,7 +40,7 @@ const PharmacyTeam = () => {
   }
 
   const getTeams2 = async () => {
-    const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/team-praxes?populate=*`)
+    const response = await fetch(`https://backend.medzentrum.ch/api/team-praxes?populate=*&pagination[limit]=100&sort[0]=Nummer`)
     const data = await response.json();
     console.log(data);
     if (data) {
@@ -53,52 +54,60 @@ const PharmacyTeam = () => {
     getTeams2();
   }, [])
 
+  const changeColor = (i)=>{
+    if(i===1){
+      setPageColor('green');
+    }
+    else{
+      setPageColor('');
+    }
+  }
+
   return (
     <div className='pharmacy_team'>
       <div className='stickY_btn'>
-        <StickyButton btntext='Termin Buchen Apotheke' btnLink='/terminbuchung-apotheke' color='green' />
+        <StickyButton btntext='Termin Buchen Apotheke' btnLink='/terminbuchung-apotheke' color={pageColor} />
       </div>
-      <header>
-        <Navbar activeLink={activeLink} />
-      </header>
+      
+      <Navbar activeLink={activeLink} />
 
       <section className='inner_banner_Section'>
-        <BannerSection bannerData={bannerData} color='green' />
+        <BannerSection bannerData={bannerData} color={pageColor} teamBanner={true} />
       </section>
 
       <section className='breadcrumb_sec wi_full mt_3'>
-        <MyButton buttonText={bannerData?.title} activePage='Apotheke' color='green' />
+        <MyButton buttonText={bannerData?.Titel} activePage='Apotheke' color={pageColor} />
       </section>
 
       <section className="wi_full py_3 grunderinnen_sec">
         <div className="container-xxl">
-          <TwoContent data={founderSection} color='green' />
+          <TwoContent data={founderSection} color={pageColor} />
           <div className="founder_wrapper mt-5">
-            <FounderSection data={founderData} color='green' />
+            <FounderSection data={founderData} color={pageColor} />
           </div>
         </div>
       </section>
 
       <section className='wi_full py_3 pt-0 team_section'>
         <div className="container-xxl">
-          <div className='sec_title green text-center'>
-            <h2>{teamData?.heading}</h2>
+          <div className={`sec_title text-center ${pageColor}`}>
+            <h2>{teamData?.Ueberschrift}</h2>
           </div>
           <div className='tab_container'>
-            <ul className='nav nav-tabs' role='tablist'>
-              {teamData?.types?.map((type, index) => (
+            <ul className='nav nav-tabs team' role='tablist'>
+              {teamData?.Typen?.map((type, index) => (
                 <li key={index} className={`nav-item tab${index + 1}`}>
-                  <a className={`nav-link ${index === 0 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index + 1}`} role="tab">{type?.link_text
+                  <a className={`nav-link ${index === 0 ? 'active' : ''}`} data-bs-toggle="tab" href={`#Tab${index + 1}`} role="tab" onClick={()=>{changeColor(index + 1)}} >{type?.Link_Text
                   }</a>
                 </li>
               ))}
             </ul>
             <div className='tab-content'>
               <div className='tab-pane active' id='Tab1' role='tabpanel'>
-                <Team1 data={teams} color='green' />
+                <Team1 data={teams} color={pageColor} change={pageColor==='green' ? 'green' : 'blue'} />
               </div>
               <div className='tab-pane' id='Tab2' role='tabpanel'>
-                <Team1 data={teams2} color='blue' />
+                <Team1 data={teams2} color='blue' change={pageColor==='green' ? 'green' : 'blue'} />
               </div>
             </div>
 

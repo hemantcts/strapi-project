@@ -14,13 +14,13 @@ export const PraxisNotfall = () => {
     const [pharmacyServicesData, setPharmacyServicesData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/praxis-notfall?populate[banner_section][populate]=banner_image&populate[info_section][populate]=icons&populate[pharmacy_services][populate]=image`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/praxis-notfall?populate[Bannerbereich][populate]=Banner_Bild&populate[Informationsbereich][populate]=icons&populate[Apotheken_Dienstleistungen][populate]=Bild`)
         const data = await response.json();
         console.log(data);
         if (data) {
-            setBannerData(data.data.banner_section);
-            setContactData(data.data.info_section);
-            setPharmacyServicesData(data.data.pharmacy_services);
+            setBannerData(data.data.Bannerbereich);
+            setContactData(data.data.Informationsbereich);
+            setPharmacyServicesData(data.data.Apotheken_Dienstleistungen);
             // setProductsData(data.data.products_section);
             // setAdData(data.data.ad_section);
         }
@@ -35,16 +35,15 @@ export const PraxisNotfall = () => {
             <div className='stickY_btn'>
                 <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
             </div>
-            <header>
-                <Navbar activeLink={activeLink} />
-            </header>
+
+            <Navbar activeLink={activeLink} />
 
             <section className='inner_banner_Section'>
                 <BannerSection bannerData={bannerData} color='blue' />
             </section>
 
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton buttonText={bannerData?.title} activePage='Praxis' />
+                <MyButton buttonText={bannerData?.Titel} activePage='Praxis' />
             </section>
 
             <section className='wi_full py_3 notefall_section'>
@@ -53,7 +52,7 @@ export const PraxisNotfall = () => {
                         <EmergencyContact contactData={contactData} color='blue' />
                     </div>
                     <div className='shuffle_container pt-5'>
-                        <ShuffleComponent data={pharmacyServicesData} color='blue' />
+                        <ShuffleComponent data={pharmacyServicesData} color='blue' shuffle={true} validPage={true} />
                     </div>
                 </div>
             </section>

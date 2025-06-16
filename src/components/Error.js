@@ -4,13 +4,16 @@ import Footer from './Footer';
 import iconError from '../images/error-image.svg'
 import arrowIcon from '../images/white-arrow.svg'
 import { Link } from 'react-router-dom';
+import { StickyButton } from './mini_components/StickyButton';
 
 export const Error = () => {
     return (
         <div className='error'>
-            <header>
-                <Navbar />
-            </header>
+            <div className='stickY_btn'>
+                <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
+            </div>
+
+            <Navbar />
             <section className="wi_full error_sec">
                 <div className="container-xxl">
                     <div className='row align-items-center flex-lg-row-reverse'>

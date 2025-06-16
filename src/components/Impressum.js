@@ -5,6 +5,7 @@ import { MyButton } from './mini_components/MyButton'
 import Footer from './Footer';
 import { ImpressumData } from './ImpressumData';
 import { ImpressumKontakt } from './ImpressumKontakt';
+import { StickyButton } from './mini_components/StickyButton';
 
 export const Impressum = () => {
 
@@ -13,13 +14,13 @@ export const Impressum = () => {
     const [pharmacyServicesData, setPharmacyServicesData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/impressum?populate[banner_section][populate]=banner_image&populate[contact_section][populate]=details.icon&populate[data_section][populate]=*`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/impressum?populate[Bannerbereich][populate]=Banner_Bild&populate[Kontaktbereich][populate]=Details.icon&populate[Datenbereich][populate]=*`)
         const data = await response.json();
         console.log(data);
         if (data) {
-            setBannerData(data.data.banner_section);
-            setContactData(data.data.contact_section);
-            setPharmacyServicesData(data.data.data_section);
+            setBannerData(data.data.Bannerbereich);
+            setContactData(data.data.Kontaktbereich);
+            setPharmacyServicesData(data.data.Datenbereich);
             // setProductsData(data.data.products_section);
             // setAdData(data.data.ad_section);
         }
@@ -31,14 +32,17 @@ export const Impressum = () => {
 
     return (
         <div className='impressum'>
-            <header>
-                <Navbar />
-            </header>
+            <div className='stickY_btn'>
+                <StickyButton btntext='Termin Buchen praxis' btnLink='/terminbuchung-praxis' color='blue' />
+            </div>
+            
+            <Navbar />
+
             <section className='inner_banner_Section'>
                 <BannerSection bannerData={bannerData} color='blue' />
             </section>
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton buttonText={bannerData?.title} />
+                <MyButton buttonText={bannerData?.Titel} />
             </section>
             <section className='wi_full py_3 impressum_sec'>
                 <div className='container-xxl'>

@@ -8,6 +8,7 @@ import { TwoContent } from '../mini_components/TwoContent'
 import { SpeziellesSection } from '../SpeziellesSection'
 import { PartnersSection } from '../PartnersSection';
 import { StickyButton } from '../mini_components/StickyButton'
+import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 
 const Ernahrungsdiagnostik = () => {
     const activeLink = { link1: false, link2: false, link3: true, link4: false, link5: false, link6: false }
@@ -18,15 +19,15 @@ const Ernahrungsdiagnostik = () => {
     const [adData, setAdData] = useState(null);
 
     const getPageData = async () => {
-        const response = await fetch(`https://medzentrum.entwicklung-loewenmut.ch/api/ubersicht-ernaehrungsdiagnostik?populate[banner_section][populate]=banner_image&populate[health_section][populate]=*&populate[specials_section][populate]=image&populate[specials_section][populate]=accordion_data&populate[author_section][populate]=image&populate[ad_section][populate]=partners.image`)
+        const response = await fetch(`https://backend.medzentrum.ch/api/ubersicht-ernaehrungsdiagnostik?populate[Bannerbereich][populate]=Banner_Bild&populate[Gesundheitsbereich][populate]=*&populate[Sonderangebotsbereich][populate]=Bild&populate[Sonderangebotsbereich][populate]=erweiterbare_Daten&populate[Sonderangebotsbereich][populate]=Button&populate[Autorenbereich][populate]=Bild&populate[Anzeigenbereich][populate]=Partners.patner_bild&populate[Anzeigenbereich][populate]=Partners.farbige_Bild`)
         const data = await response.json();
         console.log(data);
         if (data) {
-            setBannerData(data.data.banner_section);
-            setHealthData(data.data.health_section);
-            setSpecialsData(data.data.specials_section);
-            setAuthorData(data.data.author_section);
-            setAdData(data.data.ad_section);
+            setBannerData(data.data.Bannerbereich);
+            setHealthData(data.data.Gesundheitsbereich);
+            setSpecialsData(data.data.Sonderangebotsbereich);
+            setAuthorData(data.data.Autorenbereich);
+            setAdData(data.data.Anzeigenbereich);
         }
     }
 
@@ -44,7 +45,7 @@ const Ernahrungsdiagnostik = () => {
                 {<BannerSection bannerData={bannerData} />}
             </div>
             <section className='breadcrumb_sec wi_full mt_3'>
-                <MyButton buttonText={bannerData?.title} activePage='Ernährungsdiagnostik' />
+                <MyButton buttonText={bannerData?.Titel} activePage='Ernährungsdiagnostik' />
             </section>
             <section className="wi_full py_3 dien_section">
                 <div className="container-xxl">
@@ -58,10 +59,11 @@ const Ernahrungsdiagnostik = () => {
                 <div className='container-xxl'>
                     <div className='row align-items-center'>
                         <div className='col-lg-8 content_col'>
-                            <blockquote dangerouslySetInnerHTML={{ __html: authorData?.description}} />
+                            {authorData?.Beschreibung && <BlocksRenderer content={authorData?.Beschreibung} />}
+                            {/* <blockquote dangerouslySetInnerHTML={{ __html: authorData?.Beschreibung}} /> */}
                         </div>
                         <div className='col-lg-4 img_col'>
-                            <img src={`https://medzentrum.entwicklung-loewenmut.ch${authorData?.image?.url}`} alt='' />
+                            <img src={`https://backend.medzentrum.ch${authorData?.Bild?.url}`} alt='' />
                         </div>
                     </div>
                 </div>
