@@ -52,6 +52,10 @@ const Home = () => {
         };
     }, []);
 
+    const isPhoneLink = (linkURL) => {
+        return !linkURL.startsWith('/');
+    };
+
     return (
         <div>
             {/* <SEO slug="home" /> */}
@@ -76,9 +80,12 @@ const Home = () => {
 
                                         {bannerData?.Mobile_Links?.map((roundLink, index) => (
                                             <div key={index} className={`round_btn round_${index + 1}`}>
-                                                <a href={`tel:${roundLink?.Link_URL}`} className="text-uppercase">
+                                                {isPhoneLink(roundLink?.Link_URL) && <a href={`tel:${roundLink?.Link_URL}`} className="text-uppercase">
                                                     {roundLink?.Link_Text}
-                                                </a>
+                                                </a>}
+                                                {!isPhoneLink(roundLink?.Link_URL) &&
+                                                    <Link to={roundLink?.Link_URL} className="text-uppercase">{roundLink?.Link_Text}</Link>
+                                                }
                                             </div>
                                         ))}
                                     </div>
