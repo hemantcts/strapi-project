@@ -70,16 +70,18 @@ const Footer = () => {
                                     <ul className='mb-3' style={{ padding: '0.1rem 0' }}>
                                         <li><a href='tel: 0523050355'><img src={phoneicon} alt='#' /><span>052 305 03 55</span></a></li>
                                         <li><a href='mailto: praxis@medzentrum.ch'><img src={envelopeicon} alt='#' /><span>praxis@medzentrum.ch</span></a></li>
+                                        <li><a href='mailto: arztpraxis-pfungen@hin.ch'><img src={envelopeicon} alt='#' /><span>arztpraxis-pfungen@hin.ch</span></a></li>
+                                        <li style={{fontSize:'smaller', fontStyle:'italic'}}>*geschützte E-Mail Adresse</li>
                                     </ul>
                                 </div>
-                                
+
                                 <h4>Öffnungszeiten Praxis:</h4>
-                                <p style={{ lineHeight: '1.3'}}>
+                                <p style={{ lineHeight: '1.3' }}>
                                     Montag bis Freitag<br />8:00 – 12:00 | 13:00 – 18:00<br />Samstag nach Vereinbarung
                                 </p>
 
                                 <h4>Telefonzeiten:</h4>
-                                <p style={{ lineHeight: '1.3', marginBottom: '0'  }}>
+                                <p style={{ lineHeight: '1.3', marginBottom: '0' }}>
                                     Montag bis Freitag<br />8:00 – 12:00 | 14:00 – 17:30
                                 </p>
                             </div>

@@ -237,6 +237,30 @@ ul.dropdown-menu.half {
     }
 }
 }
+
+@media (min-width: 1301px) and (max-width: 1599.98px) {
+.kontkt_itm {
+    ul {
+        align-items: flex-start;
+        height: 110px;
+    }
+    ul li, .offnun_inr {
+        font-size: 17px;
+    }
+}
+}
+
+@media (min-width: 1200px) and (max-width: 1300px) {
+.kontkt_itm {
+    ul {
+        align-items: flex-start;
+        height: 110px;
+    }
+    ul li, .offnun_inr {
+        font-size: 15px;
+    }
+}
+}
     
 @media (min-width: 992px){
 .container-xxl {
@@ -687,6 +711,18 @@ footer .col-lg-3.ftr_block {
         }
     }
 }
+
+
+.kontkt_itm {
+    ul {
+        align-items: flex-start;
+        height: 135px;
+    }
+    ul li, .offnun_inr {
+        font-size: 21px;
+    }
+}
+
 }
 
 
@@ -822,6 +858,17 @@ header {
         p {
             /* min-height: 51px; */
         }
+    }
+}
+
+.kontkt_itm {
+    ul {
+        height: 160px;
+    }
+}
+.second_div {
+    ul li {
+        width: 100%;
     }
 }
 }
@@ -1234,6 +1281,23 @@ footer {
         .img_col {
             padding: 0 0 1rem;
         }
+    }
+}
+
+.popup {
+    .popup-box {
+        padding: 12px;
+    }
+}
+
+.kontkt_itm {
+    ul {
+        height: unset;
+    }
+}
+.second_div {
+    ul li {
+        width: 50%;
     }
 }
 }
@@ -1680,7 +1744,7 @@ header {
     }
 
     .popup-container{
-        width: 660px;
+        width: 860px;
     }
 }
 
@@ -1848,16 +1912,30 @@ header {
         height: 1848px;
     }
 
-    .popup {
+    /* .popup {
         .popup-box {
             width: 50%;
             background-color: #e6f8e9;
             padding: 20px;
         }
-    }
+    } */
 
     .cky-notice-btn-wrapper .cky-btn{
         padding: 0 !important;
+    }
+}
+
+
+@media (max-width:575px) {
+    .popup{
+        flex-wrap: wrap;
+        .popup-box{
+            width: 100%;
+        }
+        .popup-img{
+            width: 100% !important;
+            height: unset;
+        }
     }
 }
 
@@ -1894,13 +1972,13 @@ header {
         height: 1910px;
     } */
 
-    .popup {
+    /* .popup {
         .popup-box {
             width: 50%;
             background-color: #e6f8e9;
             padding: 10px;
         }
-    }
+    } */
 }
 
 @media (max-width:464px) {

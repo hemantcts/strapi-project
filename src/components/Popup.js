@@ -10,7 +10,7 @@ export const Popup = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth <= 350) {
+            if (window.innerWidth <= 575) {
                 setMobileWidth(true);
             } else {
                 setMobileWidth(false);
@@ -146,7 +146,7 @@ export const Popup = () => {
                                 position: 'relative'
                             }}
                         >
-                            {popupData?.Bild && <img style={{objectFit:'contain', height:'100%', width:'100%'}} src={`https://backend.medzentrum.ch${popupData?.Bild?.url}`} alt="" />}
+                            {popupData?.Bild && <img style={{objectFit:'cover', height:'100%', width:'100%'}} src={`https://backend.medzentrum.ch${popupData?.Bild?.url}`} alt="" />}
                             {/* Custom Close Button */}
                             <button
                                 type="button"

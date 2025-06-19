@@ -53,6 +53,7 @@ function App() {
           <Route path="/uebersicht-praxis" element={<OverviewPractice />} />
           <Route path="/terminbuchung-praxis" element={<TerminBuchenPraxis />} />
           <Route path="/praxis-team" element={<PraxisTeam />} />
+          <Route path="/notfall" element={<Navigate to="/praxis-notfall" replace />} />
           <Route path="/praxis-notfall" element={<PraxisNotfall />} />
           <Route path="/dienstleistungen-praxis" element={<DienstleistungenPraxis />} />
           <Route path="/kontakt" element={<Kontakt />} />
