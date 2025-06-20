@@ -77,7 +77,7 @@ const OverviewPractice = () => {
                             className='products-iframe'
                             id="halfpage"
                             name="halfpage"
-                            src="https://www.rotpunkt-apotheken.ch/iframes/halfpage-600.html"
+                            src="https://www.rotpunkt-apotheken.ch/aktionen-uebersicht"
                             width="100%"
                             // height="900px"
                             scrolling="no"
