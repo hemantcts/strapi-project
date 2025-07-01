@@ -29,6 +29,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import SEO from './components/Seo';
 
 import LandingPage from './components/landingPage/LandingPage';
+import JobsApplyPage from './components/JobsApplyPage';
+import { Thankyou } from './components/Thankyou';
 
 function App() {
 
@@ -77,10 +79,12 @@ function App() {
 
           {/* jobs routes */}
           <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jetzt-bewerben" element={<JobsApplyPage />} />
 
           {/* search routes */}
           <Route path="/search-result" element={<SearchResult />} />
 
+          <Route path="/vielen-dank" element={<Thankyou />} />
           {/* Catch-All Route for Undefined Paths */}
           <Route path="/error" element={<Error />} />
           <Route path="*" element={<Error />} />

@@ -15,6 +15,9 @@ export const MyButton = ({ activePage, buttonText, color, change }) => {
     // };
 
     const formatText = (text) => {
+        if(text === 'Jetzt bewerben!'){
+            return text;
+        }
         return text?.toLowerCase().replace(/(^|[\s-])(\p{L}+)/gu, (match, space, word) => {
             return word === "und" ? match : space + word.charAt(0).toUpperCase() + word.slice(1);
         });
@@ -27,7 +30,6 @@ export const MyButton = ({ activePage, buttonText, color, change }) => {
     // };
 
     const linkGoTo = (page)=>{
-        console.log(page);
         let url = '';
         switch (page){
             case 'Apotheke':
@@ -41,6 +43,9 @@ export const MyButton = ({ activePage, buttonText, color, change }) => {
                 break
             case 'Gesundheitsthemen':
                 url = '/uebersicht-gesundheitsthemen';
+                break
+            case 'Jobs':
+                url = '/jobs';
                 break
         }
         

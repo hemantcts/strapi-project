@@ -90,7 +90,6 @@ const Navbar = ({ activeLink }) => {
 
     useEffect(() => {
         if (activeLink) {
-            console.log(activeLink);
             setActive(activeLink);
         }
     }, [activeLink])

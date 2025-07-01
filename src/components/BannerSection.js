@@ -1,6 +1,8 @@
 import { BlocksRenderer } from '@strapi/blocks-react-renderer'
 import React from 'react'
 import Skeleton from 'react-loading-skeleton'
+import MyLink from './mini_components/MyLink'
+import { Link } from 'react-router-dom'
 
 export const BannerSection = ({ bannerData, color, teamBanner }) => {
     return (
@@ -8,7 +10,7 @@ export const BannerSection = ({ bannerData, color, teamBanner }) => {
             {!teamBanner ?
 
                 (<section className={`wi_full py_3 banner_sec inner_banner ${color}`} style={{ background: `url('https://backend.medzentrum.ch${bannerData?.Banner_Bild?.url}')` }}>
-                   {bannerData?.Banner_Bild && <img className='mobile_bnr_img' src={`https://backend.medzentrum.ch${bannerData?.Banner_Bild?.url}`} />}
+                    {bannerData?.Banner_Bild && <img className='mobile_bnr_img' src={`https://backend.medzentrum.ch${bannerData?.Banner_Bild?.url}`} />}
                     {bannerData ? (
                         <div className="container-xxl">
                             <div className="row">
@@ -18,6 +20,7 @@ export const BannerSection = ({ bannerData, color, teamBanner }) => {
                                         {bannerData?.Beschreibung && <BlocksRenderer content={bannerData?.Beschreibung} />}
                                         {/* <p className='mb-0'>{bannerData?.Beschreibung}</p> */}
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -48,6 +51,13 @@ export const BannerSection = ({ bannerData, color, teamBanner }) => {
                                             {bannerData?.Beschreibung && <BlocksRenderer content={bannerData?.Beschreibung} />}
                                             {/* <p className='mb-0'>{bannerData?.Beschreibung}</p> */}
                                         </div>
+                                        <Link to='/jetzt-bewerben' className='apply-job-btn border-0 mt-2' style={{ display: 'inline-block', background: '#0D659B', color: '#fff', fontSize: 'var(--bs-h35)', fontFamily: 'var(--bs-fontvolkhov)', position: 'relative', zIndex: '1' }}>
+                                            Jetzt bewerben!
+                                            <div className={`round_btn round_1`}>
+                                                <img src="https://backend.medzentrum.ch/uploads/Vector_1_c7d0867ab5.svg" alt="" />
+                                            </div>
+                                        </Link>
+
                                     </div>
                                 </div>
                             </div>
