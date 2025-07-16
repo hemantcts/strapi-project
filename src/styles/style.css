@@ -906,12 +906,12 @@ footer {
     }
 
     .content_box.icons2.green ul li:before {
-        background: url(https://medzentrum.entwicklung-loewenmut.ch/uploads/green_a612f0ae3f.svg) no-repeat center;
+        background: url(https://backend.medzentrum.ch/uploads/green_a612f0ae3f.svg) no-repeat center;
         background-size: contain;
     }
 
     .content_box.icons2.blue ul li:before {
-        background: url(https://medzentrum.entwicklung-loewenmut.ch/uploads/blue_335f10162a.svg) no-repeat center;
+        background: url(https://backend.medzentrum.ch/uploads/blue_335f10162a.svg) no-repeat center;
         background-size: contain;
     }
 

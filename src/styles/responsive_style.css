@@ -1974,7 +1974,7 @@
 @media (max-width: 480px) {
     :root {
         --bs-h1: 28px;
-        --bs-h2: 28px;
+        --bs-h2: 27px;
         --bs-h3: 20px;
         --bs-h4: 18px;
         --bs-h50: 30px;
@@ -2166,6 +2166,10 @@
 
     .apply-job-btn {
         padding: 0.4rem 2rem;
+    }
+
+    .content_box.text-black .new-text{
+        padding-right: 8rem;
     }
 }
 

@@ -116,12 +116,17 @@ export const ShuffleComponent = ({ data, color, shuffle, staticIcons, validPage 
                             ) : Array.isArray(services?.Bild) && services?.Bild?.length === 1 ? (
                                 <img src={`https://backend.medzentrum.ch${services?.Bild[0]?.Bild?.url}`} alt="Service" />
                             ) : (
-                                <img src={`https://backend.medzentrum.ch${services?.Bild?.url}`} alt="Service" onLoad={()=>setLoading(!loading)} />
+                                <img src={`https://backend.medzentrum.ch${services?.Bild?.url}`} alt="Service" onLoad={() => setLoading(!loading)} />
                             )}
                         </div>
                         <div className='col-12 col-lg-6 content_col'>
                             <div className={`content_box text-black ${color} ${staticIcons ? 'icons2' : ''} ${(services?.icons || staticIcons) ? 'icons' : 'no_icons'}`}>
-                                <h2 className='break-word'>{services?.Titel}</h2>
+
+                                {services?.Titel !== "Impfungen" && <h2 className='break-word'>{services?.Titel}</h2>}
+                                {services?.Titel === "Impfungen" &&
+                                    <h2 className='break-word new-text'>
+                                        Impfungen <span style={{fontSize: '20px'}}> (ab 16 Jahren) </span>
+                                    </h2>}
                                 {services?.Beschreibung && <BlocksRenderer content={services?.Beschreibung} />}
                                 {services?.list_items && (
                                     <ul>

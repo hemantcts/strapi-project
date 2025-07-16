@@ -11,12 +11,12 @@ export const Blogs = ({ blogs, colors, selectedCategory }) => {
         ? blogs?.filter(blog => blog?.Kategorie === selectedCategory)
         : blogs; // Show all if no category selected
 
-    const filterTitle = (title)=>{
+    const filterTitle = (title) => {
         return title.toLowerCase().replace(/\s+/g, '-');
     }
 
     if (!Array.isArray(filteredBlogs)) {
-        return null; 
+        return null;
     }
 
     return (
@@ -26,7 +26,11 @@ export const Blogs = ({ blogs, colors, selectedCategory }) => {
                     <div className='post_inner'>
                         <div className='post_img position-relative'>
                             <Link to={`/${blog?.slug}`}><img src={`https://backend.medzentrum.ch${blog?.Bild?.url}`} alt='' /></Link>
-                            <div className='post_category' style={{backgroundColor: `${blog?.Kategorie=="Gesundheits-Checks" ? colors[0] : blog?.Kategorie=="Impfungen" ? colors[1] : colors[2]} `}}>{blog?.Kategorie}</div>
+                            {blog?.Kategorie != "Impfungen" ? (<div className='post_category' style={{ textTransform: 'unset', backgroundColor: `${blog?.Kategorie == "Gesundheits-Checks" ? colors[0] : blog?.Kategorie == "Impfungen" ? colors[1] : colors[2]} ` }}>{blog?.Kategorie}</div>) : (
+                                <div className='post_category' style={{ textTransform: 'unset', backgroundColor: `${blog?.Kategorie == "Gesundheits-Checks" ? colors[0] : blog?.Kategorie == "Impfungen" ? colors[1] : colors[2]} ` }}>
+                                    Impfungen <span style={{fontSize:'12px'}}>(ab 16 Jahren)</span>
+                                </div>
+                            )}
                         </div>
                         <div className='post_content text-black mt-3'>
                             <h3><Link to={`/${blog?.slug}`}>{blog?.Titel}</Link></h3>
