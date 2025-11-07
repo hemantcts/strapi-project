@@ -11,6 +11,7 @@ import Iframe from './Iframe';
 import MailchimpForm from './MailchimpForm';
 import { Popup } from './Popup';
 import SEO from './Seo';
+import { PopupCustom } from './PopupCustom';
 
 const Home = () => {
 
@@ -211,7 +212,8 @@ const Home = () => {
             </section>
             <Footer />
 
-            <Popup />
+            {/* <Popup /> */}
+            <PopupCustom />
         </div>
     )
 }
