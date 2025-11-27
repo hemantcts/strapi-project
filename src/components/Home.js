@@ -212,7 +212,7 @@ const Home = () => {
             </section>
             <Footer />
 
-            {/* <Popup /> */}
+            <Popup />
             <PopupCustom />
         </div>
     )

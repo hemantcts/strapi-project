@@ -46,8 +46,9 @@ export const PopupCustom = () => {
         }
     }
 
-    const getPopups = async () => {
-        const response = await fetch('https://backend.medzentrum.ch/api/popups?populate=*')
+    const getNewPopups = async () => {
+        const response = await fetch('https://backend.medzentrum.ch/api/festtage-popups?populate=*')
+        // const response = await fetch('https://backend.medzentrum.ch/api/popups?populate=*')
         const data = await response.json();
         console.log(data);
 
@@ -66,6 +67,30 @@ export const PopupCustom = () => {
         }
     }
 
+    const getPopups = async () => {
+        const response = await fetch('https://backend.medzentrum.ch/api/popups?populate=*')
+        const data = await response.json();
+        console.log(data);
+
+        let popup;
+
+        if (data?.data?.length) {
+            let check = true;
+            for (const element of data.data) {
+                if (element?.Aktiv) {
+                    setPopupData(element);
+                    popup = element;
+                    check = false;
+                    break;
+                }
+            }
+
+            if(check){
+                getNewPopups();
+            }
+        }
+    }
+
     useEffect(() => {
         getPopups();
     }, [])
@@ -77,7 +102,7 @@ export const PopupCustom = () => {
                 type="button"
                 className="d-none"
                 data-bs-toggle="modal"
-                data-bs-target="#myModal"
+                data-bs-target="#myModal2"
                 ref={openBtnRef}
             >
                 Open Modal
@@ -86,7 +111,7 @@ export const PopupCustom = () => {
             {/* The actual modal */}
             <div
                 className="modal fade"
-                id="myModal"
+                id="myModal2"
                 tabIndex="-1"
                 aria-hidden="true"
             >
@@ -96,15 +121,24 @@ export const PopupCustom = () => {
                     >
                         {/* Left Side: Text */}
                         <div className={`d-flex flex-column justify-content-center popup-box ${mobileWidth ? 'order-2' : ''}`} style={{ backgroundColor: '#d0d8e6', width: '100%', backgroundImage: `url(${heartImage})`, backgroundRepeat: 'no-repeat', backgroundSize: mobileWidth ? '8rem' : 'contain', backgroundPosition: mobileWidth ? '95% -5rem' : '96% -7rem' }}>
-                            {true && (
+                            {popupData?.Titel && (
                                 <div className="block text-start">
                                     {mobileWidth ? (
                                         <div className="popup-heading mb-3" style={{ color: 'rgb(13, 101, 155)', fontWeight: 500, fontSize: 'var(--bs-h35)' }}>
-                                            Unsere <b>Öffnungszeiten</b> <br /> über die Festtage
+                                            {/* Unsere <b>Öffnungszeiten</b> <br /> über die Festtage */}
+                                            <div dangerouslySetInnerHTML={{
+                                                __html: popupData?.Titel
+                                                    .replace('Öffnungszeiten', '<b>Öffnungszeiten</b> <br />')
+                                                    // .replace('über ', 'über <br /> ')
+                                            }} />
                                         </div>
                                     ) : (
                                         <div className="popup-heading mb-3" style={{ color: 'rgb(13, 101, 155)', fontWeight: 500, fontSize: 'var(--bs-h35)' }}>
-                                            Unsere <b>Öffnungszeiten</b> über <br /> die Festtage
+                                            <div dangerouslySetInnerHTML={{
+                                                __html: popupData?.Titel
+                                                    .replace('Öffnungszeiten', '<b>Öffnungszeiten</b>')
+                                                    .replace('über ', 'über <br /> ')
+                                            }} />
                                         </div>
                                     )}
                                 </div>
@@ -120,36 +154,13 @@ export const PopupCustom = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style={{ borderBottom: '1px solid rgb(13, 101, 155)' }}>
-                                        <td style={{ padding: '0.4rem 0' }}>Mi. 24.12.25</td>
-                                        <td style={{ padding: '0.4rem 0' }}>8.00–16.00*</td>
-                                        <td style={{ padding: '0.4rem 0' }}>8.00–12.00</td>
-                                    </tr>
-                                    <tr style={{ borderBottom: '1px solid rgb(13, 101, 155)' }}>
-                                        <td style={{ padding: '0.4rem 0' }}>Do. 25. + Fr. 26.12.25</td>
-                                        <td style={{ padding: '0.4rem 0' }}>geschlossen</td>
-                                        <td style={{ padding: '0.4rem 0' }}>geschlossen</td>
-                                    </tr>
-                                    <tr style={{ borderBottom: '1px solid rgb(13, 101, 155)' }}>
-                                        <td style={{ padding: '0.4rem 0' }}>Sa. 27.12.25</td>
-                                        <td style={{ padding: '0.4rem 0' }}>8.00–16.00*</td>
-                                        <td style={{ padding: '0.4rem 0' }}>geschlossen</td>
-                                    </tr>
-                                    <tr style={{ borderBottom: '1px solid rgb(13, 101, 155)' }}>
-                                        <td style={{ padding: '0.4rem 0' }}>Mi. 31.12.25</td>
-                                        <td style={{ padding: '0.4rem 0' }}>8.00–16.00*</td>
-                                        <td style={{ padding: '0.4rem 0' }}>8.00–12.00</td>
-                                    </tr>
-                                    <tr style={{ borderBottom: '1px solid rgb(13, 101, 155)' }}>
-                                        <td style={{ padding: '0.4rem 0' }}>Do. 1. + Fr. 2.1.26</td>
-                                        <td style={{ padding: '0.4rem 0' }}>geschlossen</td>
-                                        <td style={{ padding: '0.4rem 0' }}>geschlossen</td>
-                                    </tr>
-                                    <tr>
-                                        <td style={{ padding: '0.4rem 0' }}>Sa. 3.1.26</td>
-                                        <td style={{ padding: '0.4rem 0' }}>8.00–16.00*</td>
-                                        <td style={{ padding: '0.4rem 0' }}>geschlossen</td>
-                                    </tr>
+                                    {popupData?.Festtage_Info?.map((info, i) => (
+                                        <tr key={i} style={{ borderBottom: i !== popupData?.Festtage_Info.length - 1 ? '1px solid rgb(13, 101, 155)' : 'none' }}>
+                                            <td style={{ padding: '0.4rem 0' }}>{info?.Titel}</td>
+                                            <td style={{ padding: '0.4rem 0' }}>{info?.Apotheke}</td>
+                                            <td style={{ padding: '0.4rem 0' }}>{info?.Aerztehaus}</td>
+                                        </tr>
+                                    ))}
                                     <tr>
                                         <td></td>
                                         <td></td>
@@ -161,19 +172,17 @@ export const PopupCustom = () => {
                             <br />
 
                             <div className="popup-heading" style={{ color: 'rgb(13, 101, 155)', fontWeight: '600' }}>
-                                Das sind die «normalen» Öffnungszeiten:
+                                {popupData?.Untertitel}
                             </div>
 
                             <table cellpadding="6" cellspacing="0" style={{ borderCollapse: 'collapse', width: '100%', fontWeight: '500', fontSize: 'var(--bs-fs18)' }}>
                                 <tbody>
-                                    <tr style={{ borderTop: '1px solid rgb(13, 101, 155)' }}>
-                                        <td style={{ padding: '0.4rem 0' }}>Montag – Freitag</td>
-                                        <td style={{ padding: '0.4rem 0' }}>8.00–12.15 / 13.00–18.30<br />(Ärztehaus: Nur bis 18.00)</td>
-                                    </tr>
-                                    <tr style={{ borderTop: '1px solid rgb(13, 101, 155)' }}>
-                                        <td style={{ padding: '0.4rem 0' }}>Samstag</td>
-                                        <td style={{ padding: '0.4rem 0' }}>8.00–13.00 (nur Apotheke)</td>
-                                    </tr>
+                                    {popupData?.Zeitplan?.map((info, i) => (
+                                        <tr key={i} style={{ borderTop: '1px solid rgb(13, 101, 155)' }}>
+                                            <td style={{ padding: '0.4rem 0' }}>{info?.Tage}</td>
+                                            <td style={{ padding: '0.4rem 0' }}>{info?.Zeit}</td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
 
