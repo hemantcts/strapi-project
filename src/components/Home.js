@@ -11,6 +11,9 @@ import Iframe from './Iframe';
 import MailchimpForm from './MailchimpForm';
 import { Popup } from './Popup';
 import SEO from './Seo';
+import desktopThumbnail from '../images/desktop-thumbnail.png'
+import pauseBtn from '../images/play-button.svg'
+
 
 const Home = () => {
 
@@ -133,7 +136,7 @@ const Home = () => {
                 <div className="container-xxl">
                     <div className="row align-items-center">
                         <div className="col-12 col-lg-6 content_box">
-                            <div className="heart_block">
+                            {/* <div className="heart_block">
                                 <img className="heart_img order-2 order-sm-1" src={`https://backend.medzentrum.ch${heartData?.linke_Seite?.Bild?.url}`} alt="" />
                                 <div className="content_wrap order-1 order-sm-2">
                                     <div className="sub_title">{heartData?.linke_Seite?.kleine_Uberschrift}</div>
@@ -142,10 +145,15 @@ const Home = () => {
                                         <sup>{heartData?.linke_Seite?.grosse_Uberschrift[heartData?.linke_Seite?.grosse_Uberschrift?.length - 1]}</sup>
                                     </h2>
                                     {heartData?.linke_Seite?.Text && <BlocksRenderer content={heartData?.linke_Seite?.Text} />}
-                                    {/* <p>{heartData?.linke_Seite?.Text}</p> */}
                                     <div className='btn_block'>
                                         <MyLink link={heartData?.linke_Seite?.Link?.Link_URL} text={heartData?.linke_Seite?.Link?.Link_Text} />
                                     </div>
+                                </div>
+                            </div> */}
+                            <div className='heart_'>
+                                <div className="thumbnail position-relative">
+                                    <img src={desktopThumbnail} alt="" />
+                                    <img src={pauseBtn} alt="" style={{maxWidth: '100%', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)'}} />
                                 </div>
                             </div>
                         </div>
