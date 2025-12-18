@@ -2168,7 +2168,7 @@
         padding: 0.4rem 2rem;
     }
 
-    .content_box.text-black .new-text{
+    .content_box.text-black .new-text {
         padding-right: 8rem;
     }
 }
@@ -2447,9 +2447,16 @@
         height: 1754px;
     }
 
-    .google-capcha{
+    .google-capcha {
         transform: scale(0.7) translateX(-21%) !important;
     }
+
+    /* .vm-video-wrapper {
+        position: relative;
+        width: 100%;
+        padding-bottom: 0;
+        height: 90vh;
+    } */
 }
 
 @media (max-width:405px) {

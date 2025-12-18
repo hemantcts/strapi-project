@@ -9,6 +9,7 @@ import Menu2 from './menu_components/Menu2';
 // import copyrightImg from '../images/copyright_img.png'
 // import icon from '../images/accordion-icon.svg'
 import Menu3 from './menu_components/Menu3';
+import useLockBodyScroll from '../hooks/useLockBodyScroll';
 
 const Navbar = ({ activeLink }) => {
     const navigate = useNavigate();
@@ -22,6 +23,8 @@ const Navbar = ({ activeLink }) => {
     const [isHoverEnabled, setIsHoverEnabled] = useState(window.innerWidth >= 992);
     const [searchKeyword, setSearchKeyword] = useState('');
     // const [matchedKeys, setMatchedKeys] = useState([]);
+
+    useLockBodyScroll(menuOpen);
 
 
     const handleChange = (e) => {

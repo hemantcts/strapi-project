@@ -11,9 +11,16 @@ import Iframe from './Iframe';
 import MailchimpForm from './MailchimpForm';
 import { Popup } from './Popup';
 import SEO from './Seo';
-import desktopThumbnail from '../images/desktop-thumbnail.png'
-import pauseBtn from '../images/play-button.svg'
 
+import { PopupCustom } from './PopupCustom';
+
+
+import VideoModal from './VideoModal';
+import desktopThumbnail from '../images/desktop-thumbnail.png'
+import mobileThumbnail from '../images/mobile-thumbnail 2.png'
+import pauseBtn from '../images/play-button.svg'
+import videoUrl from '../videos/Medzentrum-Imagevideo V1.mp4'
+import mobileVideoUrl from '../videos/Medzentrum-Imagevideo V1 Portrait.mp4'
 
 const Home = () => {
 
@@ -55,9 +62,32 @@ const Home = () => {
         };
     }, []);
 
+
+    const [isMobile2, setIsMobile2] = useState(false);
+
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsMobile2(window.innerWidth < 426);
+        };
+
+        checkScreenSize(); // Initial check
+        window.addEventListener('resize', checkScreenSize); // Listen for resize
+
+        return () => {
+            window.removeEventListener('resize', checkScreenSize); // Cleanup on unmount
+        };
+    }, []);
+
+
+
     const isPhoneLink = (linkURL) => {
         return !linkURL.startsWith('/');
     };
+
+    const [showModal, setShowModal] = useState(false);
+
+    const openVideo = () => setShowModal(true);
+    const closeVideo = () => setShowModal(false);
 
     return (
         <div>
@@ -151,9 +181,10 @@ const Home = () => {
                                 </div>
                             </div> */}
                             <div className='heart_'>
-                                <div className="thumbnail position-relative">
-                                    <img src={desktopThumbnail} alt="" />
-                                    <img src={pauseBtn} alt="" style={{maxWidth: '100%', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)'}} />
+                                <div className="thumbnail position-relative" style={{cursor:"pointer"}} onClick={openVideo}>
+                                    {!isMobile2 && <img src={desktopThumbnail} alt="" />}
+                                    {isMobile2 && <img src={mobileThumbnail} alt="" />}
+                                    <img src={pauseBtn} alt="" style={{ maxWidth: '100%', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: isMobile2 ? '55px' : '65px' }} />
                                 </div>
                             </div>
                         </div>
@@ -180,6 +211,14 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
+
+
+                <VideoModal
+                    show={showModal}
+                    onClose={closeVideo}
+                    videoUrl={isMobile2 ? mobileVideoUrl : videoUrl}  // change this to your actual video
+                    isMobile={isMobile2}
+                />
             </section>
             <section className='wi_full py_3 aktionen_sec bg_light_blue products-sec'>
                 {/* <ProductsSection productsData={productsData} /> */}
@@ -220,6 +259,13 @@ const Home = () => {
             <Footer />
 
             <Popup />
+            <PopupCustom />
+
+
+
+
+
+
         </div>
     )
 }
