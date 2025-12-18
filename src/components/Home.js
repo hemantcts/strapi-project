@@ -11,7 +11,16 @@ import Iframe from './Iframe';
 import MailchimpForm from './MailchimpForm';
 import { Popup } from './Popup';
 import SEO from './Seo';
+
 import { PopupCustom } from './PopupCustom';
+
+
+import VideoModal from './VideoModal';
+import desktopThumbnail from '../images/desktop-thumbnail.png'
+import mobileThumbnail from '../images/mobile-thumbnail 2.png'
+import pauseBtn from '../images/play-button.svg'
+import videoUrl from '../videos/Medzentrum-Imagevideo V1.mp4'
+import mobileVideoUrl from '../videos/Medzentrum-Imagevideo V1 Portrait.mp4'
 
 const Home = () => {
 
@@ -53,9 +62,32 @@ const Home = () => {
         };
     }, []);
 
+
+    const [isMobile2, setIsMobile2] = useState(false);
+
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsMobile2(window.innerWidth < 426);
+        };
+
+        checkScreenSize(); // Initial check
+        window.addEventListener('resize', checkScreenSize); // Listen for resize
+
+        return () => {
+            window.removeEventListener('resize', checkScreenSize); // Cleanup on unmount
+        };
+    }, []);
+
+
+
     const isPhoneLink = (linkURL) => {
         return !linkURL.startsWith('/');
     };
+
+    const [showModal, setShowModal] = useState(false);
+
+    const openVideo = () => setShowModal(true);
+    const closeVideo = () => setShowModal(false);
 
     return (
         <div>
@@ -134,7 +166,7 @@ const Home = () => {
                 <div className="container-xxl">
                     <div className="row align-items-center">
                         <div className="col-12 col-lg-6 content_box">
-                            <div className="heart_block">
+                            {/* <div className="heart_block">
                                 <img className="heart_img order-2 order-sm-1" src={`https://backend.medzentrum.ch${heartData?.linke_Seite?.Bild?.url}`} alt="" />
                                 <div className="content_wrap order-1 order-sm-2">
                                     <div className="sub_title">{heartData?.linke_Seite?.kleine_Uberschrift}</div>
@@ -143,10 +175,16 @@ const Home = () => {
                                         <sup>{heartData?.linke_Seite?.grosse_Uberschrift[heartData?.linke_Seite?.grosse_Uberschrift?.length - 1]}</sup>
                                     </h2>
                                     {heartData?.linke_Seite?.Text && <BlocksRenderer content={heartData?.linke_Seite?.Text} />}
-                                    {/* <p>{heartData?.linke_Seite?.Text}</p> */}
                                     <div className='btn_block'>
                                         <MyLink link={heartData?.linke_Seite?.Link?.Link_URL} text={heartData?.linke_Seite?.Link?.Link_Text} />
                                     </div>
+                                </div>
+                            </div> */}
+                            <div className='heart_'>
+                                <div className="thumbnail position-relative" style={{cursor:"pointer"}} onClick={openVideo}>
+                                    {!isMobile2 && <img src={desktopThumbnail} alt="" />}
+                                    {isMobile2 && <img src={mobileThumbnail} alt="" />}
+                                    <img src={pauseBtn} alt="" style={{ maxWidth: '100%', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: isMobile2 ? '55px' : '65px' }} />
                                 </div>
                             </div>
                         </div>
@@ -173,6 +211,14 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
+
+
+                <VideoModal
+                    show={showModal}
+                    onClose={closeVideo}
+                    videoUrl={isMobile2 ? mobileVideoUrl : videoUrl}  // change this to your actual video
+                    isMobile={isMobile2}
+                />
             </section>
             <section className='wi_full py_3 aktionen_sec bg_light_blue products-sec'>
                 {/* <ProductsSection productsData={productsData} /> */}
@@ -214,6 +260,12 @@ const Home = () => {
 
             <Popup />
             <PopupCustom />
+
+
+
+
+
+
         </div>
     )
 }
