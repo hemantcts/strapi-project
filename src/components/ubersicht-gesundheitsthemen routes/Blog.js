@@ -130,8 +130,10 @@ export const Blog = ({ data, color }) => {
                                 {blog?.preis_und_zeit?.length > 0 && <div className="list-items mt-4">
                                     <ul>
                                         {blog?.preis_und_zeit?.map((item, index) => (
-                                            <li key={index} className='mb-3 d-flex align-items-center'>
-                                                {item?.Icon && <img src={`https://backend.medzentrum.ch${item?.Icon?.url}`} alt="" />}
+                                            <li key={index} className={`${blog?.preis_und_zeit[index+1]?.Icon ? 'mb-3' : 'mb-0'}  d-flex align-items-center`}>
+                                                {item?.Icon ? <img src={`https://backend.medzentrum.ch${item?.Icon?.url}`} alt="" /> 
+                                                : <img src={`https://backend.medzentrum.ch/uploads/Group_1597880476_8850e68917.svg`} alt="" style={{opacity: 0}} /> 
+                                                }
                                                 <span>
                                                     <h4 className='ms-3 mb-0' style={{ display: 'inline-block' }}>{item?.Titel && item?.Titel}</h4>
                                                 </span>

@@ -2241,7 +2241,7 @@ footer {
 }
 
 .popup {
-    border-radius: 10px;
+    border-radius: 15px;
     padding: 0;
     border: none;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
@@ -2285,6 +2285,11 @@ footer {
         color: rgb(17, 17, 17);
         width: 100%;
         margin: 20px 0px 0px;
+
+        p{
+            font-size: var(--bs-fs24);
+            font-weight: 200;
+        }
     }
 
     .popup-btn {

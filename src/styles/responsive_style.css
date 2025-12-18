@@ -617,6 +617,7 @@
         --bs-h40: 40px;
         --bs-h35: 35px;
         --bs-fs30: 28px;
+        --bs-fs24: 25px;
         --bs-fs26: 26px;
         --bs-fs22: 22px;
         --bs-fs20: 20px;
@@ -994,6 +995,7 @@
         --bs-h40: 30px;
         --bs-h35: 25px;
         --bs-fs30: 18px;
+        --bs-fs24: 20px;
         --bs-fs26: 17px;
         --bs-fs22: 16px;
         --bs-fs20: 15px;
@@ -1683,6 +1685,7 @@
         --bs-h40: 30px;
         --bs-h35: 25px;
         --bs-fs30: 20px;
+        --bs-fs24: 20px;
         --bs-fs26: 20px;
         --bs-fs22: 18px;
         --bs-fs20: 16px;
@@ -1981,6 +1984,7 @@
         --bs-h40: 27px;
         --bs-h35: 23px;
         --bs-fs30: 18px;
+        --bs-fs24: 20px;
         --bs-fs26: 20px;
         --bs-fs22: 16px;
         --bs-fs20: 15px;
@@ -2493,7 +2497,7 @@
 
         .popup-img {
             width: 100% !important;
-            height: 196px;
+            height: 235px;
         }
     }
 }

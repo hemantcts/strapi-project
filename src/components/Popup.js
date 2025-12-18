@@ -97,7 +97,7 @@ export const Popup = () => {
                         <div className={`d-flex flex-column justify-content-center align-items-center popup-box ${mobileWidth ? 'order-2' : ''}`} style={{ backgroundColor: popupData?.Hintergrund_Farbe }}>
                             {popupData?.Titel && (
                                 <div className="block">
-                                    <div className="popup-heading" style={{ color: popupData?.Titel_Farbe }}>
+                                    <div className="popup-heading" style={{ color: popupData?.Titel_Farbe, fontFamily: 'var(--bs-fontvolkhov)' }}>
                                         {popupData?.Titel}
                                     </div>
                                 </div>
@@ -111,7 +111,7 @@ export const Popup = () => {
                             )}
                             {popupData?.Beschreibung && (
                                 <div className="block">
-                                    <div className="popup-description">
+                                    <div className="popup-description" style={{ color: '#0D659B' }}>
                                         {/* {popupData?.Beschreibung} */}
                                         <BlocksRenderer content={popupData?.Beschreibung} />
                                     </div>
