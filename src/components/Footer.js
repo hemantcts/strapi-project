@@ -100,7 +100,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className='footer_copyright text-center'>
-                        <p>© Copyright 2025 | MedZentrum AG, Pfungen | Design by <a href="https://www.loewenmut.ch/" target="_blank" rel="noopener noreferrer">Loewenmut. <img src={copyrightImg} alt='loewenmut' /></a></p>
+                        <p>© Copyright 2026 | MedZentrum AG, Pfungen | Design by <a href="https://www.loewenmut.ch/" target="_blank" rel="noopener noreferrer">Loewenmut. <img src={copyrightImg} alt='loewenmut' /></a></p>
                     </div>
                 </div>
             </footer>

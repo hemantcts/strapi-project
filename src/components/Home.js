@@ -21,6 +21,7 @@ import mobileThumbnail from '../images/mobile-thumbnail 2.png'
 import pauseBtn from '../images/play-button.svg'
 import videoUrl from '../videos/Medzentrum-Imagevideo V1.mp4'
 import mobileVideoUrl from '../videos/Medzentrum-Imagevideo V1 Portrait.mp4'
+import { NewPopupCustom } from './NewPopupCustom';
 
 const Home = () => {
 
@@ -258,8 +259,7 @@ const Home = () => {
             </section>
             <Footer />
 
-            <Popup />
-            <PopupCustom />
+            <NewPopupCustom />
 
 
 

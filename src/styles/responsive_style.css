@@ -2390,7 +2390,12 @@
 
         .popup-img {
             width: 100% !important;
-            height: unset;
+            /* height: unset; */
+            height: 320px;
+
+            img{
+                object-position: top;
+            }
         }
     }
 }
@@ -2495,6 +2500,8 @@
         background-size: 140% 100% !important;
     } */
 
+    
+
     .popup {
         flex-wrap: wrap;
 
@@ -2506,6 +2513,8 @@
             width: 100% !important;
             height: 235px;
         }
+
+          
     }
 }
 
@@ -2517,6 +2526,12 @@
 }
 
 @media (max-width:335px) {
+
+    .popup{
+        .popup-heading {
+            padding: 0 2rem;
+        }
+    }
 
     .products-iframe {
         /* height: 2170px; */

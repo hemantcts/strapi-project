@@ -761,6 +761,7 @@ footer {
         border-radius: 20px;
         object-fit: cover;
         border: 2px solid transparent;
+        aspect-ratio: 752/768;
     }
 
     .team_itm .item_inner:hover img.item_img {
@@ -2262,10 +2263,25 @@ footer {
     .popup-heading {
         font-weight: bold;
         font-style: normal;
-        font-size: var(--bs-h3);
+        font-size: var(--bs-h35);
+        /* font-size: var(--bs-h3); */
 
         line-height: 1.32;
         color: rgb(13, 101, 155);
+
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+
+    .popup-heading::before {
+        content: '';
+        width: 60px;
+        height: 2px;
+        background-color: rgb(13, 101, 155);
+        position: absolute;
+        bottom: -1.8rem;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .popup-discount {
@@ -2286,9 +2302,26 @@ footer {
         width: 100%;
         margin: 20px 0px 0px;
 
-        p{
-            font-size: var(--bs-fs24);
-            font-weight: 200;
+        p {
+            font-size: var(--bs-fs18);
+            font-weight: 500;
+            margin-bottom: 8px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-style: italic;
+            /* font-size: var(--bs-fs24);
+            font-weight: 200; */
+        }
+        
+        h4{
+            font-weight: bold !important;
+            text-transform: uppercase;
+            font-style: italic;
+        }
+
+        p:last-of-type {
+            color: #5C606E;
+            letter-spacing: unset !important;
         }
     }
 
