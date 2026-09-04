@@ -923,6 +923,10 @@
         }
     }
 
+    .heart_new_popup_modal {
+        width: 1300px !important;
+    }
+
 }
 
 
@@ -1644,6 +1648,11 @@
             display: none;
         }
     }
+    .heart_new_popup_modal {
+        .popup {
+            flex-direction: row-reverse !important;
+        }
+    }
 }
 
 
@@ -1788,6 +1797,15 @@
         .banner_content {
             max-width: 100%;
             margin-top: -70px;
+        }
+    }
+
+    .heart_new_popup_modal {
+        .popup {
+            flex-direction: column !important;
+        }
+        .popup-box, .popup-img {
+            width: 100% !important;
         }
     }
 }
@@ -2441,6 +2459,7 @@
             padding: 10px;
         }
     } */
+
 }
 
 @media (max-width:464px) {
@@ -2466,6 +2485,14 @@
         padding-bottom: 0;
         height: 90vh;
     } */
+     
+    .heart-popup-content {
+        .btn_scanner {
+            display: flex;
+            gap: 0;
+            flex-direction: column;
+        }
+    }
 }
 
 @media (max-width:405px) {

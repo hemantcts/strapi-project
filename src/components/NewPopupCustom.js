@@ -2,7 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import pdfIcon from '../images/dwnload-arrow.svg'
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
-import heartImage from '../images/heart-snow.png'
+import popupHeart from '../images/heart-popup-image.png'
+import closePopup from '../images/modal-close-new.svg'
+import scannerIcon from '../images/scanner.png'
+import scIcon1 from '../images/sc-icon-1.svg'
+import scIcon2 from '../images/sc-icon-2.svg'
+import scIcon3 from '../images/sc-icon-3.svg'
+import btnArrow from '../images/white-btn-arrow.svg'
 
 export const NewPopupCustom = () => {
     const openBtnRef = useRef(null);
@@ -39,121 +45,85 @@ export const NewPopupCustom = () => {
     return (
         <>
             {/* Hidden button to trigger Bootstrap modal */}
-            <button
-                type="button"
-                className="d-none"
-                data-bs-toggle="modal"
-                data-bs-target="#myModal2"
-                ref={openBtnRef}
-            >
-                Open Modal
-            </button>
+            <button type="button" className="d-none" data-bs-toggle="modal" data-bs-target="#myModal2" ref={openBtnRef} >Open Modal</button>
 
             {/* The actual modal */}
-            <div
-                className="modal fade"
-                id="myModal2"
-                tabIndex="-1"
-                aria-hidden="true"
-            >
-                <div className="modal-dialog modal-dialog-centered popup-container" style={{ width: '780px' }}>
-                    <div
-                        className="modal-content d-flex flex-row overflow-hidden popup"
-                    >
-                        {/* Left Side: Text */}
-                        <div className={`d-flex flex-column justify-content-center popup-box ${mobileWidth ? 'order-2' : ''}`} style={{ backgroundColor: '#d0d8e6', width: '100%', backgroundImage: `url(${heartImage})`, backgroundRepeat: 'no-repeat', backgroundSize: mobileWidth ? '8rem' : 'contain', backgroundPosition: mobileWidth ? '95% -5rem' : '96% -7rem' }}>
-                            {popupData?.Titel && (
-                                <div className="block text-start">
-                                    {mobileWidth ? (
-                                        <div className="popup-heading mb-3" style={{ color: 'rgb(13, 101, 155)', fontWeight: 500, fontSize: 'var(--bs-h35)' }}>
-                                            {/* Unsere <b>Öffnungszeiten</b> <br /> über die Festtage */}
-                                            <div dangerouslySetInnerHTML={{
-                                                __html: popupData?.Titel
-                                                    .replace('Öffnungszeiten', '<b>Öffnungszeiten</b> <br />')
-                                                    // .replace('über ', 'über <br /> ')
-                                            }} />
-                                        </div>
-                                    ) : (
-                                        <div className="popup-heading mb-3" style={{ color: 'rgb(13, 101, 155)', fontWeight: 500, fontSize: 'var(--bs-h35)' }}>
-                                            <div dangerouslySetInnerHTML={{
-                                                __html: popupData?.Titel
-                                                    .replace('Öffnungszeiten', '<b>Öffnungszeiten</b>')
-                                                    .replace('über ', 'über <br /> ')
-                                            }} />
-                                        </div>
-                                    )}
-                                </div>
-                            )}
-
-                            <table className='popup_table' cellpadding="6" cellspacing="0" style={{ borderCollapse: 'collapse', width: '100%', textAlign: 'start', fontWeight: '500', fontSize: 'var(--bs-fs18)' }}>
-                                {/* <thead style={{backgroundColor: '#e6f0fa'}}> */}
-                                <thead style={{ borderBottom: '1px solid rgb(13, 101, 155)' }}>
-                                    <tr style={{ fontSize: 'var(--bs-fs20)' }}>
-                                        <th></th>
-                                        <th>Apotheke</th>
-                                        <th>Ärztehaus</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {popupData?.Festtage_Info?.map((info, i) => (
-                                        <tr key={i} style={{ borderBottom: i !== popupData?.Festtage_Info.length - 1 ? '1px solid rgb(13, 101, 155)' : 'none' }}>
-                                            <td style={{ padding: '0.4rem 0' }}>{info?.Titel}</td>
-                                            <td style={{ padding: '0.4rem 0' }}>{info?.Apotheke}</td>
-                                            <td style={{ padding: '0.4rem 0' }}>{info?.Aerztehaus}</td>
-                                        </tr>
-                                    ))}
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td>(*durchgehend) </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <br />
-
-                            <div className="popup-heading" style={{ color: 'rgb(13, 101, 155)', fontWeight: '600' }}>
-                                {popupData?.Untertitel}
-                            </div>
-
-                            <table cellpadding="6" cellspacing="0" style={{ borderCollapse: 'collapse', width: '100%', fontWeight: '500', fontSize: 'var(--bs-fs18)' }}>
-                                <tbody>
-                                    {popupData?.Zeitplan?.map((info, i) => (
-                                        <tr key={i} style={{ borderTop: '1px solid rgb(13, 101, 155)' }}>
-                                            <td style={{ padding: '0.4rem 0' }}>{info?.Tage}</td>
-                                            <td style={{ padding: '0.4rem 0' }}>{info?.Zeit}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-
-
-
-
-
+            <div className="modal fade" id="myModal2" tabIndex="-1" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered popup-container heart_new_popup_modal" style={{ width: '1000px' }}>
+                    <div className="modal-content d-flex flex-row overflow-hidden popup">
+                        <div className="popup-img" style={{
+                                width: '50%',
+                                backgroundColor: `#dcf3ff`,
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                position: 'relative'
+                            }}>
+                            <img src={popupHeart} alt="" style={{objectFit:'cover', height:'100%', width:'100%'}} />
+                            <button type="button" data-bs-dismiss="modal" aria-label="Close" style={{
+                                    position: 'absolute',
+                                    top: '5px',
+                                    right: '5px',
+                                    background: 'rgba(231, 231, 231, 0.95)',
+                                    border: 'none',
+                                    borderRadius: '50%',
+                                    width: '28px',
+                                    height: '28px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    cursor: 'pointer'
+                                }}>
+                                <img src={closePopup} alt="Close" />
+                            </button>
                         </div>
-                        <button
-                            type="button"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                            style={{
-                                position: 'absolute',
-                                top: '5px',
-                                right: '5px',
-                                background: 'rgb(13, 101, 155)',
-                                // background: 'rgba(231, 231, 231, 0.95)',
-                                border: 'none',
-                                borderRadius: '50%',
-                                width: mobileWidth ? '28px' : '35px',
-                                height: mobileWidth ? '28px' : '35px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                cursor: 'pointer'
-                            }}
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill='#fff' viewBox="0 0 16 16"><path fill-rule="evenodd" d="m3.426 2.024.094.083L8 6.586l4.48-4.479a1 1 0 0 1 1.497 1.32l-.083.095L9.414 8l4.48 4.478a1 1 0 0 1-1.32 1.498l-.094-.083L8 9.413l-4.48 4.48a1 1 0 0 1-1.497-1.32l.083-.095L6.585 8 2.106 3.522a1 1 0 0 1 1.32-1.498Z"></path></svg>
-                        </button>
+                        <div className="d-flex flex-column justify-content-center align-items-center popup-box">
+                            <div className="heart-popup-content">
+                                <p className='text-uppercase  fw-regular'>Kundenzufriedenheitsumfrage </p>
+                                <h2 className='mb-3'>Ihre Meinung liegt uns am <svg width="32" height="27" viewBox="0 0 32 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.9739 26.9339L16.026 27C30.221 21.2364 35.6907 7.87569 29.4397 2.11219C23.1882 -3.65137 16.026 4.20722 16.026 4.20722H15.9739C15.9739 4.20722 8.81119 -3.65137 2.56021 2.11219C-3.69064 7.87501 1.77907 21.1704 15.9739 26.9339Z" fill="black"/>
+                                <path d="M15.9739 26.9339L16.026 27C30.221 21.2364 35.6907 7.87569 29.4397 2.11219C23.1882 -3.65137 16.026 4.20722 16.026 4.20722H15.9739C15.9739 4.20722 8.81119 -3.65137 2.56021 2.11219C-3.69064 7.87501 1.77907 21.1704 15.9739 26.9339Z" fill="url(#paint0_linear_2489_11648)"/>
+                                <defs>
+                                <linearGradient id="paint0_linear_2489_11648" x1="30.7046" y1="12.9376" x2="0.0179817" y2="12.9487" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#009E4B"/>
+                                <stop offset="1" stop-color="#04659A"/>
+                                </linearGradient>
+                                </defs>
+                                </svg> -en</h2>
+                                <p>Ihre Rückmeldung hilft uns, unsere Betreuung und unseren Service weiter zu verbessern.</p>
+                                <div className='sc_icon_list'>
+                                    <div className='sc_icon_item'>
+                                        <img src={scIcon1} alt="Schnell" />
+                                        <div className=''>
+                                            <h4>Schnell</h4>
+                                            <p>Die Teilnahme dauert nur wenige Minuten.</p>
+                                        </div>
+                                    </div>
+                                    <div className='sc_icon_item'>
+                                        <img src={scIcon2} alt="Vertraulich" />
+                                        <div className=''>
+                                            <h4>Vertraulich</h4>
+                                            <p>Ihre Angaben werden sorgfältig behandelt.</p>
+                                        </div>
+                                    </div>
+                                    <div className='sc_icon_item'>
+                                        <img src={scIcon3} alt="Direkt online" />
+                                        <div className=''>
+                                            <h4>Direkt online</h4>
+                                            <p>Die Umfrage wird über einen Link geöffnet.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className='btn_scanner mt-4'>
+                                    <div className='btn_scanner_left'>
+                                        <a href={`#`} target='_blank' className='button fill_btn'>ZUR UMFRAGE <img src={btnArrow} alt='#' /></a>
+                                        <p><em>Die Umfrage öffnet sich in einem neuen Fenster.</em></p>
+                                    </div>
+                                    <div className='btn_scanner_right'>
+                                        <img src={scannerIcon} alt="Scanner" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
